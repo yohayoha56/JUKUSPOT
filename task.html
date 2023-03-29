@@ -47,5 +47,38 @@
     </form>
 </div>
 
+
+<script>
+let databaseId = "813a89bf93a6492ab373b95f4dc5726a";
+let notionApiKey = "secret_r4N0Pq1E7Ufyd1h8FYnfmIgOd52nyRzv9d2Mpzde79g";
+let url = `https://api.notion.com/v1/databases/${databaseId}/query`;
+
+fetch(url, {
+method: "POST",
+headers: {
+"Authorization": `Bearer ${notionApiKey}`,
+"Notion-Version": "2023-03-01",
+"Content-Type": "application/json"
+}
+})
+.then((response) => response.json())
+.then((data) => {
+console.log(data.results);
+})
+.catch((error) => {
+console.error(error);
+});
+
+    
+</script>
+
+
+
+
+
+
+
+
+
 </body>
 </html>
