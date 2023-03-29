@@ -12,3 +12,7 @@
 .form-label{
     font-weight: bold;
 }
+
+textarea{
+    width: 100%;
+}
