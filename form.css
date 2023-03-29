@@ -1,9 +1,14 @@
-span{color:red;}
-
 .form-content{
     padding:10px 10px;
+    font-size: 20px ;
+    font-weight: bold;
 }
 
 .form-box{
     padding:10px 10px;
+    font-size: 16px;
+}
+
+.form-label{
+    font-weight: bold;
 }
