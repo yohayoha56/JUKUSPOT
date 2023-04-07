@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    テスト用です。
+    <script>
+        // POSTリクエストの送信
+        fetch('https://script.google.com/macros/s/AKfycbzpkArN24p5TTQQU84b7SEfL9NpVOa2tLsenqYsgrFltn78rAlKhrkck-qHVjXa8wkn/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            searchCondition: 'sales_id_1' // 検索条件
+        })
+        })
+        .then(response => response.json()) // レスポンスをJSON形式で取得
+        .then(data => {
+        console.log(data); // レスポンスの内容をコンソールに表示
+        });
+
+        // レスポンスの取得
+        function doGet(e) {
+        var searchCondition = e.parameters.searchCondition; // POSTリクエストから検索条件を取得
+        var result = getSalesSchedule(searchCondition); // スプレッドシートから最新スケジュールを取得する関数
+        return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON); // レスポンスをJSON形式で返す
+        }
+    </script>
+    
+</body>
+</html>
