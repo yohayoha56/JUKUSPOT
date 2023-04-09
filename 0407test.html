@@ -32,14 +32,10 @@
         .then(response => response.text()) // レスポンスをJSON形式で取得
         .then(data => {
         console.log(data); // レスポンスの内容をコンソールに表示
+        data.insertAdjacentHTML(beforeend, body)
+        
         });
 
-        // レスポンスの取得
-        function doGet(e) {
-        var searchCondition = e.parameters.searchCondition; // POSTリクエストから検索条件を取得
-        var result = getSalesSchedule(searchCondition); // スプレッドシートから最新スケジュールを取得する関数
-        return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON); // レスポンスをJSON形式で返す
-        }
     </script>
     
 </body>
