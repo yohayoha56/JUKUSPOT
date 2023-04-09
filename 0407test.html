@@ -32,9 +32,8 @@
         .then(response => response.text()) // レスポンスをJSON形式で取得
         .then(data => {
         console.log(data); // レスポンスの内容をコンソールに表示
-        var body = document.getElementsByTagName("body");
+        var body = document.getElementsByTagName("body")[0];
         body.insertAdjacentHTML("beforeend", data);
-        
         });
 
     </script>
