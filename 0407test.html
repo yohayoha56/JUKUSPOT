@@ -12,30 +12,20 @@
     <script>
         // POSTリクエストの送信
         fetch("https://script.google.com/macros/s/AKfycbyWRaEb4zulsgE2kM3Z7BZ417xuOyg0GHGv2w7cQLfrH0ju8hB17xd7oXH-NWInpGbX/exec", {
-            
         method: 'POST',
-        // headers: {
-        //     'Content-Type': 'text/plain',
-        //     'Origin' : 'https://heys45.github.io'
-        // },
-        // body: 'sales_id_1' // 検索条件
         headers: {
             'Content-Type': 'text/plain',
-            'Origin' : 'https://heys45.github.io'
         },
         body: JSON.stringify({
             salesId: '9' // 検索条件
         }),
         mode: 'cors', //CORS対応
-        // credentials: 'include',
         })
-        .then(response => response.text()) // レスポンスをJSON形式で取得
+        .then(response => response.text()) 
         .then(data => {
-        console.log(data); // レスポンスの内容をコンソールに表示
         var body = document.getElementsByTagName("body")[0];
         body.insertAdjacentHTML("beforeend", data);
         });
-
     </script>
     
 </body>
