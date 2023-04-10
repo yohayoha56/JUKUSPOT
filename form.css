@@ -16,3 +16,33 @@ textarea, input ,select, option{
     width: 100%;
     font-size: 16px;
 }
+
+
+/* テーブルレイアウト調整用CSS */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f2f2f2;
+  }
