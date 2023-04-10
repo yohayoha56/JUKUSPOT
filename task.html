@@ -140,14 +140,13 @@
         const formattedTaskDetail = `${actual} ${formattedDate} ${formattedTime}\n${taskDetail}`;
         data["rich text:Task Detail"] = formattedTaskDetail;
 
-          // データをサーバーに送信
-          const response = await fetch('/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            body: JSON.stringify(data)
-          });
+        const response = await fetch('/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Content-Typeヘッダーを設定
+        },
+        body: JSON.stringify(data)
+        });
           if (response.ok) {
             console.log('データが正常に送信されました');
             form.reset(); // フォームの入力値をリセット
