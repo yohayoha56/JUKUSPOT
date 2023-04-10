@@ -101,6 +101,16 @@
           for (const [key, value] of formData.entries()) {
             data[key] = value;
           }
+
+        // taskDetailを整形してdataに追加
+        const now = new Date();
+        const formattedDate = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
+        const formattedTime = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+        const taskDetail = data["rich text:Task Detail"];
+        const actual = data["number:実工数"];
+        const formattedTaskDetail = `${actual} ${formattedDate} ${formattedTime}\n${taskDetail}`;
+        data["rich text:Task Detail"] = formattedTaskDetail;
+
           // データをサーバーに送信
           const response = await fetch('/submit', {
             method: 'POST',
