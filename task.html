@@ -71,73 +71,54 @@
         </tr>
     </table>
 
-
-
-<!-- タイトルセクション -->
-<div class="form-title">
-    <p>タスク入力フォーム</p>
-</div>
-
-<!--フォームセクション  -->
-<div class="form-content">
-    <form id="" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScfZfklpg6hcdDK8YvU5_ZZvtkzkdfPamuunsJkwyUHOo-jNw/formResponse" method="post" target="hidden_iframe">
-    <div class="form-box">
-        <span class="f-label">年</span><br><select name="entry.204912632 class=""><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option></select>
-        <select name="entry.66425168 class=""><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
-        <select name="entry.1351822172 class=""><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select><br>    
-    </div>
-    <div class="form-box">
-        <span class="f-label">クライアント</span><br><select name="entry.1623963293 class=""><option value="トモノカイ">トモノカイ</option><option value="SAUCEED">SAUCEED</option><option value="河村さん">河村さん</option><option value="SYN _Group">SYN _Group</option></select><br>
-    </div>
-    <div class="form-box">
-        <span class="f-label">TASK内容（タイトル）</span><br><input type="text" name="entry.714305180 class=""><br>
-    </div>
-    <div class="form-box">
-        <span class="f-label">工数見積（##）</span><br><input type="text" name="entry.1041937662 class=""><br>
-    </div>
-    <div class="form-box">
-        <span class="f-label">進捗memo</span><br><textarea name="entry.1010333473 class=""></textarea><br>
-    </div>
-    <div class="form-box">
-        <span class="f-label">計画memo</span><br><textarea name="entry.1006426484 class=""></textarea><br>
-    </div>
-    <div class="form-box">
-        <span class="f-label">制約memo</span><br><textarea name="entry.361055322 class=""></textarea><br>
-    </div>
-    <div class="form-box">
-        <button type="submit">SUBMIT！</button>
-    </div>
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-    </form>
-</div>
-
-
-<script>
-let databaseId = "813a89bf93a6492ab373b95f4dc5726a";
-let notionApiKey = "secret_r4N0Pq1E7Ufyd1h8FYnfmIgOd52nyRzv9d2Mpzde79g";
-let url = `https://api.notion.com/v1/databases/${databaseId}/query`;
-
-// fetch(url, {
-// method: "POST",
-const headers= {
-"Authorization": `Bearer ${notionApiKey}`,
-"Notion-Version": "2022-08-16",
-"Content-Type": "application/json"
-};
-// })
-axios.get(`https://api.notion.com/v1/databases/${databaseId}/query`, { headers })
-.then((response) => response.json())
-.then((data) => {
-console.log(data.results);
-})
-.catch((error) => {
-console.error(error);
-});
-
-    
-</script>
-
-
+    <form id="myForm">
+        <label for="title">タスク内容:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="estimation">見積:</label><br>
+        <input type="number" id="estimation" name="number:見積"><br>
+        <label for="actual">実工数:</label><br>
+        <input type="number" id="actual" name="number:実工数"><br>
+        <label for="progress">進捗:</label><br>
+        <input type="number" id="progress" name="number:進捗"><br>
+        <label for="taskDetail">Task Detail:</label><br>
+        <input type="text" id="taskDetail" name="rich text:Task Detail"><br>
+        <label for="client">クライアント:</label><br>
+        <select id="client" name="select:クライアント">
+          <option value="A社">A社</option>
+          <option value="B社">B社</option>
+          <option value="C社">C社</option>
+        </select><br><br>
+        <input type="submit" value="送信">
+      </form>
+      <script>
+        // フォームの送信をハンドルする関数
+        const handleSubmit = async (event) => {
+          event.preventDefault(); // デフォルトの送信をキャンセル
+          const form = document.querySelector('#myForm');
+          const formData = new FormData(form);
+          const data = {};
+          // FormDataオブジェクトから連想配列に変換
+          for (const [key, value] of formData.entries()) {
+            data[key] = value;
+          }
+          // データをサーバーに送信
+          const response = await fetch('/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          if (response.ok) {
+            console.log('データが正常に送信されました');
+            form.reset(); // フォームの入力値をリセット
+          } else {
+            console.log('データの送信に失敗しました');
+          }
+        };
+        const form = document.querySelector('#myForm');
+        form.addEventListener('submit', handleSubmit);
+      </script>
 
 
 
