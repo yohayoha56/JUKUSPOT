@@ -95,6 +95,8 @@
             console.log(rows);
             rows.forEach(row => {
               const clientCell = row.querySelector('td:nth-child(6)');
+              console.log(row);
+              console.log(row.querySelectorAll("td")[5]);
               console.log(clientCell);
               if (clientCell.textContent === client) {
                 row.style.display = 'table-row';
