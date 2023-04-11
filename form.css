@@ -103,10 +103,13 @@ td:nth-child(6), th:nth-child(6) {
   th:nth-child(7) {
     display: none;
   }
-  td:nth-child(1)td:nth-child(5)  {
+  td:nth-child(1),td:nth-child(5)  {
     width: 100%;
   }
-  td:nth-child(2):nth-child(3):nth-child(4):nth-child(7) {
-    width: 25%;
+  td:nth-child(2),td:nth-child(3),td:nth-child(4) {
+    width: 20%;
+  }
+  td:nth-child(7) {
+    width: 40%;
   }
 }
