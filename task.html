@@ -63,71 +63,14 @@
 
 
 
-    <!--  -->
-    <table>
-        <tr>
-            <th>タスク内容</th>
-            <th>見積</th>
-            <th>実工数</th>
-            <th>進捗</th>
-            <th>Task Detail</th>
-            <th>クライアント</th>
-            <th>作成日時</th>
-        </tr>
-        <tr>
-            <td>スケ提出のガイド反映</td>
-            <td>30</td>
-            <td>null</td>
-            <td>100</td>
-            <td>null</td>
-            <td>トモノカイ</td>
-            <td>3/24/2023, 4:22:00 PM</td>
-        </tr>
-        <tr>
-            <td>河内さん出勤フォーム表示</td>
-            <td>30</td>
-            <td>null</td>
-            <td>60</td>
-            <td>null</td>
-            <td>トモノカイ</td>
-            <td>3/24/2023, 2:53:00 PM</td>
-        </tr>
-        <tr>
-            <td>会員DB移す</td>
-            <td>30</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>トモノカイ</td>
-            <td>3/24/2023, 2:47:00 PM</td>
-        </tr>
-        <tr>
-            <td>個情追加フォーム</td>
-            <td>10</td>
-            <td>null</td>
-            <td>null</td>
-            <td>null</td>
-            <td>トモノカイ</td>
-            <td>3/24/2023, 2:45:00 PM</td>
-        </tr>
-        <tr>
-            <td>水書さんページ修正</td>
-            <td>10</td>
-            <td>null</td>
-            <td>20</td>
-            <td>水書さんページ修正
-                【合格の場合】
-                ・講師｜シフト、勤怠ON
-                ・教室｜シフト、勤怠、プロフON
-                【不合格の場合】</td>
-            <td>トモノカイ</td>
-            <td>3/24/2023, 2:03:00 PM</td>
-        </tr>
-    </table>
-
+    <!-- ここからフォーム -->
     <form id="myForm" >
         <label for="title">タスク内容:</label><br>
-        <input type="text" id="title" name="title"><br>
+        <select id="title" name="select:タスク内容">
+          <option value="" selected disabled>選択してください</option>
+          <option value="その他">その他</option>
+        </select>
+        <input type="text" id="otherTitle" name="other:タスク内容" style="display:none;"><br>
         <label for="estimation">見積:</label><br>
         <input type="number" id="estimation" name="number:見積"><br>
         <label for="actual">実工数:</label><br>
@@ -144,6 +87,22 @@
         </select><br><br>
         <input type="submit" value="送信">
       </form>
+
+
+      <script>
+        let select = document.getElementById("title");
+        let option;
+        let table = document.getElementsByTagName("table")[0];
+        let rows = table.rows;
+
+        for (let i = 1; i < rows.length; i++) {
+          option = document.createElement("option");
+          option.text = rows[i].cells[0].innerText;
+          option.value = rows[i].cells[0].innerText;
+          select.add(option);
+        }
+      </script>
+
       <script>
         // フォームの送信をハンドルする関数
         const handleSubmit = async (event) => {
@@ -156,6 +115,10 @@
             data[key] = value;
           }
 
+        // もし「その他」が選択された場合、テキストボックスの値を利用する
+        if (data["select:タスク内容"] === "その他") {
+          data["select:タスク内容"] = data["other:タスク内容"];
+        }
 
         // taskDetailを整形してdataに追加
         const now = new Date();
