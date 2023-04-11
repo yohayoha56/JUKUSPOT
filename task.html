@@ -98,17 +98,16 @@
             button.classList.add('active');
 
             // クライアントが選択された時の処理
+            function handleResize(){
             const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
-            console.log(rows);
             rows.forEach(row => {
               const clientCell = row.cells[5];
-              console.log(clientCell);
               if (clientCell.textContent === client) {
-                row.style.display = 'flex';
+                row.style.display = (window.innerWidth <= 680) ? 'flex' : 'table-row';
               } else {
                 row.style.display = 'none';
               }
-            });
+            });}
           });
           // ボタンを追加
           clientButtons.appendChild(button);
@@ -119,8 +118,7 @@
           }
         });
       });
-
-
+      window.addEventListener('resize', handleResize);
 
     </script>
     
