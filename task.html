@@ -77,9 +77,9 @@
           select.add(option);
         }
 
+
         // クライアント一覧取得
         const clients = Array.from(new Set([...document.querySelectorAll('table tbody td:nth-child(6)')].map(td => td.textContent)));
-
         // クライアント選択ボタンを作成する
         const client_buttons = document.createElement("div");
         client_buttons.setAttribute("id","client-buttons");
@@ -98,7 +98,7 @@
             button.classList.add('active');
 
             // クライアントが選択された時の処理
-            const rows = document.querySelectorAll('tbody tr');
+            const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
             console.log(rows);
             rows.forEach(row => {
               const clientCell = row.cells[5];
