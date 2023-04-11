@@ -78,7 +78,7 @@
         }
 
         // クライアント一覧取得
-        const clients = Array.from(new Set([...document.querySelectorAll('#task-table tbody td:nth-child(6)')].map(td => td.textContent)));
+        const clients = Array.from(new Set([...document.querySelectorAll('table tbody td:nth-child(6)')].map(td => td.textContent)));
 
         // クライアント選択ボタンを作成する
         const client_buttons = document.createElement("div");
