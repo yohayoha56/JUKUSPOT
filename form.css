@@ -113,6 +113,9 @@ td:nth-child(6), th:nth-child(6) {
   table td:nth-child(5) {
     order: 6;
   }
+  td:nth-child(1){
+    font-weight: bold;
+  }
 
   td:before {
     float: left;
@@ -121,26 +124,26 @@ td:nth-child(6), th:nth-child(6) {
     text-transform: capitalize;
   }
   table td:nth-child(1):before {
-    content: "ﾀｽｸ: ";
+    content: "内容";
   }
   
   table td:nth-child(2):before {
-    content: "見: ";
+    content: "見";
   }
   
   table td:nth-child(3):before {
-    content: "工: ";
+    content: "工";
   }
   
   table td:nth-child(4):before {
-    content: "進: ";
+    content: "進";
   }
   
   table td:nth-child(5):before {
-    content: "詳細: ";
+    content: "詳細";
   }
   
   table td:nth-child(7):before {
-    content: "作: ";
+    content: "発";
   }
 }
