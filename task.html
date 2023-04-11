@@ -82,6 +82,9 @@
       const clients = Array.from(new Set([...document.querySelectorAll('#task-table tbody td:nth-child(6)')].map(td => td.textContent)));
 
       // クライアント選択ボタンを作成する
+      const client_buttons = document.createElement("div");
+      client_buttons.setAttribute("id","client-buttons");
+      table.insertAdjacentHTML("beforebegin",client_buttons);
       const clientButtons = document.getElementById('client-buttons');
       clients.forEach((client, index) => {
         // ボタン要素を作成
@@ -89,7 +92,7 @@
         button.textContent = client;
         button.addEventListener('click', () => {
           // クライアントが選択された時の処理
-          const rows = document.querySelectorAll('#task-table tbody tr');
+          const rows = document.querySelectorAll('tbody tr');
           rows.forEach(row => {
             const clientCell = row.querySelector('td:nth-child(6)');
             if (clientCell.textContent === client) {
