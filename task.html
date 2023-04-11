@@ -66,8 +66,9 @@
         for (let i = 1; i < rows.length; i++) {
           const dateCell = rows[i].querySelector('td:last-child');
           const dateText = dateCell.innerText;
-          const yearAndMinute = dateText.substring(5, 16);
-          dateCell.innerText = yearAndMinute;
+          const dateText2 = dateText.match(/\d{1,2}\/\d{1,2} \d{1,2}:\d{1,2}/);
+          const dateText3 = dateText2[0];
+          dateCell.innerText = dateText3;
         }
         for (let i = 1; i < rows.length; i++) {
           option = document.createElement("option");
