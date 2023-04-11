@@ -58,7 +58,7 @@
         document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
         
 
-        // ここから選択肢の作成と、日付の成形
+        // ここから日付の成形
         let select = document.getElementById("title");
         let option;
         let table = document.getElementsByTagName("table")[0];
@@ -69,12 +69,6 @@
           const dateText2 = dateText.match(/\d{1,2}\/\d{1,2} \d{1,2}:\d{1,2}/);
           const dateText3 = dateText2[0];
           dateCell.innerText = dateText3;
-        }
-        for (let i = 1; i < rows.length; i++) {
-          option = document.createElement("option");
-          option.text = rows[i].cells[0].innerText;
-          option.value = rows[i].cells[0].innerText;
-          select.add(option);
         }
 
 
@@ -97,7 +91,37 @@
             }
             button.classList.add('active');
 
-            // クライアントが選択された時の処理
+
+            // セレクトの中身をクリア
+            select.innerHTML = '';
+
+            // 選択してくださいのデフォルトのoptionを作成
+            let option = document.createElement("option");
+            option.text = "選択してください";
+            option.value = "選択してください";
+            select.add(option);
+
+            // 新規タスク作成のoptionを作成
+            option = document.createElement("option");
+            option.text = "新規タスク作成";
+            option.value = "新規タスク作成";
+            select.add(option);
+
+            // クライアントが選択された時選択肢作成処理
+            const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
+            rows.forEach(row => {
+              const clientCell = row.cells[5];
+              if (clientCell.textContent === client) {
+                // クライアントが選択中のタスク内容のoptionを作成
+                option = document.createElement("option");
+                option.text = row.cells[0].innerText;
+                option.value = row.cells[0].innerText;
+                select.add(option);
+              } 
+            });
+
+
+            // クライアントが選択された時の表切り替え処理（画面サイズ変更にも行う）
             function handleResize(){
             const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
             rows.forEach(row => {
