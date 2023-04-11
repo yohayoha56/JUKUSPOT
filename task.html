@@ -90,6 +90,13 @@
           const button = document.createElement('button');
           button.textContent = client;
           button.addEventListener('click', () => {
+            // クリックされたボタンにactiveクラスを追加
+            const currentButton = document.querySelector('#client-buttons button.active');
+            if (currentButton) {
+              currentButton.classList.remove('active');
+            }
+            button.classList.add('active');
+
             // クライアントが選択された時の処理
             const rows = document.querySelectorAll('tbody tr');
             console.log(rows);
@@ -108,6 +115,7 @@
           // 最初のクライアントを選択状態にする
           if (index === 0) {
             button.click();
+            button.classList.add('active');
           }
         });
       });
