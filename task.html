@@ -64,7 +64,7 @@
         let table = document.getElementsByTagName("table")[0];
         let rows = table.rows;
         for (let i = 1; i < rows.length; i++) {
-          const dateCell = row.querySelector('td:last-child');
+          const dateCell = rows[i].querySelector('td:last-child');
           const dateText = dateCell.innerText;
           const yearAndMinute = dateText.substring(5, 16);
           dateCell.innerText = yearAndMinute;
