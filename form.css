@@ -50,17 +50,20 @@ table {
 
   #client-buttons {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; /* 改行するようにする */
   }
   
   #client-buttons button {
     font-weight: bold;
     line-height: 1.5;
-    margin: 10px 10px 10px 0;
+    margin: 10px;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
     background-color: #e0e0e0;
+    flex: 1; /* 幅を均等にする */
+    max-width: calc(100% - 20px); /* 最大幅を指定 */
+    white-space: nowrap; /* 改行しないようにする */
   }
   
   #client-buttons button:last-child {
