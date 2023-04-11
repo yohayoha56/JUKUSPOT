@@ -106,25 +106,10 @@ td:nth-child(6), th:nth-child(6) {
   th:nth-child(7) {
     display: none;
   }
-  td:nth-child(1) {
+  td:nth-child(1)td:nth-child(5)  {
     width: 100%;
   }
-  td:nth-child(n+2):nth-child(-n+5) {
+  td:nth-child(2):nth-child(3):nth-child(4):nth-child(7) {
     width: 25%;
-  }
-  td:nth-child(6),
-  td:nth-child(7) {
-    display: none;
-  }
-  tr:nth-child(n+4) {
-    display: none;
-  }
-  tr:nth-child(2) td {
-    display: inline-block;
-    width: 25%;
-  }
-  tr:nth-child(3) td {
-    display: block;
-    width: 100%;
   }
 }
