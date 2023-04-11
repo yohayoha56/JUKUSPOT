@@ -71,3 +71,44 @@ table {
     background-color: #555555;
     color: #ffffff;
   }
+
+
+
+  /* 6列目を非表示 */
+td:nth-child(6), th:nth-child(6) {
+  display: none;
+}
+
+/* 横幅が680px以下の場合、データを2行に分ける */
+@media only screen and (max-width: 680px) {
+  td:nth-child(1):before {
+    content: "タスク内容: ";
+  }
+  td:nth-child(1), td:nth-child(2), td:nth-child(3), td:nth-child(4), td:nth-child(7) {
+    display: block;
+    width: 100%;
+  }
+  td:nth-child(2):before {
+    content: "見積: ";
+  }
+  td:nth-child(3):before {
+    content: "実工数: ";
+  }
+  td:nth-child(4):before {
+    content: "進捗: ";
+  }
+  td:nth-child(5):before {
+    content: "Task Detail: ";
+  }
+  td:nth-child(5), td:nth-child(6) {
+    display: inline-block;
+    width: 50%;
+  }
+  td:nth-child(5):after {
+    content: "";
+    display: block;
+    height: 1px;
+    margin-top: 0.5em;
+    background-color: #ccc;
+  }
+}
