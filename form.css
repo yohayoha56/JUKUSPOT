@@ -101,10 +101,10 @@ td:nth-child(6), th:nth-child(6) {
     width: 100%;
   }
   td:nth-child(2),td:nth-child(3),td:nth-child(4) {
-    width: 20%;
+    width: calc(20% - 16px);
   }
   td:nth-child(7) {
-    width: 40%;
+    width: calc(40% - 16px);
   }
   table td:nth-child(5) {
     order: 6;
