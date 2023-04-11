@@ -85,7 +85,7 @@
       // クライアント選択ボタンを作成する
       const client_buttons = document.createElement("div");
       client_buttons.setAttribute("id","client-buttons");
-      table.insertAdjacentHTML("beforebegin",client_buttons);
+      document.getElementsByTagName("table")[0].insertAdjacentHTML("beforebegin",client_buttons);
       const clientButtons = document.getElementById('client-buttons');
       clients.forEach((client, index) => {
         // ボタン要素を作成
