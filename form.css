@@ -81,64 +81,50 @@ td:nth-child(6), th:nth-child(6) {
 
 @media screen and (max-width: 680px) {
   table {
-    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  tr {
+    display: inline-block;
+    vertical-align: top;
     width: 100%;
   }
-  th,
-  td {
+  td,
+  th {
+    display: block;
     text-align: left;
-    padding: 8px;
-    border: 1px solid #ddd;
+    width: 100%;
   }
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
+  th:nth-child(1) {
+    width: 100%;
   }
-  tr:nth-child(odd) {
-    background-color: #ffffff;
+  th:nth-child(n+2):nth-child(-n+5) {
+    width: 25%;
   }
-  tr:hover {
-    background-color: #ddd;
-  }
-  td:nth-child(1),
-  td:nth-child(2),
-  td:nth-child(3),
-  td:nth-child(4),
-  td:nth-child(7) {
+  th:nth-child(6),
+  th:nth-child(7) {
     display: none;
   }
-  td:nth-child(5)::before {
-    content: 'Task Detail: ';
-    font-weight: bold;
+  td:nth-child(1) {
+    width: 100%;
   }
-  td:nth-child(6)::before {
-    content: 'Client: ';
-    font-weight: bold;
+  td:nth-child(n+2):nth-child(-n+5) {
+    width: 25%;
   }
-  td:nth-child(5),
-  td:nth-child(6) {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  td:nth-child(5),
   td:nth-child(6),
   td:nth-child(7) {
-    padding-bottom: 12px;
-  }
-  tr:nth-child(3n+1) {
-    display: block;
-    margin-bottom: 20px;
-  }
-  tr:nth-child(3n+2) td {
     display: none;
   }
-  tr:nth-child(3n+3) td:nth-child(1),
-  tr:nth-child(3n+3) td:nth-child(2),
-  tr:nth-child(3n+3) td:nth-child(3),
-  tr:nth-child(3n+3) td:nth-child(4),
-  tr:nth-child(3n+3) td:nth-child(7) {
+  tr:nth-child(n+4) {
+    display: none;
+  }
+  tr:nth-child(2) td {
+    display: inline-block;
+    width: 25%;
+  }
+  tr:nth-child(3) td {
     display: block;
-    font-size: 14px;
-    line-height: 1.5;
-    padding-bottom: 12px;
+    width: 100%;
   }
 }
