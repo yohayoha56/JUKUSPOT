@@ -8,8 +8,9 @@
     <title>Document</title>
 </head>
 <body>
+  
+    <!-- 更新日時の表示 -->
     <p id="last-updated"></p>
-
     <script>
       // ページの最終更新日時を取得
       const lastUpdated = new Date(document.lastModified);
@@ -38,7 +39,27 @@
       }
     </script>
 
+    <!-- タスク情報の取得 -->
+    <script>
+      // POSTリクエストの送信
+      fetch("https://script.google.com/macros/s/AKfycbyWRaEb4zulsgE2kM3Z7BZ417xuOyg0GHGv2w7cQLfrH0ju8hB17xd7oXH-NWInpGbX/exec", {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify({
+          salesId: '9' // 検索条件
+      }),
+      mode: 'cors', //CORS対応
+      })
+      .then(response => response.text()) 
+      .then(data => {
+      var body = document.getElementsByTagName("body")[0];
+      body.insertAdjacentHTML("beforeend", data);
+      });
+    </script>
 
+    <!--  -->
     <table>
         <tr>
             <th>タスク内容</th>
