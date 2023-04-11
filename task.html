@@ -75,11 +75,12 @@
     <!-- ここからフォーム -->
     <form id="myForm" >
         <label for="title">タスク内容:</label><br>
-        <select id="title" name="select:タスク内容">
+        <select id="title" name="select:タスク内容" onchange="showOtherTitle()">
           <option value="" selected disabled>選択してください</option>
-          <option value="その他">その他</option>
+          <option value="新規タスク作成">新規タスク作成</option>
         </select>
         <input type="text" id="otherTitle" name="other:タスク内容" style="display:none;"><br>
+        
         <label for="estimation">見積:</label><br>
         <input type="number" id="estimation" name="number:見積"><br>
         <label for="actual">実工数:</label><br>
@@ -96,6 +97,18 @@
         </select><br><br>
         <input type="submit" value="送信">
       </form>
+
+      <script>
+        function showOtherTitle() {
+          let select = document.getElementById("title");
+          let otherTitle = document.getElementById("otherTitle");
+          if (select.value === "新規タスク作成") {
+            otherTitle.style.display = "inline-block";
+          } else {
+            otherTitle.style.display = "none";
+          }
+        }
+      </script>
 
 
       <script>
