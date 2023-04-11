@@ -92,7 +92,7 @@ td:nth-child(6), th:nth-child(6) {
   }
 
   tr {
-    display: flex !important;
+    display: flex;
     flex-wrap:wrap ;
     vertical-align: top;
     width: 100%;
@@ -116,6 +116,7 @@ td:nth-child(6), th:nth-child(6) {
   }
   td:nth-child(1){
     font-weight: bold;
+    background-color: #e0e0e0;
   }
 
   td:before {
