@@ -84,25 +84,16 @@ td:nth-child(6), th:nth-child(6) {
     display: block;
   }
   tr {
-    display: inline-block;
+    display: flex;
+    flex-wrap:wrap ;
     vertical-align: top;
     width: 100%;
   }
-  td,
-  th {
+  td,th {
     display: inline-block;
     text-align: left;
   }
-  th:nth-child(1) {
-    width: 100%;
-  }
-  th:nth-child(n+2):nth-child(-n+5) {
-    width: 25%;
-  }
-  th:nth-child(6),
-  th:nth-child(7) {
-    display: none;
-  }
+
   td:nth-child(1),td:nth-child(5)  {
     width: 100%;
   }
@@ -111,5 +102,8 @@ td:nth-child(6), th:nth-child(6) {
   }
   td:nth-child(7) {
     width: 40%;
+  }
+  table td:nth-child(5) {
+    order: 6;
   }
 }
