@@ -90,9 +90,8 @@ td:nth-child(6), th:nth-child(6) {
   }
   td,
   th {
-    display: block;
+    display: inline-block;
     text-align: left;
-    width: 100%;
   }
   th:nth-child(1) {
     width: 100%;
