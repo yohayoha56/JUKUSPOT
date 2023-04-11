@@ -76,6 +76,36 @@
           select.add(option);
         }
       });
+
+
+      // クライアント一覧取得
+      const clients = Array.from(new Set([...document.querySelectorAll('#task-table tbody td:nth-child(6)')].map(td => td.textContent)));
+
+      // クライアント選択ボタンを作成する
+      const clientButtons = document.getElementById('client-buttons');
+      clients.forEach((client, index) => {
+        // ボタン要素を作成
+        const button = document.createElement('button');
+        button.textContent = client;
+        button.addEventListener('click', () => {
+          // クライアントが選択された時の処理
+          const rows = document.querySelectorAll('#task-table tbody tr');
+          rows.forEach(row => {
+            const clientCell = row.querySelector('td:nth-child(6)');
+            if (clientCell.textContent === client) {
+              row.style.display = 'table-row';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+        // ボタンを追加
+        clientButtons.appendChild(button);
+        // 最初のクライアントを選択状態にする
+        if (index === 0) {
+          button.click();
+        }
+      });
     </script>
     
 
