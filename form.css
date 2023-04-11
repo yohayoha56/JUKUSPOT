@@ -86,13 +86,17 @@ td:nth-child(6), th:nth-child(6) {
   table {
     display: block;
   }
+  th{
+    display: none;
+  }
+
   tr {
     display: flex;
     flex-wrap:wrap ;
     vertical-align: top;
     width: 100%;
   }
-  td,th {
+  td {
     display: inline-block;
     text-align: left;
   }
@@ -108,5 +112,13 @@ td:nth-child(6), th:nth-child(6) {
   }
   table td:nth-child(5) {
     order: 6;
+  }
+
+  td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    margin-right: 10px;
+    text-transform: capitalize;
   }
 }
