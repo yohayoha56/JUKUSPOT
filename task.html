@@ -55,7 +55,7 @@
       .then(response => response.text()) 
       .then(data => {
         var body = document.getElementsByTagName("body")[0];
-        body.insertAdjacentHTML("afterend", document.getElementById("last-updated"));
+        document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
         
         let select = document.getElementById("title");
         let option;
