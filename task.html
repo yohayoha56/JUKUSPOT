@@ -43,25 +43,34 @@
     <script>
       // POSTリクエストの送信
       fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'text/plain',
-      },
-      body: JSON.stringify({
-          salesId: '9' // 検索条件
-      }),
-      mode: 'cors', //CORS対応
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify({
+            salesId: '9' // 検索条件
+        }),
+        mode: 'cors', //CORS対応
       })
       .then(response => response.text()) 
       .then(data => {
-      var body = document.getElementsByTagName("body")[0];
-      body.insertAdjacentHTML("afterbegin", data);
+        var body = document.getElementsByTagName("body")[0];
+        body.insertAdjacentHTML("afterbegin", data);
+        
+        let select = document.getElementById("title");
+        let option;
+        let table = document.getElementsByTagName("table")[0];
+        let rows = table.rows;
+    
+        for (let i = 1; i < rows.length; i++) {
+          option = document.createElement("option");
+          option.text = rows[i].cells[0].innerText;
+          option.value = rows[i].cells[0].innerText;
+          select.add(option);
+        }
       });
     </script>
-
-
-
-
+    
 
     <!-- ここからフォーム -->
     <form id="myForm" >
@@ -88,20 +97,6 @@
         <input type="submit" value="送信">
       </form>
 
-
-      <script>
-        let select = document.getElementById("title");
-        let option;
-        let table = document.getElementsByTagName("table")[0];
-        let rows = table.rows;
-
-        for (let i = 1; i < rows.length; i++) {
-          option = document.createElement("option");
-          option.text = rows[i].cells[0].innerText;
-          option.value = rows[i].cells[0].innerText;
-          select.add(option);
-        }
-      </script>
 
       <script>
         // フォームの送信をハンドルする関数
