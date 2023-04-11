@@ -120,10 +120,7 @@
               } 
             });
 
-
             // クライアントが選択された時の表切り替え処理（画面サイズ変更にも行う）
-            function handleResize(){
-            const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
             rows.forEach(row => {
               const clientCell = row.cells[5];
               if (clientCell.textContent === client) {
@@ -131,7 +128,7 @@
               } else {
                 row.style.display = 'none';
               }
-            });}
+            });
           });
           // ボタンを追加
           clientButtons.appendChild(button);
@@ -142,6 +139,17 @@
           }
         });
       });
+
+      function handleResize(){
+            const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
+            rows.forEach(row => {
+              const clientCell = row.cells[5];
+              if (clientCell.textContent === client) {
+                row.style.display = (window.innerWidth <= 680) ? 'flex' : 'table-row';
+              } else {
+                row.style.display = 'none';
+              }
+            });}
       window.addEventListener('resize', handleResize);
 
     </script>
