@@ -55,7 +55,7 @@
       .then(response => response.text()) 
       .then(data => {
       var body = document.getElementsByTagName("body")[0];
-      body.insertAdjacentHTML("beforeend", data);
+      body.insertAdjacentHTML("afterbegin", data);
       });
     </script>
 
