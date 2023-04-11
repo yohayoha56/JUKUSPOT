@@ -92,8 +92,10 @@
           button.addEventListener('click', () => {
             // クライアントが選択された時の処理
             const rows = document.querySelectorAll('tbody tr');
+            console.log(rows);
             rows.forEach(row => {
               const clientCell = row.querySelector('td:nth-child(6)');
+              console.log(clientCell);
               if (clientCell.textContent === client) {
                 row.style.display = 'table-row';
               } else {
