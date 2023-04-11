@@ -82,8 +82,6 @@ td:nth-child(6), th:nth-child(6) {
 @media screen and (max-width: 680px) {
   table {
     display: block;
-    overflow-x: auto;
-    white-space: nowrap;
   }
   tr {
     display: inline-block;
