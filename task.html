@@ -177,7 +177,6 @@
 
     </script>
     
-
     <form id="myForm">
       <div class="form-title">
         <p>タスク内容</p>
@@ -204,7 +203,7 @@
       </div>
       <div class="form-box">
         <label for="taskDetail" class="form-label">Task Detail:</label>
-        <input type="text" id="taskDetail" name="rich text:Task Detail">
+        <textarea id="taskDetail" name="rich text:Task Detail"></textarea>
       </div>
       <div class="form-box">
         <label for="client" class="form-label">クライアント:</label>
@@ -218,8 +217,7 @@
         <input type="submit" value="送信">
       </div>
     </form>
-
-
+    
       <script>
         function showOtherTitle() {
           let select = document.getElementById("title");

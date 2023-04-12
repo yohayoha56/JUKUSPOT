@@ -11,13 +11,11 @@
   padding: 10px 0;
   font-size: 16px;
   display: inline-block;
-}
-.form-box:nth-child(2),.form-box:nth-child(6) {
-  width: 100%;
-}
-.form-box:nth-child(3),.form-box:nth-child(4),.form-box:nth-child(5) {
   width: 30%;
-  margin-right: 5%;
+}
+
+.form-box:nth-child(2), .form-box:nth-child(6) {
+  width: 100%;
 }
 
 .form-label {
@@ -33,10 +31,6 @@ option {
 }
 
 #taskDetail {
-  height: 100px;
+  height: 150px;
   resize: vertical;
-}
-
-#client {
-  width: 100%;
 }
