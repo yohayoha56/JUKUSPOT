@@ -25,3 +25,7 @@ textarea, input ,select, option{
   margin-right: 5%;
 }
 
+#myForm{
+  display: flex;
+}
+
