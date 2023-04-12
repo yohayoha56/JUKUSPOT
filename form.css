@@ -33,8 +33,9 @@ select{
 }
 
 #taskDetail {
-  height: 80px;
+  height: 50px;
   resize: vertical;
+  margin-bottom: 10px;
 }
 
 .form-box:nth-child(7)  {
