@@ -141,6 +141,8 @@
       });
 
       function handleResize(){
+            const currentButton = document.querySelector('#client-buttons button.active');
+            const client =currentButton.textContent;
             const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
             rows.forEach(row => {
               const clientCell = row.cells[5];
