@@ -11,7 +11,8 @@
   padding: 10px 0;
   font-size: 16px;
   display: inline-block;
-  width: 30%;
+  width: calc(100% / 3);
+  vertical-align: top; /* 追加 */
 }
 
 .form-box:nth-child(2), .form-box:nth-child(6) {
@@ -20,6 +21,10 @@
 
 .form-label {
   font-weight: bold;
+  display: inline-block; /* 追加 */
+  width: 30%; /* 追加 */
+  margin-right: 5%; /* 追加 */
+  text-align: right; /* 追加 */
 }
 
 textarea,
@@ -31,6 +36,6 @@ option {
 }
 
 #taskDetail {
-  height: 150px;
+  height: 85px;
   resize: vertical;
 }
