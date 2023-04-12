@@ -26,8 +26,12 @@ option {
 }
 
 #taskDetail {
-  height: 150px;
+  height: 80px;
   resize: vertical;
+}
+
+.form-box:nth-child(7)  {
+  display: none;
 }
 
 .form-box:nth-child(3),
