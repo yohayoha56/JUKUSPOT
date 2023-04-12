@@ -47,7 +47,7 @@ select{
   padding: 10px 0;
   font-size: 16px;
   display: inline-flex;
-  width: calc((100% - 15px) / 3);
+  width: calc((100% - 26px) / 3);
 }
 .form-box:nth-child(3),
 .form-box:nth-child(4){
