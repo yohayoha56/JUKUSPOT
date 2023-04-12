@@ -7,15 +7,8 @@
   font-weight: bold;
 }
 
+
 .form-box {
-  padding: 10px 0;
-  font-size: 16px;
-  display: flex;
-  width: calc(100% / 3);
-
-}
-
-.form-box:nth-child(2), .form-box:nth-child(6) {
   width: 100%;
   display: inline-block;
 }
@@ -35,4 +28,25 @@ option {
 #taskDetail {
   height: 150px;
   resize: vertical;
+}
+
+.form-box:nth-child(3),
+.form-box:nth-child(4),
+.form-box:nth-child(5)  {
+  padding: 10px 0;
+  font-size: 16px;
+  display: inline-flex;
+  width: calc(100% / 3);
+}
+.form-box:nth-child(3) label,
+.form-box:nth-child(4) label,
+.form-box:nth-child(5) label {
+  display: inline-block;
+  width: 90px;
+}
+.form-box:nth-child(3) input,
+.form-box:nth-child(4) input,
+.form-box:nth-child(5) input {
+  display: inline-block;
+  width: calc(100% - 90px);
 }
