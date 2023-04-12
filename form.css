@@ -49,7 +49,10 @@ select{
   padding: 10px 0;
   font-size: 16px;
   display: inline-flex;
-  width: calc((100% - 26px) / 3);
+  width: calc((100% - 16px) / 3 - 10.5px);
+}
+.form-box:nth-child(4) {
+  width: calc((100% - 26px) / 3 + 21px);
 }
 .form-box:nth-child(3),
 .form-box:nth-child(4){
@@ -59,11 +62,17 @@ select{
 .form-box:nth-child(4) label,
 .form-box:nth-child(5) label {
   display: inline-block;
-  width: 60px;
+  width: 43px;
+}
+.form-box:nth-child(4) label{
+  width: 64px;
 }
 .form-box:nth-child(3) input,
 .form-box:nth-child(4) input,
 .form-box:nth-child(5) input {
   display: inline-block;
+  width: calc(100% - 43px);
+}
+.form-box:nth-child(4) input{
   width: calc(100% - 64px);
 }
