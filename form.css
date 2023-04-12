@@ -32,7 +32,10 @@ option {
   font-size: 16px;
 }
 
-
+#taskDetail {
+  height: 100px;
+  resize: vertical;
+}
 
 #client {
   width: 100%;
