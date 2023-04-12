@@ -80,11 +80,13 @@
         // クライアントが選択された時選択肢作成処理
         let select2 = document.getElementById("client");
         let option2;
-        clients.forEach(row => {
+        select2.innerHTML = '';
+        clients.forEach(aClient => {
             // クライアントが選択中のタスク内容のoptionを作成
+            select.innerHTML = '';
             option2 = document.createElement("option");
-            option2.text = clients;
-            option2.value = clients;
+            option2.text = aClient;
+            option2.value = aClient;
             select2.add(option2);  
         });
 
