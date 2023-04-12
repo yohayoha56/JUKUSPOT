@@ -97,10 +97,15 @@ td:nth-child(6), th:nth-child(6) {
   table td:nth-child(5) {
     order: 6;
   }
+
+  tr:nth-child() {
+    background-color: #ffffff;
+  }
   td:nth-child(1){
     font-weight: bold;
-    background-color: #e0e0e0;
+    background-color: #F2F2F2;
   }
+
 
   td:before {
     float: left;
