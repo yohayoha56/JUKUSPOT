@@ -12,7 +12,7 @@
   font-size: 16px;
   display: inline-block;
 }
-.form-box:nth-child(1),.form-box:nth-child(5) {
+.form-box:nth-child(2),.form-box:nth-child(6) {
   width: 100%;
 }
 
