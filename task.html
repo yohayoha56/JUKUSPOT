@@ -214,6 +214,7 @@
           <option value="" selected disabled>選択してください</option>
           <option value="新規タスク作成">新規タスク作成</option>
         </select>
+        <label for="othertitle" class="form-label2" style="display:none;">新規タスク名</label>
         <input type="text" id="otherTitle" name="other:タスク内容" style="display:none;">
       </div>
       <div class="form-box">
@@ -249,10 +250,13 @@
         function showOtherTitle() {
           let select = document.getElementById("title");
           let otherTitle = document.getElementById("otherTitle");
+          let otherTitleLabel = document.getElementsByClassName("form-label2")[0];
           if (select.value === "新規タスク作成") {
             otherTitle.style.display = "inline-block";
+            otherTitleLabel.style.display = "inline-block";
           } else {
             otherTitle.style.display = "none";
+            otherTitleLabel.style.display = "none";
           }
         }
       </script>
