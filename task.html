@@ -72,17 +72,29 @@
         //   const dateText3 = dateText2[0];
         //   dateCell.innerText = dateText3;
         // }
+        // let rows = table.rows;
+        // for (let i = 1; i < rows.length; i++) {
+        //   const dateCell = rows[i].querySelector('td:last-child');
+        //   const dateText = dateCell.innerText;
+        //   const dateText2 = dateText.match(/\d{1,2}\/\d{1,2}/);
+        //   const dateObj = new Date(dateText2);
+        //   const year = dateObj.getFullYear();
+        //   const month = dateObj.getMonth() + 1;
+        //   const date = dateObj.getDate();
+        //   const weekday = ["日", "月", "火", "水", "木", "金", "土"][dateObj.getDay()];
+        //   dateCell.innerText = `${month}/${date}(${weekday})`;
+        // }
         let rows = table.rows;
         for (let i = 1; i < rows.length; i++) {
           const dateCell = rows[i].querySelector('td:last-child');
           const dateText = dateCell.innerText;
-          const dateText2 = dateText.match(/\d{1,2}\/\d{1,2}/);
-          const dateObj = new Date(dateText2);
-          const year = dateObj.getFullYear();
-          const month = dateObj.getMonth() + 1;
-          const date = dateObj.getDate();
-          const weekday = ["日", "月", "火", "水", "木", "金", "土"][dateObj.getDay()];
-          dateCell.innerText = `${month}/${date}(${weekday})`;
+          const dateMatch = dateText.match(/\d{1,2}\/\d{1,2}\s\d{1,2}:\d{1,2}/);
+          if (dateMatch !== null) {
+            const [dateStr] = dateMatch;
+            const date = new Date(`2023/${dateStr}:00`);
+            const formattedDate = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+            dateCell.innerText = formattedDate;
+          }
         }
 
 
