@@ -162,31 +162,47 @@
     </script>
     
 
-    <!-- ここからフォーム -->
-    <form id="myForm" >
-        <label for="title">タスク内容:</label><br>
+    <form id="myForm">
+      <div class="form-title">
+        <p>タスク内容</p>
+      </div>
+      <div class="form-box">
+        <label for="title" class="form-label">タスク内容:</label>
         <select id="title" name="select:タスク内容" onchange="showOtherTitle()">
           <option value="" selected disabled>選択してください</option>
           <option value="新規タスク作成">新規タスク作成</option>
         </select>
-        <input type="text" id="otherTitle" name="other:タスク内容" style="display:none;"><br>
-        
-        <label for="estimation">見積:</label><br>
-        <input type="number" id="estimation" name="number:見積"><br>
-        <label for="actual">実工数:</label><br>
-        <input type="number" id="actual" name="number:実工数"><br>
-        <label for="progress">進捗:</label><br>
-        <input type="number" id="progress" name="number:進捗"><br>
-        <label for="taskDetail">Task Detail:</label><br>
-        <input type="text" id="taskDetail" name="rich text:Task Detail"><br>
-        <label for="client">クライアント:</label><br>
+        <input type="text" id="otherTitle" name="other:タスク内容" style="display:none;">
+      </div>
+      <div class="form-box">
+        <label for="estimation" class="form-label">見積:</label>
+        <input type="number" id="estimation" name="number:見積">
+      </div>
+      <div class="form-box">
+        <label for="actual" class="form-label">実工数:</label>
+        <input type="number" id="actual" name="number:実工数">
+      </div>
+      <div class="form-box">
+        <label for="progress" class="form-label">進捗:</label>
+        <input type="number" id="progress" name="number:進捗">
+      </div>
+      <div class="form-box">
+        <label for="taskDetail" class="form-label">Task Detail:</label>
+        <input type="text" id="taskDetail" name="rich text:Task Detail">
+      </div>
+      <div class="form-box">
+        <label for="client" class="form-label">クライアント:</label>
         <select id="client" name="select:クライアント">
           <option value="A社">A社</option>
           <option value="B社">B社</option>
           <option value="C社">C社</option>
-        </select><br><br>
+        </select>
+      </div>
+      <div class="form-box">
         <input type="submit" value="送信">
-      </form>
+      </div>
+    </form>
+
 
       <script>
         function showOtherTitle() {

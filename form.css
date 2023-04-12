@@ -1,31 +1,37 @@
-ここからフォームの内容
-
-.form-title p{
-    font-size: 20px;
-    font-weight: bold;
+.form-title {
+  padding: 10px 0;
 }
 
-.form-box{
-    padding:10px 10px;
-    font-size: 16px;
+.form-title p {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.form-label{
-    font-weight: bold;
+.form-box {
+  padding: 10px 0;
+  font-size: 16px;
 }
 
-textarea, input ,select, option{
-    width: 100%;
-    font-size: 16px;
+.form-label {
+  font-weight: bold;
 }
 
-#estimation, #actual, #progress {
+textarea,
+input,
+select,
+option {
+  width: 100%;
+  font-size: 16px;
+}
+
+#estimation,
+#actual,
+#progress {
   display: inline-block;
   width: 30%;
   margin-right: 5%;
 }
 
-#myForm{
-  display: flex;
+#client {
+  width: 100%;
 }
-
