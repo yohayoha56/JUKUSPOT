@@ -49,7 +49,7 @@ select{
   padding: 10px 0;
   font-size: 16px;
   display: inline-flex;
-  width: calc((100% - 16px) / 3 - 10.5px);
+  width: calc((100% - 26px) / 3 - 10.5px);
 }
 .form-box:nth-child(4) {
   width: calc((100% - 26px) / 3 + 21px);
