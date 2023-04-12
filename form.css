@@ -13,8 +13,9 @@
   display: inline-block;
 }
 
-.form-label {
+.form-label,.form-label2{
   font-weight: bold;
+  padding-bottom: 3px;
 }
 
 textarea,
