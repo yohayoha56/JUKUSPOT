@@ -49,10 +49,10 @@ select{
   padding: 10px 0;
   font-size: 16px;
   display: inline-flex;
-  width: calc((100% - 26px) / 3 - 7px);
+  width: calc((100% - 18px) / 3 - 7px);
 }
 .form-box:nth-child(4) {
-  width: calc((100% - 26px) / 3 + 14px);
+  width: calc((100% - 18px) / 3 + 14px);
 }
 .form-box:nth-child(3),
 .form-box:nth-child(4){
