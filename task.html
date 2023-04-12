@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="table.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -91,7 +93,6 @@
             }
             button.classList.add('active');
 
-
             // セレクトの中身をクリア
             select.innerHTML = '';
 
@@ -106,6 +107,10 @@
             option.text = "新規タスク作成";
             option.value = "新規タスク作成";
             select.add(option);
+
+            // クライアントをフォームに設定
+            formClient = document.querySelector("#myForm #client");
+            formClient.value = client;
 
             // クライアントが選択された時選択肢作成処理
             const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
