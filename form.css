@@ -25,6 +25,13 @@ option {
   font-size: 16px;
 }
 
+select{
+  width: 100%;
+  font-size: 16px;
+  padding:3px px;
+  margin-bottom: 8px;
+}
+
 #taskDetail {
   height: 80px;
   resize: vertical;
