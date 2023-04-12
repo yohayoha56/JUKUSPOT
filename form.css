@@ -10,6 +10,10 @@
 .form-box {
   padding: 10px 0;
   font-size: 16px;
+  display: inline-block;
+}
+.form-box:nth-child(1),.form-box:nth-child(5) {
+  width: 100%;
 }
 
 .form-label {
