@@ -76,6 +76,20 @@
 
         // クライアント一覧取得
         const clients = Array.from(new Set([...document.querySelectorAll('table tbody td:nth-child(6)')].map(td => td.textContent)));
+
+        // クライアントが選択された時選択肢作成処理
+        let select2 = document.getElementById("client");
+        let option2;
+        clients.forEach(row => {
+            // クライアントが選択中のタスク内容のoptionを作成
+            option2 = document.createElement("option");
+            option2.text = row.cells[0].innerText;
+            option2.value = row.cells[0].innerText;
+            select2.add(option2);  
+        });
+
+
+
         // クライアント選択ボタンを作成する
         const client_buttons = document.createElement("div");
         client_buttons.setAttribute("id","client-buttons");
