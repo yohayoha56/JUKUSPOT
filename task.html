@@ -303,15 +303,11 @@
           body: JSON.stringify(data),
           mode: 'cors', //CORS対応
         });
-        try {
-          if (response.ok) {
-            console.log('データが正常に送信されました');
-            console.log(data)
-            form.reset(); // フォームの入力値をリセット
-          } else {
-            console.log('データの送信に失敗しました');
-          }
-        } catch (error) {
+        if (response.ok) {
+          console.log('データが正常に送信されました');
+          console.log(data)
+          form.reset(); // フォームの入力値をリセット
+        } else {
           console.error(`エラーメッセージ: ${await response.text()}`);
         }
         };
