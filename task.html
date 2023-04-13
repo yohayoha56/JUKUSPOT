@@ -271,7 +271,11 @@
           const data = {};
           // FormDataオブジェクトから連想配列に変換
           for (const [key, value] of formData.entries()) {
-            data[key] = value;
+            if (key === "実工数" || key === "見積" || key === "進捗") {
+              data[key] = Number(value);
+            } else {
+              data[key] = value;
+            }
           }
 
         // もし「その他」が選択された場合、テキストボックスの値を利用する
@@ -287,6 +291,9 @@
         const actual = data["実工数"];
         const formattedTaskDetail = `${formattedDate} ${formattedTime} 工数：${actual}\n${taskDetail}`;
         data["Task Detail"] = formattedTaskDetail;
+
+
+
 
         const response = await fetch("https://script.google.com/macros/s/AKfycbxVrKyErZ0bAg8xj717X87UnprroI8ud7gna6__H4mm5SPOt61tSXvUYQWsAe38kMTj9g/exec", {
             method: 'POST',
