@@ -57,6 +57,11 @@
       })
       .then(response => response.text()) 
       .then(data => {
+
+        if(document.getElementById("client-buttons")!=null){
+        document.getElementById("client-buttons").remove();
+        document.getElementsByTagName("table")[0].remove();}
+
         var body = document.getElementsByTagName("body")[0];
         document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
         
@@ -97,10 +102,6 @@
             dateCell.innerText = formattedDate;
           }
         }
-
-
-
-
 
         // クライアント一覧取得
         const clients = Array.from(new Set([...document.querySelectorAll('table tbody td:nth-child(6)')].map(td => td.textContent)));
