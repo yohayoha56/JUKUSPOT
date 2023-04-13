@@ -296,12 +296,14 @@
 
 
         const response = await fetch("https://script.google.com/macros/s/AKfycbxVrKyErZ0bAg8xj717X87UnprroI8ud7gna6__H4mm5SPOt61tSXvUYQWsAe38kMTj9g/exec", {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'text/plain',          },
-            body: JSON.stringify(data),
-            mode: 'cors', //CORS対応
-          });
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain',
+          },
+          body: JSON.stringify(data),
+          mode: 'cors', //CORS対応
+        });
+        try {
           if (response.ok) {
             console.log('データが正常に送信されました');
             console.log(data)
@@ -309,6 +311,9 @@
           } else {
             console.log('データの送信に失敗しました');
           }
+        } catch (error) {
+          console.error(`エラーメッセージ: ${await response.text()}`);
+        }
         };
         const form = document.querySelector('#myForm');
         form.addEventListener('submit', handleSubmit);
