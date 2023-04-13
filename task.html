@@ -41,8 +41,9 @@
       }
     </script>
 
-    <!-- タスク情報の取得 -->
+    <!-- タスク情報の取得、テーブルの表示 -->
     <script>
+    function script1() {
       // POSTリクエストの送信
       fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
         method: 'POST',
@@ -187,7 +188,12 @@
           }
         });
       });
+    }
+    script1();
+    </script>
 
+    <!-- レスポンシブ変更時のスクリプト -->
+    <script>
       function handleResize(){
             const currentButton = document.querySelector('#client-buttons button.active');
             const client =currentButton.textContent;
@@ -201,8 +207,8 @@
               }
             });}
       window.addEventListener('resize', handleResize);
-
     </script>
+
     
     <form id="myForm">
       <div class="form-title">
@@ -293,8 +299,6 @@
         data["Task Detail"] = formattedTaskDetail;
 
 
-
-
         const response = await fetch("https://script.google.com/macros/s/AKfycbxVrKyErZ0bAg8xj717X87UnprroI8ud7gna6__H4mm5SPOt61tSXvUYQWsAe38kMTj9g/exec", {
           method: 'POST',
           headers: {
@@ -311,6 +315,7 @@
         } else {
           console.error(`エラーメッセージ: ${text}`);
         }
+        script1();
         };
         const form = document.querySelector('#myForm');
         form.addEventListener('submit', handleSubmit);
