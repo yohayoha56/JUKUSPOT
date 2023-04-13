@@ -297,6 +297,7 @@
           });
           if (response.ok) {
             console.log('データが正常に送信されました');
+            console.log(data)
             form.reset(); // フォームの入力値をリセット
           } else {
             console.log('データの送信に失敗しました');
@@ -305,7 +306,7 @@
         const form = document.querySelector('#myForm');
         form.addEventListener('submit', handleSubmit);
       </script>
-      
+
 <!-- 
   // // POSTリクエストの送信
   // fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
