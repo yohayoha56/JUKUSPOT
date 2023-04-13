@@ -282,7 +282,7 @@
 
         // taskDetailを整形してdataに追加
         const now = new Date();
-        const formattedDate = (now.getMonth() + 1) + "-" + now.getDate();
+        const formattedDate = (now.getMonth() + 1) + "/" + now.getDate();
         const formattedTime = now.getHours().toString().padStart(2, "0") + ":" + now.getMinutes().toString().padStart(2, "0");        const taskDetail = data["Task Detail"];
         const actual = data["実工数"];
         const formattedTaskDetail = `${formattedDate} ${formattedTime} 工数：${actual}\n${taskDetail}`;
