@@ -288,8 +288,7 @@
         const formattedTaskDetail = `${actual} ${formattedDate} ${formattedTime}\n${taskDetail}`;
         data["rich text:Task Detail"] = formattedTaskDetail;
 
-        const response = await fetch("https://script.google.com/macros/s/AKfycbyZQosu3WeC4dq-SWiU2yOrTJr1Gjea6s4EvjlfzuFKpADlPdTCojiENHreCnN5Nn86/exec", {
-        method: 'POST',
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxVrKyErZ0bAg8xj717X87UnprroI8ud7gna6__H4mm5SPOt61tSXvUYQWsAe38kMTj9g/exec", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded' // Content-Typeヘッダーを設定
@@ -306,8 +305,22 @@
         const form = document.querySelector('#myForm');
         form.addEventListener('submit', handleSubmit);
       </script>
-
-
+<!-- 
+  // // POSTリクエストの送信
+  // fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
+  //   method: 'POST',
+  //   headers: {
+  //       'Content-Type': 'text/plain',
+  //   },
+  //   body: JSON.stringify({
+  //       salesId: '9' // 検索条件
+  //   }),
+  //   mode: 'cors', //CORS対応
+  // })
+  // .then(response => response.text()) 
+  // .then(data => {
+  //   var body = document.getElementsByTagName("body")[0];
+  //   document.getElementById("last-updated").insertAdjacentHTML("afterend", data);} -->
 
 
 
