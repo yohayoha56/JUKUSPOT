@@ -289,12 +289,12 @@
         data["rich text:Task Detail"] = formattedTaskDetail;
 
         const response = await fetch("https://script.google.com/macros/s/AKfycbxVrKyErZ0bAg8xj717X87UnprroI8ud7gna6__H4mm5SPOt61tSXvUYQWsAe38kMTj9g/exec", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded' // Content-Typeヘッダーを設定
-        },
-        body: Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&')
-        });
+            method: 'POST',
+            headers: {
+            'Content-Type': 'text/plain',          },
+            body: JSON.stringify(data),
+            mode: 'cors', //CORS対応
+          });
           if (response.ok) {
             console.log('データが正常に送信されました');
             form.reset(); // フォームの入力値をリセット
@@ -305,6 +305,7 @@
         const form = document.querySelector('#myForm');
         form.addEventListener('submit', handleSubmit);
       </script>
+      
 <!-- 
   // // POSTリクエストの送信
   // fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
