@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="sidemenue.css">
+    <link rel="stylesheet" href="progressbar.css">
 </head>
 <body>
     <p id="last-updated"></p>
@@ -36,8 +37,9 @@
         document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
       }
     </script>
-    
-    <ul class="menu">
+
+<div class="side-bar">
+        <ul class="menu">
         <li class="group-menu dropdown">
             <div class="parent-menu">トップページ</div></li>
         <li class="group-menu dropdown">
@@ -64,5 +66,18 @@
           </ul>
         </li>
     </ul>
+</div>
+
+    <div class="main-bar">
+        <div id="progress-wrapper">
+            <ul class="progressbar" style="display: flex;">
+                <li id="li-schedule" class="complete">ｽｹｼﾞｭｰﾙ<br>提出</li>
+                <li id="li-request" class="active">シフト<br>ﾘｸｴｽﾄ</li>
+                <li id="li-confirm" class="">シフト<br>確定</li>
+                <li id="li-attendance" class="">勤務<br>報告</li>
+                <li id="li-payment" class="">給与<br>振込</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
