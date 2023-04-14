@@ -6,39 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="sidemenue.css">
-
 </head>
 <body>
     <ul class="menu">
-        <li class="parent-menu">トップページ</li>
-        <li class="parent-menu dropdown">
-          シフト依頼ページ
+        <li class="group-menu dropdown">
+            <div class="parent-menu">トップページ</div></li>
+        <li class="group-menu dropdown">
+          <div class="parent-menu">シフト依頼ページ</div>
           <ul class="dropdown-menu">
-            <li>講師A</li>
-            <li>講師B</li>
-            <li>講師C</li>
+            <li class="child-menu">講師A</li>
+            <li class="child-menu">講師B</li>
+            <li class="child-menu">講師C</li>
+          </ul>
+        </div>
+        <li class="group-menu dropdown">
+            <div class="parent-menu">勤怠確認ページ</div>
+          <ul class="dropdown-menu">
+            <li class="child-menu">講師A</li>
+            <li class="child-menu">講師B</li>
+            <li class="child-menu">講師C</li>
+          </ul>
+          <li class="group-menu dropdown">
+            <div class="parent-menu">講師プロフィール</div>
+          <ul class="dropdown-menu">
+            <li class="child-menu">講師A</li>
+            <li class="child-menu">講師B</li>
+            <li class="child-menu">講師C</li>
           </ul>
         </li>
-        <li class="parent-menu dropdown">
-          勤怠確認ページ
-          <ul class="dropdown-menu">
-            <li>講師A</li>
-            <li>講師B</li>
-            <li>講師C</li>
-          </ul>
-        </li>
-        <li class="parent-menu dropdown">
-          講師プロフィール
-          <ul class="dropdown-menu">
-            <li>講師A</li>
-            <li>講師B</li>
-            <li>講師C</li>
-          </ul>
-        </li>
-      </ul>
-      
-    
-    
-    
+    </ul>
 </body>
 </html>
