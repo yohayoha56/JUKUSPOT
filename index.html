@@ -82,5 +82,161 @@
             </ul>
         </div>
     </div>
+
+    <!-- タスク情報の取得、テーブルの表示 -->
+    <script>
+        function script1() {
+          // POSTリクエストの送信
+          fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain',
+            },
+            body: JSON.stringify({
+                salesId: '9' // 検索条件
+            }),
+            mode: 'cors', //CORS対応
+          })
+          .then(response => response.text()) 
+          .then(data => {
+    
+            if(document.getElementById("client-buttons")!=null){
+            document.getElementById("client-buttons").remove();
+            document.getElementsByTagName("table")[0].remove();}
+    
+            var body = document.getElementsByTagName("body")[0];
+            document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
+            
+    
+            // ここから日付の成形
+            let select = document.getElementById("title");
+            let option;
+            let table = document.getElementsByTagName("table")[0];
+            // let rows = table.rows;
+            // for (let i = 1; i < rows.length; i++) {
+            //   const dateCell = rows[i].querySelector('td:last-child');
+            //   const dateText = dateCell.innerText;
+            //   const dateText2 = dateText.match(/\d{1,2}\/\d{1,2} \d{1,2}:\d{1,2}/);
+            //   const dateText3 = dateText2[0];
+            //   dateCell.innerText = dateText3;
+            // }
+            // let rows = table.rows;
+            // for (let i = 1; i < rows.length; i++) {
+            //   const dateCell = rows[i].querySelector('td:last-child');
+            //   const dateText = dateCell.innerText;
+            //   const dateText2 = dateText.match(/\d{1,2}\/\d{1,2}/);
+            //   const dateObj = new Date(dateText2);
+            //   const year = dateObj.getFullYear();
+            //   const month = dateObj.getMonth() + 1;
+            //   const date = dateObj.getDate();
+            //   const weekday = ["日", "月", "火", "水", "木", "金", "土"][dateObj.getDay()];
+            //   dateCell.innerText = `${month}/${date}(${weekday})`;
+            // }
+            let rows = table.rows;
+            for (let i = 1; i < rows.length; i++) {
+              const dateCell = rows[i].querySelector('td:last-child');
+              const dateText = dateCell.innerText;
+              const dateMatch = dateText.match(/\d{1,2}\/\d{1,2}\s\d{1,2}:\d{1,2}/);
+              if (dateMatch !== null) {
+                const [dateStr] = dateMatch;
+                const date = new Date(`2023/${dateStr}:00`);
+                const formattedDate = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+                dateCell.innerText = formattedDate;
+              }
+            }
+    
+            // クライアント一覧取得
+            const clients = Array.from(new Set([...document.querySelectorAll('table tbody td:nth-child(6)')].map(td => td.textContent)));
+    
+            // クライアントが選択された時選択肢作成処理
+            let select2 = document.getElementById("client");
+            let option2;
+            select2.innerHTML = '';
+            clients.forEach(aClient => {
+                // クライアントが選択中のタスク内容のoptionを作成
+                select.innerHTML = '';
+                option2 = document.createElement("option");
+                option2.text = aClient;
+                option2.value = aClient;
+                select2.add(option2);  
+            });
+    
+    
+    
+            // クライアント選択ボタンを作成する
+            const client_buttons = document.createElement("div");
+            client_buttons.setAttribute("id","client-buttons");
+            table.insertAdjacentHTML("beforebegin", client_buttons.outerHTML);
+            const clientButtons = document.getElementById('client-buttons');
+            clients.forEach((client, index) => {
+              // ボタン要素を作成
+              const button = document.createElement('button');
+              button.textContent = client;
+              button.addEventListener('click', () => {
+                // クリックされたボタンにactiveクラスを追加
+                const currentButton = document.querySelector('#client-buttons button.active');
+                if (currentButton) {
+                  currentButton.classList.remove('active');
+                }
+                button.classList.add('active');
+    
+                // セレクトの中身をクリア
+                select.innerHTML = '';
+    
+                // 選択してくださいのデフォルトのoptionを作成
+                let option = document.createElement("option");
+                option.text = "選択してください";
+                option.value = "選択してください";
+                select.add(option);
+    
+                // 新規タスク作成のoptionを作成
+                option = document.createElement("option");
+                option.text = "新規タスク作成";
+                option.value = "新規タスク作成";
+                select.add(option);
+    
+                // クライアントをフォームに設定
+                formClient = document.querySelector("#myForm #client");
+                formClient.value = client;
+    
+                // クライアントが選択された時選択肢作成処理
+                const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
+                rows.forEach(row => {
+                  const clientCell = row.cells[5];
+                  if (clientCell.textContent === client) {
+                    // クライアントが選択中のタスク内容のoptionを作成
+                    option = document.createElement("option");
+                    option.text = row.cells[0].innerText;
+                    option.value = row.cells[0].innerText;
+                    select.add(option);
+                  } 
+                });
+    
+                // クライアントが選択された時の表切り替え処理（画面サイズ変更にも行う）
+                rows.forEach(row => {
+                  const clientCell = row.cells[5];
+                  if (clientCell.textContent === client) {
+                    row.style.display = (window.innerWidth <= 680) ? 'flex' : 'table-row';
+                  } else {
+                    row.style.display = 'none';
+                  }
+                });
+              });
+              // ボタンを追加
+              clientButtons.appendChild(button);
+              // 最初のクライアントを選択状態にする
+              if (index === 0) {
+                button.click();
+                button.classList.add('active');
+              }
+            });
+          });
+        }
+        script1();
+        </script>
+
+
+
+
 </body>
 </html>
