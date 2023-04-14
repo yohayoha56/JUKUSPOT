@@ -104,8 +104,7 @@
             document.getElementById("client-buttons").remove();
             document.getElementsByTagName("table")[0].remove();}
     
-            var body = document.getElementsByTagName("main-bar")[0];
-            document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
+            document.getElementsByClassName("main-bar")[0].insertAdjacentHTML("afterbegin", data);
             
     
             // ここから日付の成形
