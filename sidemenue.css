@@ -1,0 +1,51 @@
+/* メニュー全体 */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 親メニュー */
+  .parent-menu {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+  }
+  
+  /* ドロップダウンがある親メニュー */
+  .dropdown {
+    display: inline-block;
+  }
+  
+  /* 子メニュー */
+  .dropdown-menu {
+    background-color: white;
+    border: 1px solid black;
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+  }
+  
+  /* 子メニューの項目 */
+  .dropdown-menu li {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  /* 子メニューの項目にマウスが乗った時のスタイル */
+  .dropdown-menu li:hover {
+    background-color: lightgray;
+  }
+  
+  /* 子メニューを開いた時のスタイル */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
