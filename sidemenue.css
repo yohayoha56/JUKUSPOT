@@ -14,7 +14,6 @@
 .parent-menu {
     background-color: green;
     color: white;
-    cursor: pointer;
     padding: 10px;
     position: relative;
 }
@@ -23,6 +22,7 @@
 .dropdown {
     display: inline-block;
     width: 100%;
+    cursor: pointer;
 }
 
 /* 子メニュー */
