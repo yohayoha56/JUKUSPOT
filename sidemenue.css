@@ -1,9 +1,13 @@
 /* メニュー全体 */
+.side-bar{
+    width: 20%;
+    min-width: 160px;
+}
 .menu {
     list-style: none;
     margin: 0;
     padding: 0;
-    width: 30%;
+    width: 100%;
 }
 
 /* 親メニュー */
@@ -18,6 +22,7 @@
 /* ドロップダウンがある親メニュー */
 .dropdown {
     display: inline-block;
+    width: 100%;
 }
 
 /* 子メニュー */
