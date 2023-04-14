@@ -2,57 +2,37 @@
 .side-bar{
     width: 20%;
     min-width: 160px;
-}
-.menu {
+    }
+    .menu {
     list-style: none;
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-/* 親メニュー */
-.parent-menu {
+    }
+    
+    /* 親メニュー */
+    .group-menu {
+    margin-bottom: 5px;
+    }
+    
+    /* 親メニューと子メニューのスタイル */
+    .menu-item, .child-menu li {
     background-color: green;
     color: white;
     padding: 10px;
-    position: relative;
     cursor: pointer;
-}
-
-/* ドロップダウンがある親メニュー */
-.dropdown {
-    display: inline-block;
-    width: 100%;
-    cursor: pointer;
-}
-
-/* 子メニュー */
-.dropdown-menu {
+    }
+    
+    /* 子メニューのスタイル */
+    .child-menu {
     background-color: white;
     border: 1px solid black;
-    display: none;
     list-style: none;
     margin: 0;
     padding: 0;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-}
-
-/* 子メニューの項目 */
-.child-menu {
-    color: black;
-    cursor: pointer;
-    padding: 10px;
-}
-
-/* 子メニューの項目にマウスが乗った時のスタイル */
-.child-menu:hover {
+    }
+    
+    /* 子メニューの項目にマウスが乗った時のスタイル */
+    .child-menu li:hover {
     background-color: lightgray;
-}
-
-/* 子メニューを開いた時のスタイル */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+    }
