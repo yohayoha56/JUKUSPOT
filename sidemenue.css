@@ -1,6 +1,7 @@
 /* メニュー全体 */
-.side-bar{
-    width: 180px;
+    .side-bar .main-bar{
+        width: 180px;
+        display: inline-block;
     }
     .main-bar{
         width: calc(100% - 180px);
