@@ -1,5 +1,5 @@
 /* メニュー全体 */
-    .side-bar .main-bar{
+    .side-bar,.main-bar{
         width: 180px;
         display: inline-block;
     }
