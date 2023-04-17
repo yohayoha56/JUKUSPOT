@@ -1,5 +1,5 @@
 /* メニュー全体 */
-    .content-box{
+    .content-area{
         display: flex;
     }
     .side-bar,.main-bar{
