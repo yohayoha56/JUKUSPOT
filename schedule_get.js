@@ -20,5 +20,5 @@ function schedule_get(e) {
 // li要素を取得し、クリックイベントを登録
 var liElements = document.querySelectorAll('#shift-menu .child-menu li');
 liElements.forEach(li => {
-  li.addEventListener('click', script1);
+  li.addEventListener('click', schedule_get);
 });
