@@ -1,0 +1,26 @@
+{
+    "filter": {
+
+
+        
+      "and": [
+        {
+          "property": "<property-name>",
+          "comparator": "<comparator>",
+          "value": {
+            "<value-type>": "<value>"
+          }
+        },
+        {
+          "property": "<property-name>",
+          "comparator": "<comparator>",
+          "value": {
+            "<value-type>": "<value>"
+          }
+        }
+      ]
+
+
+
+    }
+  }

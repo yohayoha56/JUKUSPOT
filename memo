@@ -1,0 +1,17 @@
+{
+    "filter": {
+      "and": [
+        {
+          "property": "会員ID",
+          "equals": "1055945"
+        },
+        {
+          "property": "勤務日",
+          "date": {
+          "on_or_after": "2023-04-17",
+          "on_or_before": "2023-05-17"
+          }
+        }
+      ]
+    }
+  }
