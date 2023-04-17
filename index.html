@@ -7,38 +7,39 @@
     <title>スポットバイト開発</title>
     <link rel="stylesheet" href="sidemenue.css">
     <link rel="stylesheet" href="progressbar.css">
+    <link rel="stylesheet" href="schedule_table.css">
 </head>
 <body>
-    <p id="last-updated"></p>
-    <script>
-      // ページの最終更新日時を取得
-      const lastUpdated = new Date(document.lastModified);
-  
-      // 現在の日時を取得
-      const now = new Date();
-  
-      // 日時のフォーマットを設定
-      const options = {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-        hour12: false
-      };
-  
-      // 最終更新日時と現在日時を比較して表示
-      if (lastUpdated.getTime() === 0) {
-        document.getElementById("last-updated").innerHTML = "このページは更新されていません。";
-      } else if (lastUpdated.getTime() === now.getTime()) {
-        document.getElementById("last-updated").innerHTML = "このページは現在更新されています。";
-      } else if (lastUpdated < now) {
-        document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
-      }
-    </script>
 
+<!-- 開発用 -->
+<p id="last-updated"></p>
+<script>
+    // ページの最終更新日時を取得
+    const lastUpdated = new Date(document.lastModified);
 
+    // 現在の日時を取得
+    const now = new Date();
+
+    // 日時のフォーマットを設定
+    const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: false
+    };
+
+    // 最終更新日時と現在日時を比較して表示
+    if (lastUpdated.getTime() === 0) {
+    document.getElementById("last-updated").innerHTML = "このページは更新されていません。";
+    } else if (lastUpdated.getTime() === now.getTime()) {
+    document.getElementById("last-updated").innerHTML = "このページは現在更新されています。";
+    } else if (lastUpdated < now) {
+    document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
+    }
+</script>
 
 
 <div class="side-bar">
@@ -77,17 +78,22 @@
 
 
 
-    <div class="main-bar">
-        <div id="progress-wrapper">
-            <ul class="progressbar" style="display: flex;">
-                <li id="li-schedule" class="complete">ｽｹｼﾞｭｰﾙ<br>提出</li>
-                <li id="li-request" class="active">シフト<br>ﾘｸｴｽﾄ</li>
-                <li id="li-confirm" class="">シフト<br>確定</li>
-                <li id="li-attendance" class="">勤務<br>報告</li>
-                <li id="li-payment" class="">給与<br>振込</li>
-            </ul>
-        </div>
+<div class="main-bar">
+    <div id="progress-wrapper">
+        <ul class="progressbar" style="display: flex;">
+            <li id="li-schedule" class="complete">ｽｹｼﾞｭｰﾙ<br>提出</li>
+            <li id="li-request" class="active">シフト<br>ﾘｸｴｽﾄ</li>
+            <li id="li-confirm" class="">シフト<br>確定</li>
+            <li id="li-attendance" class="">勤務<br>報告</li>
+            <li id="li-payment" class="">給与<br>振込</li>
+        </ul>
     </div>
+    <div id="page-content">
+
+    </div>
+
+
+</div>
 
 
 

@@ -14,7 +14,8 @@ function schedule_get(e) {
   })
   .then(response => response.text()) 
   .then(data => {
-    document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
+    var target = document.getElementById("page-content");
+    target.innerHTML =data;
     })
 };
 // li要素を取得し、クリックイベントを登録
