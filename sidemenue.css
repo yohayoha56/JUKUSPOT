@@ -1,4 +1,7 @@
 /* メニュー全体 */
+    .content-box{
+        display: flex;
+    }
     .side-bar,.main-bar{
         width: 180px;
         display: inline-block;
