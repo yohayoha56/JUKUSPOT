@@ -49,10 +49,10 @@ function modifyTable() {
         availabilityCell.innerHTML = '<button class="adjusting">講師回答前</button>';
         break;
       case '一部勤務可能':
-        availabilityCell.innerHTML = '<button class="partially-available">一部勤務可能</button>';
+        availabilityCell.innerHTML = '<button class="partially-available">勤務可能</button>';
         break;
       case '終日勤務可能':
-        availabilityCell.innerHTML = '<button class="available">終日勤務可能</button>';
+        availabilityCell.innerHTML = '<button class="available">勤務可能</button>';
         break;
     }
 
