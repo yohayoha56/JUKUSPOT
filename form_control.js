@@ -25,9 +25,9 @@ function showModal(event) {
     title.textContent = `${workDate}｜[講師名]先生｜シフト依頼フォーム`;
 
     const submitSchedule = document.getElementById("submit-schedule");
-    submitSchedule.getElementsByTagName("p")[1].textContent =`スケジュール｜${availability}}`
-    submitSchedule.getElementsByTagName("p")[2].textContent =`勤務可能時間｜${availableTime}}`
-    submitSchedule.getElementsByTagName("p")[3].textContent =`補足・備考　｜${remarks}}`
+    submitSchedule.getElementsByTagName("span")[1].textContent =`・スケジュール｜${availability}`
+    submitSchedule.getElementsByTagName("span")[2].textContent =`・勤務可能時間｜${availableTime}`
+    submitSchedule.getElementsByTagName("span")[3].textContent =`・補足・備考　｜${remarks}`
 
     // 依頼状況に応じてモーダルの依頼取り消しボタンを制御  
     if (requestStatus === "依頼修正") {
