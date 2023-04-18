@@ -1,7 +1,9 @@
+var teacherId = "";
+var ouboId = "";
 
 function schedule_get(e) {
-  var teacherId = e.target.getAttribute('会員ID'); // クリックされたliのvalue属性の値を取得
-  var ouboId = e.target.getAttribute('応募ID'); // クリックされたliのvalue属性の値を取得
+  teacherId = e.target.getAttribute('会員ID'); // クリックされたliのvalue属性の値を取得
+  ouboId = e.target.getAttribute('応募ID'); // クリックされたliのvalue属性の値を取得
 
   // POSTリクエストの送信
   fetch("https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec", {

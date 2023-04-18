@@ -65,6 +65,10 @@ const handleSubmit = async (event) => {
     for (const [key, value] of formData.entries()) {
         data[key] = value;
     }
+    // 講師ID、応募ID
+    data["応募ID"] = teacherId;
+    data["会員ID"] = ouboId;
+
     // 勤務開始時間、終了時間、休憩時間をdataに追加
     data["勤務開始時間"] = data["start_hour"] + ':' + (data["start_minute"] === '0' ? '00' : data["start_minute"]);
     data["勤務終了時間"] = data["end_hour"] + ':' + (data["end_minute"] === '0' ? '00' : data["end_minute"]);
