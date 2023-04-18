@@ -15,7 +15,7 @@ function showModal(event) {
     const row = button.closest("tr");
   
     // 各列の値を取得
-    const workDate = row.cells[0].innerText;
+    workDate = row.cells[0].innerText;
     const availability = row.cells[1].innerText;
     const availableTime = row.cells[2].innerText;
     const remarks = row.cells[3].innerText;
