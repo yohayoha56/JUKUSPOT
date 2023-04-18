@@ -23,11 +23,11 @@ function schedule_get(e) {
 
     // 全てのrequestボタンにイベントリスナーを追加  
     const btns = document.querySelectorAll(".request");
-    btns.forEach(element => {
-      console.log("push")
-      element.addEventListener('click', showModal);
+    btns.forEach((button) => {
+      button.addEventListener("click", showModal);
     });
-    })
+
+  });
 };
 
 // li要素を取得し、クリックイベントを登録

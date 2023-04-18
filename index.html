@@ -101,6 +101,13 @@
               <span class="close">&times;</span>
               <form id="myForm">
                 <h3>[日付]｜[講師名]先生｜<br>シフト依頼フォーム</h3>
+                <div id="submit-schedule">
+                    <p>講師の提出スケジュール</p>
+                    <p>スケジュール｜[勤務可否]</p>
+                    <p>勤務可能時間｜[時間]</p>
+                    <p>補足・備考　｜[補足]</p>
+                </div>
+
                 <!-- ここにフォーム要素を配置します -->
                 <label for="start_hour">勤務開始時間</label>
                 <select id="start_hour" name="start_hour">
@@ -155,6 +162,7 @@
                 <label for="remarks">補足・備考　</label>
                 <textarea id="remarks" name="remarks"></textarea><br>
                 <button type="submit">シフト依頼を完了する</button>
+                <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
               </form>
             </div>
         </div>
