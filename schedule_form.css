@@ -52,6 +52,9 @@
     flex-shrink: 0;
     width: 150px;
   }
+  .form-inline label{
+    width: 50px;
+  }
   
   textarea {
     width: 100%;
