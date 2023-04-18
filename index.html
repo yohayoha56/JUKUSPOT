@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="sidemenue.css">
     <link rel="stylesheet" href="progressbar.css">
     <link rel="stylesheet" href="schedule_table.css">
+    <link rel="stylesheet" href="schedule_form.css">
 </head>
 <body>
 
@@ -93,6 +94,69 @@
         </div>
         <div id="page-content">
 
+        </div>
+
+        <!-- ポップアップフォーム -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form id="myForm">
+                <!-- ここにフォーム要素を配置します -->
+                <label for="start_hour">勤務開始時間（時間）</label>
+                <select id="start_hour" name="start_hour">
+                <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+                <option value="">--</option>
+                <script>
+                    for (let i = 8; i <= 22; i++) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+                </select>
+                <label for="start_minute">勤務開始時間（分）</label>
+                <select id="start_minute" name="start_minute">
+                <option value="">--</option>
+                <script>
+                    for (let i = 0; i <= 50; i += 10) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+                </select>
+                <br>
+                <label for="end_hour">勤務終了時間（時間）</label>
+                <select id="end_hour" name="end_hour">
+                <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+                <option value="">--</option>
+                <script>
+                    for (let i = 8; i <= 22; i++) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+                </select>
+                <label for="end_minute">勤務終了時間（分）</label>
+                <select id="end_minute" name="end_minute">
+                <option value="">--</option>
+                <script>
+                    for (let i = 0; i <= 50; i += 10) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+                </select>
+                <br>
+                <label for="break_time">休憩時間（分）</label>
+                <select id="break_time" name="break_time">
+                <option value="">--</option>
+                <script>
+                    for (let i = 0; i <= 120; i += 10) {
+                    document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+                </select>
+                <br>
+                <label for="remarks">補足・備考</label>
+                <textarea id="remarks" name="remarks"></textarea>
+                <button type="submit">シフト依頼を完了する</button>
+              </form>
+            </div>
         </div>
 
 
