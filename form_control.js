@@ -15,6 +15,7 @@ window.onclick = function(event) {
     closeModal();
   }
 }
+// requestボタンのアドイベントリスナーはschedule_get.jsで設定
 
 
 // フォームの送信をハンドルする関数
