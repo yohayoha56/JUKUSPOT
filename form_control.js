@@ -1,6 +1,6 @@
 // モーダルの表示・非表示
 const modal = document.getElementById("myModal");
-const btns = document.getElementsByClassName("request");
+const btns = document.querySelectorAll(".request");
 const span = document.getElementsByClassName("close")[0];
 
 function showModal() {
