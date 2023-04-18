@@ -33,7 +33,6 @@ table {
     border-radius: 3px;
     padding: 2px 8px;
     font-size: 14px;
-    cursor: pointer;
   }
   
   #schedule-table td:nth-child(2), table td:nth-child(5) {
@@ -60,6 +59,7 @@ table {
     border: none;
     background-color: #4caf50;
     color: #fff;
+    cursor: pointer;
   }
 
 
