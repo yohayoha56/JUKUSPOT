@@ -76,7 +76,7 @@
         </li>
         </ul>
     </div>
-    
+
     <div class="main-bar">
         <h2>スポットバイトの流れ</h2>
         <div id="progress-wrapper">
@@ -97,73 +97,92 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form id="myForm">
             <h3>[日付]｜[講師名]先生｜<br>シフト依頼フォーム</h3>
             <div id="submit-schedule">
-                <p>講師の提出スケジュール</p>
-                <p>スケジュール｜[勤務可否]</p>
-                <p>勤務可能時間｜[時間]</p>
-                <p>補足・備考　｜[補足]</p>
+                <h4>講師の提出スケジュール</h4>
+                <span>・スケジュール｜[勤務可否]</span><br>
+                <span>・勤務可能時間｜[時間]</span><br>
+                <span>・補足・備考　｜[補足]</span><br>
             </div>
 
-            <!-- ここにフォーム要素を配置します -->
-            <label for="start_hour">勤務開始時間</label>
-            <select id="start_hour" name="start_hour">
-            <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-            <option value="">--</option>
-            <script>
-                for (let i = 8; i <= 22; i++) {
-                document.write(`<option value="${i}">${i}</option>`);
-                }
-            </script>
-            </select>
-            <label for="start_minute">時</label>
-            <select id="start_minute" name="start_minute">
-            <option value="">--</option>
-            <script>
-                for (let i = 0; i <= 50; i += 10) {
-                document.write(`<option value="${i}">${i}</option>`);
-                }
-            </script>
-            </select>分
-            <br>
-            <label for="end_hour">勤務終了時間</label>
-            <select id="end_hour" name="end_hour">
-            <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-            <option value="">--</option>
-            <script>
-                for (let i = 8; i <= 22; i++) {
-                document.write(`<option value="${i}">${i}</option>`);
-                }
-            </script>
-            </select>
-            <label for="end_minute">時</label>
-            <select id="end_minute" name="end_minute">
-            <option value="">--</option>
-            <script>
-                for (let i = 0; i <= 50; i += 10) {
-                document.write(`<option value="${i}">${i}</option>`);
-                }
-            </script>
-            </select>分
-            <br>
-            <label for="break_time">休憩時間　　</label>
-            <select id="break_time" name="break_time">
-            <option value="">--</option>
-            <script>
-                for (let i = 0; i <= 120; i += 10) {
-                document.write(`<option value="${i}">${i}</option>`);
-                }
-            </script>
-            </select>分
-            <br>
-            <label for="remarks">補足・備考　</label>
-            <textarea id="remarks" name="remarks"></textarea><br>
-            <button type="submit">シフト依頼を完了する</button>
-            <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
+            <form id="myForm" class="form-container">
+                <h4>↓ 依頼内容をご記入ください</h4>
+                <div class="form-row">
+                    <label for="start_hour">・勤務開始時間</label>
+                    <div class="form-inline">
+                        <select id="start_hour" name="start_hour">
+                        <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+                        <option value="">--</option>
+                        <script>
+                            for (let i = 8; i <= 22; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                        </select>
+                        <label for="start_minute">時</label>
+                        <select id="start_minute" name="start_minute">
+                        <option value="">--</option>
+                        <script>
+                            for (let i = 0; i <= 50; i += 10) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                        </select>分
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="end_hour">・勤務終了時間</label>
+                    <div class="form-inline">
+                        <select id="end_hour" name="end_hour">
+                        <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+                        <option value="">--</option>
+                        <script>
+                            for (let i = 8; i <= 22; i++) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                        </select>
+                        <label for="end_minute">時</label>
+                        <select id="end_minute" name="end_minute">
+                        <option value="">--</option>
+                        <script>
+                            for (let i = 0; i <= 50; i += 10) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                        </select>分
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="break_time">・休憩時間</label>
+                    <div class="form-inline">
+                        <select id="break_time" name="break_time">
+                        <option value="">--</option>
+                        <script>
+                            for (let i = 0; i <= 120; i += 10) {
+                            document.write(`<option value="${i}">${i}</option>`);
+                            }
+                        </script>
+                        </select>分
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="remarks">・補足・備考</label>
+                    <textarea id="remarks" name="remarks"></textarea>
+                </div>
+                <div class="form-row buttons">
+                    <button type="submit">シフト依頼を完了する</button>
+                    <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
+                </div>
             </form>
         </div>
     </div>
+        
+
+
+
+
+
 
 </div>
 
