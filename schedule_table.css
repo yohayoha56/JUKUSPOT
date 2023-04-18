@@ -54,7 +54,7 @@ table {
   }
 
   /* 依頼ボタン */
-  .modify,
+  
   .request {
     border: none;
     background-color: #17837C;
@@ -64,7 +64,7 @@ table {
 
 
   /* 勤務不可 */
-  .unavailable {
+  .modify,.unavailable {
     border: none;
     background-color: #777;
     color: #fff;
