@@ -1,42 +1,41 @@
-var teacherId = "";
-var ouboId = "";
+function fetchData(e, url) {
+  teacherId = e.target.getAttribute('会員ID');
+  ouboId = e.target.getAttribute('応募ID');
 
-function kintai_get(e) {
-  teacherId = e.target.getAttribute('会員ID'); // クリックされたliのvalue属性の値を取得
-  ouboId = e.target.getAttribute('応募ID'); // クリックされたliのvalue属性の値を取得
-
-  // POSTリクエストの送信
-  fetch("https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec", {
+  fetch(url, {
     method: 'POST',
     headers: {
-        'Content-Type': 'text/plain',
+      'Content-Type': 'text/plain',
     },
     body: JSON.stringify({
-      "講師ID": teacherId, // 検索条件にクリックされたliのvalueの値を代入
-      "応募ID": ouboId // 応募IDを追加
-  }),
-    mode: 'cors', //CORS対応
+      "講師ID": teacherId,
+      "応募ID": ouboId
+    }),
+    mode: 'cors',
   })
-  .then(response => response.text()) 
+  .then(response => response.text())
   .then(data => {
     var target = document.getElementById("page-content");
-    target.innerHTML =data;
-    // modifyTable()
-
-    // // 全てのrequestボタンにイベントリスナーを追加  
-    // const btns = document.querySelectorAll(".request");
-    // btns.forEach((button) => {
-    //   button.addEventListener("click", showModal);
-    // });
-
+    target.innerHTML = data;
   });
-};
+}
 
-// li要素を取得し、クリックイベントを登録
 var liElements = document.querySelectorAll('#kintai-menu .child-menu li');
 liElements.forEach(li => {
-  li.addEventListener('click', kintai_get);
+  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec"));
 });
+
+var liElements = document.querySelectorAll('#profile-menu .child-menu li');
+liElements.forEach(li => {
+  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec"));
+});
+
+
+
+
+
+
+
 
 
 function modifyTable() {
