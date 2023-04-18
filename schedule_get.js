@@ -1,6 +1,8 @@
 
 function schedule_get(e) {
-  var teacherId = e.target.getAttribute('value'); // クリックされたliのvalue属性の値を取得
+  var teacherId = e.target.getAttribute('会員ID'); // クリックされたliのvalue属性の値を取得
+  var ouboId = e.target.getAttribute('応募ID'); // クリックされたliのvalue属性の値を取得
+
   // POSTリクエストの送信
   fetch("https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec", {
     method: 'POST',
@@ -8,8 +10,9 @@ function schedule_get(e) {
         'Content-Type': 'text/plain',
     },
     body: JSON.stringify({
-       "講師ID" : teacherId // 検索条件にクリックされたliのvalueの値を代入
-    }),
+      "講師ID": teacherId, // 検索条件にクリックされたliのvalueの値を代入
+      "応募ID": applicationId // 応募IDを追加
+  }),
     mode: 'cors', //CORS対応
   })
   .then(response => response.text()) 
