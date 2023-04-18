@@ -1,6 +1,5 @@
 // モーダルの表示・非表示
 const modal = document.getElementById("myModal");
-const btns = document.querySelectorAll(".request");
 const span = document.getElementsByClassName("close")[0];
 
 function showModal() {
@@ -10,7 +9,6 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-// 全てのrequestボタンにイベントリスナーを追加
 span.onclick = closeModal;
 window.onclick = function(event) {
   if (event.target == modal) {
