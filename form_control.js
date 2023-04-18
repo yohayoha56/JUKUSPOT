@@ -21,19 +21,6 @@ window.onclick = function(event) {
   }
 }
 
-
-// 以降は、あなたが提供したスクリプトと同じです
-
-
-// 勤務開始時間、終了時間、休憩時間をdataに追加
-data["勤務開始時間"] = data["start_hour"] + ':' + data["start_minute"];
-data["勤務終了時間"] = data["end_hour"] + ':' + data["end_minute"];
-data["休憩時間"] = data["break_time"];
-
-// 補足・備考のテキストに追記
-data["remarks"] = "[教室から｜シフト依頼時]\n" + data["remarks"];
-
-
 // フォームの送信をハンドルする関数
 const handleSubmit = async (event) => {
     event.preventDefault(); // デフォルトの送信をキャンセル
