@@ -83,7 +83,7 @@ const handleSubmit = async (event) => {
     // 依頼取り消しを追加
     data["request_cancellation"] = false;
     // 補足・備考のテキストに追記
-    data["remarks"] = "[教室から｜シフト依頼時]\n" + data["remarks"];
+    data["remarks"] = "シフト依頼時[from:教室]\n" + data["remarks"];
     console.log(data);
     const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
         method: 'POST',
