@@ -1,30 +1,30 @@
-/* メニュー全体 */
 
-    
-
-
-    .content-area{
-        display: flex;
-    }
-    .side-bar,.main-bar{
-        width: 200px;
-        display: inline-block;
-        padding: 15px;
-    }
-    .side-bar {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    .modal {
-        z-index: 2000;
-    }
-    
-
-    .main-bar{
-        width: calc(100% - 200px);
-        margin-left: 15px;
-    }
+/* メインバーの設定 */
+.content-area {
+    display: flex;
+    overflow: visible;
+    position: relative;
+  }
+  .side-bar,
+  .main-bar {
+    width: 200px;
+    display: inline-block;
+    padding: 15px;
+  }
+  .side-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 100vh;
+  }
+  .modal {
+    z-index: 2000;
+  }
+  .main-bar {
+    width: calc(100% - 200px);
+    margin-left: 15px;
+  }
+  
 
 
     .menu {
