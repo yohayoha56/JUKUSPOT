@@ -11,9 +11,10 @@ function closeModal() {
 }
 
 // 全てのrequestボタンにイベントリスナーを追加
-for (const btn of btns) {
-  btn.addEventListener('click', showModal);
-}
+btns.forEach(element => {
+    console.log("push")
+    element.addEventListener('click', showModal);
+});
 span.onclick = closeModal;
 window.onclick = function(event) {
   if (event.target == modal) {
