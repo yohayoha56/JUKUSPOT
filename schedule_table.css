@@ -40,13 +40,13 @@ table {
   /* ここから依頼ボタン */
   /* 勤務不可 */
   .request-not-possible {
-    border: 3px solid #777;
+    border: 1px solid #777;
     background-color: #fff;
     color: #777;
   }
   /* 勤務確定 */
   .confirmed {
-    border: 3px solid #4caf50;
+    border: 1px solid #4caf50;
     background-color: #fff;
     color: #4caf50;
   }
@@ -68,7 +68,7 @@ table {
   }
 
   .adjusting {
-    border: 3px solid #4caf50;
+    border: 3px solid #17837C;
     background-color: transparent;
     color: #4caf50;
   }
@@ -76,6 +76,6 @@ table {
   .partially-available,
   .available {
     border: none;
-    background-color: #4caf50;
+    background-color: #17837C;
     color: #fff;
   }
