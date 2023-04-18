@@ -36,6 +36,9 @@ table {
     cursor: pointer;
   }
   
+  #schedule-table td:nth-child(2), table td:nth-child(5) {
+    width: 100px;
+  }
 
   /* ここから依頼ボタン */
   /* 勤務不可 */

@@ -46,7 +46,7 @@ function modifyTable() {
         availabilityCell.innerHTML = '<button class="adjusting">調整中</button>';
         break;
       case '講師回答前':
-        availabilityCell.innerHTML = '<button class="adjusting">講師回答前</button>';
+        availabilityCell.innerHTML = '<button class="adjusting">未提出</button>';
         break;
       case '一部勤務可能':
         availabilityCell.innerHTML = '<button class="partially-available">勤務可能</button>';
