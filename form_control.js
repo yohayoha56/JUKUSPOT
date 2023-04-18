@@ -81,7 +81,7 @@ const handleSubmit = async (event) => {
     // 補足・備考のテキストに追記
     data["remarks"] = "[教室から｜シフト依頼時]\n" + data["remarks"];
     console.log(data);
-    const response = await fetch("", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
         method: 'POST',
         headers: {
         'Content-Type': 'text/plain',
@@ -114,7 +114,7 @@ function handleRequestCancellation() {
   
       // POSTリクエストを送信
       (async () => {
-        const response = await fetch("", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
           method: 'POST',
           headers: {
             'Content-Type': 'text/plain',
