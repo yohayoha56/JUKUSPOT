@@ -57,7 +57,7 @@ table {
   .modify,
   .request {
     border: none;
-    background-color: #4caf50;
+    background-color: #17837C;
     color: #fff;
     cursor: pointer;
   }
@@ -71,9 +71,9 @@ table {
   }
 
   .adjusting {
-    border: 3px solid #17837C;
+    border: 1px solid #17837C;
     background-color: transparent;
-    color: #4caf50;
+    color: #17837C;
   }
   
   .partially-available,
