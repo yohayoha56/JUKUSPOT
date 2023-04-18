@@ -31,7 +31,7 @@ liElements.forEach(li => {
 
 
 function modifyTable() {
-  const tableRows = document.querySelectorAll('table tbody tr:not(:first-child)');
+  const tableRows = document.querySelectorAll('#schedule-table tbody tr:not(:first-child)');
 
   tableRows.forEach(row => {
     const availabilityCell = row.querySelector('td:nth-child(2)');
