@@ -55,6 +55,7 @@ window.onclick = function(event) {
 
 
 // フォームの送信をハンドルする関数
+var workDate ="";
 const handleSubmit = async (event) => {
     event.preventDefault(); // デフォルトの送信をキャンセル
     const form = document.querySelector('#myForm');
