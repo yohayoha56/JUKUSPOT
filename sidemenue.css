@@ -1,4 +1,8 @@
 /* メニュー全体 */
+
+    
+
+
     .content-area{
         display: flex;
     }
@@ -7,8 +11,19 @@
         display: inline-block;
         padding: 15px;
     }
+    .side-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .modal {
+        z-index: 2000;
+    }
+    
+
     .main-bar{
         width: calc(100% - 200px);
+        margin-left: 15px;
     }
 
 
