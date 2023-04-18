@@ -21,6 +21,7 @@ window.onclick = function(event) {
   }
 }
 
+
 // フォームの送信をハンドルする関数
 const handleSubmit = async (event) => {
     event.preventDefault(); // デフォルトの送信をキャンセル
