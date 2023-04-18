@@ -62,9 +62,9 @@ function modifyTable() {
     } else if (requestStatusCell.textContent === '勤務確定') {
       requestStatusCell.innerHTML = '<button class="confirmed">勤務確定</button>';
     } else if (requestStatusCell.textContent === '講師回答前' || requestStatusCell.textContent === '調整希望') {
-      requestStatusCell.innerHTML = '<button class="modify">依頼内容を変更</button>';
+      requestStatusCell.innerHTML = '<button class="modify">依頼修正</button>';
     } else {
-      requestStatusCell.innerHTML = '<button class="request">勤務を依頼する</button>';
+      requestStatusCell.innerHTML = '<button class="request">新規依頼</button>';
     }
   });
 }
