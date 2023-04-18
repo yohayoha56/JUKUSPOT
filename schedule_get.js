@@ -20,6 +20,9 @@ function schedule_get(e) {
     var target = document.getElementById("page-content");
     target.innerHTML =data;
     modifyTable()
+
+    // 全てのrequestボタンにイベントリスナーを追加  
+    const btns = document.querySelectorAll(".request");
     btns.forEach(element => {
       console.log("push")
       element.addEventListener('click', showModal);
