@@ -11,7 +11,7 @@ function schedule_get(e) {
     },
     body: JSON.stringify({
       "講師ID": teacherId, // 検索条件にクリックされたliのvalueの値を代入
-      "応募ID": applicationId // 応募IDを追加
+      "応募ID": ouboId // 応募IDを追加
   }),
     mode: 'cors', //CORS対応
   })
