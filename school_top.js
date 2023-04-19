@@ -31,7 +31,7 @@ liElements.forEach(li => {
 });
 
 
-function modifyTable() {
+function modifyTable3() {
   const tableRows = document.querySelectorAll('#kintai-table tbody tr:not(:first-child)');
 
   tableRows.forEach(row => {
