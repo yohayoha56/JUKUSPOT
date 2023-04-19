@@ -17,7 +17,7 @@ stylesheets.forEach((url) => loadStylesheet(url));
 
 
 // 外部JSの読み込み
-function loadScript(url, delay = 1000) {
+function loadScript(url, delay = 2000) {
   setTimeout(() => {
     var script = document.createElement('script');
     script.defer = true;
