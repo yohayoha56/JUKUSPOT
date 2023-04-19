@@ -1,6 +1,13 @@
 
 var target =document.getElementsByClassName("")
 
+
+// デバッグページにおけるビュー調整
+document.getElementsByClassName("super-content-wrapper")[0].style.display="block";
+document.getElementsByClassName("notion-header")[0].style.display="block";
+document.getElementsByClassName("notion-page__properties")[0].style.display="block";
+
+
 // 外部リソースのURLを配列として定義します。
 const resourceUrls = [
     'https://your-github-account.github.io/your-repo/external-script1.js',
