@@ -30,6 +30,7 @@ properties.forEach((property) => {
     }
   }
 });
+if(newData["ページタイプ"]="school"){}
 
 console.log(newData);
 
