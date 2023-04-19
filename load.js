@@ -28,10 +28,11 @@ function loadStylesheet(url) {
 
   const scripts = [
     'https://heys45.github.io/SAUCEED/common.js',
+    'https://heys45.github.io/SAUCEED/debug.js',
     'https://heys45.github.io/SAUCEED/school_top.js',
     'https://heys45.github.io/SAUCEED/schedule_get.js',
     'https://heys45.github.io/SAUCEED/kintai_get.js',
-    'https://heys45.github.io/SAUCEED/form_control.js?111',
+    'https://heys45.github.io/SAUCEED/form_control.js',
   ];
   scripts.forEach((url) => loadScript(url));
 
