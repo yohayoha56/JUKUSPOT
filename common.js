@@ -12,6 +12,7 @@ properties.forEach((property, index) => {
   const keyElement = property.querySelector('.notion-page__property-name');
   const valueElement = property.querySelector('.notion-property__text');
   const rollupElement = property.querySelector('.notion-property__relation');
+  const rollupTextElements = property.querySelectorAll('.notion-property__rollup .notion-property__text');
 
   if (keyElement) {
     const key = keyElement.textContent.trim();
@@ -33,6 +34,15 @@ properties.forEach((property, index) => {
       });
 
       newData[key] = rollupData;
+    } else if (rollupTextElements.length > 0) {
+      const rollupTextData = [];
+      rollupTextElements.forEach(textElement => {
+        const textValue = textElement.textContent.trim();
+        rollupTextData.push(textValue);
+        console.log('ロールアップテキスト要素:', textElement, textValue);
+      });
+
+      newData[key] = rollupTextData;
     } else {
       newData[key] = null;
     }
