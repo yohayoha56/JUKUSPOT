@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
 <body>
 
 <!-- 開発用 -->
-<p id="last-updated"></p>
+<!-- <p id="last-updated"></p>
 <script>
     // ページの最終更新日時を取得
     const lastUpdated = new Date(document.lastModified);
@@ -40,7 +42,9 @@
     } else if (lastUpdated < now) {
     document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
     }
-</script>
+</script> -->
+
+<!-- ここからSuperに貼り付けるーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
 
 
 <div class="content-area">
@@ -75,6 +79,7 @@
             </ul>
         </li>
         </ul>
+        <p id="latest-update"></p>
     </div>
 
     <div class="main-bar">
@@ -98,6 +103,8 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>[日付]｜[講師名]先生｜<br>シフト依頼フォーム</h3>
+
+            <!-- 各種参考情報 -->
             <div id="submit-schedule">
                 <h4>講師の提出スケジュール</h4>
                 <span>・スケジュール｜[勤務可否]</span><br>
@@ -105,71 +112,52 @@
                 <span>・補足・備考　｜[補足]</span><br>
             </div>
 
+            <!-- 各種フォーム本体 -->
             <form id="myForm" class="form-container">
                 <h4>↓ 依頼内容をご記入ください</h4>
+                <!-- 勤務開始時間 -->
                 <div class="form-row">
                     <label for="start_hour">・勤務開始時間</label>
                     <div class="form-inline">
                         <select id="start_hour" name="start_hour">
                         <!-- 8:00 ~ 22:00 の選択肢を生成 -->
                         <option value="">--</option>
-                        <script>
-                            for (let i = 8; i <= 22; i++) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                            }
-                        </script>
                         </select>
                         <label for="start_minute">時</label>
                         <select id="start_minute" name="start_minute">
                         <option value="">--</option>
-                        <script>
-                            for (let i = 0; i <= 50; i += 10) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                            }
-                        </script>
                         </select>分
                     </div>
                 </div>
+                <!-- 勤務終了時間 -->
                 <div class="form-row">
                     <label for="end_hour">・勤務終了時間</label>
                     <div class="form-inline">
                         <select id="end_hour" name="end_hour">
                         <!-- 8:00 ~ 22:00 の選択肢を生成 -->
                         <option value="">--</option>
-                        <script>
-                            for (let i = 8; i <= 22; i++) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                            }
-                        </script>
                         </select>
                         <label for="end_minute">時</label>
                         <select id="end_minute" name="end_minute">
                         <option value="">--</option>
-                        <script>
-                            for (let i = 0; i <= 50; i += 10) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                            }
-                        </script>
                         </select>分
                     </div>
                 </div>
+                <!-- 休憩時間 -->
                 <div class="form-row">
                     <label for="break_time">・休憩時間</label>
                     <div class="form-inline">
                         <select id="break_time" name="break_time">
                         <option value="">--</option>
-                        <script>
-                            for (let i = 0; i <= 120; i += 10) {
-                            document.write(`<option value="${i}">${i}</option>`);
-                            }
-                        </script>
                         </select>分
                     </div>
                 </div>
+                <!-- 補足・備考 -->
                 <div class="form-row">
                     <label for="remarks">・補足・備考</label>
                     <textarea id="remarks" name="remarks"></textarea>
                 </div>
+                <!-- 送信ボタン・取り消しボタン -->
                 <div class="form-row buttons">
                     <button type="submit">シフト依頼を完了する</button>
                     <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
@@ -177,25 +165,53 @@
             </form>
         </div>
     </div>
-        
-
+    <!-- フォームオプション作成スクリプト -->
+    <script>
+        function addOptions(selectElement, start, end, step) {
+            for (let i = start; i <= end; i += step) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                selectElement.appendChild(option);
+            }
+        }
+        // 勤務開始時間 (時)
+        const startHour = document.getElementById('start_hour');
+        addOptions(startHour, 8, 22, 1);
+        // 勤務開始時間 (分)
+        const startMinute = document.getElementById('start_minute');
+        addOptions(startMinute, 0, 50, 10);
+        // 勤務終了時間 (時)
+        const endHour = document.getElementById('end_hour');
+        addOptions(endHour, 8, 22, 1);
+        // 勤務終了時間 (分)
+        const endMinute = document.getElementById('end_minute');
+        addOptions(endMinute, 0, 50, 10);
+        // 休憩時間
+        const breakTime = document.getElementById('break_time');
+        addOptions(breakTime, 0, 120, 10);
+    </script>
 
 </div>
 
 
+<!-- カスタム表示位置の設定 -->
 <script>
-var A = document.getElementsByClassName("content-area")[0];
-var B = document.getElementsByClassName("super-navbar")[0];
+    var A = document.getElementsByClassName("content-area")[0];
+    var B = document.getElementsByClassName("super-navbar")[0];
 
-if (A && B && B.parentNode) {
-  B.parentNode.insertBefore(A, B.nextSibling);
-}
+    if (A && B && B.parentNode) {
+    B.parentNode.insertBefore(A, B.nextSibling);
+    A.style.display="flex"
+    B.style["margin-bottom"]="0"
+    }
 </script>
 
 
+<script src="https://heys45.github.io/SAUCEED/load.js"></script>
 
-<script src="schedule_get.js"></script>
-<script src="form_control.js"></script>
-<script src="kintai_get.js"></script>
+<!-- ここまでSuperに貼り付けるーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
+
+
 </body>
 </html>

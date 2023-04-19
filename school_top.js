@@ -1,8 +1,4 @@
 
-
-
-
-
 function fetchData(e, url) {
   teacherId = e.target.getAttribute('会員ID');
   ouboId = e.target.getAttribute('応募ID');
