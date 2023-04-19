@@ -1,34 +1,35 @@
+// すべてのプロパティ要素を取得
 const properties = document.querySelectorAll('.notion-page__property');
+
+// 新しいデータを格納する空のオブジェクトを作成
 const newData = {};
-properties.forEach((property) => {
-  const keyElement = property.querySelector('.notion-page__property-name span');
+
+// 各プロパティ要素に対して処理を実行
+properties.forEach(property => {
+  const keyElement = property.querySelector('.notion-property__key');
+  const valueElement = property.querySelector('.notion-property__value');
+  const rollupElement = property.querySelector('.notion-property__rollup');
+
   if (keyElement) {
-    const key = keyElement.textContent;
-    const valueElement = property.querySelector('.notion-semantic-string span');
-    const rollupElement = property.querySelector('.notion-property__rollup');
+    const key = keyElement.textContent.trim();
+
     if (valueElement) {
-      const value = valueElement.textContent || null;
-      newData[key] = value;
+      newData[key] = valueElement.textContent.trim();
     } else if (rollupElement) {
-      const values = Array.from(rollupElement.querySelectorAll('.notion-property__title, .notion-property__text'))
-        .map((titleElement) => {
-          const linkElement = titleElement.querySelector('.notion-link');
-          if (linkElement) {
-            return {
-              id: linkElement.getAttribute('href').replace('/', ''),
-              title: titleElement.querySelector('.notion-semantic-string span').textContent
-            };
-          } else {
-            return titleElement.querySelector('.notion-semantic-string span').textContent;
-          }
-        });
-      newData[key] = values;
+      const rollupData = [];
+      const links = rollupElement.querySelectorAll('.notion-link');
+
+      links.forEach(link => {
+        const title = link.textContent.trim();
+        rollupData.push(title);
+      });
+
+      newData[key] = rollupData;
     } else {
       newData[key] = null;
     }
   }
 });
-if(newData["ページタイプ"]="school"){}
 
+// 整形された newData オブジェクトをコンソールに出力
 console.log(newData);
-
