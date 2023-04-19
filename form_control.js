@@ -103,7 +103,7 @@ const handleSubmit = async (event) => {
     }
 };
 const form = document.querySelector('#myForm');
-form.addEventListener('submit', handleSubmit);
+// form.addEventListener('submit', handleSubmit);
 
 
 
@@ -140,5 +140,5 @@ function handleRequestCancellation() {
     }
   }
   const cancelButton = document.getElementById("cancelButton");
-  cancelButton.addEventListener('click', handleRequestCancellation);
+//   cancelButton.addEventListener('click', handleRequestCancellation);
   
