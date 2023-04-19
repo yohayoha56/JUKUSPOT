@@ -10,7 +10,16 @@ document.getElementsByClassName("notion-page__properties")[0].style.display="blo
 
 // 外部リソースのURLを配列として定義します。
 const resourceUrls = [
-    'https://your-github-account.github.io/your-repo/external-script1.js',
+    
+    'https://heys45.github.io/SAUCEED/spot-js/.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
+    'https://heys45.github.io/SAUCEED/spot-js/load.js',
     'https://your-github-account.github.io/your-repo/external-script2.js',
     'https://your-github-account.github.io/your-repo/external-stylesheet1.css',
     'https://your-github-account.github.io/your-repo/external-stylesheet2.css',

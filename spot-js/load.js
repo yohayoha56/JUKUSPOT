@@ -8,10 +8,10 @@ function loadStylesheet(url) {
   }
 
   const stylesheets = [
-    'https://heys45.github.io/SAUCEED/progressbar.css',
-    'https://heys45.github.io/SAUCEED/sidemenue.css',
-    'https://heys45.github.io/SAUCEED/schedule_form.css',
-    'https://heys45.github.io/SAUCEED/schedule_table.css',
+    'https://heys45.github.io/SAUCEED/spot-css/progressbar.css',
+    'https://heys45.github.io/SAUCEED/spot-css/sidemenue.css',
+    'https://heys45.github.io/SAUCEED/spot-css/schedule_form.css',
+    'https://heys45.github.io/SAUCEED/spot-css/schedule_table.css',
   ];
   stylesheets.forEach((url) => loadStylesheet(url));
 
@@ -27,12 +27,12 @@ function loadStylesheet(url) {
   }
 
   const scripts = [
-    'https://heys45.github.io/SAUCEED/common.js',
-    'https://heys45.github.io/SAUCEED/debug.js',
-    'https://heys45.github.io/SAUCEED/school_top.js',
-    'https://heys45.github.io/SAUCEED/schedule_get.js',
-    'https://heys45.github.io/SAUCEED/kintai_get.js',
-    'https://heys45.github.io/SAUCEED/form_control.js',
+    'https://heys45.github.io/SAUCEED/spot-js/common.js',
+    'https://heys45.github.io/SAUCEED/spot-js/debug.js',
+    'https://heys45.github.io/SAUCEED/spot-js/school_top.js',
+    'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
+    'https://heys45.github.io/SAUCEED/spot-js/kintai_get.js',
+    'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
   ];
   scripts.forEach((url) => loadScript(url));
 
