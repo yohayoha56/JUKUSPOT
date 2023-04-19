@@ -1,0 +1,92 @@
+
+
+
+/* メインバーの設定 */
+.content-area {
+  display: flex;
+  overflow: visible;
+  position: relative;
+}
+.side-bar,
+.main-bar {
+  width: 210px;
+  display: inline-block;
+  padding: 15px;
+}
+.side-bar {
+  position: sticky;
+  padding-top: 30px;
+  top: 50px;
+  z-index: 1000;
+  height: 60vh;
+}
+.modal {
+  z-index: 2000;
+}
+.main-bar {
+  width: calc(100% - 210px);
+  margin-left: 15px;
+}
+
+
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+  
+  /* 親メニュー */
+  .group-menu {
+  margin-bottom: 5px;
+  }
+  
+  /* 親メニューと子メニューのスタイル */
+  .menu-item, .child-menu li {
+  background-color: green;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  }
+
+  .group-menu:not(:first-child) > .menu-item:after {
+    content: "⏬";
+    margin-left: 5px;
+        float: right;
+  }
+
+  .child-menu li {
+  background-color: white;
+  color: black;
+  padding:5px 5px;
+  }
+  
+  
+  /* 子メニューのスタイル */
+  .child-menu {
+  background-color: glay;
+  border: 1px solid black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display:none;
+  }
+  .child-menu li::before{
+      content:"・";
+  }
+  
+  /* 子メニューの項目にマウスが乗った時のスタイル */
+  .child-menu li:hover {
+  background-color: lightgray;
+  }
+
+  .group-menu:hover .child-menu{
+      display: block;
+  }
+
+
+/*マージン解除*/
+.super-navbar{
+margin-bottom:0;
+}
