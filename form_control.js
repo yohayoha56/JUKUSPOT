@@ -46,7 +46,7 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-span.onclick = closeModal;
+// span.onclick = closeModal;
 window.onclick = function(event) {
   if (event.target == modal) {
     closeModal();
