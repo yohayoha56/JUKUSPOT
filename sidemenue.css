@@ -7,7 +7,7 @@
   }
   .side-bar,
   .main-bar {
-    width: 200px;
+    width: 210px;
     display: inline-block;
     padding: 15px;
   }
@@ -21,7 +21,7 @@
     z-index: 2000;
   }
   .main-bar {
-    width: calc(100% - 200px);
+    width: calc(100% - 210px);
     margin-left: 15px;
   }
   
