@@ -1,7 +1,5 @@
- /*マージン解除*/
- .super-navbar{
-  margin-bottom:0;
-}
+
+
 
 /* メインバーの設定 */
 .content-area {
@@ -87,4 +85,7 @@
     }
 
 
-    
+/*マージン解除*/
+ .super-navbar{
+  margin-bottom:0;
+}
