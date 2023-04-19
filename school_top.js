@@ -1,6 +1,37 @@
+const properties = document.querySelectorAll('.notion-page__property');
+
+const newData = {};
+
+properties.forEach((property) => {
+  const keyElement = property.querySelector('.notion-page__property-name span');
+  if (keyElement) {
+    const key = keyElement.textContent;
+    const valueElement = property.querySelector('.notion-semantic-string span');
+    const rollupElement = property.querySelector('.notion-property__rollup');
+    if (valueElement) {
+      const value = valueElement.textContent || null;
+      newData[key] = value;
+    } else if (rollupElement) {
+      const values = Array.from(rollupElement.querySelectorAll('.notion-property__title'))
+        .map((titleElement) => ({
+          id: titleElement.querySelector('.notion-link').getAttribute('href').replace('/', ''),
+          title: titleElement.querySelector('.notion-semantic-string span').textContent
+        }));
+      newData[key] = values;
+    } else {
+      newData[key] = null;
+    }
+  }
+});
+
+console.log(newData);
+
+
+
 function fetchData(e, url) {
   teacherId = e.target.getAttribute('会員ID');
   ouboId = e.target.getAttribute('応募ID');
+  schoolId =
 
   fetch(url, {
     method: 'POST',
@@ -20,15 +51,11 @@ function fetchData(e, url) {
   });
 }
 
-var liElements = document.querySelectorAll('#kintai-menu .child-menu li');
+var liElements = document.querySelectorAll('#top-menu');
 liElements.forEach(li => {
-  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec"));
+  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec"));
 });
 
-var liElements = document.querySelectorAll('#profile-menu .child-menu li');
-liElements.forEach(li => {
-  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec"));
-});
 
 
 function modifyTable3() {
