@@ -11,7 +11,8 @@ function fetchData(e, url) {
     },
     body: JSON.stringify({
       "講師ID": teacherId,
-      "応募ID": ouboId
+      "応募ID": ouboId,
+      "教室ID": newData["教室ID"]
     }),
     mode: 'cors',
   })
