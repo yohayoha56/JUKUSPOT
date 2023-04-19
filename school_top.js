@@ -12,16 +12,21 @@ properties.forEach((property) => {
       const value = valueElement.textContent || null;
       newData[key] = value;
     } else if (rollupElement) {
-      const values = Array.from(rollupElement.querySelectorAll('.notion-property__title'))
-        .map((titleElement) => ({
-          id: titleElement.querySelector('.notion-link').getAttribute('href').replace('/', ''),
-          title: titleElement.querySelector('.notion-semantic-string span').textContent
-        }));
+      const values = Array.from(rollupElement.querySelectorAll('.notion-property__title, .notion-property__text'))
+        .map((titleElement) => {
+          const linkElement = titleElement.querySelector('.notion-link');
+          if (linkElement) {
+            return {
+              id: linkElement.getAttribute('href').replace('/', ''),
+              title: titleElement.querySelector('.notion-semantic-string span').textContent
+            };
+          } else {
+            return titleElement.querySelector('.notion-semantic-string span').textContent;
+          }
+        });
       newData[key] = values;
     } else {
-      const valueElement = property.querySelector('.notion-property__text span');
-      const value = valueElement ? valueElement.textContent || null : null;
-      newData[key] = value;
+      newData[key] = null;
     }
   }
 });
