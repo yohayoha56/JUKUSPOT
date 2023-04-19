@@ -19,12 +19,15 @@ properties.forEach((property) => {
         }));
       newData[key] = values;
     } else {
-      newData[key] = null;
+      const valueElement = property.querySelector('.notion-property__text span');
+      const value = valueElement ? valueElement.textContent || null : null;
+      newData[key] = value;
     }
   }
 });
 
 console.log(newData);
+
 
 
 
