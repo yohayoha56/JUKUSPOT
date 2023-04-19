@@ -81,10 +81,6 @@
   background-color: lightgray;
   }
 
-  .group-menu:hover .child-menu{
-      display: block;
-  }
-
 
 /*マージン解除*/
 .super-navbar{
