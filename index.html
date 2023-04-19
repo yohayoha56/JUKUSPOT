@@ -180,11 +180,19 @@
         
 
 
-
-
-
-
 </div>
+
+
+<script>
+var A = document.getElementsByClassName("content-area")[0];
+var B = document.getElementsByClassName("super-navbar")[0];
+
+if (A && B && B.parentNode) {
+  B.parentNode.insertBefore(A, B.nextSibling);
+}
+</script>
+
+
 
 <script src="schedule_get.js"></script>
 <script src="form_control.js"></script>
