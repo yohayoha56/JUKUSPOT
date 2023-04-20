@@ -182,7 +182,7 @@ function generateFormTemplate(row) {
         // データの整理を行うーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
         // 更新用キー要素
         data["勤務日"] = data["working_day"]
-        data["教室名"] = newData("教室名");
+        data["教室名"] = newData["教室名"];
         data["講師名"] = data["teacher_name"]
         data["勤怠ステータス"] = data["attendance_status"]
     
