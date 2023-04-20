@@ -33,7 +33,7 @@ childMenus.forEach(menu => {
     menu.appendChild(menuItem);
   });
 });
-}
+
 
 
 // サイドメニューのコントロールスクリプト
