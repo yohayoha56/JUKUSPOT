@@ -10,9 +10,11 @@ function waitForProperties() {
   });
 }
 
+var newData = "";
+
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
-  const newData = extractProperties(propertiesContainer);
+  newData = extractProperties(propertiesContainer);
   console.log(newData)
   // 共通スタイルシートとスクリプトを読み込む
   const commonStylesheets = [
