@@ -40,9 +40,8 @@ waitForProperties().then((propertiesContainer) => {
     schoolStylesheets.forEach(loadStylesheet);
 
     const schoolScripts = [
-      'https://heys45.github.io/SAUCEED/spot-js/school_top.js',
+      'https://heys45.github.io/SAUCEED/spot-js/school.js',
       'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
-      'https://heys45.github.io/SAUCEED/spot-js/kintai_get.js',
       'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
     ];
     schoolScripts.forEach(loadScript);
