@@ -19,7 +19,7 @@ var target =document.getElementsByClassName("")
     'spot-css/progressbar.css',
     'spot-css/schedule_form.css',
     'spot-css/schedule_table.css',
-    'spot-css/scool.css',
+    'spot-css/school.css',
   ].map(url => baseUrl + url);
   
   // 各リソースの最終更新日時を取得するPromiseを作成し、Promise.allで実行します。
