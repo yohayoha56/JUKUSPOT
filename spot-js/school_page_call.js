@@ -35,7 +35,7 @@ function addEventListeners(page) {
 }
 
 // GASを起動するためのスクリプト
-function school_fetchData(e, url) {
+function school_fetchData(e, url, callback) {
   teacherId = e.target.getAttribute('会員ID');
   ouboId = e.target.getAttribute('応募ID');
   schoolId =
@@ -56,5 +56,12 @@ function school_fetchData(e, url) {
   .then(data => {
     var target = document.getElementById("page-content");
     target.innerHTML = data;
+
+  // callback関数を実行
+  if (typeof callback === 'function') {
+    callback();
+  }
   });
+
+
 }
