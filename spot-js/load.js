@@ -32,6 +32,7 @@ waitForProperties().then((propertiesContainer) => {
   commonScripts.forEach(loadScript);
 
   // 教室ページ用のスタイルシートとスクリプトを読み込む
+  console.log(newData["ページタイプ"])
   if (newData["ページタイプ"] === "school") {
     console.log("ページタイプ：school")
     const schoolStylesheets = [
