@@ -1,4 +1,4 @@
-function fetchData(e, url) {
+function kintai_prof_fetchData(e, url) {
   teacherId = e.target.getAttribute('会員ID');
   ouboId = e.target.getAttribute('応募ID');
 
@@ -20,15 +20,7 @@ function fetchData(e, url) {
   });
 }
 
-var liElements = document.querySelectorAll('#kintai-menu .child-menu li');
-liElements.forEach(li => {
-  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec"));
-});
 
-var liElements = document.querySelectorAll('#profile-menu .child-menu li');
-liElements.forEach(li => {
-  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec"));
-});
 
 
 function modifyTable2() {
