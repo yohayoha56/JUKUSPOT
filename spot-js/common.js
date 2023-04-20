@@ -6,6 +6,36 @@ A.style["visibility"]="visible";
 
 
 
+// サイドメニュー作成スクリプト
+const childMenus = document.querySelectorAll('.child-menu');
+childMenus.forEach(menu => menu.innerHTML = '');
+
+const pageType = newData['ページタイプ'];
+let elements, ids;
+
+if (pageType === 'school') {
+  elements = newData['講師名一覧'];
+  label="会員id";
+  ids = newData['講師ID一覧'];
+} else if (pageType === 'teacher') {
+  elements = [newData['教室名一覧']];
+  label="教室id";
+  ids = [newData['教室ID一覧']];
+} else {
+  return;
+}
+
+childMenus.forEach(menu => {
+  elements.forEach((element, index) => {
+    const menuItem = document.createElement('li');
+    menuItem.setAttribute(label, ids[index]);
+    menuItem.textContent = element;
+    menu.appendChild(menuItem);
+  });
+});
+}
+
+
 // サイドメニューのコントロールスクリプト
 const menuItems = document.querySelectorAll(".group-menu");
 
