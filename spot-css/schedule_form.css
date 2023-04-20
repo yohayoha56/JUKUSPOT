@@ -1,68 +1,135 @@
 /* ポップアップスタイル */
+/* #region */
 .modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 50%;
-    min-width: 320px;
-  }
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* フォーム */
-  .form-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  
-  .form-inline {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  label {
-    flex-shrink: 0;
-    width: 150px;
-  }
-  .form-inline label{
-    width: 50px;
-  }
-  
-  textarea {
-    width: 100%;
-    height: 80px;
-    resize: vertical;
-  }
-  
-  .buttons {
-    display: flex;
-    gap: 8px;
-  }
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  min-width: 320px;
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* #endregion */
+
+
+/* 勤怠フォーム専用スタイル */
+/* #region */
+.
+/* #endregion */
+
+
+
+
+/* フォーム */
+/* #region */
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.form-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+label {
+  flex-shrink: 0;
+  width: 150px;
+}
+.form-inline label {
+  width: 50px;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+/* #endregion */
+
+
+
+/* 追加デザイン */
+/* カラー定義 */
+:root {
+  --green-base: #28a745;
+  --green-darker: #218838;
+  --green-lighter: #34c057;
+}
+
+/* フォームの各要素を四角枠で囲む */
+.form-row {
+  border: 2px solid var(--green-base);
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+/* 勤務情報のリストの・をなくす */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* 勤務情報と入力項目をもう少しギュッと集める */
+label {
+  width: 120px;
+}
+
+/* ボタンのデザインを目立つようにする */
+.buttons button {
+  background-color: var(--green-base);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+  background-color: var(--green-darker);
+}
+
+.buttons button:focus {
+  background-color: var(--green-lighter);
+  outline: none;
+}
