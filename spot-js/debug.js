@@ -6,20 +6,21 @@ var target =document.getElementsByClassName("")
   document.getElementsByClassName("notion-page__properties")[0].style.display="block";
 
   // 外部リソースのURLを配列として定義します。
+  const baseUrl = 'https://heys45.github.io/SAUCEED/';
   const resourceUrls = [
-      'https://heys45.github.io/SAUCEED/spot-js/common.js',
-      'https://heys45.github.io/SAUCEED/spot-js/debug.js',
-      'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
-      'https://heys45.github.io/SAUCEED/spot-js/load.js',
-      'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
-      'https://heys45.github.io/SAUCEED/spot-js/school_page_make.js',
-      'https://heys45.github.io/SAUCEED/spot-js/school_page_call.js',
-      'https://heys45.github.io/SAUCEED/spot-css/page_frame.css',
-      'https://heys45.github.io/SAUCEED/spot-css/progressbar.css',
-      'https://heys45.github.io/SAUCEED/spot-css/schedule_form.css',
-      'https://heys45.github.io/SAUCEED/spot-css/schedule_table.css',
-      'https://heys45.github.io/SAUCEED/spot-css/scool.css',
-    ];
+    'spot-js/common.js',
+    'spot-js/debug.js',
+    'spot-js/form_control.js',
+    'spot-js/load.js',
+    'spot-js/schedule_get.js',
+    'spot-js/school_page_make.js',
+    'spot-js/school_page_call.js',
+    'spot-css/page_frame.css',
+    'spot-css/progressbar.css',
+    'spot-css/schedule_form.css',
+    'spot-css/schedule_table.css',
+    'spot-css/scool.css',
+  ].map(url => baseUrl + url);
   
   // 各リソースの最終更新日時を取得するPromiseを作成し、Promise.allで実行します。
   Promise.all(
