@@ -1,3 +1,6 @@
+function kintai_create(){}
+function profile_create(){}
+
 function top_create(){
     const table = document.getElementById('fixed-table');
     const rows = Array.from(table.querySelectorAll('tbody > tr'));
