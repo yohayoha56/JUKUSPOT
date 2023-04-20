@@ -170,9 +170,12 @@ async function handleSubmit(event) {
     }
 
     // バリデーションと送信ボタンの状態の管理
-    const submitButton = form.querySelector('button[type="submit"]');
-    submitButton.style.backgroundColor = 'gray';
-    submitButton.disabled = true;
+    const submitButton = document.querySelectorAll('button[type="submit"]');
+    submitButton.forEach(element => {
+        element.style.backgroundColor = 'gray';
+        element.disabled = true;  
+    });
+
 
 
     // 更新用キー要素
@@ -230,12 +233,15 @@ async function handleSubmit(event) {
 
         setTimeout(() => {
             top_create(); // 3秒後に最新のデータベース情報を取得
-        }, 3000);
+        }, 1000);
     } else {
         console.error(`エラーメッセージ: ${text}`);
         alert('送信に失敗しました。運営に連絡してください。');
-        submitButton.style.backgroundColor = '';
-        submitButton.disabled = false;
+        submitButton.forEach(element => {
+            element.style.backgroundColor = '';
+            element.disabled = false;
+        });
+
     }
 };
 
