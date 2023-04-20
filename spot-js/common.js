@@ -11,7 +11,7 @@ const childMenus = document.querySelectorAll('.child-menu');
 childMenus.forEach(menu => menu.innerHTML = '');
 
 const pageType = newData['ページタイプ'];
-let elements, ids;
+let elements, ids,label;
 
 if (pageType === 'school') {
   elements = newData['講師名一覧'];
