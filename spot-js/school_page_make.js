@@ -115,6 +115,15 @@ formsContainer.insertAdjacentHTML('beforeend', formTemplate);
     const breakTime = document.getElementById('break_time');
     addOptions(breakTime, 0, 120, 10);
 
+    // フォームがない時にフォームの見出しを非表示にする。    
+    const formContainer = document.getElementById("forms-container");
+      const h2Element = formContainer.querySelector("h2");
+      const forms = formContainer.querySelectorAll(".form-row");
+
+      if (forms.length === 0) {
+        h2Element.style.display = "none";
+      }
+
 };
 
 // フォームの送信をハンドルする関数
