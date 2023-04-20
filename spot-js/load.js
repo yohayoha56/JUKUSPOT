@@ -64,7 +64,7 @@ function extractProperties(propertiesContainer) {
     if (!propertyContent) {
       newData[propertyName] = "";
     } else {
-      let propertyData;
+      let propertyData; 
 
       if (propertyContent.classList.contains("notion-property__rollup")) {
         propertyData = Array.from(propertyContent.children).map((child) => {
