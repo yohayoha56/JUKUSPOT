@@ -13,7 +13,6 @@ function waitForProperties() {
 
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
-  let newData = {};
   newData = extractProperties(propertiesContainer);
   console.log(newData)
   // 共通スタイルシートとスクリプトを読み込む
@@ -56,7 +55,7 @@ waitForProperties().then((propertiesContainer) => {
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
   const properties = Array.from(propertiesContainer.children);
-
+  let newData = {};
   properties.forEach((property) => {
     const propertyElement = property.querySelector(".notion-page__property-name > span");
     const propertyName = propertyElement ? propertyElement.innerText : "";
