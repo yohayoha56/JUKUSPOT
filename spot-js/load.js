@@ -27,6 +27,8 @@ waitForProperties().then((propertiesContainer) => {
   const commonScripts = [
     'https://heys45.github.io/SAUCEED/spot-js/common.js',
     'https://heys45.github.io/SAUCEED/spot-js/debug.js',
+    'https://heys45.github.io/SAUCEED/spot-js/school_page_make.js',
+    'https://heys45.github.io/SAUCEED/spot-js/school_page_call.js',
   ];
   commonScripts.forEach(loadScript);
 
@@ -42,8 +44,6 @@ waitForProperties().then((propertiesContainer) => {
 
     // 'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
     const schoolScripts = [
-      'https://heys45.github.io/SAUCEED/spot-js/school_page_make.js',
-      'https://heys45.github.io/SAUCEED/spot-js/school_page_call.js',
       'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
     ];
     schoolScripts.forEach(loadScript);
