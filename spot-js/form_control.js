@@ -53,7 +53,6 @@ window.onclick = function(event) {
   }
 }
 
-
 // フォームの送信をハンドルする関数
 var workDate ="";
 const handleSubmit = async (event) => {
@@ -68,6 +67,8 @@ const handleSubmit = async (event) => {
     // 講師ID、応募ID
     data["応募ID"] = teacherId;
     data["会員ID"] = ouboId;
+    data["教室ID"] = newData["教室ID"];
+    data["教室名"] = newData("教室名");
 
     // 勤務開始時間、終了時間、休憩時間をdataに追加
     data["勤務開始時間"] = data["start_hour"] + ':' + (data["start_minute"] === '0' ? '00' : data["start_minute"]);
@@ -103,7 +104,8 @@ const handleSubmit = async (event) => {
     }
 };
 const form = document.querySelector('#myForm');
-// form.addEventListener('submit', handleSubmit);
+
+
 
 
 

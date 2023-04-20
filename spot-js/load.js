@@ -39,11 +39,12 @@ waitForProperties().then((propertiesContainer) => {
     ];
     schoolStylesheets.forEach(loadStylesheet);
 
+
+    // 'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
     const schoolScripts = [
       'https://heys45.github.io/SAUCEED/spot-js/school_page_call.js',
       'https://heys45.github.io/SAUCEED/spot-js/school_page_make.js',
       'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
-      'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
     ];
     schoolScripts.forEach(loadScript);
   }else{
