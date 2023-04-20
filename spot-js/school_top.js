@@ -1,4 +1,4 @@
-function fetchData(e, url) {
+function school_top_fetchData(e, url) {
   teacherId = e.target.getAttribute('会員ID');
   ouboId = e.target.getAttribute('応募ID');
   schoolId =
@@ -24,7 +24,7 @@ function fetchData(e, url) {
 
 var liElements = document.querySelectorAll('#top-menu');
 liElements.forEach(li => {
-  li.addEventListener('click', (e) => fetchData(e, "https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec"));
+  li.addEventListener('click', (e) => school_top_fetchData(e, "https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec"));
 });
 
 
