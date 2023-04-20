@@ -1,5 +1,11 @@
+/* カラー定義 */
+:root {
+  --green-base: #28a745;
+  --green-darker: #218838;
+  --green-lighter: #34c057;
+}
+
 /* ポップアップスタイル */
-/* #region */
 .modal {
   display: none;
   position: fixed;
@@ -30,80 +36,69 @@
   text-decoration: none;
   cursor: pointer;
 }
-/* #endregion */
-
-
 
 /* フォーム */
-/* #region */
 .form-container {
   display: flex;
   flex-direction: column;
+  border-radius: 4px;
+  background-color: #eee;
+  padding: 12px 20px;
+  border: 2px solid #aaa;
 }
-
-.form-row {
+.form-container > .form-row {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  padding: 8px;
+  margin-bottom: 10px;
 }
-
-.form-inline {
+.form-container .form-inline {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
-label {
+.form-container label {
   flex-shrink: 0;
-  width: 150px;
+  width: 120px;
 }
-.form-inline label {
+.form-container .form-inline label {
   width: 50px;
 }
-
-textarea {
+.form-container textarea {
   width: 100%;
-  height: 80px;
+  height: 55px;
   resize: vertical;
 }
-
-.buttons {
+.form-container .buttons {
   display: flex;
   gap: 8px;
 }
-/* #endregion */
-
-
 
 /* 追加デザイン */
-/* カラー定義 */
-:root {
-  --green-base: #28a745;
-  --green-darker: #218838;
-  --green-lighter: #34c057;
+.form-container h4 {
+  margin: 0;
+  margin-bottom: 4px;
+  padding-left: 10px;
 }
-
-/* フォームの各要素を四角枠で囲む */
-.form-row {
-  border: 2px solid var(--green-base);
-  border-radius: 4px;
-  padding: 8px;
+.form-container h3 {
+  margin: 0;
   margin-bottom: 8px;
 }
-
-/* 勤務情報のリストの・をなくす */
-ul {
+.form-container ul,
+.form-container .form-content {
+  border-radius: 4px;
+  padding: 8px 10px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+.form-container ul {
   list-style-type: none;
   padding-left: 0;
 }
-
-/* 勤務情報と入力項目をもう少しギュッと集める */
-label {
-  width: 120px;
+.form-container ul li {
+  padding-left: 10px;
 }
-
-/* ボタンのデザインを目立つようにする */
-.buttons button {
+.form-container .buttons button {
   background-color: var(--green-base);
   border: none;
   color: white;
@@ -117,12 +112,10 @@ label {
   border-radius: 4px;
   transition: background-color 0.3s;
 }
-
-.buttons button:hover {
+.form-container .buttons button:hover {
   background-color: var(--green-darker);
 }
-
-.buttons button:focus {
+.form-container .buttons button:focus {
   background-color: var(--green-lighter);
   outline: none;
 }
