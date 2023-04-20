@@ -14,17 +14,17 @@ const stylesheets = [
   'https://heys45.github.io/SAUCEED/spot-css/schedule_form.css',
   'https://heys45.github.io/SAUCEED/spot-css/schedule_table.css',
 ];
-stylesheets.forEach((url) => loadStylesheet(url));
 
 
-// 教室用JS
-var stylesheets2 =[];
+
+// 教室用CSSの読み込み
 if(newData["ページタイプ"]="school"){
-stylesheets2 = [
+const stylesheets2 = [
   'https://heys45.github.io/SAUCEED/spot-css/school.css',
 ];
+stylesheets2.forEach((url) => loadStylesheet(url));
 }
-stylesheets.forEach((url) => loadStylesheet(url));
+
 
 
 // 外部JSの読み込みーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -46,13 +46,13 @@ const scripts = [
 scripts.forEach((url) => loadScript(url,2000));
 
 // 教室用JS
-var scripts2 =[];
+
 if(newData["ページタイプ"]="school"){
-scripts2 = [
+const scripts2 = [
   'https://heys45.github.io/SAUCEED/spot-js/school_top.js',
   'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
   'https://heys45.github.io/SAUCEED/spot-js/kintai_get.js',
   'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
 ];
-}
 scripts2.forEach((url) => loadScript(url,3000));
+}
