@@ -31,6 +31,7 @@ waitForProperties().then((propertiesContainer) => {
 
   // 教室ページ用のスタイルシートとスクリプトを読み込む
   if (newData["ページタイプ"] === "school") {
+    console.log("ページタイプ：school")
     const schoolStylesheets = [
       'https://heys45.github.io/SAUCEED/spot-css/school.css',
     ];
@@ -43,6 +44,8 @@ waitForProperties().then((propertiesContainer) => {
       'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
     ];
     schoolScripts.forEach(loadScript);
+  }else{
+    "ページタイプ：not-school"
   }
 });
 
