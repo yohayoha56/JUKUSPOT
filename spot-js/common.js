@@ -16,3 +16,4 @@ menuItems.forEach((menuItem) => {
     childMenu.style.display = childMenu.style.display === "block" ? "none" : "block";
   });
 });
+
