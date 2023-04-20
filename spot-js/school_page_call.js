@@ -3,7 +3,7 @@ const pages = [
   {
     id: 'top-menu',
     url: 'https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec',
-    callback: toppage_create
+    callback: top_create
   },
   {
     id: 'kintai-menu',
