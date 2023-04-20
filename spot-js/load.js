@@ -10,10 +10,10 @@ function waitForProperties() {
   });
 }
 
-var newData = "";
 
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
+  let newData = {};
   newData = extractProperties(propertiesContainer);
   console.log(newData)
   // 共通スタイルシートとスクリプトを読み込む
@@ -56,38 +56,36 @@ waitForProperties().then((propertiesContainer) => {
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
   const properties = Array.from(propertiesContainer.children);
-  return properties.map((property) => {
+
+  properties.forEach((property) => {
     const propertyElement = property.querySelector(".notion-page__property-name > span");
     const propertyName = propertyElement ? propertyElement.innerText : "";
     const propertyContent = property.querySelector(".notion-property");
-    // データがない場合「空」データを入れる。
-    if (!propertyContent) {
-      return {
-        name: propertyName,
-        data: ""
-      };
-    }
-    // データがある場合はプロパティに合わせてデータを取得
-    let propertyData;
-    if (propertyContent.classList.contains("notion-property__rollup")) {
-      propertyData = Array.from(propertyContent.children).map((child) => {
-        return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
-          (content) => content.innerText
-        );
-      });
-    } else if (propertyContent.classList.contains("notion-property__relation")) {
-      propertyData = Array.from(propertyContent.querySelectorAll(".notion-semantic-string > span")).map((relation) =>
-        relation.innerText.trim()
-      );
-    } else {
-      propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
-    }
 
-    return {
-      name: propertyName,
-      data: propertyData,
-    };
+    if (!propertyContent) {
+      newData[propertyName] = "";
+    } else {
+      let propertyData;
+
+      if (propertyContent.classList.contains("notion-property__rollup")) {
+        propertyData = Array.from(propertyContent.children).map((child) => {
+          return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
+            (content) => content.innerText
+          );
+        });
+      } else if (propertyContent.classList.contains("notion-property__relation")) {
+        propertyData = Array.from(propertyContent.querySelectorAll(".notion-semantic-string > span")).map((relation) =>
+          relation.innerText.trim()
+        );
+      } else {
+        propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
+      }
+
+      newData[propertyName] = propertyData;
+    }
   });
+
+  return newData;
 }
 
 
