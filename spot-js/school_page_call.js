@@ -18,27 +18,16 @@ const pages = [
     callback: profile_create
   }
 ];
-
-
 // 各ページにイベントリスナーを追加
 pages.forEach(addEventListeners);
 
 
-// イベントリスナーを追加する関数
-function addEventListeners(page) {
-  const selector = page.childClass ? `#${page.id} .${page.childClass} li` : `#${page.id}`;
-  const liElements = document.querySelectorAll(selector);
-
-  liElements.forEach(li => {
-    li.addEventListener('click', (e) => school_fetchData(e, page.url, page.callback));
-  });
-}
-
 // GASを起動するためのスクリプト
-function school_fetchData(e, url, callback) {
-  teacherId = e.target.getAttribute('会員ID');
-  ouboId = e.target.getAttribute('応募ID');
-  schoolId =
+function school_fetchData(url, callback, teacherId = null, ouboId = null, schoolId = null, e = null) {
+  if (e) {
+    teacherId = e.target.getAttribute('会員ID');
+    ouboId = e.target.getAttribute('応募ID');
+  }
 
   fetch(url, {
     method: 'POST',
@@ -48,7 +37,7 @@ function school_fetchData(e, url, callback) {
     body: JSON.stringify({
       "講師ID": teacherId,
       "応募ID": ouboId,
-      "教室ID": newData["教室ID"]
+      "教室ID": schoolId
     }),
     mode: 'cors',
   })
@@ -57,11 +46,20 @@ function school_fetchData(e, url, callback) {
     var target = document.getElementById("page-content");
     target.innerHTML = data;
 
-  // callback関数を実行
-  if (typeof callback === 'function') {
-    callback();
-  }
+    // callback関数を実行
+    if (typeof callback === 'function') {
+      callback();
+    }
   });
-
-
 }
+
+// イベントリスナーを追加する関数
+function addEventListeners(page) {
+  const selector = page.childClass ? `#${page.id} .${page.childClass} li` : `#${page.id}`;
+  const liElements = document.querySelectorAll(selector);
+
+  liElements.forEach(li => {
+    li.addEventListener('click', (e) => school_fetchData(page.url, page.callback, null, null, null, e));
+  });
+}
+
