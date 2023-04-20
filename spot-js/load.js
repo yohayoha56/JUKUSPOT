@@ -17,7 +17,7 @@ stylesheets.forEach((url) => loadStylesheet(url));
 
 
 // 外部JSの読み込み
-function loadScript(url, delay = 2000) {
+function loadScript(url, delay) {
   setTimeout(() => {
     var script = document.createElement('script');
     script.defer = true;
@@ -25,12 +25,21 @@ function loadScript(url, delay = 2000) {
     document.body.appendChild(script);
   }, delay);
 }
+
 const scripts = [
   'https://heys45.github.io/SAUCEED/spot-js/common.js',
   'https://heys45.github.io/SAUCEED/spot-js/debug.js',
+];
+
+scripts.forEach((url) => loadScript(url,2000));
+
+const scripts2 =[];
+if(newData["ページタイプ"]="school"){
+scripts2 = [
   'https://heys45.github.io/SAUCEED/spot-js/school_top.js',
   'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
   'https://heys45.github.io/SAUCEED/spot-js/kintai_get.js',
   'https://heys45.github.io/SAUCEED/spot-js/form_control.js',
 ];
-scripts.forEach((url) => loadScript(url));
+}
+scripts2.forEach((url) => loadScript(url,3000));
