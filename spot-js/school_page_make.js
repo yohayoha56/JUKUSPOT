@@ -203,7 +203,8 @@ async function handleSubmit(event) {
 }
 
 
-
+function kintai_create() { };
+function profile_create() { };
 
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_create() {
