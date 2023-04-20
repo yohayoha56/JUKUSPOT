@@ -14,36 +14,6 @@
 </head>
 <body>
 
-<!-- 開発用 -->
-<!-- <p id="last-updated"></p>
-<script>
-    // ページの最終更新日時を取得
-    const lastUpdated = new Date(document.lastModified);
-
-    // 現在の日時を取得
-    const now = new Date();
-
-    // 日時のフォーマットを設定
-    const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: false
-    };
-
-    // 最終更新日時と現在日時を比較して表示
-    if (lastUpdated.getTime() === 0) {
-    document.getElementById("last-updated").innerHTML = "このページは更新されていません。";
-    } else if (lastUpdated.getTime() === now.getTime()) {
-    document.getElementById("last-updated").innerHTML = "このページは現在更新されています。";
-    } else if (lastUpdated < now) {
-    document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
-    }
-</script> -->
-
 <!-- ここからSuperに貼り付けるーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->
 
 
@@ -197,18 +167,6 @@
 
 <!-- カスタム表示位置の設定 -->
 <script src="https://heys45.github.io/SAUCEED/spot-js/load.js"></script>
-
-<script>
-    var A = document.getElementsByClassName("content-area")[0];
-    var B = document.getElementsByClassName("super-navbar")[0];
-
-    if (A && B && B.parentNode) {
-    B.parentNode.insertBefore(A, B.nextSibling);
-    A.style.display="flex"
-    B.style["margin-bottom"]="0"
-    }
-</script>
-
 
 
 <!-- ここまでSuperに貼り付けるーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー -->

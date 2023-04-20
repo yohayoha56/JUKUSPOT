@@ -1,3 +1,7 @@
+var A = document.getElementsByClassName("content-area")[0];
+var B = document.getElementsByClassName("super-navbar")[0];
+B.after(A)
+
 // サイドメニューのコントロールスクリプト
 const menuItems = document.querySelectorAll(".group-menu");
 
