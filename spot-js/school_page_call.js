@@ -24,12 +24,19 @@ pages.forEach(addEventListeners);
 
 // GASを起動するためのスクリプト
 function school_fetchData(url, callback, teacherId = null, ouboId = null, schoolId = null, e = null) {
-  if (e) {
+
+  if (newData["ページタイプ"] === "school") {
+    schoolId=newData["教室ID"]
+    if (e) {
     teacherId = e.target.getAttribute('会員ID');
-    ouboId = e.target.getAttribute('応募ID');
+    }
+  }else{
+    teacherId = newData["会員ID"];
+    if (e) {
+    teacherId = e.target.getAttribute('教室ID');
+    }
   }
 
-  schoolId=newData["教室ID"]
 
   fetch(url, {
     method: 'POST',
@@ -38,7 +45,6 @@ function school_fetchData(url, callback, teacherId = null, ouboId = null, school
     },
     body: JSON.stringify({
       "講師ID": teacherId,
-      "応募ID": ouboId,
       "教室ID": schoolId
     }),
     mode: 'cors',
