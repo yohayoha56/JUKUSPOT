@@ -32,6 +32,7 @@ reportedRows.forEach(row => {
             <input type="hidden" name="working_day" value="${date}">
             <input type="hidden" name="teacher_name" value="${teacher}">
             <input type="hidden" name="classroom_name" value="教室名">
+            <input type="hidden" name="old_remarks" value="${remarks}">
             <input type="hidden" name="attendance_status" value="教室承認済み">
             <h4>↓勤務時間に変更があった場合には入力してください</h4>
             <!-- 勤務開始時間 -->
@@ -127,7 +128,7 @@ const handleSubmit = async (event) => {
     }
     // 更新用キー要素
     data["勤務日"] = data["working_day"]
-    data["教室ID"] = newData("教室ID");
+    data["教室名"] = newData("教室名");
     data["講師名"] = data["teacher_name"]
     data["勤怠ステータス"] = data["attendance_status"]
 
@@ -148,7 +149,7 @@ const handleSubmit = async (event) => {
     if(data["勤怠ステータス"] =="退勤報告済み"){
         remarks_label = "退勤報告時[from:講師]\n";
         if(data["勤務開始時間"]!="--"){
-        remarks_label ="退勤報告時[from:講師]\n【勤務時間の変更申請】あり\n勤務時間："+data["勤務開始時間"]+"~"+data["勤務終了時間"] +"｜休憩時間："+data["休憩時間"]+\n;
+        remarks_label =data["old_remarks"]+"退勤報告時[from:講師]\n【勤務時間の変更申請】あり\n勤務時間："+data["勤務開始時間"]+"~"+data["勤務終了時間"] +"｜休憩時間："+data["休憩時間"]+\n;
         }
     }
     // 承認時のプロパティ変更ーーーーーーーーーーーーーーーーーーーーーーー
@@ -164,7 +165,7 @@ const handleSubmit = async (event) => {
 
     // データ送信処理ーーーーーーーーーーーーーーーーーーーーーーーーーーー
     console.log(data);
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbznZnFWKCGKkyWVdGF-G_1H7msAfozU4voXv4jM63GLfifPIzw1BQ96y-OxUI88pcdj/exec", {
         method: 'POST',
         headers: {
         'Content-Type': 'text/plain',
