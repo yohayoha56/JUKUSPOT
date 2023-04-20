@@ -241,7 +241,6 @@ async function handleSubmit(event) {
             element.style.backgroundColor = '';
             element.disabled = false;
         });
-
     }
 };
 
