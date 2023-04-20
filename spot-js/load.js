@@ -18,7 +18,7 @@ stylesheets.forEach((url) => loadStylesheet(url));
 
 
 // 教室用JS
-const stylesheets2 =[];
+var stylesheets2 =[];
 if(newData["ページタイプ"]="school"){
 stylesheets2 = [
   'https://heys45.github.io/SAUCEED/spot-css/school.css',
@@ -46,7 +46,7 @@ const scripts = [
 scripts.forEach((url) => loadScript(url,2000));
 
 // 教室用JS
-const scripts2 =[];
+var scripts2 =[];
 if(newData["ページタイプ"]="school"){
 scripts2 = [
   'https://heys45.github.io/SAUCEED/spot-js/school_top.js',
