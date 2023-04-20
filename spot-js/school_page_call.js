@@ -29,6 +29,8 @@ function school_fetchData(url, callback, teacherId = null, ouboId = null, school
     ouboId = e.target.getAttribute('応募ID');
   }
 
+  schoolId=newData["教室ID"]
+
   fetch(url, {
     method: 'POST',
     headers: {
