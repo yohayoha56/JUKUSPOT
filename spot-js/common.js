@@ -21,9 +21,7 @@ if (pageType === 'school') {
   elements = [newData['教室名一覧']];
   label="教室id";
   ids = [newData['教室ID一覧']];
-} else {
-  return;
-}
+} 
 
 childMenus.forEach(menu => {
   elements.forEach((element, index) => {
