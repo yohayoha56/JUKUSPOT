@@ -45,7 +45,7 @@ waitForProperties().then((propertiesContainer) => {
     ];
     schoolScripts.forEach(loadScript);
   }else{
-    "ページタイプ：not-school"
+    console.log("ページタイプ：not-school")
   }
 });
 
