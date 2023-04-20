@@ -236,7 +236,7 @@ function generateFormTemplate(row) {
             //3秒後にページの読み直しを行う。
             setTimeout(() => {
                 var url = 'https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec';
-                school_fetchData(, top_create, teacherId, ouboId, schoolId);
+                school_fetchData(url, top_create, teacherId, ouboId, schoolId);
             }, 3000);
         } else {
             console.error(`エラーメッセージ: ${text}`);
