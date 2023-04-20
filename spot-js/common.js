@@ -1,6 +1,10 @@
 var A = document.getElementsByClassName("content-area")[0];
 var B = document.getElementsByClassName("super-navbar")[0];
-B.after(A)
+B.after(A);
+A.style["margin-top"]=0;
+A.style["visibility"]="visible";
+
+
 
 // サイドメニューのコントロールスクリプト
 const menuItems = document.querySelectorAll(".group-menu");
