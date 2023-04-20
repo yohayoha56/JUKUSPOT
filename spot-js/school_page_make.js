@@ -149,7 +149,7 @@ const handleSubmit = async (event) => {
     if(data["勤怠ステータス"] =="退勤報告済み"){
         remarks_label = "退勤報告時[from:講師]\n";
         if(data["勤務開始時間"]!="--"){
-        remarks_label =data["old_remarks"]+"退勤報告時[from:講師]\n【勤務時間の変更申請】あり\n勤務時間："+data["勤務開始時間"]+"~"+data["勤務終了時間"] +"｜休憩時間："+data["休憩時間"]+\n;
+        remarks_label =data["old_remarks"]+"退勤報告時[from:講師]\n【勤務時間の変更申請】あり\n勤務時間："+data["勤務開始時間"]+"~"+data["勤務終了時間"] +"｜休憩時間："+data["休憩時間"]+"\n";
         }
     }
     // 承認時のプロパティ変更ーーーーーーーーーーーーーーーーーーーーーーー
