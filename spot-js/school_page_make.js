@@ -1,5 +1,5 @@
-function kintai_create(){}
-function profile_create(){}
+function kintai_create(){};
+function profile_create(){};
 
 function top_create(){
     const table = document.getElementById('fixed-table');
@@ -116,8 +116,6 @@ formsContainer.insertAdjacentHTML('beforeend', formTemplate);
     addOptions(breakTime, 0, 120, 10);
 
 };
-
-
 
 // フォームの送信をハンドルする関数
 const handleSubmit = async (event) => {
