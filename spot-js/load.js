@@ -1,4 +1,5 @@
-// 外部CSSの読み込み
+// 外部CSSの読み込みーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
 function loadStylesheet(url) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -16,7 +17,17 @@ const stylesheets = [
 stylesheets.forEach((url) => loadStylesheet(url));
 
 
-// 外部JSの読み込み
+// 教室用JS
+const stylesheets2 =[];
+if(newData["ページタイプ"]="school"){
+stylesheets2 = [
+  'https://heys45.github.io/SAUCEED/spot-css/school.css',
+];
+}
+stylesheets.forEach((url) => loadStylesheet(url));
+
+
+// 外部JSの読み込みーーーーーーーーーーーーーーーーーーーーーーーーーーー
 function loadScript(url, delay) {
   setTimeout(() => {
     var script = document.createElement('script');
@@ -26,6 +37,7 @@ function loadScript(url, delay) {
   }, delay);
 }
 
+// 共通JS
 const scripts = [
   'https://heys45.github.io/SAUCEED/spot-js/common.js',
   'https://heys45.github.io/SAUCEED/spot-js/debug.js',
@@ -33,6 +45,7 @@ const scripts = [
 
 scripts.forEach((url) => loadScript(url,2000));
 
+// 教室用JS
 const scripts2 =[];
 if(newData["ページタイプ"]="school"){
 scripts2 = [
