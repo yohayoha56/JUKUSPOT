@@ -13,7 +13,7 @@ function waitForProperties() {
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   const newData = extractProperties(propertiesContainer);
-
+  console.log(newData)
   // 共通スタイルシートとスクリプトを読み込む
   const commonStylesheets = [
     'https://heys45.github.io/SAUCEED/spot-css/progressbar.css',
@@ -83,6 +83,7 @@ function extractProperties(propertiesContainer) {
     };
   });
 }
+
 
 // ここからはCSSとJSを読み込むためのスクリプトーーーーーーーーーーーーーーーーーーーーー
 // 外部CSSの読み込み
