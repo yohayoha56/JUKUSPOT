@@ -48,13 +48,19 @@ menuData.forEach((menuItemData) => {
 
     // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
     const childElementsData = [
-      ...(newData["ページタイプ"] === "school" ? [
-          { elements: newData["講師名一覧"], label: "会員ID", ids: newData["講師ID一覧"] }
-          ]
+      ...(newData["ページタイプ"] === "school"
+        ? newData["講師名一覧"].map((element, index) => ({
+            elements: element,
+            label: "会員ID",
+            ids: newData["講師ID一覧"][index],
+          }))
         : []),
-      ...(newData["ページタイプ"] === "teacher" ? [
-          { elements: newData["教室名一覧"], label: "教室ID", ids: newData["教室ID一覧"] },
-          ]
+      ...(newData["ページタイプ"] === "teacher"
+        ? newData["教室名一覧"].map((element, index) => ({
+            elements: element,
+            label: "教室ID",
+            ids: newData["教室ID一覧"][index],
+          }))
         : []),
     ];
 
