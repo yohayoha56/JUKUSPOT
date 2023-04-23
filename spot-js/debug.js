@@ -14,7 +14,6 @@
     'spot-js/load.js',
     'spot-js/schedule_get.js',
     'spot-js/page_make.js',
-    'spot-js/page_call.js',
     'spot-css/page_frame.css',
     'spot-css/progressbar.css',
     'spot-css/schedule_form.css',

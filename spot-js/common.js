@@ -43,10 +43,10 @@ menuData.forEach((menuItemData) => {
     // 小要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     const childElementsData = [
       ...(newData["ページタイプ"] === "school" ? [
-        elements = newData['講師名一覧'], label="会員id", ids = newData['講師ID一覧'],
+        elements = newData['講師名一覧'], label="会員ID", ids = newData['講師ID一覧'],
       ]:[]),
       ...(newData["ページタイプ"] === "school" ? [
-      elements = newData['教室名一覧'], label="教室id", ids = newData['教室ID一覧'],
+      elements = newData['教室名一覧'], label="教室ID", ids = newData['教室ID一覧'],
       ]:[]),
     ];
 
@@ -109,8 +109,8 @@ function call_fetchData(page_call_property) {
       'Content-Type': 'text/plain',
     },
     body: JSON.stringify({
-      "講師ID": page_call_property["講師id"],
-      "教室ID": page_call_property["教室id"]
+      "講師ID": page_call_property["講師ID"],
+      "教室ID": page_call_property["教室ID"]
     }),
     mode: 'cors',
   })
