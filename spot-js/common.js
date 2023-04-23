@@ -43,7 +43,6 @@ menuData.forEach((menuItemData) => {
     menuItem.appendChild(childMenu);
 
     menuTitle.addEventListener("click", () => {
-      const childMenu = menuItem.nextElementSibling;
       pulldown(childMenu);
     });
 
