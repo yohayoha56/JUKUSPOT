@@ -51,11 +51,13 @@ menuData.forEach((menuItemData) => {
     // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
     const childElementsData = [
       ...(newData["ページタイプ"] === "school" ? [
-        elements = newData['講師名一覧'], label="会員ID", ids = newData['講師ID一覧'],
-      ]:[]),
-      ...(newData["ページタイプ"] === "school" ? [
-      elements = newData['教室名一覧'], label="教室ID", ids = newData['教室ID一覧'],
-      ]:[]),
+            { elements: newData["講師名一覧"], label: "会員ID", ids: newData["講師ID一覧"] }
+          ]
+        : []),
+      ...(newData["ページタイプ"] === "teacher" ? [
+          { elements: newData["教室名一覧"], label: "教室ID", ids: newData["教室ID一覧"] },
+          ]
+        : []),
     ];
 
     // 小要素の作成、アドイベントリスナーの設定を行うーーーーーーーーーーー
