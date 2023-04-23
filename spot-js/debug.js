@@ -1,4 +1,4 @@
-var target =document.getElementsByClassName("")
+
 
   // デバッグページにおけるビュー調整
   document.getElementsByClassName("super-content-wrapper")[0].style.display="block";
