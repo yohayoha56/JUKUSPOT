@@ -84,7 +84,10 @@ menuData.forEach((menuItemData) => {
 });
 
 function pulldown(childMenu){
-  document.querySelectorAll(".menu-item").style.display="none";
+  var target = document.querySelectorAll(".menu-item");
+  target.forEach(element => {
+    element.style.display="none";
+  });
   childMenu.style.display="block"
 }
 
