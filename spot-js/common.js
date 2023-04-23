@@ -1,3 +1,4 @@
+// カスタムコードの表示を許可する
 var A = document.getElementsByClassName("content-area")[0];
 var B = document.getElementsByClassName("super-navbar")[0];
 B.after(A);
@@ -5,9 +6,9 @@ A.style["margin-top"]=0;
 A.style["visibility"]="visible";
 
 
-
 // サイドメニュー作成スクリプト
-const childMenus = document.querySelectorAll('.child-menu');
+var childMenus = document.querySelectorAll('.child-menu');
+var childMenus = Array.from(childMenus).slice(1);
 childMenus.forEach(menu => menu.innerHTML = '');
 
 const pageType = newData['ページタイプ'];
