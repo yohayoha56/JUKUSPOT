@@ -44,7 +44,7 @@ menuData.forEach((menuItemData) => {
 
     menuTitle.addEventListener("click", () => {
       const childMenu = menuItem.nextElementSibling;
-      querySelectorAll(".menu-item").style.display="none";
+      document.querySelectorAll(".menu-item").style.display="none";
       childMenu.style.display="block"
     });
 
