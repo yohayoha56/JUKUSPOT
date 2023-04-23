@@ -35,12 +35,20 @@ menuData.forEach((menuItemData) => {
   menuTitle.textContent = menuItemData.title;
   menuItem.appendChild(menuTitle);
 
+
+  // 小要素があるリストの設定（プルダウン機能を設定する）ーーーーーーーーー
   if (menuItemData.hasChildElements) {
     const childMenu = document.createElement("ul");
     childMenu.classList.add("child-menu");
     menuItem.appendChild(childMenu);
 
-    // 小要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    menuTitle.addEventListener("click", () => {
+      const childMenu = menuItem.nextElementSibling;
+      querySelectorAll(".menu-item").style.display="none";
+      childMenu.style.display="block"
+    });
+
+    // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
     const childElementsData = [
       ...(newData["ページタイプ"] === "school" ? [
         elements = newData['講師名一覧'], label="会員ID", ids = newData['講師ID一覧'],
@@ -50,12 +58,10 @@ menuData.forEach((menuItemData) => {
       ]:[]),
     ];
 
-    // ここから子要素のliを作成していく
+    // 小要素の作成、アドイベントリスナーの設定を行うーーーーーーーーーーー
     childElementsData.forEach((childElementData) => {
       const childElement = document.createElement("li");
       childElement.textContent = childElementData.elements;
-
-      // 小要素にアドイベントリスナーを追加
       childElement.addEventListener("click", (e) => {
         page_call_property["url"]= menuItemData.url;
         page_call_property["callback"] = menuItemData.callback;
@@ -65,6 +71,7 @@ menuData.forEach((menuItemData) => {
       childMenu.appendChild(childElement);
     });
   }else{
+  // 親要素のみの場合を設定
     menuTitle.addEventListener("click", (e) => {
       page_call_property["url"]= menuItemData.url;
       page_call_property["callback"] = menuItemData.callback;
@@ -72,33 +79,7 @@ menuData.forEach((menuItemData) => {
     });
   }
   menu.appendChild(menuItem);
-
-  // サイドメニューのプルダウンを設定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  const menuItems = document.querySelectorAll(".group-menu .menu-item");
-  menuItems.forEach(menuItem => {
-    menuItem.addEventListener("click", () => {
-      const childMenu = menuItem.nextElementSibling;
-      if (!childMenu || !childMenu.classList.contains("child-menu")) {
-        return;
-      }
-
-      // 他の子メニューを閉じる
-      menuItems.forEach((otherMenuItem) => {
-        const otherChildMenu = otherMenuItem.nextElementSibling;
-        if (!otherChildMenu || !otherChildMenu.classList.contains("child-menu")) {
-          return;
-        }
-        if (otherMenuItem !== menuItem) {
-          otherChildMenu.style.display = "none";
-        }
-      });
-
-      // クリックされた子メニューの表示状態を切り替える
-      childMenu.style.display = childMenu.style.display === "block" ? "none" : "block";
-    });
-  });
 });
-
 
 
 // GASを起動するためのスクリプト
