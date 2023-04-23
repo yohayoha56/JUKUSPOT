@@ -1,8 +1,8 @@
-function kintai_create() {};
-function profile_create() {};
+function kintai_page() {};
+function profile_page() {};
 
 // トップページのGASレスポンスを受け取った後に行う処理。
-function top_create() {
+function top_page() {
 
 // 勤怠ステータスが "退勤報告済み" のデータ取得＆フォーム挿入位置を指定ーーーーーーーーー
 const table = document.getElementById('fixed-table');
