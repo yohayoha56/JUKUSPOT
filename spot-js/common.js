@@ -10,6 +10,7 @@ A.style["visibility"]="visible";
 const page_call_property={
   url: 'https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec',
   callback: top_page,
+  教室ID: newData["教室ID"]
 }
 call_fetchData(page_call_property);
 
