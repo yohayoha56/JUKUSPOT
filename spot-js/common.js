@@ -44,8 +44,7 @@ menuData.forEach((menuItemData) => {
 
     menuTitle.addEventListener("click", () => {
       const childMenu = menuItem.nextElementSibling;
-      document.querySelectorAll(".menu-item").style.display="none";
-      childMenu.style.display="block"
+      pulldown(childMenu);
     });
 
     // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
@@ -81,7 +80,14 @@ menuData.forEach((menuItemData) => {
     });
   }
   menu.appendChild(menuItem);
+
 });
+
+function pulldown(childMenu){
+  document.querySelectorAll(".menu-item").style.display="none";
+  childMenu.style.display="block"
+}
+
 
 
 // GASを起動するためのスクリプト
