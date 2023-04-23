@@ -1,6 +1,6 @@
 function kintai_page() {};
 function profile_page() {};
-
+function shift_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 
