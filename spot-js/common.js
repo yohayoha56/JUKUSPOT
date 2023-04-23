@@ -51,7 +51,7 @@ menuData.forEach((menuItemData) => {
     // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
     const childElementsData = [
       ...(newData["ページタイプ"] === "school" ? [
-            { elements: newData["講師名一覧"], label: "会員ID", ids: newData["講師ID一覧"] }
+          { elements: newData["講師名一覧"], label: "会員ID", ids: newData["講師ID一覧"] }
           ]
         : []),
       ...(newData["ページタイプ"] === "teacher" ? [
