@@ -21,33 +21,6 @@
 
     <div class="side-bar">
         <ul class="menu">
-        <li class="group-menu">
-            <div class="menu-item" id="top-menu">トップページ<ul class="child-menu"></ul></div>
-        </li>
-        <li class="group-menu" id="shift-menu">
-            <div class="menu-item">シフト依頼ページ</div>
-            <ul class="child-menu">
-            <li 会員ID="999999" 応募ID="999999">原口テスト✖︎ダミー教室</li>
-            <li 会員ID="1046758" 応募ID="599628">講師B</li>
-            <li 会員ID="1046758" 応募ID="599628">講師C</li>
-            </ul>
-        </li>
-        <li class="group-menu" id="kintai-menu">
-            <div class="menu-item">勤怠確認ページ</div>
-            <ul class="child-menu">
-            <li 会員ID="999999" 応募ID="999999">原口テスト✖︎ダミー教室</li>
-            <li 会員ID="1051637" 応募ID="590238">古橋先生</li>
-            <li>講師C</li>
-            </ul>
-        </li>
-        <li class="group-menu" id="profile-menu">
-            <div class="menu-item">講師プロフィール</div>
-            <ul class="child-menu">
-                <li 会員ID="999999" 応募ID="999999">原口テスト✖︎ダミー教室</li>
-                <li>講師B</li>
-            <li>講師C</li>
-            </ul>
-        </li>
         </ul>
         <p id="latest-update"></p>
     </div>
@@ -135,32 +108,6 @@
             </form>
         </div>
     </div>
-    <!-- フォームオプション作成スクリプト -->
-    <script>
-        function addOptions(selectElement, start, end, step) {
-            for (let i = start; i <= end; i += step) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = i;
-                selectElement.appendChild(option);
-            }
-        }
-        // 勤務開始時間 (時)
-        const startHour = document.getElementById('start_hour');
-        addOptions(startHour, 8, 22, 1);
-        // 勤務開始時間 (分)
-        const startMinute = document.getElementById('start_minute');
-        addOptions(startMinute, 0, 50, 10);
-        // 勤務終了時間 (時)
-        const endHour = document.getElementById('end_hour');
-        addOptions(endHour, 8, 22, 1);
-        // 勤務終了時間 (分)
-        const endMinute = document.getElementById('end_minute');
-        addOptions(endMinute, 0, 50, 10);
-        // 休憩時間
-        const breakTime = document.getElementById('break_time');
-        addOptions(breakTime, 0, 120, 10);
-    </script>
 
 </div>
 
