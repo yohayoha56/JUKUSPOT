@@ -63,6 +63,7 @@ menuData.forEach((menuItemData) => {
           }))
         : []),
     ];
+    console.log(childElementsData)
 
     // 小要素の作成、アドイベントリスナーの設定を行うーーーーーーーーーーー
     childElementsData.forEach((childElementData) => {
