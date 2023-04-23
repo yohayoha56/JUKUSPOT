@@ -17,15 +17,13 @@ waitForProperties().then((propertiesContainer) => {
       'https://heys45.github.io/SAUCEED/spot-css/school.css',
     ] : []),
     ...(urlFound ? [//デバッグページの場合には読み込む
-      'https://heys45.github.io/SAUCEED/spot-css/debug.css',
     ] : [])
   ];
   
   // 外部スクリプトの読み込み設定②
   const scripts = [
-    'https://heys45.github.io/SAUCEED/spot-js/common.js',
     'https://heys45.github.io/SAUCEED/spot-js/page_make.js',
-    'https://heys45.github.io/SAUCEED/spot-js/page_call.js',
+    'https://heys45.github.io/SAUCEED/spot-js/common.js',
     ...(newData["ページタイプ"] === "school" ? [
       'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
     ] : []),
