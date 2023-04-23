@@ -61,11 +61,11 @@ menuData.forEach((menuItemData) => {
     // 小要素の作成、アドイベントリスナーの設定を行うーーーーーーーーーーー
     childElementsData.forEach((childElementData) => {
       const childElement = document.createElement("li");
-      childElement.textContent = childElementData.elements;
+      childElement.textContent = childElementData["elements"];
       childElement.addEventListener("click", (e) => {
         page_call_property["url"]= menuItemData.url;
         page_call_property["callback"] = menuItemData.callback;
-        page_call_property[childElementData.label] =childElementData.id;
+        page_call_property[childElementData["label"]] =childElementData["ids"];
         call_fetchData(page_call_property);
       });
       childMenu.appendChild(childElement);
