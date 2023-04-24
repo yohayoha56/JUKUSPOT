@@ -64,13 +64,13 @@ function extractProperties(propertiesContainer) {
       let propertyData; 
 
       if (propertyContent.classList.contains("notion-property__rollup")) {
-        propertyData = Array.from(propertyContent.children).map((child) => {
+        propertyData = Array.from(propertyContent.children).flatMap((child) => {
           // ロールアップの子要素がタイトルの場合
           if (child.classList.contains("notion-property")) {
             return Array.from(child.querySelectorAll(".notion-semantic-string .notion-semantic-string > span")).map(
               (content) => content.innerText
             );
-          // ロールアップの子要素がタイトル以外の場合？
+          // ロールアップの子要素がタイトル以外の場合
           } else {
             return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
               (content) => content.innerText
