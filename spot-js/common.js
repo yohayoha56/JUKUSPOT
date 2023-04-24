@@ -73,6 +73,7 @@ menuData.forEach((menuItemData) => {
         page_call_property["url"]= menuItemData.url;
         page_call_property["callback"] = menuItemData.callback;
         page_call_property[childElementData["label"]] =childElementData["ids"];
+        page_call_property["講師名"]=childElementData["elements"];
         call_fetchData(page_call_property);
       });
       childMenu.appendChild(childElement);
@@ -113,7 +114,8 @@ function call_fetchData(page_call_property) {
     },
     body: JSON.stringify({
       "会員ID": page_call_property["会員ID"],
-      "教室ID": page_call_property["教室ID"]
+      "教室ID": page_call_property["教室ID"],
+      "講師名": page_call_property["講師名"],
     }),
     mode: 'cors',
   })
