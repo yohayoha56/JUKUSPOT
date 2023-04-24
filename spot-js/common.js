@@ -112,7 +112,7 @@ function call_fetchData(page_call_property) {
       'Content-Type': 'text/plain',
     },
     body: JSON.stringify({
-      "講師ID": page_call_property["講師ID"],
+      "会員ID": page_call_property["会員ID"],
       "教室ID": page_call_property["教室ID"]
     }),
     mode: 'cors',
