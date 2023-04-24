@@ -6,15 +6,20 @@ A.style["margin-top"]=0;
 A.style["visibility"]="visible";
 
 
+// トップページの呼び出しーーーーーーーーーーーーーーーーーーーーーーーー
 
 const page_call_property={
   url: 'https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec',
   callback: top_page,
-  教室ID: newData["教室ID"]
+}
+if(newData["ページタイプ"] === "school"){
+  page_call_property["教室ID"]=newData["教室ID"]
+}else(newData["ページタイプ"] === "teacher"){
+  page_call_property["会員ID"]=newData["会員ID"]
 }
 call_fetchData(page_call_property);
 
-// サイドメニュー作成スクリプトーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
 const menuData = [
   // ページ設定
   { id: "top-menu", title: "トップページ", hasChildElements: false, callback: top_page, url: 'https://script.google.com/macros/s/AKfycby3NXLDwulCHtHIoZJD_1ok5DkZy9x8A2EV-2D9psdnFghRLbbUbs0PF5qkzqK1JZrD/exec' },
@@ -23,89 +28,7 @@ const menuData = [
   { id: "profile-menu", title: "講師プロフィール", hasChildElements: true, callback: profile_page, url: 'https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec' },
 ];
 
-const menu = document.querySelector(".menu");
-menuData.forEach((menuItemData) => {
-  // テンプレメニューの制作ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  const menuItem = document.createElement("li");
-  menuItem.classList.add("group-menu");
-  menuItem.id = menuItemData.id;
-
-  const menuTitle = document.createElement("div");
-  menuTitle.classList.add("menu-item");
-  menuTitle.textContent = menuItemData.title;
-  menuItem.appendChild(menuTitle);
-
-
-  // 小要素があるリストの設定（プルダウン機能を設定する）ーーーーーーーーー
-  if (menuItemData.hasChildElements) {
-    const childMenu = document.createElement("ul");
-    childMenu.classList.add("child-menu");
-    menuItem.appendChild(childMenu);
-
-    menuTitle.addEventListener("click", () => {
-      pulldown(childMenu);
-    });
-
-    // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
-    const childElementsData = [
-      ...(newData["ページタイプ"] === "school"
-        ? newData["講師名一覧"].map((element, index) => ({
-            elements: element,
-            label: "会員ID",
-            ids: newData["講師ID一覧"][index],
-          }))
-        : []),
-      ...(newData["ページタイプ"] === "teacher"
-        ? newData["教室名一覧"].map((element, index) => ({
-            elements: element,
-            label: "教室ID",
-            ids: newData["教室ID一覧"][index],
-          }))
-        : []),
-    ];
-    console.log(childElementsData)
-
-    // 小要素の作成、アドイベントリスナーの設定を行うーーーーーーーーーーー
-    childElementsData.forEach((childElementData) => {
-      const childElement = document.createElement("li");
-      childElement.textContent = childElementData["elements"];
-      childElement.addEventListener("click", (e) => {
-        page_call_property["url"]= menuItemData.url;
-        page_call_property["callback"] = menuItemData.callback;
-        page_call_property[childElementData["label"]] =childElementData["ids"];
-        page_call_property["講師名"]=childElementData["elements"];
-        call_fetchData(page_call_property);
-      });
-      childMenu.appendChild(childElement);
-    });
-  }else{
-  // 親要素のみの場合を設定
-    menuTitle.addEventListener("click", (e) => {
-      page_call_property["url"]= menuItemData.url;
-      page_call_property["callback"] = menuItemData.callback;
-      call_fetchData(page_call_property);
-    });
-    menuTitle.addEventListener("click", () => {
-      pulldown();
-    });
-  }
-  menu.appendChild(menuItem);
-
-});
-
-function pulldown(childMenu){
-  var target = document.querySelectorAll(".child-menu");
-  target.forEach(element => {
-    element.style.display="none";
-  });
-  if(childMenu !=null){
-    childMenu.style.display="block"
-  }
-}
-
-
-
-// GASを起動するためのスクリプト
+// GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
   fetch(page_call_property["url"], {
     method: 'POST',
@@ -129,4 +52,96 @@ if (typeof page_call_property["callback"] === 'function') {
   page_call_property["callback"]();
 }
 });
+}
+
+
+
+
+
+
+
+
+
+
+// ここからサイドメニューの作成スクリプト
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+const menu = document.querySelector(".menu");
+menuData.forEach((menuItemData) => {
+  // メニューの大枠を作成ーーーーーーーーーーーーーーーーーーーーーーー
+  const menuItem = document.createElement("li");
+  menuItem.classList.add("group-menu");
+  menuItem.id = menuItemData.id;
+
+  const menuTitle = document.createElement("div");
+  menuTitle.classList.add("menu-item");
+  menuTitle.textContent = menuItemData.title;
+  menuItem.appendChild(menuTitle);
+
+  // 小要素があるメニューーーーーーーーーーーーーーーーーーーーーーーー
+  if (menuItemData.hasChildElements) {
+    const childMenu = document.createElement("ul");
+    childMenu.classList.add("child-menu");
+    menuItem.appendChild(childMenu);
+
+    menuTitle.addEventListener("click", () => {
+      pulldown(childMenu);
+    });
+
+    // 子要素のプロパティ配列を準備するーーーーーーーーーーーーーーーーーー
+    const childElementsData = [
+      ...(newData["ページタイプ"] === "school"
+        ? newData["講師名一覧"].map((element, index) => ({
+            label2:"講師名",
+            elements: element,
+            label: "会員ID",
+            ids: newData["講師ID一覧"][index],
+          }))
+        : []),
+      ...(newData["ページタイプ"] === "teacher"
+        ? newData["教室名一覧"].map((element, index) => ({
+            label2:"教室名",
+            elements: element,
+            label: "教室ID",
+            ids: newData["教室ID一覧"][index],
+          }))
+        : []),
+    ];
+    console.log(childElementsData)
+
+    // 小要素の作成、アドイベントリスナーの設定を行うーーーーーーーーーーー
+    childElementsData.forEach((childElementData) => {
+      const childElement = document.createElement("li");
+      childElement.textContent = childElementData["elements"];
+      childElement.addEventListener("click", (e) => {
+        page_call_property["url"]= menuItemData.url;
+        page_call_property["callback"] = menuItemData.callback;
+        page_call_property[childElementData["label"]] =childElementData["ids"];
+        page_call_property[childElementData["label2"]]=childElementData["elements"];
+        call_fetchData(page_call_property);
+      });
+      childMenu.appendChild(childElement);
+    });
+  }else{
+  // 親要素のみのメニューーーーーーーーーーーーーーーーーーーーーーーー
+    menuTitle.addEventListener("click", (e) => {
+      page_call_property["url"]= menuItemData.url;
+      page_call_property["callback"] = menuItemData.callback;
+      call_fetchData(page_call_property);
+    });
+    menuTitle.addEventListener("click", () => {
+      pulldown();
+    });
+  }
+  menu.appendChild(menuItem);
+});
+
+// プルダウンの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
+function pulldown(childMenu){
+  var target = document.querySelectorAll(".child-menu");
+  target.forEach(element => {
+    element.style.display="none";
+  });
+  if(childMenu !=null){
+    childMenu.style.display="block"
+  }
 }
