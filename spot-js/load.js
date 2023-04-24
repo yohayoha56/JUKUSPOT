@@ -24,6 +24,7 @@ waitForProperties().then((propertiesContainer) => {
   const scripts = [
     'https://heys45.github.io/SAUCEED/spot-js/page_make.js',
     'https://heys45.github.io/SAUCEED/spot-js/common.js',
+    'https://heys45.github.io/SAUCEED/spot-js/page_call.js',
     ...(newData["ページタイプ"] === "school" ? [
       'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
     ] : []),
@@ -64,9 +65,17 @@ function extractProperties(propertiesContainer) {
 
       if (propertyContent.classList.contains("notion-property__rollup")) {
         propertyData = Array.from(propertyContent.children).map((child) => {
-          return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
-            (content) => content.innerText
-          );
+          // ロールアップの子要素がタイトルの場合
+          if (child.classList.contains("notion-property")) {
+            return Array.from(child.querySelectorAll(".notion-semantic-string .notion-semantic-string > span")).map(
+              (content) => content.innerText
+            );
+          // ロールアップの子要素がタイトル以外の場合？
+          } else {
+            return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
+              (content) => content.innerText
+            );
+          }
         });
       } else if (propertyContent.classList.contains("notion-property__relation")) {
         propertyData = Array.from(propertyContent.querySelectorAll(".notion-semantic-string > span")).map((relation) =>
