@@ -84,6 +84,9 @@ menuData.forEach((menuItemData) => {
       page_call_property["callback"] = menuItemData.callback;
       call_fetchData(page_call_property);
     });
+    menuTitle.addEventListener("click", () => {
+      pulldown();
+    });
   }
   menu.appendChild(menuItem);
 
@@ -94,7 +97,9 @@ function pulldown(childMenu){
   target.forEach(element => {
     element.style.display="none";
   });
-  childMenu.style.display="block"
+  if(childMenu !=null){
+    childMenu.style.display="block"
+  }
 }
 
 
