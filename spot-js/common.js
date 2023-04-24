@@ -14,7 +14,7 @@ const page_call_property={
 }
 if(newData["ページタイプ"] === "school"){
   page_call_property["教室ID"]=newData["教室ID"]
-}else(newData["ページタイプ"] === "teacher"){
+}else if(newData["ページタイプ"] === "teacher"){
   page_call_property["会員ID"]=newData["会員ID"]
 }
 call_fetchData(page_call_property);
