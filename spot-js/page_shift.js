@@ -75,7 +75,7 @@ function showModal(event) {
     requestnone = `style="display:none;"`
     teacher = page_call_property["講師名"];
   } else if(newData["ページタイプ"] === "teacher"){
-    formTitle = "${date}｜"+"スケジュール提出フォーム"
+    formTitle = `${date}分スケジュール提出`
     formInfo = "提出中のスケジュール"
     formGuide = "↓ 勤務可能時間をご記入ください"
     formButton = "スケジュール提出"
