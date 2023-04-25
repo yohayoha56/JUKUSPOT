@@ -124,7 +124,7 @@
   flex-wrap:wrap;
 }
 
-.form-container ul li:last-child {
+.form-container ul li:nth-child(3){
   width:100%;
 }
 
