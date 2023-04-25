@@ -38,7 +38,6 @@ function shift_page() {
   });
 
   // モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
   const modalTemplate=`
   <div id="myModal" class="modal">
       <div class="modal-content form-container">
@@ -106,6 +105,7 @@ function shift_page() {
           </form>
       </div>
   </div>`;
+  document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
 
   // モーダルの表示・非表示
 const modal = document.getElementById("myModal");
