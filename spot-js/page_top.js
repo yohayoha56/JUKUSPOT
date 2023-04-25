@@ -1,7 +1,5 @@
 function kintai_page() {};
 function profile_page() {};
-function shift_page() {};
-
 
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
@@ -92,7 +90,7 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
     <ul>
         <li>勤務依頼時間：${workTime} </li>
         <li>休憩時間：${breakTime} </li>
-        <li>備考/補足：${remarks}</li>
+        <li>備考・補足：${remarks}</li>
     </ul>
     <h4>↓勤務時間の変更や連絡がある場合は記入して、提出してください</h4>
     <form class="form-content">

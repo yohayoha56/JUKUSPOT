@@ -23,9 +23,9 @@ waitForProperties().then((propertiesContainer) => {
   // 外部スクリプトの読み込み設定②
   const scripts = [
     'https://heys45.github.io/SAUCEED/spot-js/page_top.js',
+    'https://heys45.github.io/SAUCEED/spot-js/page_shift.js',
     'https://heys45.github.io/SAUCEED/spot-js/page_call.js',
     ...(newData["ページタイプ"] === "school" ? [
-      'https://heys45.github.io/SAUCEED/spot-js/schedule_get.js',
     ] : []),
     ...(urlFound ? [//デバッグページの場合には読み込む
     'https://heys45.github.io/SAUCEED/spot-js/debug.js',
