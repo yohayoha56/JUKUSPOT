@@ -38,8 +38,8 @@ function shift_page() {
   });
 
   // モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  document.getElementById("page-content").insertAdjacentHTML('beforeend', formTemplate);
-  modalTemplate=`
+  document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
+  const modalTemplate=`
   <div id="myModal" class="modal">
       <div class="modal-content form-container">
           <span class="close">&times;</span>
