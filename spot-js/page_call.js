@@ -56,14 +56,6 @@ if (typeof page_call_property["callback"] === 'function') {
 }
 
 
-
-
-
-
-
-
-
-
 // ここからサイドメニューの作成スクリプト
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const menu = document.querySelector(".menu");
