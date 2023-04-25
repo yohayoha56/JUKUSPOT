@@ -68,13 +68,13 @@ addOptions(breakTime, 0, 120, 10);
 
 
 
-// フォームを送信するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// フォームを送信機能の設定、ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const forms = document.querySelectorAll('.form-content');
 forms.forEach(form => {
     form.addEventListener('submit', handleSubmit);
 });
-
-const h2Element = formContainer.querySelector("h2");
+// フォームなしの時、見出し削除ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+const h2Element = document.querySelector(".forms-container h2");
 if (forms.length === 0) {
     h2Element.style.display = "none";
 }
@@ -161,14 +161,6 @@ function addOptions(selectElement, start, end, step) {
     }
 }
 
-// フォームがない場合は非表示にする。
-function hideFormHeading(formContainer) {
-    const h2Element = formContainer.querySelector("h2");
-    const forms = formContainer.querySelectorAll(".form-row");
-    if (forms.length === 0) {
-        h2Element.style.display = "none";
-    }
-}
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 // 事前にフォームのバリデーションを定義しておく
