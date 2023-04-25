@@ -82,7 +82,7 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
 
   return `
     <div class="form-container">
-    <h3>${date}｜${teacher}先生｜${formTitle}</h3>
+    <h3>${date}｜${teacher}｜${formTitle}</h3>
     <h4>勤務情報</h4>
     <ul>
         <li>・勤務依頼時間：${workTime}</li>
