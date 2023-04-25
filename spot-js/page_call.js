@@ -139,3 +139,28 @@ function pulldown(childMenu){
     childMenu.style.display="block"
   }
 }
+
+
+
+// サイドバーの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
+function toggleSideBar() {
+    const sideBar = document.querySelector('.side-bar');
+    sideBar.style.display = sideBar.style.display === 'none' ? 'block' : 'none';
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const hamburgerMenu = document.createElement('div');
+    hamburgerMenu.classList.add('hamburger-menu');
+    hamburgerMenu.innerHTML = '<span>≡</span>';
+    hamburgerMenu.addEventListener('click', toggleSideBar);
+
+    const superNavBar = document.querySelector('.super-navbar__actions');
+    superNavBar.insertBefore(hamburgerMenu, superNavBar.firstChild);
+});
+
+window.addEventListener('resize', () => {
+    const sideBar = document.querySelector('.side-bar');
+    if (window.innerWidth > 680) {
+        sideBar.style.display = 'none';
+    }
+});
