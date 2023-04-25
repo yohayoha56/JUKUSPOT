@@ -22,7 +22,6 @@
   padding: 20px;
   border: 1px solid #888;
   width: 450px;
-  min-width: 320px;
 }
 .close {
   color: #aaa;
@@ -44,10 +43,9 @@
 @media (max-width: 680px) {
   .modal-content {
     background-color: #fefefe;
-    margin: 15% 10px;
+    margin: 15% auto;
     padding: 20px;
-    width: calc(100% - 20px);
-    min-width: 320px;
+    width: 320px;
   }
 }
 
