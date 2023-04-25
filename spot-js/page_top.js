@@ -32,7 +32,7 @@ rows.forEach(row => {
         formTemplate = generateCommonFormTemplate(row, '出勤報告フォーム','出勤報告済み','出勤を報告する');
         formsContainer.insertAdjacentHTML('beforeend', formTemplate);
         //非表示部分の処理
-        const forms = document.querySelectorAll('.form-content');
+        const forms = document.querySelectorAll('.form-container');
         const lastForm = forms[forms.length - 1];
         const formRows = lastForm.querySelectorAll('.form-row');
         lastForm.getElementsByTagName("h4")[0].innerText="勤務時間に変更がある場合は退勤時に入力してください。"
