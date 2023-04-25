@@ -37,6 +37,13 @@
   cursor: pointer;
 }
 
+.modal .buttons {
+  width:100% !important;
+}
+
+
+
+
 /* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
   display: flex;
@@ -88,7 +95,6 @@
   display: flex;
   gap: 8px;
 }
-
 
 
 /* テキスト周りの微調整 ーーーーーーーーーーーーーーーーーーーーー*/
