@@ -52,7 +52,8 @@
 .modal .form-row{
   padding-right: 0;
 }
-.modal .form-row:nth-of-type(2){
+.modal .form-row:nth-of-type(2),
+.modal .form-row:nth-of-type(3){
   padding-right: 5px;
 }
 .modal .form-row:nth-of-type(1),
