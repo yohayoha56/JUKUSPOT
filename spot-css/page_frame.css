@@ -1,19 +1,10 @@
-
-
-
-/* メインバーの設定 */
+/* メインバーの設定 ーーーーーーーーーーーーーーーーーーーー*/
 .content-area {
   display: flex;
   overflow: visible;
   position: relative;
 }
-.side-bar,
-.main-bar {
-  width: 210px;
-  display: inline-block;
-  padding: 15px;
-}
-.side-bar {
+.side-bar{
   position: sticky;
   padding-top: 30px;
   top: 50px;
@@ -23,10 +14,38 @@
 .modal {
   z-index: 2000;
 }
+
+/* 横幅の設定 ーーーーーーーーーーーーーーーーーー*/
+.side-bar {
+  width: 210px;
+  display: inline-block;
+  padding: 15px;
+}
 .main-bar {
   width: calc(100% - 210px);
+  display: inline-block;
+  padding: 15px;
   margin-left: 15px;
 }
+@media (max-width: 680px) {
+  .side-bar{
+    display: none;
+  }
+  .main-bar{
+    display: 100%;
+    padding:10px;
+    margin: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
