@@ -66,8 +66,7 @@ function showModal(event) {
 
   // ページごとにフォームの内容を変更
 
-  let requestnone ="";
-  let schedulenone ="";
+  let formTitle, formInfo, formGuide, formButton, requestnone, schedulenone;
   if(newData["ページタイプ"] === "school"){
     const formTitle = "${workDate}｜"+page_call_property["講師名"]+"先生｜シフト依頼フォーム"
     const formInfo = "講師の提出スケジュール"
