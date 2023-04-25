@@ -32,7 +32,8 @@
     display: none;
   }
   .main-bar{
-    display: 100%;
+
+    width: 100%;
     padding:10px;
     margin: 0;
   }
