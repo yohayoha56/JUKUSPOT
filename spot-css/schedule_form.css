@@ -41,10 +41,7 @@
 .form-container {
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
-  background-color: #eee;
-  padding: 12px 20px;
-  border: 2px solid #aaa;
+  padding: 8px 15px;
 }
 .form-container > .form-row {
   display: flex;
@@ -88,8 +85,9 @@
 .form-container ul,
 .form-container .form-content {
   border-radius: 4px;
+  border: 2px solid #aaa;
   padding: 8px 10px;
-  background-color: white;
+  background-color: #eee;
   margin-bottom: 10px;
 }
 .form-container ul {
