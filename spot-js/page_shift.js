@@ -105,8 +105,8 @@ function showModal(event) {
     <input type="hidden" name="classroom_name" value="教室名">
     <input type="hidden" name="old_remarks" value="${remarks}">
         <!-- 勤務開始時間 -->
-        <div class="form-row">
-          <div class="form-inline" ${requestnone}>
+        <div class="form-row" ${requestnone}>
+          <div class="form-inline" >
               <label for="start_hour">勤務可否</label>
               <select id="status" name="status">
               <option value="">選択してください</option>
@@ -167,6 +167,26 @@ function showModal(event) {
 
   formContainer.innerHTML = formContent;
 
+
+
+  // 勤務時間のオプションを設定するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  // 勤務開始時間 (時)
+  const startHour = document.getElementById('start_hour');
+  addOptions(startHour, 8, 22, 1);
+  // 勤務開始時間 (分)
+  const startMinute = document.getElementById('start_minute');
+  addOptions(startMinute, 0, 50, 10);
+  // 勤務終了時間 (時)
+  const endHour = document.getElementById('end_hour');
+  addOptions(endHour, 8, 22, 1);
+  // 勤務終了時間 (分)
+  const endMinute = document.getElementById('end_minute');
+  addOptions(endMinute, 0, 50, 10);
+  // 休憩時間
+  const breakTime = document.getElementById('break_time');
+  addOptions(breakTime, 0, 120, 10);
+
+
   // 依頼状況に応じてモーダルの依頼取り消しボタンを制御  
   const cancelButton = document.getElementById("cancelButton");
   if (requestStatus === "依頼修正") {
@@ -183,7 +203,15 @@ function showModal(event) {
   };
 }
 
-
+// オプション追加用の関数
+function addOptions(selectElement, start, end, step) {
+  for (let i = start; i <= end; i += step) {
+      const option = document.createElement('option');
+      option.value = i;
+      option.textContent = i;
+      selectElement.appendChild(option);
+  }
+}
 
 // span.onclick = closeModal;
 window.onclick = function(event) {
