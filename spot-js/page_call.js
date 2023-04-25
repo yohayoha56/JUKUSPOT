@@ -146,7 +146,6 @@ function pulldown(childMenu){
 const hamburgerMenu = document.createElement('div');
 hamburgerMenu.classList.add('hamburger-menu');
 hamburgerMenu.innerHTML = '<span>≡</span>';
-hamburgerMenu.style["display"]="inline-block"
 hamburgerMenu.style["font-size"]="36px"
 hamburgerMenu.style["margin-top"]="-14px"
 hamburgerMenu.style["color"]="#666"
