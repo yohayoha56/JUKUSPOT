@@ -73,12 +73,15 @@ function showModal(event) {
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
     requestnone = `style="display:none;"`
+    teacher = page_call_property["講師名"];
   } else if(newData["ページタイプ"] === "teacher"){
     formTitle = "${workDate}｜"+"スケジュール提出フォーム"
     formInfo = "提出中のスケジュール"
     formGuide = "↓ 勤務可能時間をご記入ください"
     formButton = "スケジュールを提出"
     schedulenone = `style="display:none;"`
+    teacher = page_call_property["講師名"];
+    
   }
 
   const formContainer = document.querySelector(".modal-content.form-container");
