@@ -8,7 +8,7 @@ function top_page() {
 
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById('fixed-table');
-const rows = Array.from(table.querySelectorAll('tbody > tr'));
+const rows = Array.from(table.querySelectorAll('tbody > tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
 
 // 勤怠ステータスの値によって、作成内容を変更
