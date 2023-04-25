@@ -46,7 +46,7 @@
     background-color: #fefefe;
     margin: 30px 10px;
     padding: 20px;
-    width: 100%;
+    width: calc(100 - 20px);
     min-width: 320px;
   }
 }
@@ -70,7 +70,7 @@
 
 .form-container .form-row {
   align-items: center;
-  padding-right: 30px;
+  padding-right: 25px;
   margin-bottom: 10px;
 }
 
