@@ -68,17 +68,17 @@ function showModal(event) {
 
   let formTitle, formInfo, formGuide, formButton, requestnone, schedulenone;
   if(newData["ページタイプ"] === "school"){
-    formTitle = "${workDate}｜"+page_call_property["講師名"]+"先生｜シフト依頼フォーム"
+    formTitle = "${date}｜"+page_call_property["講師名"]+"先生｜シフト依頼フォーム"
     formInfo = "講師の提出スケジュール"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
     requestnone = `style="display:none;"`
     teacher = page_call_property["講師名"];
   } else if(newData["ページタイプ"] === "teacher"){
-    formTitle = "${workDate}｜"+"スケジュール提出フォーム"
+    formTitle = "${date}｜"+"スケジュール提出フォーム"
     formInfo = "提出中のスケジュール"
     formGuide = "↓ 勤務可能時間をご記入ください"
-    formButton = "スケジュールを提出"
+    formButton = "スケジュール提出"
     schedulenone = `style="display:none;"`
     teacher = page_call_property["講師名"];
     
