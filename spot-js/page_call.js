@@ -154,7 +154,7 @@ superNavBar.insertBefore(hamburgerMenu, superNavBar.firstChild);
 
 window.addEventListener('resize', () => {
     const sideBar = document.querySelector('.side-bar');
-    if (window.innerWidth > 680) {
+    if (window.innerWidth <= 680) {
         sideBar.style.display = 'none';
     }
 });
