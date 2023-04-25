@@ -49,7 +49,7 @@ rows.forEach(row => {
     }
 });
   
-// 勤務時間のオプションを設定するーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// 勤務時間のオプションを設定するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 // 勤務開始時間 (時)
 const startHour = document.getElementById('start_hour');
 addOptions(startHour, 8, 22, 1);
@@ -65,8 +65,6 @@ addOptions(endMinute, 0, 50, 10);
 // 休憩時間
 const breakTime = document.getElementById('break_time');
 addOptions(breakTime, 0, 120, 10);
-
-
 
 // フォームを送信機能の設定、ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const forms = document.querySelectorAll('.form-content');
