@@ -36,7 +36,7 @@ rows.forEach(row => {
         const lastForm = forms[forms.length - 1];
         const formRows = lastForm.querySelectorAll('.form-row');
         formRows.forEach((formRow, index) => {
-            if (index !== formRows.length - 1) {
+            if (index !== formRows.length - 1||index !== formRows.length - 2) {
                 formRow.remove()
             }
         });
