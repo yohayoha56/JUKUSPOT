@@ -63,7 +63,7 @@
   
   /* 親メニューと子メニューのスタイル */
   .menu-item, .child-menu li {
-  background-color: green;
+  background-color: #17837C;
   color: white;
   padding: 5px 10px;
   cursor: pointer;
