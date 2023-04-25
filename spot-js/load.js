@@ -32,9 +32,13 @@ waitForProperties().then((propertiesContainer) => {
   ] : [])
   ];
 
-  // 外部スクリプトの読み込み
+  // 外部スクリプトの読み込み（JSのみ非同期で読み込み）
   stylesheets.forEach(loadStylesheet);
-  scripts.forEach(loadScript);
+  (async function loadScriptsInOrder() {
+    for (const scriptUrl of scripts) {
+      await loadScript(scriptUrl);
+    }
+  })();
 });
 
 // 0.05秒ごとにsuper.soのドキュメント生成状況を確認ーーーーーーーーーーーーーーーーーー
@@ -98,9 +102,13 @@ function loadStylesheet(url) {
   link.href = url;
   document.head.appendChild(link);
 }
+// loadScript関数にPromiseを返すように変更
 function loadScript(url) {
-  const script = document.createElement('script');
-  script.defer = true;
-  script.src = url;
-  document.body.appendChild(script);
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.defer = true;
+    script.src = url;
+    script.onload = () => resolve();
+    document.body.appendChild(script);
+  });
 }
