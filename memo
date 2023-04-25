@@ -1,17 +1,67 @@
-{
-    "filter": {
-      "and": [
-        {
-          "property": "会員ID",
-          "equals": "1055945"
-        },
-        {
-          "property": "勤務日",
-          "date": {
-          "on_or_after": "2023-04-17",
-          "on_or_before": "2023-05-17"
-          }
-        }
-      ]
-    }
-  }
+<!-- ポップアップフォーム -->
+<div id="myModal" class="modal">
+    <div class="modal-content form-container">
+        <span class="close">&times;</span>
+        <h3>[日付]｜[講師名]先生｜<br>シフト依頼フォーム</h3>
+
+        <!-- 各種参考情報 -->
+        <div id="submit-schedule">
+            <h4>講師の提出スケジュール</h4>
+            <span>・スケジュール｜[勤務可否]</span><br>
+            <span>・勤務可能時間｜[時間]</span><br>
+            <span>・補足・備考　｜[補足]</span><br>
+        </div>
+
+        <!-- 各種フォーム本体 -->
+        <form id="myForm" class="form-content">
+            <h4>↓ 依頼内容をご記入ください</h4>
+            <!-- 勤務開始時間 -->
+            <div class="form-row">
+                <label for="start_hour">・勤務開始時間</label>
+                <div class="form-inline">
+                    <select id="start_hour" name="start_hour">
+                    <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+                    <option value="">--</option>
+                    </select>
+                    <label for="start_minute">時</label>
+                    <select id="start_minute" name="start_minute">
+                    <option value="">--</option>
+                    </select>分
+                </div>
+            </div>
+            <!-- 勤務終了時間 -->
+            <div class="form-row">
+                <label for="end_hour">・勤務終了時間</label>
+                <div class="form-inline">
+                    <select id="end_hour" name="end_hour">
+                    <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+                    <option value="">--</option>
+                    </select>
+                    <label for="end_minute">時</label>
+                    <select id="end_minute" name="end_minute">
+                    <option value="">--</option>
+                    </select>分
+                </div>
+            </div>
+            <!-- 休憩時間 -->
+            <div class="form-row">
+                <label for="break_time">・休憩時間</label>
+                <div class="form-inline">
+                    <select id="break_time" name="break_time">
+                    <option value="">--</option>
+                    </select>分
+                </div>
+            </div>
+            <!-- 補足・備考 -->
+            <div class="form-row">
+                <label for="remarks">・補足・備考</label>
+                <textarea id="remarks" name="remarks"></textarea>
+            </div>
+            <!-- 送信ボタン・取り消しボタン -->
+            <div class="form-row buttons">
+                <button type="submit">シフト依頼を完了する</button>
+                <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
+            </div>
+        </form>
+    </div>
+</div>

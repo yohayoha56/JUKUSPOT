@@ -43,7 +43,7 @@ rows.forEach(row => {
 
     } else if (attendanceStatus === '出勤報告済み') {
         //退勤報告フォームの作成
-        formTemplate = generateCommonFormTemplate(row, '出勤報告フォーム','退勤報告済み','退勤を報告する');
+        formTemplate = generateCommonFormTemplate(row, '退勤報告フォーム','退勤報告済み','退勤を報告する');
         formsContainer.insertAdjacentHTML('beforeend', formTemplate);
     }
     }
