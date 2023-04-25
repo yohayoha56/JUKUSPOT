@@ -3,7 +3,6 @@ function profile_page() {};
 
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
-
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById('fixed-table');
 const rows = Array.from(table.querySelectorAll('tbody > tr:not(:first-child)'));
@@ -13,6 +12,10 @@ const now = new Date();
 const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 const todayInTokyo = new Date(nowInTokyo);
 todayInTokyo.setHours(0, 0, 0, 0);
+
+
+// 各列の値を先に定義する？（アイデア）
+
 
 
 // 勤怠ステータスの値によって、作成するフォームのを変更

@@ -39,6 +39,7 @@ function call_fetchData(page_call_property) {
       "会員ID": page_call_property["会員ID"],
       "教室ID": page_call_property["教室ID"],
       "講師名": page_call_property["講師名"],
+      "教室名": page_call_property["教室名"],
       "ページタイプ":newData["ページタイプ"]
     }),
     mode: 'cors',
