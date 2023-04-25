@@ -20,7 +20,7 @@ todayInTokyo.setHours(0, 0, 0, 0);
 // 勤怠ステータスの値によって、作成するフォームのを変更
 rows.forEach(row => {
     const attendanceStatus = row.querySelector('td:nth-child(3)').innerText;
-    const rowDate = new Date(ow.querySelector('td:nth-child(1)').innerText);
+    const rowDate = new Date(row.querySelector('td:nth-child(1)').innerText);
     let formTemplate;
     if (newData["ページタイプ"] === "school" && attendanceStatus === '退勤報告済み') {
     //教室承認フォームの作成
