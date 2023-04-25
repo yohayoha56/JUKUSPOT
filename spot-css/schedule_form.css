@@ -41,8 +41,15 @@
   width:100% !important;
 }
 
-
-
+@media (max-width: 680px) {
+  .modal-content {
+    background-color: #fefefe;
+    margin: 30px 10px;
+    padding: 20px;
+    width: 100%;
+    min-width: 320px;
+  }
+}
 
 /* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
