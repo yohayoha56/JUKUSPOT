@@ -88,13 +88,13 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
         <li>休憩時間：${breakTime} </li>
         <li>備考/補足：${remarks}</li>
     </ul>
+    <h4>↓勤務時間の変更や連絡がある場合は記入して、提出してください</h4>
     <form class="form-content">
     <input type="hidden" name="working_day" value="${date}">
     <input type="hidden" name="teacher_name" value="${teacher}">
     <input type="hidden" name="classroom_name" value="教室名">
     <input type="hidden" name="old_remarks" value="${remarks}">
     <input type="hidden" name="attendance_status" value="${statusValue}">
-    <h4>↓勤務時間に変更があった場合には入力してください</h4>
         <!-- 勤務開始時間 -->
         <div class="form-row">
             <label for="start_hour">勤務開始時間</label>

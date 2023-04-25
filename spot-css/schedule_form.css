@@ -1,11 +1,11 @@
 /* カラー定義 */
 :root {
-  --green-base: #28a745;
+  --green-base: #17837C;
   --green-darker: #218838;
   --green-lighter: #34c057;
 }
 
-/* ポップアップスタイル */
+/* ポップアップスタイルーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .modal {
   display: none;
   position: fixed;
@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-/* フォーム */
+/* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
   display: flex;
   flex-direction: column;
@@ -62,7 +62,7 @@
   width: 120px;
 }
 .form-container .form-inline label {
-  width: 50px;
+  width: 30px;
 }
 .form-container textarea {
   width: 100%;
@@ -79,6 +79,7 @@
   margin: 0;
   margin-bottom: 4px;
   padding-left: 10px;
+  width:100%;
 }
 .form-container h3 {
   margin: 0;
@@ -94,20 +95,42 @@
 .form-container ul {
   list-style-type: none;
   padding-left: 0;
+  display:flex;
+  flex-wrap:wrap;
 }
 .form-container ul li {
   padding-left: 10px;
 }
+
+.form-container ul li:last-child {
+  width:100%;
+}
+
+.form-container .hosoku {
+  width:calc(100% - 180px);
+  
+}
+.form-container.buttons {
+  width:180px;
+}
+
+
+
 .form-container .buttons button {
   background-color: var(--green-base);
   border: none;
   color: white;
+  width:160px;
   padding: 8px 16px;
+  margin: 4px 2px;
+  margin-top:23px;
+  margin-left:10px;
+
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s;
