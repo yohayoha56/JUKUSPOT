@@ -10,20 +10,28 @@ function top_page() {
 const table = document.getElementById('fixed-table');
 const rows = Array.from(table.querySelectorAll('tbody > tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
+// 出勤フォームの表示用に今日の日付を定義
+const now = new Date();
+const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+const todayInTokyo = new Date(nowInTokyo);
+todayInTokyo.setHours(0, 0, 0, 0);
 
-// 勤怠ステータスの値によって、作成内容を変更
+
+// 勤怠ステータスの値によって、作成するフォームのを変更
 rows.forEach(row => {
     const attendanceStatus = row.querySelector('td:nth-child(3)').innerText;
+    const rowDate = new Date(ow.querySelector('td:nth-child(1)').innerText);
     let formTemplate;
     if (newData["ページタイプ"] === "school" && attendanceStatus === '退勤報告済み') {
     //教室承認フォームの作成
     formTemplate = generateCommonFormTemplate(row, '勤務承認フォーム','教室承認済み','勤務を承認する');
     formsContainer.insertAdjacentHTML('beforeend', formTemplate);
     } else if (newData["ページタイプ"] === "teacher") {
-    if (attendanceStatus === '勤務予定') {
+    if (attendanceStatus === '勤務予定' && rowDate <= todayInTokyo) {
         //出勤報告フォームの作成
         formTemplate = generateCommonFormTemplate(row, '出勤報告フォーム','出勤報告済み','出勤を報告する');
         formsContainer.insertAdjacentHTML('beforeend', formTemplate);
+        //非表示部分の処理
         const forms = document.querySelectorAll('.form-content');
         const lastForm = forms[forms.length - 1];
         const formRows = lastForm.querySelectorAll('.form-row');
