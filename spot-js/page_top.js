@@ -84,9 +84,9 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
     <h3>${date}｜${teacher}｜${formTitle}</h3>
     <h4>勤務情報</h4>
     <ul>
-        <li>・勤務依頼時間：${workTime}</li>
-        <li>・休憩時間：${breakTime}</li>
-        <li>・備考・補足：${remarks}</li>
+        <li>勤務依頼時間：${workTime} </li>
+        <li>休憩時間：${breakTime} </li>
+        <li>備考/補足：${remarks}</li>
     </ul>
     <form class="form-content">
     <input type="hidden" name="working_day" value="${date}">
@@ -97,7 +97,7 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
     <h4>↓勤務時間に変更があった場合には入力してください</h4>
         <!-- 勤務開始時間 -->
         <div class="form-row">
-            <label for="start_hour">・勤務開始時間</label>
+            <label for="start_hour">勤務開始時間</label>
             <div class="form-inline">
                 <select id="start_hour" name="start_hour">
                 <!-- 8:00 ~ 22:00 の選択肢を生成 -->
@@ -111,7 +111,7 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
         </div>
         <!-- 勤務終了時間 -->
         <div class="form-row">
-            <label for="end_hour">・勤務終了時間</label>
+            <label for="end_hour">勤務終了時間</label>
             <div class="form-inline">
                 <select id="end_hour" name="end_hour">
                 <!-- 8:00 ~ 22:00 の選択肢を生成 -->
@@ -125,7 +125,7 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
         </div>
         <!-- 休憩時間 -->
         <div class="form-row">
-            <label for="break_time">・休憩時間</label>
+            <label for="break_time">休憩時間</label>
             <div class="form-inline">
             <select id="break_time" name="break_time">
             <option value="">--</option>
@@ -133,8 +133,8 @@ function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
         </div>
     </div>
     <!-- 補足・備考 -->
-    <div class="form-row">
-        <label for="remarks">・補足・備考</label>
+    <div class="form-row hosoku">
+        <label for="remarks">補足・備考</label>
         <textarea id="remarks" name="remarks"></textarea>
     </div>
     <div class="form-row buttons">
