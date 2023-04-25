@@ -68,7 +68,7 @@ function showModal(event) {
 
   let formTitle, formInfo, formGuide, formButton, requestnone, schedulenone;
   if(newData["ページタイプ"] === "school"){
-    formTitle = "${date}｜"+page_call_property["講師名"]+"先生｜シフト依頼フォーム"
+    formTitle = `${date}｜`+page_call_property["講師名"]+"先生｜シフト依頼フォーム"
     formInfo = "講師の提出スケジュール"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
