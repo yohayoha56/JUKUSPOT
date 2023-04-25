@@ -49,6 +49,14 @@
   }
 }
 
+
+.modal .form-row:nth-child(1),
+.modal .form-row:nth-child(5),
+.modal .form-row:nth-child(6) {
+  width:100% !important;
+}
+
+
 /* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
   display: flex;
