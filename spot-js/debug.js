@@ -8,12 +8,11 @@
   // 外部リソースのURLを配列として定義します。
   const baseUrl = 'https://heys45.github.io/SAUCEED/';
   const resourceUrls = [
-    'spot-js/page_call.js',
-    'spot-js/debug.js',
-    'spot-js/form_control.js',
     'spot-js/load.js',
-    'spot-js/schedule_get.js',
+    'spot-js/debug.js',
     'spot-js/page_top.js',
+    'spot-js/page_shift.js',
+    'spot-js/page_call.js',
     'spot-css/page_frame.css',
     'spot-css/progressbar.css',
     'spot-css/schedule_form.css',
