@@ -45,6 +45,10 @@
   border: 2px solid #aaa;
   background-color: #eee;
 }
+.form-container:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 .form-content{
   display:flex;
   flex-wrap:wrap;
