@@ -104,7 +104,6 @@ function showModal(event) {
     <input type="hidden" name="teacher_name" value="${teacher}">
     <input type="hidden" name="classroom_name" value="教室名">
     <input type="hidden" name="old_remarks" value="${remarks}">
-    <input type="hidden" name="attendance_status" value="${statusValue}">
         <!-- 勤務開始時間 -->
         <div class="form-row">
           <div class="form-inline" ${requestnone}>
