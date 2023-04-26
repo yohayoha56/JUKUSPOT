@@ -64,9 +64,9 @@ const menu = document.querySelector(".menu");
 const page_title = document.createElement("h1");
 page_title.style["font-size"]="16px";
 if(newData["ページタイプ"] === "school"){
-  page_title.textContent=newData["教室名"]
+  page_title.textContent=newData["教室名"]+"管理ページ"
 }else if(newData["ページタイプ"] === "teacher"){
-  page_title.textContent=newData["講師名"]
+  page_title.textContent=newData["講師名"]+"マイページ"
 }
 menu.appendChild(page_title);
 
