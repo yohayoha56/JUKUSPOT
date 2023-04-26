@@ -70,7 +70,7 @@ menuData.forEach((menuItemData) => {
   menuTitle.classList.add("menu-item");
   menuTitle.textContent = menuItemData.title;
   menuItem.appendChild(menuTitle);
-  const page_title = cocument.createElement("h1");
+  const page_title = document.createElement("h1");
   
   if(newData["ページタイプ"] === "school"){
     page_title.textContent=newData("教室名")
