@@ -60,6 +60,19 @@ if (typeof page_call_property["callback"] === 'function') {
 // ここからサイドメニューの作成スクリプト
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const menu = document.querySelector(".menu");
+
+const page_title = document.createElement("h1");
+if(newData["ページタイプ"] === "school"){
+  page_title.textContent=newData["教室名"]
+}else if(newData["ページタイプ"] === "teacher"){
+  page_title.textContent=newData["講師名"]
+}
+menu.appendChild(page_title);
+
+
+
+
+
 menuData.forEach((menuItemData) => {
   // メニューの大枠を作成ーーーーーーーーーーーーーーーーーーーーーーー
   const menuItem = document.createElement("li");
@@ -70,14 +83,6 @@ menuData.forEach((menuItemData) => {
   menuTitle.classList.add("menu-item");
   menuTitle.textContent = menuItemData.title;
   menuItem.appendChild(menuTitle);
-  const page_title = document.createElement("h1");
-  
-  if(newData["ページタイプ"] === "school"){
-    page_title.textContent=newData["教室名"]
-  }else if(newData["ページタイプ"] === "teacher"){
-    page_title.textContent=newData["講師名"]
-  }
-  menu.insertBefore(page_title, menu.firstChild);
 
   // 小要素があるメニューーーーーーーーーーーーーーーーーーーーーーーー
   if (menuItemData.hasChildElements) {
