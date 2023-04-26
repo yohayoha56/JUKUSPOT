@@ -32,7 +32,7 @@ const menuData = [
 function call_fetchData(page_call_property) {
   fetch(page_call_property["url"], {
     method: 'POST',
-    headers: {
+    headers: { 
       'Content-Type': 'text/plain',
     },
     body: JSON.stringify({
