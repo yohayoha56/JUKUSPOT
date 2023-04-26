@@ -77,7 +77,7 @@ menuData.forEach((menuItemData) => {
   }else if(newData["ページタイプ"] === "teacher"){
     page_title.textContent=newData["講師名"]
   }
-  menu.insertBefore(page_title);
+  menu.insertBefore(page_title, menu.firstChild);
 
   // 小要素があるメニューーーーーーーーーーーーーーーーーーーーーーーー
   if (menuItemData.hasChildElements) {
