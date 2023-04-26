@@ -70,6 +70,14 @@ menuData.forEach((menuItemData) => {
   menuTitle.classList.add("menu-item");
   menuTitle.textContent = menuItemData.title;
   menuItem.appendChild(menuTitle);
+  const page_title = cocument.createElement("h1");
+  
+  if(newData["ページタイプ"] === "school"){
+    page_title.textContent=newData("教室名")
+  }else if(newData["ページタイプ"] === "teacher"){
+    page_title.textContent=newData("講師名")
+  }
+  menu.insertBefore(page_title);
 
   // 小要素があるメニューーーーーーーーーーーーーーーーーーーーーーーー
   if (menuItemData.hasChildElements) {
