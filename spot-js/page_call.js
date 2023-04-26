@@ -73,9 +73,9 @@ menuData.forEach((menuItemData) => {
   const page_title = document.createElement("h1");
   
   if(newData["ページタイプ"] === "school"){
-    page_title.textContent=newData("教室名")
+    page_title.textContent=newData["教室名"]
   }else if(newData["ページタイプ"] === "teacher"){
-    page_title.textContent=newData("講師名")
+    page_title.textContent=newData["講師名"]
   }
   menu.insertBefore(page_title);
 
