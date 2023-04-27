@@ -1,33 +1,44 @@
 function shift_page() {
 
-// テーブルの見た目調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const tableRows = document.querySelectorAll('#schedule-table tbody tr:not(:first-child)');
+// 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+if(newData["ページタイプ"] === "school"){
+
+
+
+
+}
+
+
+const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
 tableRows.forEach(row => {
   const availabilityCell = row.querySelector('td:nth-child(2)');
   const requestStatusCell = row.querySelector('td:nth-child(5)');
 
-  // 勤務可否列の変更
+  // 勤務可否に応じてtrのクラス名を変更
   switch (availabilityCell.textContent) {
+    case '講師回答前':
+      row.classList.add('not-submitted');
+      break;
+    case '勤務可能':
+      row.classList.add('available');
+      break;
     case '勤務不可':
-      availabilityCell.innerHTML = '<button class="unavailable">勤務不可</button>';
+      row.classList.add('unavailable');
       break;
     case '調整中':
-      availabilityCell.innerHTML = '<button class="adjusting">調整中</button>';
-      break;
-    case '講師回答前':
-      availabilityCell.innerHTML = '<button class="adjusting">未提出</button>';
-      break;
-    case '一部勤務可能':
-      availabilityCell.innerHTML = '<button class="partially-available">勤務可能</button>';
-      break;
-    case '終日勤務可能':
-      availabilityCell.innerHTML = '<button class="available">勤務可能</button>';
+      row.classList.add('adjusting');
       break;
   }
 
   // 依頼状況列の変更
-  if (availabilityCell.textContent === '勤務不可') {
-    requestStatusCell.innerHTML = '<button class="request-not-possible">依頼不可</button>';
+  if(availabilityCell.textContent === '未提出'&&newData["ページタイプ"]=="teacher"){
+    requestStatusCell.innerHTML = '<button class="submit">ｽｹｼﾞｭｰﾙ提出</button>';
+  } else  if (newData["ページタイプ"]=="teacher") {
+    requestStatusCell.innerHTML = '<button class="re-submit">ｽｹｼﾞｭｰﾙ変更</button>';
+  } else  if (availabilityCell.textContent === '勤務不可') {
+    requestStatusCell.innerHTML = '依頼不可';
+  } else if(availabilityCell.textContent === '勤務可能'&&requestStatusCell.textContent === '新規依頼'){
+    requestStatusCell.innerHTML = '<button class="request">新規依頼</button>';
   } else if (requestStatusCell.textContent === '勤務確定') {
     requestStatusCell.innerHTML = '<button class="confirmed">勤務確定</button>';
   } else if (requestStatusCell.textContent === '講師回答前' || requestStatusCell.textContent === '調整希望') {
@@ -36,6 +47,10 @@ tableRows.forEach(row => {
     requestStatusCell.innerHTML = '<button class="request">新規依頼</button>';
   }
 });
+
+
+
+
 
 // モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const modalTemplate=`
@@ -54,6 +69,7 @@ button.addEventListener("click", showModal);
 
 // テーブルのボタンが押されたときに呼び出される関数ーーーーーーーーーーーーーーーーーーーーー
 function showModal(event) {
+
   const button = event.target;
   const row = button.closest("tr");
 
@@ -219,10 +235,6 @@ if (event.target == modal) {
   closeModal();
 }
 }
-
-
-
-
 
 
 

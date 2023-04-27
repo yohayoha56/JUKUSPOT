@@ -16,8 +16,6 @@ waitForProperties().then((propertiesContainer) => {
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
       'https://heys45.github.io/SAUCEED/spot-css/school.css',
     ] : []),
-    ...(urlFound ? [//デバッグページの場合には読み込む
-    ] : [])
   ];
   
   // 外部スクリプトの読み込み設定②
@@ -91,7 +89,7 @@ function extractProperties(propertiesContainer) {
       newData[propertyName] = propertyData;
     }
   });
-
+  newData["名前"] = document.getElementsByTagName("h1")[0];
   return newData;
 }
 // ここからはCSSとJSを読み込むためのスクリプトーーーーーーーーーーーーーーーーーーーーー
