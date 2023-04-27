@@ -15,7 +15,7 @@ const page_call_property={
 if(newData["ページタイプ"] === "school"){
   page_call_property["教室ID"]=newData["教室ID"];
 }else if(newData["ページタイプ"] === "teacher"){
-  page_call_property["会員ID"]=newData["名前"];
+  page_call_property["会員ID"]=newData["会員ID"];
 }
 call_fetchData(page_call_property);
 
@@ -31,7 +31,11 @@ const menuData = [
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
   const calldata = {
-    "a":"a",
+    "会員ID": page_call_property["会員ID"],
+    "教室ID": page_call_property["教室ID"],
+    "講師名": page_call_property["講師名"],
+    "教室名": page_call_property["教室名"],
+    "ページタイプ": newData["ページタイプ"]
   };
 
   fetch(page_call_property["url"], {
