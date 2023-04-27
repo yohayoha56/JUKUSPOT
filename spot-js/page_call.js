@@ -30,30 +30,32 @@ const menuData = [
 
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
+  const data = {
+    "会員ID": page_call_property["会員ID"],
+    "教室ID": page_call_property["教室ID"],
+    "講師名": page_call_property["講師名"],
+    "教室名": page_call_property["教室名"],
+    "ページタイプ": newData["ページタイプ"]
+  };
+
   fetch(page_call_property["url"], {
     method: 'POST',
     headers: { 
       'Content-Type': 'text/plain',
     },
-    body: JSON.stringify({
-      "会員ID": page_call_property["会員ID"],
-      "教室ID": page_call_property["教室ID"],
-      "講師名": page_call_property["講師名"],
-      "教室名": page_call_property["教室名"],
-      "ページタイプ":newData["ページタイプ"]
-    }),
+    body: JSON.stringify(data),
     mode: 'cors',
   })
   .then(response => response.text())
   .then(data => {
-  var target = document.getElementById("page-content");
-  target.innerHTML = data;
-  
-// callback関数を実行
-if (typeof page_call_property["callback"] === 'function') {
-  page_call_property["callback"]();
-}
-});
+    var target = document.getElementById("page-content");
+    target.innerHTML = data;
+
+    // Execute callback function
+    if (typeof page_call_property["callback"] === 'function') {
+      page_call_property["callback"]();
+    }
+  });
 }
 
 
