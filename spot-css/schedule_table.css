@@ -37,9 +37,23 @@ table {
     font-size: 14px;
   }
   
-  #schedule-table td:nth-child(2), table td:nth-child(5) {
+
+  #schedule-table th:nth-child(1) {
     width: 100px;
   }
+  #schedule-table th:nth-child(2) {
+    width: 115px;
+  }
+  #schedule-table th:nth-child(3) {
+    width: 100px;
+  }
+  #schedule-table th:nth-child(4) {
+    width: 100%;
+  }
+  #schedule-table th:nth-child(5) {
+    width: 125px;
+  }
+
 
   /* ここから依頼ボタン */
   /* 勤務不可 */
