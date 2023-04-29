@@ -66,8 +66,8 @@ table {
   #schedule-table th, #schedule-table td{
     text-align: center;
   }
-  #schedule-table th:not(:nth-child(4)) ,
-  #schedule-table td:not(:nth-child(4)) {
+  #schedule-table th::nth-child(4),
+  #schedule-table td::nth-child(4) {
     text-align:left ;
   }
 
