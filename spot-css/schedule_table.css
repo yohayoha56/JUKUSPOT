@@ -74,48 +74,17 @@ table {
 
 
 
-
-
-  /* ここから依頼ボタン */
-  /* 勤務不可 */
-  .request-not-possible {
-    border: 1px solid #777;
-    background-color: #fff;
-    color: #777;
-  }
-  /* 勤務確定 */
-  .confirmed {
-    border: 1px solid #4caf50;
-    background-color: #fff;
-    color: #4caf50;
-  }
-
   /* 依頼ボタン */
-  
   .request {
-    border: none;
-    background-color: #17837C;
-    color: #fff;
-    cursor: pointer;
-  }
-
-
-  /* 勤務不可 */
-  .modify,.unavailable {
-    border: none;
-    background-color: #777;
-    color: #fff;
-  }
-
-  .adjusting {
     border: 1px solid #17837C;
     background-color: transparent;
     color: #17837C;
   }
   
-  .partially-available,
-  .available {
+  
+  .request.noticed {
     border: none;
     background-color: #17837C;
     color: #fff;
+    cursor: pointer;
   }
