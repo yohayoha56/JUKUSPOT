@@ -62,6 +62,20 @@ table {
   }
 
 
+
+  #schedule-table th, #schedule-table td{
+    text-align: center;
+  }
+  #schedule-table th:not(:nth-child(4)) ,
+  #schedule-table td:not(:nth-child(4)) {
+    text-align:left ;
+  }
+
+
+
+
+
+
   /* ここから依頼ボタン */
   /* 勤務不可 */
   .request-not-possible {
