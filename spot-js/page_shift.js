@@ -5,14 +5,13 @@ if(newData["ページタイプ"] === "school"){
 // テーブルの情報は〜〜〜〜〜
 const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
 tableRows.forEach(row => {
-  const rowColorFlag = row.querySelector('td:nth-child(2)');
+  const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
   switch(rowColorFlag){
-    case "勤務可能": row.style["background-color"]="#FFF2CC";
-    case "講師回答前": row.style["background-color"]="";
-    case "講師回答前": row.style["background-color"]="";
+    case "勤務可能": row.style["background-color"] = "#FFF2CC"; break;
+    case "講師不可": row.style["background-color"] = "#aaaaaa"; break;
   }
 });
-}
+};
 
 
 
