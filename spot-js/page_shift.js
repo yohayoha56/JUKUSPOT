@@ -1,19 +1,36 @@
 function shift_page() {
 
 // 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-if(newData["ページタイプ"] === "school"){
+
 // テーブルの情報は〜〜〜〜〜
 const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
 tableRows.forEach(row => {
   const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
-  switch(rowColorFlag){
-    case "勤務可能": row.style["background-color"] = "#FFF2CC"; break;
-    case "講師不可": row.style["background-color"] = "#aaaaaa"; break;
+  if(newData["ページタイプ"] === "school"){
+    switch(rowColorFlag){
+      case "勤務可能": row.style["background-color"] = "#FFF2CC"; break;
+      case "勤務不可": row.style["background-color"] = "#aaaaaa"; break;
+    }
+  }else if(newData["ページタイプ"] === "teacher"){
+    switch(rowColorFlag){
+      case "勤務可能": row.style["background-color"] = "#FFF2CC"; break;
+      case "勤務不可": row.style["background-color"] = "#aaaaaa"; break;
+    }
   }
 });
-};
 
 
+if(newData["ページタイプ"] === "teacher"){
+  // テーブルの情報は〜〜〜〜〜
+  const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
+  tableRows.forEach(row => {
+    const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
+    switch(rowColorFlag){
+      case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
+
+    }
+  });
+  };
 
 
 
