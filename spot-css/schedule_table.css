@@ -2,10 +2,17 @@
 table {
     border-collapse: collapse;
     width: 100%;
+    min-width: 800px;
     font-size: 14px;
     line-height: 1.5;
     color: #333;
+    overflow-x: auto;
   }
+
+.table-wrapper {
+  overflow-x: auto;
+}
+  
   
   th,
   td {
@@ -39,20 +46,19 @@ table {
   
 
   #schedule-table th:nth-child(1) {
-    width: 100px;
+    width: 90px;
   }
   #schedule-table th:nth-child(2) {
-    width: 115px;
+    width: 105px;
   }
   #schedule-table th:nth-child(3) {
-    width: 100px;
+    width: 105px;
   }
   #schedule-table th:nth-child(4) {
-    width: calc(100% - 440px);
-    min-width: 360px;
+    width: calc(100% - 420px);
   }
   #schedule-table th:nth-child(5) {
-    width: 125px;
+    width: 120px;
   }
 
 
