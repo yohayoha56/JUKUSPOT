@@ -66,8 +66,8 @@ table {
   #schedule-table th, #schedule-table td{
     text-align: center;
   }
-  #schedule-table th::nth-child(4),
-  #schedule-table td::nth-child(4) {
+  #schedule-table th:nth-child(4),
+  #schedule-table td:nth-child(4) {
     text-align:left ;
   }
 
@@ -75,14 +75,15 @@ table {
 
 
   /* 依頼ボタン */
-  .request {
+  .request, .submit,.change,.answer {
     border: 1px solid #17837C;
     background-color: transparent;
     color: #17837C;
+    cursor: pointer;
   }
   
   
-  .request.noticed {
+  .request.noticed,.submit.noticed,.change.noticed,.answer.notised {
     border: none;
     background-color: #17837C;
     color: #fff;

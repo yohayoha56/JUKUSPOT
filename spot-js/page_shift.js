@@ -43,39 +43,59 @@ function showModal(event) {
   const button = event.target;
   const row = button.closest("tr");
 
-
-  if(button.class=)
-
-
   // 各列の値を取得
   const date = row.cells[0].innerText;
   const availability = row.cells[1].innerText;
   const availableTime = row.cells[2].innerText;
   const remarks = row.cells[3].innerText;
   const requestStatus = row.cells[4].innerText;
+  let formTitle, formInfo, formGuide, formButton,schoolId,schoolName,teacherId,teacherName
 
-  // ページごとにフォームの内容を変更
-
-  let formTitle, formInfo, formGuide, formButton, requestnone, schedulenone;
-  if(newData["ページタイプ"] === "school"){
-    formTitle = `${date}｜`+page_call_property["講師名"]+"先生｜シフト依頼フォーム"
+  // フォームの内容を設定
+  if (button.classList.contains("submit")) {
+    // フォーム設定
+    formTitle = `${date}｜スケジュール提出`
+    formInfo = "提出中のスケジュール"
+    formGuide = "↓ ｽｹｼﾞｭｰﾙをご記入ください"
+    formButton = "ｽｹｼﾞｭｰﾙを提出する"
+    requestnone = `style="display:none;"`
+  } else if (button.classList.contains("request")) {
+    // フォーム設定
+    formTitle = `${date}｜${page_call_property["講師名"]}先生｜シフト依頼`
     formInfo = "講師の提出スケジュール"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
     requestnone = `style="display:none;"`
-    teacher = page_call_property["講師名"];
-  } else if(newData["ページタイプ"] === "teacher"){
-    formTitle = `${date}分スケジュール提出`
-    formInfo = "提出中のスケジュール"
-    formGuide = "↓ 勤務可能時間をご記入ください"
-    formButton = "スケジュール提出"
-    schedulenone = `style="display:none;"`
-    teacher = page_call_property["講師名"];
-    
+  } else if (button.classList.contains("change")) {
+    // フォーム設定
+    formTitle = `${date}｜${page_call_property["講師名"]}先生｜依頼修正`
+    formInfo = "依頼中のシフト内容"
+    formGuide = "↓ 依頼内容をご記入ください"
+    formButton = "シフトを修正する"
+    requestnone = `style="display:none;"`
+  } else if (button.classList.contains("answer")) {
+    // フォーム設定
+    formTitle = `${date}｜${page_call_property["教室名"]}｜依頼回答`
+    formInfo = "教室からの依頼内容"
+    formGuide = "↓ 回答内容をご記入ください"
+    formButton = "回答を提出する"
+    requestnone = `style="display:none;"`
+  }
+  // データ内容を設定
+  if(newData["ページタイプ"] === "school"){
+    schoolId = newData["教室ID"]
+    schoolName = newData["教室名"]
+    teacherId = page_call_property["会員ID"]
+    teacherName = page_call_property["会員ID"]
+  }else if(newData["ページタイプ"] === "teacher"){
+    schoolId = page_call_property["教室ID"]
+    schoolName = page_call_property["教室名"]
+    teacherId = newData["会員ID"]
+    teacherName = newData["会員ID"]
   }
 
-  const formContainer = document.querySelector(".modal-content.form-container");
 
+  const formContainer = document.querySelector(".modal-content.form-container");
   const formContent = `
     <span class="close closeButton">&times;</span>
     <h3>${formTitle}</h3>
@@ -90,68 +110,82 @@ function showModal(event) {
     <!-- 各種フォーム本体 -->
     <h4>${formGuide}</h4>
     <form id="myForm" class="form-content">
-    <input type="hidden" name="working_day" value="${date}">
-    <input type="hidden" name="teacher_name" value="${teacher}">
-    <input type="hidden" name="classroom_name" value="教室名">
-    <input type="hidden" name="old_remarks" value="${remarks}">
-        <!-- 勤務開始時間 -->
-        <div class="form-row" ${requestnone}>
-          <div class="form-inline" >
-              <label for="start_hour">勤務可否</label>
-              <select id="status" name="status">
-              <option value="">選択してください</option>
-              <option value="勤務可能">勤務可能</option>
-              <option value="勤務不可">勤務不可</option>
-              <option value="調整中">調整中</option>
+      <input type="hidden" name="勤務日" value="${date}">
+      <input type="hidden" name="会員ID" value="${teacherId}">
+      <input type="hidden" name="講師名" value="${teacherName}">
+      <input type="hidden" name="教室ID" value="${schoolId}">
+      <input type="hidden" name="教室名" value="${schoolName}">
+      <!-- 勤務可否 -->
+      <div class="form-row" ${requestnone}>
+      <div class="form-inline" >
+      <label for="start_hour">勤務可否</label>
+      <select id="status" name="status">
+      <option value="">選択してください</option>
+      <option value="勤務可能">勤務可能</option>
+      <option value="勤務不可">勤務不可</option>
+      <option value="調整中">調整中</option>
+      </select>
+      </div>
+      </div>
+      <!-- 講師回答 -->
+      <div class="form-row" ${requestnone}>
+      <div class="form-inline" >
+      <label for="start_hour">勤務可否</label>
+      <select id="status" name="status">
+      <option value="">選択してください</option>
+      <option value="勤務可能">勤務可能</option>
+      <option value="勤務不可">勤務不可</option>
+      <option value="調整中">調整中</option>
+      </select>
+      </div>
+      </div>
+      <!-- 勤務開始時間 -->
+      <div class="form-row">
+          <label for="start_hour">勤務開始時間</label>
+          <div class="form-inline">
+              <select id="start_hour" name="start_hour">
+              <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+              <option value="">--</option>
               </select>
+              <label for="start_minute">時</label>
+              <select id="start_minute" name="start_minute">
+              <option value="">--</option>
+              </select>分
           </div>
       </div>
-        <div class="form-row">
-            <label for="start_hour">勤務開始時間</label>
-            <div class="form-inline">
-                <select id="start_hour" name="start_hour">
-                <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-                <option value="">--</option>
-                </select>
-                <label for="start_minute">時</label>
-                <select id="start_minute" name="start_minute">
-                <option value="">--</option>
-                </select>分
-            </div>
-        </div>
-        <!-- 勤務終了時間 -->
-        <div class="form-row">
-            <label for="end_hour">勤務終了時間</label>
-            <div class="form-inline">
-                <select id="end_hour" name="end_hour">
-                <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-                <option value="">--</option>
-                </select>
-                <label for="end_minute">時</label>
-                <select id="end_minute" name="end_minute">
-                <option value="">--</option>
-                </select>分
-            </div>
-        </div>
-        <!-- 休憩時間 -->
-        <div class="form-row" ${schedulenone}>
-            <label for="break_time">休憩時間</label>
-            <div class="form-inline">
-                <select id="break_time" name="break_time">
-                <option value="">--</option>
-                </select>分
-            </div>
-        </div>
-        <!-- 補足・備考 -->
-        <div class="form-row">
-            <label for="remarks">・補足・備考</label>
-            <textarea id="remarks" name="remarks"></textarea>
-        </div>
-        <!-- 送信ボタン・取り消しボタン -->
-        <div class="form-row buttons">
-            <button type="submit">${formButton}</button>
-            <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
-        </div>
+      <!-- 勤務終了時間 -->
+      <div class="form-row">
+          <label for="end_hour">勤務終了時間</label>
+          <div class="form-inline">
+              <select id="end_hour" name="end_hour">
+              <!-- 8:00 ~ 22:00 の選択肢を生成 -->
+              <option value="">--</option>
+              </select>
+              <label for="end_minute">時</label>
+              <select id="end_minute" name="end_minute">
+              <option value="">--</option>
+              </select>分
+          </div>
+      </div>
+      <!-- 休憩時間 -->
+      <div class="form-row" ${schedulenone}>
+          <label for="break_time">休憩時間</label>
+          <div class="form-inline">
+              <select id="break_time" name="break_time">
+              <option value="">--</option>
+              </select>分
+          </div>
+      </div>
+      <!-- 補足・備考 -->
+      <div class="form-row">
+          <label for="remarks">・補足・備考</label>
+          <textarea id="remarks" name="remarks"></textarea>
+      </div>
+      <!-- 送信ボタン・取り消しボタン -->
+      <div class="form-row buttons">
+          <button type="submit">${formButton}</button>
+          <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
+      </div>
     </form>
   `;
 
