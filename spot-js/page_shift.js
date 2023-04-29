@@ -2,52 +2,17 @@ function shift_page() {
 
 // 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 if(newData["ページタイプ"] === "school"){
-
-
-
-
-}
-
-
+// テーブルの情報は〜〜〜〜〜
 const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
 tableRows.forEach(row => {
-  const availabilityCell = row.querySelector('td:nth-child(2)');
-  const requestStatusCell = row.querySelector('td:nth-child(5)');
-
-  // 勤務可否に応じてtrのクラス名を変更
-  switch (availabilityCell.textContent) {
-    case '講師回答前':
-      row.classList.add('not-submitted');
-      break;
-    case '勤務可能':
-      row.classList.add('available');
-      break;
-    case '勤務不可':
-      row.classList.add('unavailable');
-      break;
-    case '調整中':
-      row.classList.add('adjusting');
-      break;
-  }
-
-  // 依頼状況列の変更
-  if(availabilityCell.textContent === '未提出'&&newData["ページタイプ"]=="teacher"){
-    requestStatusCell.innerHTML = '<button class="submit">ｽｹｼﾞｭｰﾙ提出</button>';
-  } else  if (newData["ページタイプ"]=="teacher") {
-    requestStatusCell.innerHTML = '<button class="re-submit">ｽｹｼﾞｭｰﾙ変更</button>';
-  } else  if (availabilityCell.textContent === '勤務不可') {
-    requestStatusCell.innerHTML = '依頼不可';
-  } else if(availabilityCell.textContent === '勤務可能'&&requestStatusCell.textContent === '新規依頼'){
-    requestStatusCell.innerHTML = '<button class="request">新規依頼</button>';
-  } else if (requestStatusCell.textContent === '勤務確定') {
-    requestStatusCell.innerHTML = '<button class="confirmed">勤務確定</button>';
-  } else if (requestStatusCell.textContent === '講師回答前' || requestStatusCell.textContent === '調整希望') {
-    requestStatusCell.innerHTML = '<button class="modify">依頼修正</button>';
-  } else {
-    requestStatusCell.innerHTML = '<button class="request">新規依頼</button>';
+  const rowColorFlag = row.querySelector('td:nth-child(2)');
+  switch(rowColorFlag){
+    case "勤務可能": row.style["background-color"]="#FFF2CC";
+    case "講師回答前": row.style["background-color"]="";
+    case "講師回答前": row.style["background-color"]="";
   }
 });
-
+}
 
 
 
