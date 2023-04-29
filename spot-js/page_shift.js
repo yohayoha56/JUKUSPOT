@@ -16,6 +16,11 @@ tableRows.forEach(row => {
 
 
 
+
+
+
+
+
 // モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const modalTemplate=`
 <div id="myModal" class="modal">
@@ -26,16 +31,21 @@ document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTem
 const modal = document.getElementById("myModal");
 
 // 全てのrequestボタンにイベントリスナーを追加  
-const btns = document.querySelectorAll(".request");
+const btns = document.querySelectorAll("table button");
 btns.forEach((button) => {
 button.addEventListener("click", showModal);
 });
+
 
 // テーブルのボタンが押されたときに呼び出される関数ーーーーーーーーーーーーーーーーーーーーー
 function showModal(event) {
 
   const button = event.target;
   const row = button.closest("tr");
+
+
+  if(button.class=)
+
 
   // 各列の値を取得
   const date = row.cells[0].innerText;
