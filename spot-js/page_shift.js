@@ -27,7 +27,6 @@ if(newData["ページタイプ"] === "teacher"){
     const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
     switch(rowColorFlag){
       case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
-
     }
   });
   };
