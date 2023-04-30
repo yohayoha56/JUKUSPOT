@@ -38,6 +38,7 @@
 
 .modal .buttons {
   width:100% !important;
+  margin-top: 8px;
 }
 
 @media (max-width: 680px) {
