@@ -63,6 +63,22 @@
 }
 
 
+.modal .form-container .buttons button {
+  background-color: var(--green-base);
+  border: none;
+  color: white;
+  width: 50%;
+  min-width: 180px;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
 /* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
   display: flex;
@@ -153,6 +169,7 @@
   width:100%;
 }
 
+/* モーダルでも定義 */
 .form-container .buttons button {
   background-color: var(--green-base);
   border: none;
@@ -162,7 +179,6 @@
   margin: 4px 2px;
   margin-top:23px;
   margin-left:10px;
-
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -172,6 +188,10 @@
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
+
+
+
 .form-container .buttons button:hover {
   background-color: var(--green-darker);
 }
