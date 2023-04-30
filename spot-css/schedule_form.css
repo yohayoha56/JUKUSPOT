@@ -119,16 +119,15 @@
   padding:0;
   margin:0;
   width:180px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
+
 
 .form-container textarea {
   width: 100%;
   resize: vertical;
-}
-
-.form-container .buttons {
-  display: flex;
-  gap: 8px;
 }
 
 
