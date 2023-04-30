@@ -20,10 +20,6 @@ tableRows.forEach(row => {
 });
 
 
-
-
-
-
 // モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const modalTemplate=`
 <div id="myModal" class="modal">
@@ -53,6 +49,7 @@ function showModal(event) {
   const remarks = row.cells[3].innerText;
   const requestStatus = row.cells[4].innerText;
   let formTitle, formInfo, formGuide, formButton,schoolId,schoolName,teacherId,teacherName
+  let submitNone, requestNone, changeNone, answerNone
 
   // フォームの内容を設定
   if (button.classList.contains("submit")) {
