@@ -58,28 +58,28 @@ function showModal(event) {
     formInfo = "提出中のスケジュール"
     formGuide = "↓ ｽｹｼﾞｭｰﾙをご記入ください"
     formButton = "ｽｹｼﾞｭｰﾙを提出する"
-    requestnone = `style="display:none;"`
+    requestNone = `style="display:none;"`
   } else if (button.classList.contains("request")) {
     // フォーム設定
     formTitle = `${date}｜${page_call_property["講師名"]}先生｜シフト依頼`
     formInfo = "講師の提出スケジュール"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
-    requestnone = `style="display:none;"`
+    requestNone = `style="display:none;"`
   } else if (button.classList.contains("change")) {
     // フォーム設定
     formTitle = `${date}｜${page_call_property["講師名"]}先生｜依頼修正`
     formInfo = "依頼中のシフト内容"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを修正する"
-    requestnone = `style="display:none;"`
+    requestNone = `style="display:none;"`
   } else if (button.classList.contains("answer")) {
     // フォーム設定
     formTitle = `${date}｜${page_call_property["教室名"]}｜依頼回答`
     formInfo = "教室からの依頼内容"
     formGuide = "↓ 回答内容をご記入ください"
     formButton = "回答を提出する"
-    requestnone = `style="display:none;"`
+    requestNone = `style="display:none;"`
   }
   // データ内容を設定
   if(newData["ページタイプ"] === "school"){
@@ -116,7 +116,7 @@ function showModal(event) {
       <input type="hidden" name="教室ID" value="${schoolId}">
       <input type="hidden" name="教室名" value="${schoolName}">
       <!-- 勤務可否 -->
-      <div class="form-row" ${requestnone}>
+      <div class="form-row" ${requestNone}>
       <div class="form-inline" >
       <label for="start_hour">勤務可否</label>
       <select id="status" name="status">
@@ -128,7 +128,7 @@ function showModal(event) {
       </div>
       </div>
       <!-- 講師回答 -->
-      <div class="form-row" ${requestnone}>
+      <div class="form-row" ${requestNone}>
       <div class="form-inline" >
       <label for="start_hour">勤務可否</label>
       <select id="status" name="status">
@@ -168,7 +168,7 @@ function showModal(event) {
           </div>
       </div>
       <!-- 休憩時間 -->
-      <div class="form-row" ${schedulenone}>
+      <div class="form-row" ${scheduleNone}>
           <label for="break_time">休憩時間</label>
           <div class="form-inline">
               <select id="break_time" name="break_time">
