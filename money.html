@@ -42,38 +42,39 @@
 
   // フォーム要素の定義
   const formElements = [
-  { name: "日付", type: "date", value: "", inline: false, width: "150px" },
-  { name: "支払い方法", type: "select", value: "", options: [
-          { value: "", text: "選択してください", disabled: true, selected: true },
-          { value: "現金", text: "現金" },
-          { value: "クレジットカード", text: "クレジットカード" },
-          { value: "デビットカード", text: "デビットカード" },
-          { value: "電子マネー", text: "電子マネー" },
-          { value: "その他", text: "その他" },
-  ], inline: true, width: "200px" },
-  { name: "カテゴリ", type: "select", value: "", options: [
-          { value: "", text: "選択してください", disabled: true, selected: true },
-          { value: "食費", text: "食費" },
-          { value: "交通費", text: "交通費" },
-          { value: "通信費", text: "通信費" },
-          { value: "娯楽費", text: "娯楽費" },
-          { value: "住居費", text: "住居費" },
-          { value: "その他", text: "その他" },
-  ], inline: true, width: "200px" },
+  { name: "日付", type: "date", value: "", inline: true, width: "150px" },
+  { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
+    { value: "", text: "選択してください", disabled: true, selected: true },
+    { value: "現金", text: "現金" },
+    { value: "クレジットカード", text: "クレジットカード" },
+    { value: "デビットカード", text: "デビットカード" },
+    { value: "電子マネー", text: "電子マネー" },
+    { value: "その他", text: "その他" },
+  ]},
+  { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
+    { value: "", text: "選択してください", disabled: true, selected: true },
+    { value: "食費", text: "食費" },
+    { value: "交通費", text: "交通費" },
+    { value: "通信費", text: "通信費" },
+    { value: "娯楽費", text: "娯楽費" },
+    { value: "住居費", text: "住居費" },
+    { value: "その他", text: "その他" },
+  ]},
   { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-  { name: "経費", type: "checkbox", value: "", inline: true, width: "auto" },
+  { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
   { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-  { name: "計上項目", type: "select", value: "", options: [
-  { value: "", text: "選択してください", disabled: true, selected: true },
-          { value: "A", text: "A" },
-          { value: "B", text: "B" },
-          { value: "C", text: "C" },
-          { value: "D", text: "D" },
-          { value: "E", text: "E" },
-  ], inline: true, width: "200px" },
-  { name: "計上額", type: "number", value: "", inline: true, width: "100px" },
+  { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
+    { value: "", text: "選択してください", disabled: true, selected: true },
+    { value: "A", text: "A" },
+    { value: "B", text: "B" },
+    { value: "C", text: "C" },
+    { value: "D", text: "D" },
+    { value: "E", text: "E" },
+  ]},
+  { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
   { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
 ];
+
 
   // タイトル、ボタンの作成関数
   function createFormTitle(title) {
