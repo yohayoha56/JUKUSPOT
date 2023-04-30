@@ -42,8 +42,8 @@
 
   // フォーム要素の定義
   const formElements = [
-      { name: "日付", type: "title", value: "" },
-      { name: "カテゴリ", type: "select", value: "", options: [
+  { name: "日付", type: "date", value: "", inline: false, width: "150px" },
+  { name: "カテゴリ", type: "select", value: "", options: [
           { value: "", text: "選択してください", disabled: true, selected: true },
           { value: "食費", text: "食費" },
           { value: "交通費", text: "交通費" },
@@ -51,29 +51,31 @@
           { value: "娯楽費", text: "娯楽費" },
           { value: "住居費", text: "住居費" },
           { value: "その他", text: "その他" },
-      ]},
-      { name: "出費", type: "number", value: "" },
-      { name: "メモ", type: "rich_text", value: "" },
-      { name: "支払い方法", type: "select", value: "", options: [
+  ], inline: true, width: "200px" },
+  { name: "出費", type: "number", value: "", inline: true, width: "100px" },
+  { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
+  { name: "支払い方法", type: "select", value: "", options: [
           { value: "", text: "選択してください", disabled: true, selected: true },
           { value: "現金", text: "現金" },
           { value: "クレジットカード", text: "クレジットカード" },
           { value: "デビットカード", text: "デビットカード" },
           { value: "電子マネー", text: "電子マネー" },
           { value: "その他", text: "その他" },
-      ]},
-      { name: "経費", type: "check_box", value: "" },
-      { name: "計上項目", type: "select", value: "", options: [
-          { value: "", text: "選択してください", disabled: true, selected: true },
+  ], inline: true, width: "200px" },
+  { name: "経費", type: "checkbox", value: "", inline: true, width: "auto" },
+  { name: "計上項目", type: "select", value: "", options: [
+  { value: "", text: "選択してください", disabled: true, selected: true },
           { value: "A", text: "A" },
           { value: "B", text: "B" },
           { value: "C", text: "C" },
           { value: "D", text: "D" },
           { value: "E", text: "E" },
-      ]},
-      { name: "計上額", type: "number", value: "" },
-      { name: "経費メモ", type: "rich_text", value: "" },
-  ];
+  ], inline: true, width: "200px" },
+  { name: "計上額", type: "number", value: "", inline: true, width: "100px" },
+  { name: "経費メモ", type: "text", value: "", inline: true, width: "100%" },
+];
+
+
 
   // タイトル、ボタンの作成関数
   function createFormTitle(title) {
@@ -95,7 +97,7 @@
       return formBox;
   }
 
-  // タイトル、ボタンの作成関数
+  // フォーム要素の作成関数
   function createFormField(element) {
       // ラベルの作成
       const label = document.createElement("label");
@@ -121,17 +123,29 @@
           });
           // 自由記入の追加
           input.addEventListener("change", (event) => {
-          const selectedValue = event.target.value;
-          const otherInput = document.getElementById(`other:${element.name}`);
+            const selectedValue = event.target.value;
+            const formBox = event.target.parentElement;
+            const otherInput = formBox.getElementById(`other:${element.name}`);
             if (selectedValue === "その他") {
-              otherInput.style.display = "block";
+              if (!otherInput) {
+                const otherInputElement = document.createElement("input");
+                otherInputElement.setAttribute("type", "text");
+                otherInput.setAttribute("id", `other:${element.name}`);
+                otherInput.setAttribute("name", `other:${element.name}`);
+                formBox.insertBefore(otherInput, input.nextSibling);
+              }
             } else {
-              otherInput.style.display = "none";
+              if (otherInput) {
+                formBox.removeChild(otherInput);
+              }
             }
           });
       // セレクト以外の作成
       } else if (element.type === "textarea") {
           input = document.createElement("textarea");
+      } else if (element.type === "checkbox") {
+          input = document.createElement("input");
+          input.setAttribute("type", "checkbox");
       } else {
           input = document.createElement("input");
           input.setAttribute("type", element.type);
@@ -139,18 +153,21 @@
       input.setAttribute("id", element.name);
       input.setAttribute("name", element.name);
       input.value = element.value;
-
-      const otherInput = document.createElement("input");
-      otherInput.setAttribute("type", "text");
-      otherInput.setAttribute("id", `other:${element.name}`);
-      otherInput.setAttribute("name", `other:${element.name}`);
-      otherInput.style.display = "none";
+      if (element.inline) { formBox.classList.add("inline-box");}
+    if (element.width) {
+        formBox.style.width = element.width;
+    }
 
       // フォーム要素の梱包
       const formBox = document.createElement("div");
       formBox.classList.add("form-box");
       formBox.appendChild(label);
       formBox.appendChild(input);
+
+
+
+
+
 
       return formBox;
   }
