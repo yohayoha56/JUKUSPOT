@@ -145,6 +145,9 @@
       } else if (element.type === "checkbox") {
           input = document.createElement("input");
           input.setAttribute("type", "checkbox");
+          input.setAttribute("class", "hidden_checkbox");
+          const checkmark = document.createElement("span")
+          checkmark 
       } else {
           input = document.createElement("input");
           input.setAttribute("type", element.type);
@@ -155,10 +158,11 @@
       
       // フォーム要素の梱包
       const formBox = document.createElement("div");
-      formBox.classList.add("form-box");
       formBox.appendChild(label);
       formBox.appendChild(input);
+      formBox.classList.add("form-box");
       if (element.inline) { formBox.classList.add("inline-box");}
+      formBox.setAttribute("id",`${element.name}-wrapper`);
       if (element.width) {  formBox.style.width = element.width;}
       if (element.breakAfter) {
         const breakElement = document.createElement("br");
@@ -203,6 +207,18 @@
 
 <!-- フォームハンドリング -->
 <script>
+  document.getElementById("経費:wrapper").addEventListener("click", function (event) {
+    const checkbox = event.currentTarget.querySelector(".hidden-checkbox");
+    checkbox.checked = !checkbox.checked;
+  });
+
+.hidden-checkbox:checked + #計上項目 {
+  display: block;
+}
+
+
+
+
   const handleSubmit = async (event) => {
   event.preventDefault(); // デフォルトの送信をキャンセル
   const formData = new FormData(form);

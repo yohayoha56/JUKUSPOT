@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+
 form{
   display:flex;
   flex-wrap:wrap;
@@ -8,7 +13,46 @@ form h2{
   width:100%;
 }
 
-* {
-  box-sizing: border-box;
+input,select,textarea{
+  font-size:16px;
+  padding:3px 6px;
+  border:solid 2px #555555;
+  width:100%;
 }
 
+label{
+  font-weight:bold;
+}
+
+.hidden-checkbox {
+  display: none;
+}
+
+.checkmark {
+  display: block;
+  margin:1px;
+  width: 24.666px;
+  height: 24.66px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+}
+
+.hidden-checkbox:checked + .checkmark {
+  background-color: #2196F3;
+  border: 2px solid #555555;
+}
+
+.hidden-checkbox:checked + .checkmark::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 6.5px;
+  top: 2.5px;
+  width: 8px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
