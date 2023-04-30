@@ -168,7 +168,7 @@ function showModal(event) {
           </div>
       </div>
       <!-- 休憩時間 -->
-      <div class="form-row" ${scheduleNone}>
+      <div class="form-row" ${submitNone}>
           <label for="break_time">休憩時間</label>
           <div class="form-inline">
               <select id="break_time" name="break_time">
