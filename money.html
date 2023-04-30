@@ -12,82 +12,161 @@
 </head>
 <body>
 <!-- フォームを用意する。 -->
-<form id="myForm">
-    <div class="form-title">
-        <h2>経費管理フォーム</h2>
-    </div>
-    <div class="form-box">
-        <label for="date" class="form-label">日付:</label>
-        <input type="date" id="date" name="日付">
-    </div>
-    <div class="form-box">
-        <label for="category" class="form-label">カテゴリ:</label>
-        <select id="category" name="カテゴリ">
-            <option value="" selected disabled>選択してください</option>
-            <option value="食費">食費</option>
-            <option value="交通費">交通費</option>
-            <option value="通信費">通信費</option>
-            <option value="娯楽費">娯楽費</option>
-            <option value="住居費">住居費</option>
-            <option value="その他">その他</option>
-        </select>
-    </div>
-    <div class="form-box">
-        <label for="expense" class="form-label">出費:</label>
-        <input type="number" id="expense" name="出費">
-    </div>
-    <div class="form-box">
-        <label for="memo" class="form-label">メモ:</label>
-        <textarea id="memo" name="メモ"></textarea>
-    </div>
-    <div class="form-box">
-        <label for="paymentMethod" class="form-label">支払い方法:</label>
-        <select id="paymentMethod" name="支払い方法">
-            <option value="" selected disabled>選択してください</option>
-            <option value="現金">現金</option>
-            <option value="クレジットカード">クレジットカード</option>
-            <option value="デビットカード">デビットカード</option>
-            <option value="電子マネー">電子マネー</option>
-            <option value="その他">その他</option>
-        </select>
-    </div>
-    <div class="form-box">
-        <label for="expenseCheck" class="form-label">経費:</label>
-        <input type="checkbox" id="expenseCheck" name="経費">
-    </div>
-    <div class="form-box">
-        <label for="accountingItem" class="form-label">計上項目:</label>
-        <select id="accountingItem" name="計上項目">
-            <option value="" selected disabled>選択してください</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="E">E</option>
-        </select>
-    </div>
-    <div class="form-box">
-        <label for="accountingAmount" class="form-label">計上額:</label>
-        <input type="number" id="accountingAmount" name="計上額">
-    </div>
-    <div class="form-box">
-        <label for="expenseMemo" class="form-label">経費メモ:</label>
-        <textarea id="expenseMemo" name="経費メモ"></textarea>
-    </div>
-    <div class="form-box">
-        <input type="submit" value="経費を保存">
-    </div>
-</form>
+<div id="form-container"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      createForm();
+  });
+  
+  // メイン関数
+  function createForm() {
+      const formConfig = {
+          formId: "myForm", formTitle: "経費管理フォーム", buttonText: "経費を保存",
+      };
+      // タイトルなど共通処理
+      const formContainer = document.getElementById("form-container");
+      const form = document.createElement("form");
+      form.setAttribute("id", formConfig.formId);
+      form.appendChild(createFormTitle(formConfig.formTitle));
+
+      // フォームコンテンツの作成関数
+      formElements.forEach(element => {
+          form.appendChild(createFormField(element));
+      });
+      // 送信ボタンの作成
+      form.appendChild(createSubmitButton(formConfig.buttonText));
+      formContainer.appendChild(form);
+      form.addEventListener('submit', handleSubmit);
+  }
+
+  // フォーム要素の定義
+  const formElements = [
+      { name: "日付", type: "title", value: "" },
+      { name: "カテゴリ", type: "select", value: "", options: [
+          { value: "", text: "選択してください", disabled: true, selected: true },
+          { value: "食費", text: "食費" },
+          { value: "交通費", text: "交通費" },
+          { value: "通信費", text: "通信費" },
+          { value: "娯楽費", text: "娯楽費" },
+          { value: "住居費", text: "住居費" },
+          { value: "その他", text: "その他" },
+      ]},
+      { name: "出費", type: "number", value: "" },
+      { name: "メモ", type: "rich_text", value: "" },
+      { name: "支払い方法", type: "select", value: "", options: [
+          { value: "", text: "選択してください", disabled: true, selected: true },
+          { value: "現金", text: "現金" },
+          { value: "クレジットカード", text: "クレジットカード" },
+          { value: "デビットカード", text: "デビットカード" },
+          { value: "電子マネー", text: "電子マネー" },
+          { value: "その他", text: "その他" },
+      ]},
+      { name: "経費", type: "check_box", value: "" },
+      { name: "計上項目", type: "select", value: "", options: [
+          { value: "", text: "選択してください", disabled: true, selected: true },
+          { value: "A", text: "A" },
+          { value: "B", text: "B" },
+          { value: "C", text: "C" },
+          { value: "D", text: "D" },
+          { value: "E", text: "E" },
+      ]},
+      { name: "計上額", type: "number", value: "" },
+      { name: "経費メモ", type: "rich_text", value: "" },
+  ];
+
+  // タイトル、ボタンの作成関数
+  function createFormTitle(title) {
+      const titleElement = document.createElement("h2");
+      titleElement.textContent = title;
+      return titleElement;
+  }
+  function createSubmitButton(text) {
+      // ボタンの作成
+      const submitButton = document.createElement("input");
+      submitButton.setAttribute("type", "submit");
+      submitButton.setAttribute("value", text);
+      submitButton.classList.add("submit-button");
+      // ボタンの梱包
+      const formBox = document.createElement("div");
+      formBox.classList.add("form-box");
+      formBox.appendChild(submitButton);
+
+      return formBox;
+  }
+
+  // タイトル、ボタンの作成関数
+  function createFormField(element) {
+      // ラベルの作成
+      const label = document.createElement("label");
+      label.setAttribute("for", element.name);
+      label.classList.add("form-label");
+      label.textContent = element.name + ":";
+
+      let input;
+      // セレクトブロパティの作成（その他の自由記入もあり）
+      if (element.type === "select") {
+          input = document.createElement("select");
+          element.options.forEach(option => {
+              const optionElement = document.createElement("option");
+              optionElement.value = option.value;
+              optionElement.textContent = option.text;
+              if (option.disabled) {
+                  optionElement.setAttribute("disabled", "");
+              }
+              if (option.selected) {
+                  optionElement.setAttribute("selected", "");
+              }
+              input.appendChild(optionElement);
+          });
+          // 自由記入の追加
+          input.addEventListener("change", (event) => {
+          const selectedValue = event.target.value;
+          const otherInput = document.getElementById(`other:${element.name}`);
+            if (selectedValue === "その他") {
+              otherInput.style.display = "block";
+            } else {
+              otherInput.style.display = "none";
+            }
+          });
+      // セレクト以外の作成
+      } else if (element.type === "textarea") {
+          input = document.createElement("textarea");
+      } else {
+          input = document.createElement("input");
+          input.setAttribute("type", element.type);
+      }
+      input.setAttribute("id", element.name);
+      input.setAttribute("name", element.name);
+      input.value = element.value;
+
+      const otherInput = document.createElement("input");
+      otherInput.setAttribute("type", "text");
+      otherInput.setAttribute("id", `other:${element.name}`);
+      otherInput.setAttribute("name", `other:${element.name}`);
+      otherInput.style.display = "none";
+
+      // フォーム要素の梱包
+      const formBox = document.createElement("div");
+      formBox.classList.add("form-box");
+      formBox.appendChild(label);
+      formBox.appendChild(input);
+
+      return formBox;
+  }
+
+</script>
+
 
 <!-- 更新日時の表示 -->
 <p id="last-updated"></p>
 <script>
   // ページの最終更新日時を取得
   const lastUpdated = new Date(document.lastModified);
-
+  
   // 現在の日時を取得
   const now = new Date();
-
+  
   // 日時のフォーマットを設定
   const options = {
     year: 'numeric',
@@ -108,6 +187,52 @@
     document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
   }
 </script>
+
+
+<!-- フォームハンドリング -->
+<script>
+  const handleSubmit = async (event) => {
+  event.preventDefault(); // デフォルトの送信をキャンセル
+  const formData = new FormData(form);
+  const data = {};
+  // FormDataオブジェクトから連想配列に変換
+  for (const [key, value] of formData.entries()) {
+      data[key] = value;
+    }
+    
+  // もし「その他」が選択された場合、テキストボックスの値を利用する
+  // if (data["タスク内容"] === "新規タスク作成") {
+  //   data["タスク内容"] = data["other:タスク内容"];
+  // }
+  // delete data["other:タスク内容"]
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: JSON.stringify(data),
+    mode: 'cors', //CORS対応
+  });
+
+  const text = await response.text();
+  if (text.includes("Success")) {
+    console.log('データが正常に送信されました');
+    form.reset(); // フォームの入力値をリセット
+  } else {
+    console.error(`エラーメッセージ: ${text}`);
+  }
+  script1();
+  };
+
+</script>
+
+
+
+
+
+
+
 
     <!-- タスク情報の取得、テーブルの表示
     <script>
@@ -292,48 +417,6 @@
         }
       }
     </script> -->
-
-
-      <script>
-        // フォームの送信をハンドルする関数
-        const handleSubmit = async (event) => {
-        event.preventDefault(); // デフォルトの送信をキャンセル
-        const form = document.querySelector('#myForm');
-        const formData = new FormData(form);
-        const data = {};
-        // FormDataオブジェクトから連想配列に変換
-        for (const [key, value] of formData.entries()) {
-            data[key] = value;
-          }
-          
-        // もし「その他」が選択された場合、テキストボックスの値を利用する
-        // if (data["タスク内容"] === "新規タスク作成") {
-        //   data["タスク内容"] = data["other:タスク内容"];
-        // }
-        // delete data["other:タスク内容"]
-
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'text/plain',
-          },
-          body: JSON.stringify(data),
-          mode: 'cors', //CORS対応
-        });
-
-        const text = await response.text();
-        if (text.includes("Success")) {
-          console.log('データが正常に送信されました');
-          form.reset(); // フォームの入力値をリセット
-        } else {
-          console.error(`エラーメッセージ: ${text}`);
-        }
-        script1();
-        };
-        const form = document.querySelector('#myForm');
-        form.addEventListener('submit', handleSubmit);
-      </script>
-
 
 </body>
 </html>
