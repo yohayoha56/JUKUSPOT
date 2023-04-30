@@ -166,7 +166,7 @@
       if (element.width) {  formBox.style.width = element.width;}
       if (element.breakAfter) {
         const breakElement = document.createElement("br");
-        formBox.appendChild(breakElement);
+        formBox.after(breakElement);
       }
       return formBox;
   }
