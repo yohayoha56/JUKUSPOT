@@ -5,7 +5,7 @@
     <title>費用管理アプリ</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="form2.css">
     <link rel="stylesheet" href="table.css">
 
     <title>Document</title>
@@ -43,6 +43,14 @@
   // フォーム要素の定義
   const formElements = [
   { name: "日付", type: "date", value: "", inline: false, width: "150px" },
+  { name: "支払い方法", type: "select", value: "", options: [
+          { value: "", text: "選択してください", disabled: true, selected: true },
+          { value: "現金", text: "現金" },
+          { value: "クレジットカード", text: "クレジットカード" },
+          { value: "デビットカード", text: "デビットカード" },
+          { value: "電子マネー", text: "電子マネー" },
+          { value: "その他", text: "その他" },
+  ], inline: true, width: "200px" },
   { name: "カテゴリ", type: "select", value: "", options: [
           { value: "", text: "選択してください", disabled: true, selected: true },
           { value: "食費", text: "食費" },
@@ -53,16 +61,8 @@
           { value: "その他", text: "その他" },
   ], inline: true, width: "200px" },
   { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-  { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-  { name: "支払い方法", type: "select", value: "", options: [
-          { value: "", text: "選択してください", disabled: true, selected: true },
-          { value: "現金", text: "現金" },
-          { value: "クレジットカード", text: "クレジットカード" },
-          { value: "デビットカード", text: "デビットカード" },
-          { value: "電子マネー", text: "電子マネー" },
-          { value: "その他", text: "その他" },
-  ], inline: true, width: "200px" },
   { name: "経費", type: "checkbox", value: "", inline: true, width: "auto" },
+  { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
   { name: "計上項目", type: "select", value: "", options: [
   { value: "", text: "選択してください", disabled: true, selected: true },
           { value: "A", text: "A" },
@@ -72,10 +72,8 @@
           { value: "E", text: "E" },
   ], inline: true, width: "200px" },
   { name: "計上額", type: "number", value: "", inline: true, width: "100px" },
-  { name: "経費メモ", type: "text", value: "", inline: true, width: "100%" },
+  { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
 ];
-
-
 
   // タイトル、ボタンの作成関数
   function createFormTitle(title) {
