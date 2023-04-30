@@ -160,6 +160,10 @@
       formBox.appendChild(input);
       if (element.inline) { formBox.classList.add("inline-box");}
       if (element.width) {  formBox.style.width = element.width;}
+      if (element.breakAfter) {
+        const breakElement = document.createElement("br");
+        formBox.appendChild(breakElement);
+      }
 
       return formBox;
   }
