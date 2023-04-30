@@ -153,21 +153,14 @@
       input.setAttribute("id", element.name);
       input.setAttribute("name", element.name);
       input.value = element.value;
-      if (element.inline) { formBox.classList.add("inline-box");}
-    if (element.width) {
-        formBox.style.width = element.width;
-    }
-
+      
       // フォーム要素の梱包
       const formBox = document.createElement("div");
       formBox.classList.add("form-box");
       formBox.appendChild(label);
       formBox.appendChild(input);
-
-
-
-
-
+      if (element.inline) { formBox.classList.add("inline-box");}
+      if (element.width) {  formBox.style.width = element.width;}
 
       return formBox;
   }
