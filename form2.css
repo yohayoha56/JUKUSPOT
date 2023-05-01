@@ -24,6 +24,13 @@ label{
   font-weight:bold;
 }
 
+.break-after::after {
+  content: "";
+  display: block;
+  width: 100%;
+}
+
+
 .hidden-checkbox {
   display: none;
 }
