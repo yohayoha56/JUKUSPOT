@@ -224,11 +224,11 @@ label{
 
 .time-wrapper{
   display:flex;
-  gap:10px;
+  gap:5px;
 }
 
 .time-wrapper select{
-  width:50px;
+  width:60px;
 }
 
 label{

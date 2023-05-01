@@ -373,8 +373,6 @@ function submitFormAdd(){
     } else {
       startTimeWrapper.style.display = "none";
       endTimeWrapper.style.display = "none";
-      startTimeWrapper.querySelector("input").value = "";
-      endTimeWrapper.querySelector("input").value = "";
     }
   });
 }
@@ -385,7 +383,6 @@ function submitFormAdd(){
 
 
 // フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
 
 const handleSubmit = async (event) => {
   event.preventDefault(); // デフォルトの送信をキャンセル
@@ -421,8 +418,6 @@ const handleSubmit = async (event) => {
 
   if (isValid ==false){ return; }
 
-
-
   function showValidationError(element, message) {
     const errorMessage = document.createElement("div");
     errorMessage.classList.add("error-message");
@@ -442,7 +437,7 @@ const handleSubmit = async (event) => {
 
 
 
-
+  // データの整理
   data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
     + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
   data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
