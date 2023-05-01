@@ -61,7 +61,7 @@
   ]},
   { name: "勤務開始時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
   { name: "勤務終了時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-  { name: "休憩時間", type: "select", value: "", inline: true, width: "150px", },
+  { name: "休憩時間", type: "minute", value: "", inline: true, width: "150px",minMinute: 0, maxMinute: 120, stepMinute: 10},
   { name: "補足・備考", type: "textarea", value: "", inline: false },
 ];
 
@@ -95,55 +95,30 @@
       label.textContent = element.name + ":";
 
       let input;
-      // セレクトブロパティの作成（その他の自由記入もあり）
-      if (element.type === "select") {
-          input = document.createElement("select");
-          element.options.forEach(option => {
-              const optionElement = document.createElement("option");
-              optionElement.value = option.value;
-              optionElement.textContent = option.text;
-              if (option.disabled) {
-                  optionElement.setAttribute("disabled", "");
-              }
-              if (option.selected) {
-                  optionElement.setAttribute("selected", "");
-              }
-              input.appendChild(optionElement);
-          });
-          // 自由記入の追加
-          input.addEventListener("change", (event) => {
-            const selectedValue = event.target.value;
-            const formBox = event.target.parentElement;
-            const otherInput = formBox.getElementById(`other:${element.name}`);
-            if (selectedValue === "その他") {
-              if (!otherInput) {
-                const otherInputElement = document.createElement("input");
-                otherInputElement.setAttribute("type", "text");
-                otherInput.setAttribute("id", `other:${element.name}`);
-                otherInput.setAttribute("name", `other:${element.name}`);
-                formBox.insertBefore(otherInput, input.nextSibling);
-              }
-            } else {
-              if (otherInput) {
-                formBox.removeChild(otherInput);
-              }
-            }
-          });
-      // セレクト以外の作成
-      } else if (element.type === "textarea") {
+      // ブロパティの作成（その他の自由記入もあり）
+      if (element.type === "select") {//ーーーーーーーーーーーーーーー
+          input = createSelectInput(element);
+      } else if (element.type === "textarea") {//ーーーーーーーーーー
           input = document.createElement("textarea");
-      } else if (element.type === "checkbox") {
+      } else if (element.type === "checkbox") {//ーーーーーーーーーー
           input = document.createElement("input");
           input.setAttribute("type", "checkbox");
           input.setAttribute("class", "hidden_checkbox");
           const checkmark = document.createElement("span")
-          checkmark 
-      } else if (element.type === "time") {
+      } else if (element.type === "time") {//ーーーーーーーーーーーー
           input = createCustomTimeInput(element);
-      } else {
+      } else if (element.type === "minute") {//ーーーーーーーーーーー
+        input = document.createElement("select");
+        for (let minute = element.minMinute; minute <= element.maxMinute; minute += element.stepMinute) {
+            const minuteOption = document.createElement("option");
+            minuteOption.value = minute;
+            minuteOption.textContent = minute;
+            input.appendChild(minuteOption);
+        } 
+      } else {//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
           input = document.createElement("input");
           input.setAttribute("type", element.type);
-      }
+      }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
       input.setAttribute("id", element.name);
       input.setAttribute("name", element.name);
       input.value = element.value;
@@ -161,47 +136,82 @@
       return formBox;
   }
 
+
+  // セレクト要素の作成
+  function createSelectInput(element) {
+      const select = document.createElement("select");
+      select.setAttribute("name", element.name);
+      select.setAttribute("id", element.id);
+
+      element.options.forEach(option => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        if (option.disabled) {
+          optionElement.setAttribute("disabled", "");
+        }
+        if (option.selected) {
+          optionElement.setAttribute("selected", "");
+        }
+        select.appendChild(optionElement);
+      });
+
+      // 自由記入の追加
+      select.addEventListener("change", (event) => {
+        const selectedValue = event.target.value;
+        const formBox = event.target.parentElement;
+        const otherInput = formBox.getElementById(`other:${element.name}`);
+        if (selectedValue === "その他") {
+          if (!otherInput) {
+            const otherInputElement = document.createElement("input");
+            otherInputElement.setAttribute("type", "text");
+            otherInputElement.setAttribute("id", `other:${element.name}`);
+            otherInputElement.setAttribute("name", `other:${element.name}`);
+            formBox.insertBefore(otherInputElement, select.nextSibling);
+          }
+        } else {
+          if (otherInput) {
+            formBox.removeChild(otherInput);
+          }
+        }
+      });
+
+      return select;
+  }
+
   // 時間のインプット作成関数
   function createCustomTimeInput(element) {
-  const hourSelect = document.createElement("select");
-  hourSelect.setAttribute("name", element.name + "_hour");
-  hourSelect.setAttribute("id", element.id + "_hour");
+      const hourSelect = document.createElement("select");
+      hourSelect.setAttribute("name", element.name + "_hour");
+      hourSelect.setAttribute("id", element.id + "_hour");
 
-  const minuteSelect = document.createElement("select");
-  minuteSelect.setAttribute("name", element.name + "_minute");
-  minuteSelect.setAttribute("id", element.id + "_minute");
+      const minuteSelect = document.createElement("select");
+      minuteSelect.setAttribute("name", element.name + "_minute");
+      minuteSelect.setAttribute("id", element.id + "_minute");
 
-  // 時間の選択肢を生成
-  for (let hour = element.minHour; hour <= element.maxHour; hour++) {
-    const hourOption = document.createElement("option");
-    hourOption.value = hour;
-    hourOption.textContent = hour;
-    hourSelect.appendChild(hourOption);
+      // 時間の選択肢を生成
+      for (let hour = element.minHour; hour <= element.maxHour; hour++) {
+        const hourOption = document.createElement("option");
+        hourOption.value = hour;
+        hourOption.textContent = hour;
+        hourSelect.appendChild(hourOption);
+      }
+      // 分の選択肢を生成
+      for (let minute = 0; minute < 60; minute += element.stepMinute) {
+        const minuteOption = document.createElement("option");
+        minuteOption.value = minute;
+        minuteOption.textContent = minute;
+        minuteSelect.appendChild(minuteOption);
+      }
+      // 時間のインプット要素まとめ
+      const timeWrapper = document.createElement("div");
+      timeWrapper.appendChild(hourSelect);
+      timeWrapper.appendChild(document.createTextNode("時"));
+      timeWrapper.appendChild(minuteSelect);
+      timeWrapper.appendChild(document.createTextNode("分"));
+
+      return timeWrapper;
   }
-  // 分の選択肢を生成
-  for (let minute = 0; minute < 60; minute += element.stepMinute) {
-    const minuteOption = document.createElement("option");
-    minuteOption.value = minute;
-    minuteOption.textContent = minute;
-    minuteSelect.appendChild(minuteOption);
-  }
-  // 時間のインプット要素まとめ
-  const timeWrapper = document.createElement("div");
-  timeWrapper.appendChild(hourSelect);
-  timeWrapper.appendChild(document.createTextNode("時"));
-  timeWrapper.appendChild(minuteSelect);
-  timeWrapper.appendChild(document.createTextNode("分"));
-
-  return timeWrapper;
-}
-
-
-
-
-
-
-
-
 
 </script>
 
