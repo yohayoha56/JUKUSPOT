@@ -347,11 +347,8 @@ const handleSubmit = async (event) => {
   for (const [key, value] of formData.entries()) {
       data[key] = value;
   }
-  // 講師ID、応募ID
-  data["応募ID"] = teacherId;
-  data["会員ID"] = ouboId;
-  data["教室ID"] = newData["教室ID"];
-  data["教室名"] = newData("教室名");
+
+
 
   // 勤務開始時間、終了時間、休憩時間をdataに追加
   data["勤務開始時間"] = data["start_hour"] + ':' + (data["start_minute"] === '0' ? '00' : data["start_minute"]);
@@ -361,8 +358,6 @@ const handleSubmit = async (event) => {
   // 日本時間のタイムスタンプを追加
   data["submitted_timestamp"] = new Date().toLocaleString("ja-JP");
 
-  // 勤務日を取得
-  data["work_date"] = workDate;
 
   // 依頼取り消しを追加
   data["request_cancellation"] = false;
