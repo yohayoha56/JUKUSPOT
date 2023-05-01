@@ -347,6 +347,7 @@ function showModal(event) {
       case 'submitForm':
         document.getElementById("講師回答-wrapper").remove();
         document.getElementById("休憩時間-wrapper").remove();
+        submitFormAdd()
         break;
       case 'requestForm':
         document.getElementById(targetId).remove();
@@ -360,14 +361,42 @@ function showModal(event) {
     }
   }
 
+// フォームのカスタマイズ機能
+function submitFormAdd(){
+  document.getElementById("勤務可否").addEventListener("change", function () {
+    const workStatus = this.value;
+    const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
+    const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
+  
+    if (data["勤務可否"] === "勤務可能") {
+      startTimeWrapper.style.display = "block";
+      endTimeWrapper.style.display = "block";
+    } else {
+      startTimeWrapper.style.display = "none";
+      endTimeWrapper.style.display = "none";
+      startTimeWrapper.querySelector("input").value = "";
+      endTimeWrapper.querySelector("input").value = "";
+    }
+  });
+}
+
+
+
+
+
+
+
 }
 
 
 
 // フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
+
 const handleSubmit = async (event) => {
   event.preventDefault(); // デフォルトの送信をキャンセル
+  clearValidationErrors(); // バリデーションをリフレッシュ
+
   const form = document.querySelector('form');
   const formId =form.id
   const formData = new FormData(form);
@@ -376,6 +405,58 @@ const handleSubmit = async (event) => {
   for (const [key, value] of formData.entries()) {
       data[key] = value;
   }
+
+  // バリデーションチェック
+  let isValid = true;
+  switch (formId) {
+    case 'submitForm': 
+      if (!data["勤務可否"]){ isValid = false;
+        showValidationError(document.getElementById("勤務可否-wrapper"), "勤務可否を選択してください");
+      } if(data["勤務可否"] === "勤務可能" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
+        showValidationError(document.getElementById("勤務開始時間-wrapper"), "開始時間を設定してください");
+      } if(data["勤務可否"] === "勤務可能" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間を設定してください");
+      } if(data["勤務可否"] === "調整中" && !data["補足・備考"]) {
+        showValidationError(document.getElementById("補足・備考-wrapper"), "参考テキストを入力してください");
+      }
+      break;
+    case 'requestForm': hosokuguide = "（教室から：シフト依頼時）"; break;
+    case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
+    case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
+  }  
+
+  if (isValid =false){ return; }
+
+
+
+  function showValidationError(element, message) {
+    const errorMessage = document.createElement("div");
+    errorMessage.classList.add("error-message");
+    errorMessage.textContent = message;
+    errorMessage.style.color = "red";
+    errorMessage.style.fontSize = "0.8rem";
+    errorMessage.style.marginTop = "4px";
+    element.appendChild(errorMessage);
+  }
+  
+  function clearValidationErrors() {
+    const errorMessages = document.getElementsByClassName("error-message");
+    while (errorMessages[0]) {
+      errorMessages[0].parentNode.removeChild(errorMessages[0]);
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
 
   data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
     + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
@@ -392,7 +473,7 @@ const handleSubmit = async (event) => {
     case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
     case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
   }  
-  data["補足・備考"] = hosokuguide+"\n" + data["補足・備考"];
+  data["補足・備考"] = hosokuguide+data["タイムスタンプ"]+"\n" + data["補足・備考"];
 
 
   console.log(data);
