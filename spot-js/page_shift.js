@@ -346,16 +346,40 @@ function showModal(event) {
 
 
 // フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+removeElementById(formId)
+function removeElementById(formId) {
+  let targetId;
+
+  switch (formId) {
+    case 'submitForm':
+      document.getElementById("講師回答-wrapper").remove();
+      document.getElementById("休憩時間-wrapper").remove();
+      break;
+    case 'requestForm':
+      document.getElementById(targetId).remove();
+      break;
+    case 'changeForm':
+      document.getElementById(targetId).remove();
+      break;
+    case 'answerForm':
+      document.getElementById(targetId).remove();
+      break;
+  }
+}
+
+
+
 
 const handleSubmit = async (event) => {
   event.preventDefault(); // デフォルトの送信をキャンセル
-  const form = document.querySelector('#myForm');
+  const form = document.querySelector('form');
   const formData = new FormData(form);
   const data = {};
   // FormDataオブジェクトから連想配列に変換
   for (const [key, value] of formData.entries()) {
       data[key] = value;
   }
+
 
 
 
