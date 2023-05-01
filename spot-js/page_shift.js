@@ -445,15 +445,6 @@ const handleSubmit = async (event) => {
       errorMessages[0].parentNode.removeChild(errorMessages[0]);
     }
   }
-  
-
-
-
-
-
-
-
-
 
 
 
