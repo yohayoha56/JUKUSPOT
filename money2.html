@@ -59,9 +59,9 @@
     { value: "勤務不可", text: "勤務不可" },
     { value: "調整中", text: "調整中" },
   ]},
-  { name: "勤務開始時間", type: "time", value: "", inline: true },
-  { name: "勤務終了時間", type: "time", value: "", inline: true },
-  { name: "休憩時間", type: "number", value: "", inline: true },
+  { name: "勤務開始時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+  { name: "勤務終了時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+  { name: "休憩時間", type: "select", value: "", inline: true, width: "150px", },
   { name: "補足・備考", type: "textarea", value: "", inline: false },
 ];
 
@@ -138,6 +138,8 @@
           input.setAttribute("class", "hidden_checkbox");
           const checkmark = document.createElement("span")
           checkmark 
+      } else if (element.type === "time") {
+          input = createCustomTimeInput(element);
       } else {
           input = document.createElement("input");
           input.setAttribute("type", element.type);
@@ -158,6 +160,48 @@
       if (element.type === "hidden") { formBox.style.display = "none";}
       return formBox;
   }
+
+  // 時間のインプット作成関数
+  function createCustomTimeInput(element) {
+  const hourSelect = document.createElement("select");
+  hourSelect.setAttribute("name", element.name + "_hour");
+  hourSelect.setAttribute("id", element.id + "_hour");
+
+  const minuteSelect = document.createElement("select");
+  minuteSelect.setAttribute("name", element.name + "_minute");
+  minuteSelect.setAttribute("id", element.id + "_minute");
+
+  // 時間の選択肢を生成
+  for (let hour = element.minHour; hour <= element.maxHour; hour++) {
+    const hourOption = document.createElement("option");
+    hourOption.value = hour;
+    hourOption.textContent = hour;
+    hourSelect.appendChild(hourOption);
+  }
+  // 分の選択肢を生成
+  for (let minute = 0; minute < 60; minute += element.stepMinute) {
+    const minuteOption = document.createElement("option");
+    minuteOption.value = minute;
+    minuteOption.textContent = minute;
+    minuteSelect.appendChild(minuteOption);
+  }
+  // 時間のインプット要素まとめ
+  const timeWrapper = document.createElement("div");
+  timeWrapper.appendChild(hourSelect);
+  timeWrapper.appendChild(document.createTextNode("時"));
+  timeWrapper.appendChild(minuteSelect);
+  timeWrapper.appendChild(document.createTextNode("分"));
+
+  return timeWrapper;
+}
+
+
+
+
+
+
+
+
 
 </script>
 
