@@ -213,7 +213,7 @@
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
-        'Notion-Version': '2022-05-13'
+        'Notion-Version': '2021-08-16'
       }
     });
 
@@ -261,7 +261,7 @@
 
 
 
-  const handleSubmit = async (event) => {
+  async function handleSubmit (event)  {
   event.preventDefault(); // デフォルトの送信をキャンセル
   const formData = new FormData(form);
   const data = {};
