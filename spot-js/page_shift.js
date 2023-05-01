@@ -124,7 +124,7 @@ function showModal(event) {
     { name: "勤務開始時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "勤務終了時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "休憩時間", type: "minute", value: "", inline: true, width: "150px",breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
-    { name: "補足・備考", type: "textarea", value: "", inline: false },
+    { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
   ];
   
 // #region フォームの作成テンプレート関数
