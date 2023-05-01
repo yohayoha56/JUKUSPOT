@@ -339,6 +339,7 @@ function showModal(event) {
   closeButton.onclick = () => {
     modal.style.display = "none";
   };
+// #endregion MyRegionName
 
   removeElementById(formId)
   function removeElementById(formId) {
@@ -359,7 +360,6 @@ function showModal(event) {
     }
   }
 
-// #endregion MyRegionName
 }
 
 
