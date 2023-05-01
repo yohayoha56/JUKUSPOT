@@ -342,8 +342,6 @@ function showModal(event) {
 
   removeElementById(formId)
   function removeElementById(formId) {
-    let targetId;
-
     switch (formId) {
       case 'submitForm':
         document.getElementById("講師回答-wrapper").remove();
