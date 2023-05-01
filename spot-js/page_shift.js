@@ -95,6 +95,39 @@ function showModal(event) {
   }
 
 
+  const formElements = [
+    // 隠しフォーム要素（事前定義済み）
+    { name: "勤務日", type: "hidden", value: "${date}" },
+    { name: "会員ID", type: "hidden", value: "${teacherId}" },
+    { name: "講師名", type: "hidden", value: "${teacherName}" },
+    { name: "教室ID", type: "hidden", value: "${schoolId}" },
+    { name: "教室名", type: "hidden", value: "${schoolName}" },
+    // ここからがフォーム回答要素
+    { name: "勤務可否", type: "select", value: "", inline: true, width: "200px", options: [
+      { value: "", text: "選択してください" },
+      { value: "勤務可能", text: "勤務可能" },
+      { value: "勤務不可", text: "勤務不可" },
+      { value: "調整中", text: "調整中" },
+    ]},
+    { name: "講師回答", type: "select", value: "", inline: true, width: "200px", options: [
+      { value: "", text: "選択してください" },
+      { value: "勤務可能", text: "勤務可能" },
+      { value: "勤務不可", text: "勤務不可" },
+      { value: "調整中", text: "調整中" },
+    ]},
+    { name: "勤務開始時間", type: "time", value: "", inline: true },
+    { name: "勤務終了時間", type: "time", value: "", inline: true },
+    { name: "休憩時間", type: "number", value: "", inline: true },
+    { name: "補足・備考", type: "textarea", value: "", inline: false },
+  ];
+  
+
+
+
+
+
+
+
   const formContainer = document.querySelector(".modal-content.form-container");
   const formContent = `
     <span class="close closeButton">&times;</span>
