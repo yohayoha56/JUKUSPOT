@@ -9,7 +9,7 @@
   padding-top: 30px;
   top: 50px;
   z-index: 1000;
-  height: 60vh;
+  height: 60vh; 
 }
 .modal {
   z-index: 2000;
@@ -17,15 +17,15 @@
 
 /* 横幅の設定 ーーーーーーーーーーーーーーーーーー*/
 .side-bar {
-  width: 210px;
+  width: 220px;
   display: inline-block;
-  padding: 15px;
+  padding: 20px;
 }
 .main-bar {
-  width: calc(100% - 210px);
+  width: calc(100% - 225px);
   display: inline-block;
   padding: 15px;
-  margin-left: 15px;
+  margin-left: 5px;
 }
 @media (max-width: 680px) {
   .side-bar{

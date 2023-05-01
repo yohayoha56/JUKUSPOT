@@ -340,32 +340,34 @@ function showModal(event) {
     modal.style.display = "none";
   };
 
+  removeElementById(formId)
+  function removeElementById(formId) {
+    let targetId;
+
+    switch (formId) {
+      case 'submitForm':
+        document.getElementById("講師回答-wrapper").remove();
+        document.getElementById("休憩時間-wrapper").remove();
+        break;
+      case 'requestForm':
+        document.getElementById(targetId).remove();
+        break;
+      case 'changeForm':
+        document.getElementById(targetId).remove();
+        break;
+      case 'answerForm':
+        document.getElementById(targetId).remove();
+        break;
+    }
+  }
+
 // #endregion MyRegionName
 }
 
 
 
 // フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-removeElementById(formId)
-function removeElementById(formId) {
-  let targetId;
 
-  switch (formId) {
-    case 'submitForm':
-      document.getElementById("講師回答-wrapper").remove();
-      document.getElementById("休憩時間-wrapper").remove();
-      break;
-    case 'requestForm':
-      document.getElementById(targetId).remove();
-      break;
-    case 'changeForm':
-      document.getElementById(targetId).remove();
-      break;
-    case 'answerForm':
-      document.getElementById(targetId).remove();
-      break;
-  }
-}
 
 
 
