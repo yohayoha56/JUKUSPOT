@@ -111,22 +111,22 @@ function showModal(event) {
     { name: "講師名", type: "hidden", value: "${teacherName}" },
     { name: "教室ID", type: "hidden", value: "${schoolId}" },
     { name: "教室名", type: "hidden", value: "${schoolName}" },
-    { name: "勤務可否", type: "select", value: "", inline: true, width: "180px", options: [
+    { name: "勤務可否", type: "select", value: "", inline: true, width: "180px",breakBefore:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
-    { name: "講師回答", type: "select", value: "", inline: true, width: "180px", options: [
+    { name: "講師回答", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
-    { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", breakBefore:true ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-    { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px",breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
-    { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%", breakBefore:true},
+    { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
+    { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
   ];
 // #endregion ここから80行くらい、データとフォームの定義
   
@@ -251,7 +251,7 @@ function showModal(event) {
       if (element.inline) { formBox.classList.add("inline-box");}
       formBox.setAttribute("id",`${element.name}-wrapper`);
       if (element.width) {  formBox.style.width = element.width;}
-      if (element.breakBefore) {formBox.classList.add("break-before");}
+      if (element.breakAfter) {formBox.style["margin-right"] = `calc( 100% - ${element.width})`;}
       if (element.type === "hidden") { formBox.style.display = "none";}
       return formBox;
   }
