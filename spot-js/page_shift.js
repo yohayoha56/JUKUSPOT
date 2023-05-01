@@ -130,7 +130,7 @@ function showModal(event) {
 // #region フォームの作成テンプレート関数
   // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
     // 基幹部分の作成
-    const formContainer = document.getElementById("form-container");
+    const formContainer = document.querySelector(".form-container");
     formContainer.innerHTML = `<span class="close closeButton">&times;</span>`;
     const formHeader = createFormTitle(formTitle);
     formContainer.appendChild(formHeader);
