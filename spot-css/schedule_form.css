@@ -48,7 +48,7 @@
 }
 
 
-.modal  form :last-child{
+.modal form .form-box:last-child{
   width: 180px;
   margin-top: 8px;
 }
@@ -197,6 +197,7 @@
 form{
   display:flex;
   flex-wrap:wrap;
+  width:100%;
   gap:10px 20px;
 }
 

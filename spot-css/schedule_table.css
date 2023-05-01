@@ -49,16 +49,16 @@ table {
     width: 90px;
   }
   #schedule-table th:nth-child(2) {
-    width: 105px;
+    width: 95px;
   }
   #schedule-table th:nth-child(3) {
     width: 105px;
   }
   #schedule-table th:nth-child(4) {
-    width: calc(100% - 420px);
+    width: calc(100% - 415px);
   }
   #schedule-table th:nth-child(5) {
-    width: 120px;
+    width: 125px;
   }
 
 
