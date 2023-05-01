@@ -229,9 +229,9 @@ function showModal(event) {
             select.appendChild(minuteOption);
         } 
         input =document.createElement("div");
-        timeWrapper.classList.add("time-wrapper")
-        timeWrapper.appendChild(select);
-        timeWrapper.appendChild(document.createTextNode("分"));
+        input.classList.add("time-wrapper")
+        input.appendChild(select);
+        input.appendChild(document.createTextNode("分"));
       } else {//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
           input = document.createElement("input");
           input.setAttribute("type", element.type);
