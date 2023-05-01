@@ -177,13 +177,13 @@ function showModal(event) {
           <label for="start_hour">勤務開始時間</label>
           <div class="form-inline">
               <select id="start_hour" name="start_hour">
-              <!-- 8:00 ~ 22:00 の選択肢を生成 -->
               <option value="">--</option>
               </select>
-              <label for="start_minute">時</label>
+              <span>時</span>
               <select id="start_minute" name="start_minute">
               <option value="">--</option>
-              </select>分
+              </select>
+              <span>分</span>
           </div>
       </div>
       <!-- 勤務終了時間 -->
