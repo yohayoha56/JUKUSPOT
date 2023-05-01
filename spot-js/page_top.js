@@ -158,7 +158,7 @@ function addOptions(selectElement, start, end, step) {
         const option = document.createElement('option');
         option.value = i;
         option.textContent = i;
-        selectElement.appendChild(option);
+        // selectElement.appendChild(option);
     }
 }
 
