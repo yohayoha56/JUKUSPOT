@@ -199,3 +199,47 @@
   background-color: var(--green-lighter);
   outline: none;
 }
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+form{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px
+}
+
+form h2{
+  width:100%;
+}
+
+
+
+input,select,textarea{
+  font-size:16px;
+  padding:3px 6px;
+  border:solid 2px #555555;
+  width:100%;
+}
+
+label{
+  font-weight:bold;
+}
+
+.break-after::after {
+  content: "";
+  display: block;
+  width: 100%;
+}
+
+.time-wrapper{
+  display:flex;
+  gap:10px;
+}
+
+.time-wrapper select{
+  width:60px;
+}

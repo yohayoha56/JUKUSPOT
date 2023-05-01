@@ -109,13 +109,13 @@ function showModal(event) {
     { name: "講師名", type: "hidden", value: "${teacherName}" },
     { name: "教室ID", type: "hidden", value: "${schoolId}" },
     { name: "教室名", type: "hidden", value: "${schoolName}" },
-    { name: "勤務可否", type: "select", value: "", inline: true, width: "200px", options: [
+    { name: "勤務可否", type: "select", value: "", inline: true, width: "160px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
-    { name: "講師回答", type: "select", value: "", inline: true, width: "200px", options: [
+    { name: "講師回答", type: "select", value: "", inline: true, width: "160px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },
@@ -123,7 +123,7 @@ function showModal(event) {
     ]},
     { name: "勤務開始時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "勤務終了時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-    { name: "休憩時間", type: "minute", value: "", inline: true, width: "150px",minMinute: 0, maxMinute: 120, stepMinute: 10},
+    { name: "休憩時間", type: "minute", value: "", inline: true, width: "150px",breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
     { name: "補足・備考", type: "textarea", value: "", inline: false },
   ];
   
@@ -317,6 +317,7 @@ function showModal(event) {
       }
       // 時間のインプット要素まとめ
       const timeWrapper = document.createElement("div");
+      timeWrapper.classList.add("time-wrapper")
       timeWrapper.appendChild(hourSelect);
       timeWrapper.appendChild(document.createTextNode("時"));
       timeWrapper.appendChild(minuteSelect);
