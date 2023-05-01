@@ -449,7 +449,10 @@ const handleSubmit = async (event) => {
     + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
   
   data["フォームタイプ"] = formId
-  data["タイムスタンプ"] = new Date().toLocaleString("ja-JP");
+  data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
+  });
 
   let hosokuguide
   switch (formId) {
@@ -458,7 +461,7 @@ const handleSubmit = async (event) => {
     case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
     case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
   }  
-  data["補足・備考"] = hosokuguide+data["タイムスタンプ"].slice(5, -3)+"\n" + data["補足・備考"];
+  data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
 
   console.log(data);
