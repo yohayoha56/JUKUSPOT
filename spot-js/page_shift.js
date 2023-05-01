@@ -367,6 +367,8 @@ function submitFormAdd(){
     const workStatus = this.value;
     const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
     const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
+    startTimeWrapper.style.display="none"
+    endTimeWrapper.style.display="none"
   
     if (data["勤務可否"] === "勤務可能") {
       startTimeWrapper.style.display = "block";
