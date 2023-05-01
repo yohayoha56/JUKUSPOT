@@ -36,7 +36,14 @@ button.addEventListener("click", showModal);
 });
 
 
-// テーブルのボタンが押されたときに呼び出される関数ーーーーーーーーーーーーーーーーーーーーー
+// フォーム外がクリックされた時にフォームを非表示にするーーーーーーーーーーーーーーーーーーーー
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+  }
+
+// テーブルのボタンが押されたときにフォームを作成するーーーーーーーーーーーーーーーーーーーーー
 function showModal(event) {
 
   const button = event.target;
@@ -95,14 +102,13 @@ function showModal(event) {
   }
 
 
+  // フォーム要素の定義
   const formElements = [
-    // 隠しフォーム要素（事前定義済み）
     { name: "勤務日", type: "hidden", value: "${date}" },
     { name: "会員ID", type: "hidden", value: "${teacherId}" },
     { name: "講師名", type: "hidden", value: "${teacherName}" },
     { name: "教室ID", type: "hidden", value: "${schoolId}" },
     { name: "教室名", type: "hidden", value: "${schoolName}" },
-    // ここからがフォーム回答要素
     { name: "勤務可否", type: "select", value: "", inline: true, width: "200px", options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
@@ -115,141 +121,208 @@ function showModal(event) {
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
-    { name: "勤務開始時間", type: "time", value: "", inline: true },
-    { name: "勤務終了時間", type: "time", value: "", inline: true },
-    { name: "休憩時間", type: "number", value: "", inline: true },
+    { name: "勤務開始時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "勤務終了時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "休憩時間", type: "minute", value: "", inline: true, width: "150px",minMinute: 0, maxMinute: 120, stepMinute: 10},
     { name: "補足・備考", type: "textarea", value: "", inline: false },
   ];
   
+// #region フォームの作成テンプレート関数
+  // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
+    // 基幹部分の作成
+    const formContainer = document.getElementById("form-container");
+    formContainer.innerHTML = `<span class="close closeButton">&times;</span>`;
+    const formHeader = createFormTitle(formTitle);
+    formContainer.appendChild(formHeader);
+  
+    // 参考情報を挿入
+    const additionalContent = createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide);
+    formContainer.appendChild(additionalContent);
+  
+    // フォーム要素を挿入
+    const form = document.createElement("form");
+    form.setAttribute("id", "myForm");
+    formElements.forEach((element) => {
+      form.appendChild(createFormField(element));
+    });
+
+    // 提出ボタンを挿入
+    form.appendChild(createSubmitButton(formButton));
+    formContainer.appendChild(form);
+    form.addEventListener("submit", handleSubmit);
+
+  // フォーム要素の作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
 
 
-
-
-
-
-
-  const formContainer = document.querySelector(".modal-content.form-container");
-  const formContent = `
-    <span class="close closeButton">&times;</span>
-    <h3>${formTitle}</h3>
-    <div id="submit-schedule">
-      <h4>${formInfo}</h4>
-      <ul>
+  // タイトル、ボタンの作成関数
+  function createFormTitle(title) {
+      const titleElement = document.createElement("h3");
+      titleElement.textContent = title;
+      return titleElement;
+  }
+  // 参考情報の作成関数
+  function createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide) {
+    const additionalContent = document.createElement("div");
+    additionalContent.setAttribute("id", "sankou-info");
+  
+    const additionalHeader = document.createElement("h4");
+    additionalHeader.textContent = formInfo;
+    additionalContent.appendChild(additionalHeader);
+  
+    const additionalList = document.createElement("ul");
+    additionalList.innerHTML = `
       <li>スケジュール｜${availability}</li>
       <li>勤務可能時間｜${availableTime}</li>
       <li>補足・備考　｜${remarks}</li>
-      </ul>
-    </div>
-    <!-- 各種フォーム本体 -->
-    <h4>${formGuide}</h4>
-    <form id="myForm" class="form-content">
-      <input type="hidden" name="勤務日" value="${date}">
-      <input type="hidden" name="会員ID" value="${teacherId}">
-      <input type="hidden" name="講師名" value="${teacherName}">
-      <input type="hidden" name="教室ID" value="${schoolId}">
-      <input type="hidden" name="教室名" value="${schoolName}">
-      <!-- 勤務可否 -->
-      <div class="form-row" ${requestNone}>
-      <div class="form-inline" >
-      <label for="start_hour">勤務可否</label>
-      <select id="status" name="status">
-      <option value="">選択してください</option>
-      <option value="勤務可能">勤務可能</option>
-      <option value="勤務不可">勤務不可</option>
-      <option value="調整中">調整中</option>
-      </select>
-      </div>
-      </div>
-      <!-- 講師回答 -->
-      <div class="form-row" ${requestNone}>
-      <div class="form-inline" >
-      <label for="start_hour">勤務可否</label>
-      <select id="status" name="status">
-      <option value="">選択してください</option>
-      <option value="勤務可能">勤務可能</option>
-      <option value="勤務不可">勤務不可</option>
-      <option value="調整中">調整中</option>
-      </select>
-      </div>
-      </div>
-      <!-- 勤務開始時間 -->
-      <div class="form-row">
-          <label for="start_hour">勤務開始時間</label>
-          <div class="form-inline">
-              <select id="start_hour" name="start_hour">
-              <option value="">--</option>
-              </select>
-              <span>時</span>
-              <select id="start_minute" name="start_minute">
-              <option value="">--</option>
-              </select>
-              <span>分</span>
-          </div>
-      </div>
-      <!-- 勤務終了時間 -->
-      <div class="form-row">
-          <label for="end_hour">勤務終了時間</label>
-          <div class="form-inline">
-              <select id="end_hour" name="end_hour">
-              <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-              <option value="">--</option>
-              </select>
-              <label for="end_minute">時</label>
-              <select id="end_minute" name="end_minute">
-              <option value="">--</option>
-              </select>分
-          </div>
-      </div>
-      <!-- 休憩時間 -->
-      <div class="form-row" ${submitNone}>
-          <label for="break_time">休憩時間</label>
-          <div class="form-inline">
-              <select id="break_time" name="break_time">
-              <option value="">--</option>
-              </select>分
-          </div>
-      </div>
-      <!-- 補足・備考 -->
-      <div class="form-row">
-          <label for="remarks">・補足・備考</label>
-          <textarea id="remarks" name="remarks"></textarea>
-      </div>
-      <!-- 送信ボタン・取り消しボタン -->
-      <div class="form-row buttons">
-          <button type="submit">${formButton}</button>
-          <button type="submit" id="cancelButton" style="display: none;">シフト依頼を取消する</button>
-      </div>
-    </form>
-  `;
+    `;
+    additionalContent.appendChild(additionalList);
+  
+    const formGuideHeader = document.createElement("h4");
+    formGuideHeader.textContent = formGuide;
+    additionalContent.appendChild(formGuideHeader);
+  
+    return additionalContent;
+  }
 
-  formContainer.innerHTML = formContent;
+  // ボタンの作成関数
+  function createSubmitButton(text) {
+      // ボタンの作成
+      const submitButton = document.createElement("input");
+      submitButton.setAttribute("type", "submit");
+      submitButton.setAttribute("value", text);
+      submitButton.classList.add("submit-button");
+      // ボタンの梱包
+      const formBox = document.createElement("div");
+      formBox.classList.add("form-box");
+      formBox.appendChild(submitButton);
 
+      return formBox;
+  }
 
+  // フォーム要素の作成関数
+  function createFormField(element) {
+      // ラベルの作成
+      const label = document.createElement("label");
+      label.setAttribute("for", element.name);
+      label.classList.add("form-label");
+      label.textContent = element.name + ":";
 
-  // 勤務時間のオプションを設定するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  // 勤務開始時間 (時)
-  const startHour = document.getElementById('start_hour');
-  addOptions(startHour, 8, 22, 1);
-  // 勤務開始時間 (分)
-  const startMinute = document.getElementById('start_minute');
-  addOptions(startMinute, 0, 50, 10);
-  // 勤務終了時間 (時)
-  const endHour = document.getElementById('end_hour');
-  addOptions(endHour, 8, 22, 1);
-  // 勤務終了時間 (分)
-  const endMinute = document.getElementById('end_minute');
-  addOptions(endMinute, 0, 50, 10);
-  // 休憩時間
-  const breakTime = document.getElementById('break_time');
-  addOptions(breakTime, 0, 120, 10);
+      let input;
+      // ブロパティの作成（その他の自由記入もあり）
+      if (element.type === "select") {//ーーーーーーーーーーーーーーー
+          input = createSelectInput(element);
+      } else if (element.type === "textarea") {//ーーーーーーーーーー
+          input = document.createElement("textarea");
+      } else if (element.type === "checkbox") {//ーーーーーーーーーー
+          input = document.createElement("input");
+          input.setAttribute("type", "checkbox");
+          input.setAttribute("class", "hidden_checkbox");
+          const checkmark = document.createElement("span")
+      } else if (element.type === "time") {//ーーーーーーーーーーーー
+          input = createCustomTimeInput(element);
+      } else if (element.type === "minute") {//ーーーーーーーーーーー
+        input = document.createElement("select");
+        for (let minute = element.minMinute; minute <= element.maxMinute; minute += element.stepMinute) {
+            const minuteOption = document.createElement("option");
+            minuteOption.value = minute;
+            minuteOption.textContent = minute;
+            input.appendChild(minuteOption);
+        } 
+      } else {//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+          input = document.createElement("input");
+          input.setAttribute("type", element.type);
+      }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+      input.setAttribute("id", element.name);
+      input.setAttribute("name", element.name);
+      input.value = element.value;
+      
+      // フォーム要素の梱包
+      const formBox = document.createElement("div");
+      formBox.appendChild(label);
+      formBox.appendChild(input);
+      formBox.classList.add("form-box");
+      if (element.inline) { formBox.classList.add("inline-box");}
+      formBox.setAttribute("id",`${element.name}-wrapper`);
+      if (element.width) {  formBox.style.width = element.width;}
+      if (element.breakAfter) {formBox.classList.add("break-after");}
+      if (element.type === "hidden") { formBox.style.display = "none";}
+      return formBox;
+  }
 
+  // セレクト要素の作成
+  function createSelectInput(element) {
+      const select = document.createElement("select");
+      select.setAttribute("name", element.name);
+      select.setAttribute("id", element.id);
 
-  // 依頼状況に応じてモーダルの依頼取り消しボタンを制御  
-  const cancelButton = document.getElementById("cancelButton");
-  if (requestStatus === "依頼修正") {
-      cancelButton.style.display ="block";
-  } else if (requestStatus === "新規依頼") {
-      cancelButton.style.display ="none";
+      element.options.forEach(option => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        if (option.disabled) {
+          optionElement.setAttribute("disabled", "");
+        }
+        if (option.selected) {
+          optionElement.setAttribute("selected", "");
+        }
+        select.appendChild(optionElement);
+      });
+
+      // 自由記入の追加
+      select.addEventListener("change", (event) => {
+        const selectedValue = event.target.value;
+        const formBox = event.target.parentElement;
+        const otherInput = formBox.getElementById(`other:${element.name}`);
+        if (selectedValue === "その他") {
+          if (!otherInput) {
+            const otherInputElement = document.createElement("input");
+            otherInputElement.setAttribute("type", "text");
+            otherInputElement.setAttribute("id", `other:${element.name}`);
+            otherInputElement.setAttribute("name", `other:${element.name}`);
+            formBox.insertBefore(otherInputElement, select.nextSibling);
+          }
+        } else {
+          if (otherInput) {
+            formBox.removeChild(otherInput);
+          }
+        }
+      });
+
+      return select;
+  }
+
+  // 時間のインプット作成関数
+  function createCustomTimeInput(element) {
+      const hourSelect = document.createElement("select");
+      hourSelect.setAttribute("name", element.name + "_hour");
+      hourSelect.setAttribute("id", element.id + "_hour");
+
+      const minuteSelect = document.createElement("select");
+      minuteSelect.setAttribute("name", element.name + "_minute");
+      minuteSelect.setAttribute("id", element.id + "_minute");
+
+      // 時間の選択肢を生成
+      for (let hour = element.minHour; hour <= element.maxHour; hour++) {
+        const hourOption = document.createElement("option");
+        hourOption.value = hour;
+        hourOption.textContent = hour;
+        hourSelect.appendChild(hourOption);
+      }
+      // 分の選択肢を生成
+      for (let minute = 0; minute < 60; minute += element.stepMinute) {
+        const minuteOption = document.createElement("option");
+        minuteOption.value = minute;
+        minuteOption.textContent = minute;
+        minuteSelect.appendChild(minuteOption);
+      }
+      // 時間のインプット要素まとめ
+      const timeWrapper = document.createElement("div");
+      timeWrapper.appendChild(hourSelect);
+      timeWrapper.appendChild(document.createTextNode("時"));
+      timeWrapper.appendChild(minuteSelect);
+      timeWrapper.appendChild(document.createTextNode("分"));
+
+      return timeWrapper;
   }
 
   // モーダルを表示＆クローズボタンの設定
@@ -258,26 +331,9 @@ function showModal(event) {
   closeButton.onclick = () => {
     modal.style.display = "none";
   };
-}
 
-// オプション追加用の関数
-function addOptions(selectElement, start, end, step) {
-  for (let i = start; i <= end; i += step) {
-      const option = document.createElement('option');
-      option.value = i;
-      option.textContent = i;
-      selectElement.appendChild(option);
-  }
+// #endregion MyRegionName
 }
-
-// span.onclick = closeModal;
-window.onclick = function(event) {
-if (event.target == modal) {
-  closeModal();
-}
-}
-
-
 
 
 
@@ -331,40 +387,4 @@ const handleSubmit = async (event) => {
   }
 };
 const form = document.querySelector('#myForm');
-
-// 依頼取り消しの操作
-function handleRequestCancellation() {
-  if (confirm("本当に依頼を取り消しますか？")) {
-    const data = {
-      "依頼取り消し": true,
-      "work_date": workDate
-    };
-    console.log(data);
-
-    // POSTリクエストを送信
-    (async () => {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'text/plain',
-        },
-        body: JSON.stringify(data),
-        mode: 'cors',
-      });
-
-      const text = await response.text();
-      if (text.includes("Success")) {
-        console.log('データが正常に送信されました');
-        form.reset(); // フォームの入力値をリセット
-      } else {
-        console.error(`エラーメッセージ: ${text}`);
-      }
-    })();
-
-    closeModal();
-  }
-}
-const cancelButton = document.getElementById("cancelButton");
-//   cancelButton.addEventListener('click', handleRequestCancellation);
-
 };
