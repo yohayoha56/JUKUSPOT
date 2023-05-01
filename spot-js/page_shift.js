@@ -264,27 +264,6 @@ function showModal(event) {
         }
         select.appendChild(optionElement);
       });
-
-      // 自由記入の追加
-      select.addEventListener("change", (event) => {
-        const selectedValue = event.target.value;
-        const formBox = event.target.parentElement;
-        const otherInput = formBox.getElementById(`other:${element.name}`);
-        if (selectedValue === "その他") {
-          if (!otherInput) {
-            const otherInputElement = document.createElement("input");
-            otherInputElement.setAttribute("type", "text");
-            otherInputElement.setAttribute("id", `other:${element.name}`);
-            otherInputElement.setAttribute("name", `other:${element.name}`);
-            formBox.insertBefore(otherInputElement, select.nextSibling);
-          }
-        } else {
-          if (otherInput) {
-            formBox.removeChild(otherInput);
-          }
-        }
-      });
-
       return select;
   }
 
@@ -347,7 +326,7 @@ function showModal(event) {
     input.classList.add("time-wrapper")
     input.appendChild(select);
     input.appendChild(document.createTextNode("分"));
-    
+
     return input
   }
 
@@ -388,7 +367,7 @@ function submitFormAdd(){
     const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
     const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
   
-    if (data["勤務可否"] === "勤務可能") {
+    if (workStatus === "勤務可能") {
       startTimeWrapper.style.display = "block";
       endTimeWrapper.style.display = "block";
     } else {
