@@ -419,7 +419,7 @@ const handleSubmit = async (event) => {
     case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
   }  
 
-  if (isValid =false){ return; }
+  if (isValid ==false){ return; }
 
 
 
