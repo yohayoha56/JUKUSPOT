@@ -106,11 +106,11 @@ function showModal(event) {
 
   // フォーム要素の定義
   const formElements = [
-    { name: "勤務日", type: "hidden", value: "${date}" },
-    { name: "会員ID", type: "hidden", value: "${teacherId}" },
-    { name: "講師名", type: "hidden", value: "${teacherName}" },
-    { name: "教室ID", type: "hidden", value: "${schoolId}" },
-    { name: "教室名", type: "hidden", value: "${schoolName}" },
+    { name: "勤務日", type: "hidden", value: date },
+    { name: "会員ID", type: "hidden", value: teacherId },
+    { name: "講師名", type: "hidden", value: teacherName },
+    { name: "教室ID", type: "hidden", value: schoolId },
+    { name: "教室名", type: "hidden", value: schoolName },
     { name: "勤務可否", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
