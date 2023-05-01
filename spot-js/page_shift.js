@@ -366,13 +366,10 @@ function showModal(event) {
 
 // フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-
-
-
-
 const handleSubmit = async (event) => {
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = document.querySelector('form');
+  const formId =form.id
   const formData = new FormData(form);
   const data = {};
   // FormDataオブジェクトから連想配列に変換
@@ -380,22 +377,24 @@ const handleSubmit = async (event) => {
       data[key] = value;
   }
 
+  data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
+    + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
+  data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
+    + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
+  
+  data["フォームタイプ"] = formId
+  data["タイムスタンプ"] = new Date().toLocaleString("ja-JP");
+
+  let hosokuguide
+  switch (formId) {
+    case 'submitForm': hosokuguide = "（講師から：ｽｹｼﾞｭｰﾙ提出時）"; break;
+    case 'requestForm': hosokuguide = "（教室から：シフト依頼時）"; break;
+    case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
+    case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
+  }  
+  data["補足・備考"] = hosokuguide+"\n" + data["補足・備考"];
 
 
-
-  // 勤務開始時間、終了時間、休憩時間をdataに追加
-  data["勤務開始時間"] = data["start_hour"] + ':' + (data["start_minute"] === '0' ? '00' : data["start_minute"]);
-  data["勤務終了時間"] = data["end_hour"] + ':' + (data["end_minute"] === '0' ? '00' : data["end_minute"]);
-  data["休憩時間"] = data["break_time"];
-
-  // 日本時間のタイムスタンプを追加
-  data["submitted_timestamp"] = new Date().toLocaleString("ja-JP");
-
-
-  // 依頼取り消しを追加
-  data["request_cancellation"] = false;
-  // 補足・備考のテキストに追記
-  data["remarks"] = "シフト依頼時[from:教室]\n" + data["remarks"];
   console.log(data);
   const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
       method: 'POST',
