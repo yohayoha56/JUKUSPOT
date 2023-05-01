@@ -42,37 +42,27 @@
 
   // フォーム要素の定義
   const formElements = [
-  { name: "日付", type: "date", value: "", inline: true, width: "150px" },
-  { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
-    { value: "", text: "選択してください", disabled: true, selected: true },
-    { value: "現金", text: "現金" },
-    { value: "クレジットカード", text: "クレジットカード" },
-    { value: "デビットカード", text: "デビットカード" },
-    { value: "電子マネー", text: "電子マネー" },
-    { value: "その他", text: "その他" },
+  { name: "勤務日", type: "hidden", value: "${date}" },
+  { name: "会員ID", type: "hidden", value: "${teacherId}" },
+  { name: "講師名", type: "hidden", value: "${teacherName}" },
+  { name: "教室ID", type: "hidden", value: "${schoolId}" },
+  { name: "教室名", type: "hidden", value: "${schoolName}" },
+  { name: "勤務可否", type: "select", value: "", inline: true, width: "200px", options: [
+    { value: "", text: "選択してください" },
+    { value: "勤務可能", text: "勤務可能" },
+    { value: "勤務不可", text: "勤務不可" },
+    { value: "調整中", text: "調整中" },
   ]},
-  { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
-    { value: "", text: "選択してください", disabled: true, selected: true },
-    { value: "食費", text: "食費" },
-    { value: "交通費", text: "交通費" },
-    { value: "通信費", text: "通信費" },
-    { value: "娯楽費", text: "娯楽費" },
-    { value: "住居費", text: "住居費" },
-    { value: "その他", text: "その他" },
+  { name: "講師回答", type: "select", value: "", inline: true, width: "200px", options: [
+    { value: "", text: "選択してください" },
+    { value: "勤務可能", text: "勤務可能" },
+    { value: "勤務不可", text: "勤務不可" },
+    { value: "調整中", text: "調整中" },
   ]},
-  { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-  { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-  { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-  { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
-    { value: "", text: "選択してください", disabled: true, selected: true },
-    { value: "A", text: "A" },
-    { value: "B", text: "B" },
-    { value: "C", text: "C" },
-    { value: "D", text: "D" },
-    { value: "E", text: "E" },
-  ]},
-  { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
-  { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
+  { name: "勤務開始時間", type: "time", value: "", inline: true },
+  { name: "勤務終了時間", type: "time", value: "", inline: true },
+  { name: "休憩時間", type: "number", value: "", inline: true },
+  { name: "補足・備考", type: "textarea", value: "", inline: false },
 ];
 
 
@@ -231,34 +221,6 @@
 
 
   // 初期設定
-  const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #計上メモ" );
-  wrappers.forEach(wrapper => {
-    wrapper.style.display = "none";
-  });
-
-
-  // 中間処理
-  document.getElementById("経費-wrapper").addEventListener("click", function (event) {
-    const checkbox = event.currentTarget.querySelector(".hidden-checkbox");
-    checkbox.checked = !checkbox.checked;
-  });
-
-  document.getElementById("経費").addEventListener("change", function (event) {
-  wrappers.forEach(wrapper => {
-    if (event.target.checked) {
-    wrapper.style.display = "block";
-    document.getElementById("計上項目").value = document.getElementById("カテゴリ").value;
-    document.getElementById("計上額").value = document.getElementById("出費").value;
-    document.getElementById("経費メモ").value = document.getElementById("メモ").value;
-  } else {
-    wrapper.style.display = "none";
-    document.getElementById("計上項目").value = "";
-    document.getElementById("計上額").value = "";
-    document.getElementById("経費メモ").value = "";
-  }
-  });
-});
-
 
 
   async function handleSubmit (event)  {
