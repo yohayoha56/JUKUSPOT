@@ -218,10 +218,8 @@ label{
   font-weight:bold;
 }
 
-.break-after::after {
-  content: "";
-  display: block;
-  width: 100%;
+.break-before {
+  clear: both;
 }
 
 .time-wrapper{
