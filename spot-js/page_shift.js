@@ -109,13 +109,13 @@ function showModal(event) {
     { name: "講師名", type: "hidden", value: "${teacherName}" },
     { name: "教室ID", type: "hidden", value: "${schoolId}" },
     { name: "教室名", type: "hidden", value: "${schoolName}" },
-    { name: "勤務可否", type: "select", value: "", inline: true, width: "160px",breakAfter:true, options: [
+    { name: "勤務可否", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
-    { name: "講師回答", type: "select", value: "", inline: true, width: "160px",breakAfter:true, options: [
+    { name: "講師回答", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },

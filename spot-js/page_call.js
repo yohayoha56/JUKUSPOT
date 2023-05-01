@@ -175,6 +175,8 @@ window.addEventListener('resize', () => {
     const sideBar = document.querySelector('.side-bar');
     if (window.innerWidth <= 680) {
         sideBar.style.display = 'none';
+      } else {
+        sideBar.style.display = 'block';
     }
 });
 
