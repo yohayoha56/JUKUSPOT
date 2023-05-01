@@ -95,12 +95,12 @@ function showModal(event) {
     schoolId = newData["教室ID"]
     schoolName = newData["教室名"]
     teacherId = page_call_property["会員ID"]
-    teacherName = page_call_property["会員ID"]
+    teacherName = page_call_property["講師名"]
   }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
     schoolId = page_call_property["教室ID"]
     schoolName = page_call_property["教室名"]
     teacherId = newData["会員ID"]
-    teacherName = newData["会員ID"]
+    teacherName = newData["姓"]+ newData["名"]
   }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
