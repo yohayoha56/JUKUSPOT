@@ -36,10 +36,7 @@
   cursor: pointer;
 }
 
-.modal .buttons {
-  width:100% !important;
-  margin-top: 8px;
-}
+
 
 @media (max-width: 680px) {
   .modal-content {
@@ -50,26 +47,26 @@
   }
 }
 
-.modal .form-row{
-  padding-right: 0;
+
+.modal  form :last-child{
+  width: 180px;
+  margin-top: 8px;
 }
 
-
-.modal .form-container .buttons button {
+.modal .submit-button {
+  width:100% ;
   background-color: var(--green-base);
   border: none;
   color: white;
-  width: 50%;
-  min-width: 180px;
   padding: 8px 16px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s;
 }
+
 
 /* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
@@ -209,7 +206,7 @@ form h2{
 
 
 
-input,select,textarea{
+.form-container input,.form-container select,.form-container textarea{
   font-size:16px;
   padding:3px 6px;
   border:solid 2px #555555;
@@ -232,5 +229,10 @@ label{
 }
 
 .time-wrapper select{
-  width:60px;
+  width:50px;
+}
+
+label{
+  display:block;
+  padding-bottom:5px;
 }
