@@ -111,7 +111,7 @@ function showModal(event) {
     { name: "講師名", type: "hidden", value: "${teacherName}" },
     { name: "教室ID", type: "hidden", value: "${schoolId}" },
     { name: "教室名", type: "hidden", value: "${schoolName}" },
-    { name: "勤務可否", type: "select", value: "", inline: true, width: "180px",breakBefore:true, options: [
+    { name: "勤務可否", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
       { value: "勤務可能", text: "勤務可能" },
       { value: "勤務不可", text: "勤務不可" },
@@ -407,9 +407,9 @@ const handleSubmit = async (event) => {
       if (!data["勤務可否"]){ isValid = false;
         showValidationError(document.getElementById("勤務可否-wrapper"), "勤務可否を選択してください");
       } if(data["勤務可否"] === "勤務可能" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務開始時間-wrapper"), "開始時間を設定してください");
+        showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にください");
       } if(data["勤務可否"] === "勤務可能" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間を設定してください");
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にください");
       } if(data["勤務可否"] === "調整中" && !data["補足・備考"]) {
         showValidationError(document.getElementById("補足・備考-wrapper"), "参考テキストを入力してください");
       }
