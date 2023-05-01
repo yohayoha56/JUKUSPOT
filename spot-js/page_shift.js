@@ -3,6 +3,7 @@ function shift_page() {
 // 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 // テーブルの行の色をステータスに応じて変更
+// #region 
 const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
 tableRows.forEach(row => {
   const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
@@ -18,9 +19,10 @@ tableRows.forEach(row => {
     }
   }
 });
+// #endregion 
 
-
-// モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// モーダル（フォームの外枠）の挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// #region 
 const modalTemplate=`
 <div id="myModal" class="modal">
     <div class="modal-content form-container">
@@ -35,71 +37,71 @@ btns.forEach((button) => {
 button.addEventListener("click", showModal);
 });
 
-
-// フォーム外がクリックされた時にフォームを非表示にするーーーーーーーーーーーーーーーーーーーー
+// フォーム外がクリックされた時にフォームを非表示にする
 window.onclick = function(event) {
   if (event.target == modal) {
     closeModal();
   }
-  }
+}
+// #endregion 
 
-// テーブルのボタンが押されたときにフォームを作成するーーーーーーーーーーーーーーーーーーーーー
+// テーブルのボタンが押されたときにフォームを作成する（ここから300行）ーーーーーーーーーーーーーーーーーーーーー
 function showModal(event) {
-
+// #region ここから80行くらい、データとフォームの定義
   const button = event.target;
   const row = button.closest("tr");
-
-  // 各列の値を取得
+  // ボタンが押された行のテーブルのデータを取得するーーーーーーーーーーーーーーーーーーーー
   const date = row.cells[0].innerText;
   const availability = row.cells[1].innerText;
   const availableTime = row.cells[2].innerText;
   const remarks = row.cells[3].innerText;
   const requestStatus = row.cells[4].innerText;
-  let formTitle, formInfo, formGuide, formButton,schoolId,schoolName,teacherId,teacherName
+  let formTitle, formInfo, formGuide, formButton,schoolId,schoolName,teacherId,teacherName,formId
   let submitNone, requestNone, changeNone, answerNone
 
-  // フォームの内容を設定
-  if (button.classList.contains("submit")) {
-    // フォーム設定
+  // 押されたボタンのタイプによって、フォームタイトルなどを設定するーーーーーーーーーーーーー
+    if (button.classList.contains("submit")) {//ーーーーーーーーーー
+    formId = "submitForm"
     formTitle = `${date}｜スケジュール提出`
     formInfo = "提出中のスケジュール"
     formGuide = "↓ ｽｹｼﾞｭｰﾙをご記入ください"
     formButton = "ｽｹｼﾞｭｰﾙを提出する"
     requestNone = `style="display:none;"`
-  } else if (button.classList.contains("request")) {
-    // フォーム設定
+  } else if (button.classList.contains("request")) {//ーーーーーー
+    formId = "requestForm"
     formTitle = `${date}｜${page_call_property["講師名"]}先生｜シフト依頼`
     formInfo = "講師の提出スケジュール"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
     requestNone = `style="display:none;"`
-  } else if (button.classList.contains("change")) {
-    // フォーム設定
+  } else if (button.classList.contains("change")) {//ーーーーーーー
+    formId = "changeForm"
     formTitle = `${date}｜${page_call_property["講師名"]}先生｜依頼修正`
     formInfo = "依頼中のシフト内容"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを修正する"
     requestNone = `style="display:none;"`
-  } else if (button.classList.contains("answer")) {
-    // フォーム設定
+  } else if (button.classList.contains("answer")) {//ーーーーーーー
+    formId = "answerForm"
     formTitle = `${date}｜${page_call_property["教室名"]}｜依頼回答`
     formInfo = "教室からの依頼内容"
     formGuide = "↓ 回答内容をご記入ください"
     formButton = "回答を提出する"
     requestNone = `style="display:none;"`
-  }
-  // データ内容を設定
-  if(newData["ページタイプ"] === "school"){
+  }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+  // 講師ページか教室ページによって、値を整備するーーーーーーーーーーーーーーーーーーーーー
+  if(newData["ページタイプ"] === "school"){//ーーーーーーーーーーーー
     schoolId = newData["教室ID"]
     schoolName = newData["教室名"]
     teacherId = page_call_property["会員ID"]
     teacherName = page_call_property["会員ID"]
-  }else if(newData["ページタイプ"] === "teacher"){
+  }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
     schoolId = page_call_property["教室ID"]
     schoolName = page_call_property["教室名"]
     teacherId = newData["会員ID"]
     teacherName = newData["会員ID"]
-  }
+  }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
   // フォーム要素の定義
@@ -126,8 +128,9 @@ function showModal(event) {
     { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px",breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
     { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
   ];
+// #endregion ここから80行くらい、データとフォームの定義
   
-// #region フォームの作成テンプレート関数
+// #region ここから200行くらい、フォーム作成のテンプレート関数
   // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
     // 基幹部分の作成
     const formContainer = document.querySelector(".form-container");
@@ -141,7 +144,7 @@ function showModal(event) {
   
     // フォーム要素を挿入
     const form = document.createElement("form");
-    form.setAttribute("id", "myForm");
+    form.setAttribute("id", formId);
     formElements.forEach((element) => {
       form.appendChild(createFormField(element));
     });
@@ -342,7 +345,8 @@ function showModal(event) {
 
 
 
-// フォームの送信をハンドルする関数
+// フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
 const handleSubmit = async (event) => {
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = document.querySelector('#myForm');
