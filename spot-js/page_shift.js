@@ -224,17 +224,7 @@ function showModal(event) {
       } else if (element.type === "time") {//ーーーーーーーーーーーー
           input = createCustomTimeInput(element);
       } else if (element.type === "minute") {//ーーーーーーーーーーー
-        const select = document.createElement("select");
-        for (let minute = element.minMinute; minute <= element.maxMinute; minute += element.stepMinute) {
-            const minuteOption = document.createElement("option");
-            minuteOption.value = minute;
-            minuteOption.textContent = minute;
-            select.appendChild(minuteOption);
-        } 
-        input =document.createElement("div");
-        input.classList.add("time-wrapper")
-        input.appendChild(select);
-        input.appendChild(document.createTextNode("分"));
+          input= createCustomTimeInput2(element);
       } else {//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
           input = document.createElement("input");
           input.setAttribute("type", element.type);
@@ -309,6 +299,10 @@ function showModal(event) {
       minuteSelect.setAttribute("id", element.id + "_minute");
 
       // 時間の選択肢を生成
+      const defaultHourOption = document.createElement("option");
+      defaultHourOption.value = "";
+      defaultHourOption.textContent = "--";
+      hourSelect.appendChild(defaultHourOption);
       for (let hour = element.minHour; hour <= element.maxHour; hour++) {
         const hourOption = document.createElement("option");
         hourOption.value = hour;
@@ -316,6 +310,10 @@ function showModal(event) {
         hourSelect.appendChild(hourOption);
       }
       // 分の選択肢を生成
+      const defaultMinuteOption = document.createElement("option");
+      defaultMinuteOption.value = "";
+      defaultMinuteOption.textContent = "--";
+      minuteSelect.appendChild(defaultMinuteOption);
       for (let minute = 0; minute < 60; minute += element.stepMinute) {
         const minuteOption = document.createElement("option");
         minuteOption.value = minute;
@@ -332,6 +330,26 @@ function showModal(event) {
 
       return timeWrapper;
   }
+  // minuteのインプット作成関数
+  function createCustomTimeInput2(element){
+    const select = document.createElement("select");
+    const defaultMinuteOption = document.createElement("option");
+    defaultMinuteOption.value = "";
+    defaultMinuteOption.textContent = "--";
+    select.appendChild(defaultMinuteOption);
+    for (let minute = element.minMinute; minute <= element.maxMinute; minute += element.stepMinute) {
+      const minuteOption = document.createElement("option");
+      minuteOption.value = minute;
+      minuteOption.textContent = minute;
+      select.appendChild(minuteOption);
+    }
+    input =document.createElement("div");
+    input.classList.add("time-wrapper")
+    input.appendChild(select);
+    input.appendChild(document.createTextNode("分"));
+    
+    return input
+  }
 
   // モーダルを表示＆クローズボタンの設定
   modal.style.display = "block";
@@ -347,6 +365,8 @@ function showModal(event) {
       case 'submitForm':
         document.getElementById("講師回答-wrapper").remove();
         document.getElementById("休憩時間-wrapper").remove();
+        document.getElementById("勤務開始時間-wrapper").style.display="none";
+        document.getElementById("勤務終了時間-wrapper").style.display="none";
         submitFormAdd()
         break;
       case 'requestForm':
@@ -367,8 +387,6 @@ function submitFormAdd(){
     const workStatus = this.value;
     const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
     const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
-    startTimeWrapper.style.display="none"
-    endTimeWrapper.style.display="none"
   
     if (data["勤務可否"] === "勤務可能") {
       startTimeWrapper.style.display = "block";
