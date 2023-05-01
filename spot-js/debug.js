@@ -1,5 +1,4 @@
 
-
   // デバッグページにおけるビュー調整
   document.getElementsByClassName("super-content-wrapper")[0].style.display="block";
   document.getElementsByClassName("notion-header")[0].style.display="block";

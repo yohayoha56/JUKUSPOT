@@ -14,7 +14,6 @@ waitForProperties().then((propertiesContainer) => {
     'https://heys45.github.io/SAUCEED/spot-css/schedule_form.css',
     'https://heys45.github.io/SAUCEED/spot-css/schedule_table.css',
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
-      'https://heys45.github.io/SAUCEED/spot-css/school.css',
     ] : []),
   ];
   

@@ -5,14 +5,6 @@ function profile_page() {};
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-
-
-// テーブルの情報は〜〜〜〜〜
-
-
-
-
-
 const table = document.getElementById('fixed-table');
 const rows = Array.from(table.querySelectorAll('tbody > tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
