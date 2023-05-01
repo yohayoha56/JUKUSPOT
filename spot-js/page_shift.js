@@ -121,9 +121,9 @@ function showModal(event) {
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
-    { name: "勤務開始時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-    { name: "勤務終了時間", type: "time", value: "", inline: true, width: "200px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-    { name: "休憩時間", type: "minute", value: "", inline: true, width: "150px",breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
+    { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px",breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
     { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
   ];
   
@@ -221,13 +221,17 @@ function showModal(event) {
       } else if (element.type === "time") {//ーーーーーーーーーーーー
           input = createCustomTimeInput(element);
       } else if (element.type === "minute") {//ーーーーーーーーーーー
-        input = document.createElement("select");
+        const select = document.createElement("select");
         for (let minute = element.minMinute; minute <= element.maxMinute; minute += element.stepMinute) {
             const minuteOption = document.createElement("option");
             minuteOption.value = minute;
             minuteOption.textContent = minute;
-            input.appendChild(minuteOption);
+            select.appendChild(minuteOption);
         } 
+        input =document.createElement("div");
+        timeWrapper.classList.add("time-wrapper")
+        timeWrapper.appendChild(select);
+        timeWrapper.appendChild(document.createTextNode("分"));
       } else {//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
           input = document.createElement("input");
           input.setAttribute("type", element.type);
