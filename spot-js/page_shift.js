@@ -197,6 +197,8 @@ function showModal(event) {
       // ボタンの梱包
       const formBox = document.createElement("div");
       formBox.classList.add("form-box");
+      formBox.classList.add("inline-box");
+      formBox.style.width="180px"
       formBox.appendChild(submitButton);
 
       return formBox;
@@ -353,7 +355,9 @@ function showModal(event) {
         document.getElementById("講師回答-wrapper").remove();
         break;
       case 'changeForm':
-
+        document.getElementById("勤務可否-wrapper").remove();
+        document.getElementById("講師回答-wrapper").remove();
+        changeFormAdd()
         break;
       case 'answerForm':
         break;
@@ -375,10 +379,16 @@ function submitFormAdd(){
     }
   });
 }
-
-
+// フォームのカスタマイズ機能
+function changeFormAdd(){
+  const buttonBox =document.querySelector("form:last-child");
+  const cancelButtonBox = buttonBox.cloneNode(true);
+  const cancelButton = cancelButtonBox.querySelector('input');
+  cancelButton.innerText = '依頼を取消する';
+  cancelButton.classList.add ="cancel-button";
 }
 
+}
 
 
 // フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -420,6 +430,18 @@ const handleSubmit = async (event) => {
       }
       break;
     case 'changeForm': 
+      if (clickedButton.classList.contains('cancel-button')) {
+        data["取り消し"]="true";
+      } else {
+        if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
+          showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
+        } if(!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
+          showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
+        } if(!data["休憩時間"]) {
+          showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
+        }
+      }
+
     ; break;
     case 'answerForm':
     ; break;
