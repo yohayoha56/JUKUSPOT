@@ -509,24 +509,47 @@ const handleSubmit = async (event) => {
   }  
   data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
-  // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  console.log(data);
-  const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+
+  const submitButton = document.querySelector(".submit-button");
+  const responseMessage = document.createElement("div");
+  responseMessage.classList.add("response-message");
+  
+  // フォームの無効化とボタンの色を変更
+  form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
+  submitButton.style.backgroundColor = "grey";
+  
+  try {
+    // データの送信
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
       method: 'POST',
       headers: {
-      'Content-Type': 'text/plain',
+        'Content-Type': 'text/plain',
       },
       body: JSON.stringify(data),
       mode: 'cors', //CORS対応
-  });
-
-  const text = await response.text();
-  if (text.includes("Success")) {
-      console.log('データが正常に送信されました');
+    });
+  
+    const text = await response.text();
+    if (text.includes("Success")) {
+      responseMessage.textContent = "提出が完了しました";
+      responseMessage.style.color = "green";
       form.reset(); // フォームの入力値をリセット
-  } else {
-      console.error(`エラーメッセージ: ${text}`);
+      call_fetchData(page_call_property); // レスポンスを受け取り次第、call_fetchData を起動
+    } else {
+      responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
+      responseMessage.style.color = "red";
+    }
+  } catch (error) {
+    responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
+    responseMessage.style.color = "red";
+    console.error(`エラーメッセージ: ${error}`);
+  } finally {
+    // フォームとボタンを再度有効化し、ボタンの色を元に戻す
+    form.querySelectorAll("input, button").forEach((element) => element.removeAttribute("disabled"));
+    submitButton.style.backgroundColor = ""; // ボタンの背景色を元に戻す
+  
+    // レスポンスメッセージをボタンの下に表示
+    submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
   }
 };
-const form = document.querySelector('#myForm');
 };
