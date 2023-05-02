@@ -462,7 +462,7 @@ const handleSubmit = async (event) => {
   switch (formId) {
     case 'submitForm': hosokuguide = " [講師：ｽｹｼﾞｭｰﾙ提出時] "; break;
     case 'requestForm': hosokuguide = " [教室：シフト依頼時] "; break;
-    case 'changeForm': hosokuguide = " [教室：依頼取消時] ; break;
+    case 'changeForm': hosokuguide = " [教室：依頼取消時] "; break;
     case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
   }  
   data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
