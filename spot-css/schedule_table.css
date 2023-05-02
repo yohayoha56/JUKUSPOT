@@ -110,7 +110,7 @@ table {
   }
   
   
-  .request.noticed,.submit.noticed,.change.noticed,.answer.notised {
+  .request.noticed,.submit.noticed,.change.noticed,.answer.noticed {
     border: none;
     background-color: #17837C;
     color: #fff;

@@ -10,12 +10,12 @@ tableRows.forEach(row => {
   if(newData["ページタイプ"] === "school"){
     switch(rowColorFlag){
       case "勤務可能": row.style["background-color"] = "#FFF2CC"; break;
-      case "勤務不可": row.style["background-color"] = "#cccccc"; break;
+      case "勤務不可": row.style["background-color"] = "#dddddd"; break;
     }
   }else if(newData["ページタイプ"] === "teacher"){
     switch(rowColorFlag){
       case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
-      case "勤務不可": row.style["background-color"] = "#cccccc"; break;
+      case "勤務不可": row.style["background-color"] = "#dddddd"; break;
     }
   }
 });
