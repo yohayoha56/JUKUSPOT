@@ -410,7 +410,7 @@ const handleSubmit = async (event) => {
         showValidationError(document.getElementById("補足・備考-wrapper"), "参考テキストを入力してください");
       }
       break;
-    case 'requestForm': hosokuguide = "（教室から：シフト依頼時）";
+    case 'requestForm':
       if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
         showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
       } if(!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
@@ -419,8 +419,10 @@ const handleSubmit = async (event) => {
         showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
       }
       break;
-    case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
-    case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
+    case 'changeForm': 
+    ; break;
+    case 'answerForm':
+    ; break;
   }  
 
   if (isValid ==false){ return; }
