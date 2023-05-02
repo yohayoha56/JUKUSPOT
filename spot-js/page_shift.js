@@ -353,10 +353,12 @@ function showModal(event) {
       case 'requestForm':
         document.getElementById("勤務可否-wrapper").remove();
         document.getElementById("講師回答-wrapper").remove();
+        minuteFormAdd()
         break;
       case 'changeForm':
         document.getElementById("勤務可否-wrapper").remove();
         document.getElementById("講師回答-wrapper").remove();
+        minuteFormAdd()
         changeFormAdd()
         break;
       case 'answerForm':
@@ -378,6 +380,15 @@ function submitFormAdd(){
       endTimeWrapper.style.display = "none";
     }
   });
+}
+// フォームのカスタマイズ機能
+function minuteFormAdd(){
+  const timeWrapper = document.getElementById("休憩時間");
+  const selectElement = timeWrapper.querySelector("select");
+  timeWrapper.removeAttribute("id");
+  timeWrapper.removeAttribute("name");
+  selectElement.id = "休憩時間";
+  selectElement.name = "休憩時間";
 }
 // フォームのカスタマイズ機能
 function changeFormAdd(){
