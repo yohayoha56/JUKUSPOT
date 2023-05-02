@@ -396,12 +396,13 @@ function minuteFormAdd(){
 }
 // フォームのカスタマイズ機能
 function changeFormAdd(){
-  const buttonBox =document.querySelector("form:last-child");
-  const cancelButtonBox = buttonBox.cloneNode(true);
+  const formBoxes = document.querySelectorAll('.form-box');
+  const lastFormBox = formBoxes[formBoxes.length - 1];
+  const cancelButtonBox = lastFormBox.cloneNode(true);
   const cancelButton = cancelButtonBox.querySelector('input');
   cancelButton.innerText = '依頼を取消する';
   cancelButton.classList.add ="cancel-button";
-  buttonBox.parentNode.insertBefore(cancelButtonBox, buttonBox.nextSibling);
+  buttonBox.parentNode.insertBefore(cancelButtonBox, lastFormBox.nextSibling);
 }
 
 }
