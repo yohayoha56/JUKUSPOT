@@ -349,15 +349,13 @@ function showModal(event) {
         submitFormAdd()
         break;
       case 'requestForm':
-        document.getElementById(targetId).remove();
         document.getElementById("勤務可否-wrapper").remove();
         document.getElementById("講師回答-wrapper").remove();
         break;
       case 'changeForm':
-        document.getElementById(targetId).remove();
+
         break;
       case 'answerForm':
-        document.getElementById(targetId).remove();
         break;
     }
   }
