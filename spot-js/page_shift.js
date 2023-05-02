@@ -431,7 +431,7 @@ const handleSubmit = async (event) => {
       break;
     case 'changeForm': 
       if (clickedButton.classList.contains('cancel-button')) {
-        data["取り消し"]="true";
+        data["取り消し"]= true ;
       } else {
         if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
           showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
