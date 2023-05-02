@@ -1,8 +1,8 @@
 
   // デバッグページにおけるビュー調整
-  document.getElementsByClassName("super-content-wrapper")[0].style.display="block";
-  document.getElementsByClassName("notion-header")[0].style.display="block";
-  document.getElementsByClassName("notion-page__properties")[0].style.display="block";
+  // document.getElementsByClassName("super-content-wrapper")[0].style.display="block";
+  // document.getElementsByClassName("notion-header")[0].style.display="block";
+  // document.getElementsByClassName("notion-page__properties")[0].style.display="block";
 
   // 外部リソースのURLを配列として定義します。
   const baseUrl = 'https://heys45.github.io/SAUCEED/';
