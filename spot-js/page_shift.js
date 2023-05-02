@@ -350,6 +350,8 @@ function showModal(event) {
         break;
       case 'requestForm':
         document.getElementById(targetId).remove();
+        document.getElementById("勤務可否-wrapper").remove();
+        document.getElementById("講師回答-wrapper").remove();
         break;
       case 'changeForm':
         document.getElementById(targetId).remove();
@@ -366,7 +368,6 @@ function submitFormAdd(){
     const workStatus = this.value;
     const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
     const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
-  
     if (workStatus === "勤務可能") {
       startTimeWrapper.style.display = "block";
       endTimeWrapper.style.display = "block";
@@ -404,14 +405,22 @@ const handleSubmit = async (event) => {
       if (!data["勤務可否"]){ isValid = false;
         showValidationError(document.getElementById("勤務可否-wrapper"), "勤務可否を選択してください");
       } if(data["勤務可否"] === "勤務可能" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にください");
+        showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
       } if(data["勤務可否"] === "勤務可能" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にください");
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
       } if(data["勤務可否"] === "調整中" && !data["補足・備考"]) {
         showValidationError(document.getElementById("補足・備考-wrapper"), "参考テキストを入力してください");
       }
       break;
-    case 'requestForm': hosokuguide = "（教室から：シフト依頼時）"; break;
+    case 'requestForm': hosokuguide = "（教室から：シフト依頼時）";
+      if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
+        showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
+      } if(!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
+      } if(!data["休憩時間"]) {
+        showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
+      }
+      break;
     case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
     case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
   }  
@@ -451,10 +460,10 @@ const handleSubmit = async (event) => {
 
   let hosokuguide
   switch (formId) {
-    case 'submitForm': hosokuguide = "（講師から：ｽｹｼﾞｭｰﾙ提出時）"; break;
-    case 'requestForm': hosokuguide = "（教室から：シフト依頼時）"; break;
-    case 'changeForm': hosokuguide = "（教室から：依頼取消時）"; break;
-    case 'answerForm': hosokuguide = "（講師から：シフト回答時）"; break;
+    case 'submitForm': hosokuguide = " [講師：ｽｹｼﾞｭｰﾙ提出時] "; break;
+    case 'requestForm': hosokuguide = " [教室：シフト依頼時] "; break;
+    case 'changeForm': hosokuguide = " [教室：依頼取消時] ; break;
+    case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
   }  
   data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
