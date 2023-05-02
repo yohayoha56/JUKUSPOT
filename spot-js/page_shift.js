@@ -362,6 +362,10 @@ function showModal(event) {
         changeFormAdd()
         break;
       case 'answerForm':
+        document.getElementById("勤務可否-wrapper").remove();
+        document.getElementById("勤務開始時間-wrapper").remove();
+        document.getElementById("勤務終了時間-wrapper").remove();
+        document.getElementById("休憩時間-wrapper").remove();
         break;
     }
   }
@@ -397,6 +401,7 @@ function changeFormAdd(){
   const cancelButton = cancelButtonBox.querySelector('input');
   cancelButton.innerText = '依頼を取消する';
   cancelButton.classList.add ="cancel-button";
+  buttonBox.parentNode.insertBefore(cancelButtonBox, buttonBox.nextSibling);
 }
 
 }
@@ -417,7 +422,7 @@ const handleSubmit = async (event) => {
       data[key] = value;
   }
 
-  // バリデーションチェック
+  // バリデーションチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   let isValid = true;
   switch (formId) {
     case 'submitForm': 
@@ -455,11 +460,14 @@ const handleSubmit = async (event) => {
 
     ; break;
     case 'answerForm':
+      if (!data["講師回答"]){ isValid = false;
+        showValidationError(document.getElementById("講師回答-wrapper"), "勤務可否を回答してください");
+      }
     ; break;
   }  
 
   if (isValid ==false){ return; }
-
+  // バリデーションの処理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   function showValidationError(element, message) {
     const errorMessage = document.createElement("div");
     errorMessage.classList.add("error-message");
@@ -479,7 +487,7 @@ const handleSubmit = async (event) => {
 
 
 
-  // データの整理
+  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
     + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
   data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
@@ -500,7 +508,7 @@ const handleSubmit = async (event) => {
   }  
   data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
-
+  // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   console.log(data);
   const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
       method: 'POST',
