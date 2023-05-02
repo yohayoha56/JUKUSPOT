@@ -104,7 +104,7 @@ table {
   /* 依頼ボタン */
   .request, .submit,.change,.answer {
     border: 1px solid #17837C;
-    background-color: transparent;
+    background-color: #fff;
     color: #17837C;
     cursor: pointer;
   }
