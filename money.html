@@ -72,13 +72,7 @@
       { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
     ];
 
-  async function fetchDataFromGAS() {
-        const response = await fetch(
-            "https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec"
-        );
-        const data = await response.json();
-        return data;
-    }
+
   // カテゴリのオプション生成
   const data = await fetchDataFromGAS();
   const categoryElement = formElements.find((element) => element.name === "カテゴリ");
@@ -95,6 +89,14 @@
       optionElement.textContent = option.text;
       categorySelect.appendChild(optionElement);
   });
+
+  async function fetchDataFromGAS() {
+      const response = await fetch(
+          "https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec"
+      );
+      const data = await response.json();
+      return data;
+  }
 
 
 
