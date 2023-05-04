@@ -66,28 +66,24 @@ function showModal(event) {
     formInfo = "提出中のスケジュール"
     formGuide = "↓ ｽｹｼﾞｭｰﾙをご記入ください"
     formButton = "ｽｹｼﾞｭｰﾙを提出する"
-    requestNone = `style="display:none;"`
   } else if (button.classList.contains("request")) {//ーーーーーー
     formId = "requestForm"
     formTitle = `${date}｜${page_call_property["講師名"]}先生｜シフト依頼`
     formInfo = "講師の提出スケジュール"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを依頼する"
-    requestNone = `style="display:none;"`
   } else if (button.classList.contains("change")) {//ーーーーーーー
     formId = "changeForm"
     formTitle = `${date}｜${page_call_property["講師名"]}先生｜依頼修正`
     formInfo = "依頼中のシフト内容"
     formGuide = "↓ 依頼内容をご記入ください"
     formButton = "シフトを修正する"
-    requestNone = `style="display:none;"`
   } else if (button.classList.contains("answer")) {//ーーーーーーー
     formId = "answerForm"
     formTitle = `${date}｜${page_call_property["教室名"]}｜依頼回答`
     formInfo = "教室からの依頼内容"
     formGuide = "↓ 回答内容をご記入ください"
     formButton = "回答を提出する"
-    requestNone = `style="display:none;"`
   }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
   // 講師ページか教室ページによって、値を整備するーーーーーーーーーーーーーーーーーーーーー
