@@ -62,7 +62,7 @@ fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2h
 .then(categories => {
   tagData= categories;
   const categoryElement = formElements.find((element) => element.name === "カテゴリ");
-  categoryElement.options = Object.keys(data).map((category) => {
+  categoryElement.options = Object.keys(categories).map((category) => {
     return { value: category, text: category };
   });
 
