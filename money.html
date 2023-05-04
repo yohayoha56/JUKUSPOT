@@ -99,33 +99,34 @@ function createForm() {
     const categorySelect = document.getElementById("カテゴリ");
     categorySelect.addEventListener("change", updateTagOptions);
 
-    // 初期設定
-    const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #計上メモ" );
-    wrappers.forEach(wrapper => {
-      wrapper.style.display = "none";
-    });
+    // 初期設定＋経費ボタンクリック時の処理
+    toggleExpenseRelatedFields(false);
+    function toggleExpenseRelatedFields(isChecked) {
+      const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #経費メモ-wrapper");
+      wrappers.forEach(wrapper => {
+        wrapper.style.display = isChecked ? "block" : "none";
+      });
 
-    // 中間処理
+      if (isChecked) {
+        document.getElementById("計上項目").value = document.getElementById("カテゴリ").value;
+        document.getElementById("経費メモ").value = document.getElementById("メモ").value;
+      } else {
+        document.getElementById("計上項目").value = "";
+        document.getElementById("経費メモ").value = "";
+      }
+    }
+    // 経費ボタンクリック時のトリガー
     document.getElementById("経費-wrapper").addEventListener("click", function (event) {
       const checkbox = event.currentTarget.querySelector(".hidden-checkbox");
       checkbox.checked = !checkbox.checked;
+      toggleExpenseRelatedFields(checkbox.checked);
     });
 
     document.getElementById("経費").addEventListener("change", function (event) {
-      wrappers.forEach(wrapper => {
-        if (event.target.checked) {
-        wrapper.style.display = "block";
-        document.getElementById("計上項目").value = document.getElementById("カテゴリ").value;
-        document.getElementById("計上額").value = document.getElementById("出費").value;
-        document.getElementById("経費メモ").value = document.getElementById("メモ").value;
-      } else {
-        wrapper.style.display = "none";
-        document.getElementById("計上項目").value = "";
-        document.getElementById("計上額").value = "";
-        document.getElementById("経費メモ").value = "";
-      }
-      });
+      toggleExpenseRelatedFields(event.target.checked);
     });
+
+
 }
 
 function updateTagOptions() {
@@ -150,8 +151,6 @@ function updateTagOptions() {
       tagContainer.appendChild(button);
     });
 }
-
-
 
 
   // タイトル、ボタンの作成関数
