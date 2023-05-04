@@ -47,8 +47,9 @@
   ];
 
 
-  // セレクトデータの取得関数
-let tagData={}
+
+// セレクトデータの取得関数
+let tagData = {};
 fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
   method: 'POST',
   headers: { 
@@ -59,14 +60,17 @@ fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2h
 .then(response => response.json())
 .then(categories => {
   tagData = categories;
-  updateCategoryOptions(tagData);
+  updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
+  updateSelectOptions("支払い方法", tagData.paymentMethods);
+  updateSelectOptions("計上項目", tagData.postingItems);
   createForm(); // Move createForm() here
   console.log(tagData);
 });
-function updateCategoryOptions(categories) {
-  const categoryElement = formElements.find((element) => element.name === "カテゴリ");
-  categoryElement.options = Object.keys(categories).map((category) => {
-    return { value: category, text: category };
+// セレクト要素のオプションを更新
+function updateSelectOptions(elementName, optionsData) {
+  const selectElement = formElements.find((element) => element.name === elementName);
+  selectElement.options = optionsData.map((option) => {
+    return { value: option, text: option };
   });
 }
 
