@@ -251,7 +251,7 @@ function updateTagOptions() {
       // フォーム要素の梱包
       const formBox = document.createElement("div");
       formBox.appendChild(label);
-      formBox.appendChild(input);
+      formBox.appendChild(input||field);
       formBox.classList.add("form-box");
       if (element.inline) { formBox.classList.add("inline-box");}
       formBox.setAttribute("id",`${element.name}-wrapper`);
