@@ -106,6 +106,34 @@ function createForm() {
     //カテゴリ選択時のスクリプト
     const categorySelect = document.getElementById("カテゴリ");
     categorySelect.addEventListener("change", updateTagOptions);
+
+    // 初期設定
+    const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #計上メモ" );
+    wrappers.forEach(wrapper => {
+      wrapper.style.display = "none";
+    });
+
+    // 中間処理
+    document.getElementById("経費-wrapper").addEventListener("click", function (event) {
+      const checkbox = event.currentTarget.querySelector(".hidden-checkbox");
+      checkbox.checked = !checkbox.checked;
+    });
+
+    document.getElementById("経費").addEventListener("change", function (event) {
+      wrappers.forEach(wrapper => {
+        if (event.target.checked) {
+        wrapper.style.display = "block";
+        document.getElementById("計上項目").value = document.getElementById("カテゴリ").value;
+        document.getElementById("計上額").value = document.getElementById("出費").value;
+        document.getElementById("経費メモ").value = document.getElementById("メモ").value;
+      } else {
+        wrapper.style.display = "none";
+        document.getElementById("計上項目").value = "";
+        document.getElementById("計上額").value = "";
+        document.getElementById("経費メモ").value = "";
+      }
+      });
+    });
 }
 
 function updateTagOptions() {
@@ -214,10 +242,12 @@ function updateTagOptions() {
           input = document.createElement("input");
           input.setAttribute("type", element.type);
       }
-      input.setAttribute("id", element.name);
-      input.setAttribute("name", element.name);
-      input.value = element.value;
-      
+      // 共通処理ーーーーーーーーーー
+      if(input){
+        input.setAttribute("id", element.name);
+        input.setAttribute("name", element.name);
+        input.value = element.value;
+      }
       // フォーム要素の梱包
       const formBox = document.createElement("div");
       formBox.appendChild(label);
@@ -268,41 +298,6 @@ function updateTagOptions() {
 <!-- フォームハンドリング -->
 <script>
 
-
-
-
-
-
-
-
-  // 初期設定
-  const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #計上メモ" );
-  wrappers.forEach(wrapper => {
-    wrapper.style.display = "none";
-  });
-
-
-  // 中間処理
-  document.getElementById("経費-wrapper").addEventListener("click", function (event) {
-    const checkbox = event.currentTarget.querySelector(".hidden-checkbox");
-    checkbox.checked = !checkbox.checked;
-  });
-
-  document.getElementById("経費").addEventListener("change", function (event) {
-  wrappers.forEach(wrapper => {
-    if (event.target.checked) {
-    wrapper.style.display = "block";
-    document.getElementById("計上項目").value = document.getElementById("カテゴリ").value;
-    document.getElementById("計上額").value = document.getElementById("出費").value;
-    document.getElementById("経費メモ").value = document.getElementById("メモ").value;
-  } else {
-    wrapper.style.display = "none";
-    document.getElementById("計上項目").value = "";
-    document.getElementById("計上額").value = "";
-    document.getElementById("経費メモ").value = "";
-  }
-  });
-});
 
 
 
