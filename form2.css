@@ -13,7 +13,7 @@ form h2{
   width:100%;
 }
 
-input,select,textarea{
+input,select,textarea,.tag-button{
   font-size:16px;
   padding:3px 6px;
   border:solid 2px #555555;
@@ -62,4 +62,20 @@ label{
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+.multiselect-container{
+  display:flex;
+  gap:5px 10px;
+  flex-wrap:wrap;
+  
+}
+.tag-button{
+  width:auto;
+  padding:2px 10px;
+  border-radius:3px;
+}
+.tag-button.selected{
+  background-color:#555;
+  color:white;  
 }

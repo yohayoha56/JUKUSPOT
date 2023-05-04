@@ -32,7 +32,7 @@
     ]},
     { name: "出費", type: "number", value: "", inline: true, width: "100px" },
     { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-    { name: "タグ", type: "multiselect", value: "", inline: false, width: "200px",},
+    { name: "タグ", type: "multiselect", value: "", inline: false, width: "100%",},
     { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
     { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
       { value: "", text: "選択してください", disabled: true, selected: true },
@@ -291,6 +291,7 @@ function updateTagOptions() {
 
   async function handleSubmit (event)  {
   event.preventDefault(); // デフォルトの送信をキャンセル
+  const form = document.getElementsByTagName("form")[0]
   const formData = new FormData(form);
   const data = {};
   // FormDataオブジェクトから連想配列に変換
