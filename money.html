@@ -25,78 +25,81 @@
   formTitle = `経費入力フォーム`
   formButton = "回答を提出する"
 
-  // メイン関数
-  function createForm() {
-      const formConfig = {
-          formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
-      };
-      // タイトルなど共通処理
-      const formContainer = document.getElementById("form-container");
-      const form = document.createElement("form");
-      form.setAttribute("id", formConfig.formId);
-      form.appendChild(createFormTitle(formConfig.formTitle));
+  // フォーム要素の定義
+  const formElements = [
+    { name: "日付", type: "date", value: "", inline: true, width: "150px" },
+    { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
+      { value: "", text: "選択してください", disabled: true, selected: true },
+    ]},
+    { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
+      { value: "", text: "選択してください", disabled: true, selected: true },
+    ]},
+    { name: "出費", type: "number", value: "", inline: true, width: "100px" },
+    { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
+    { name: "タグ", type: "multiselect", value: "", inline: false, width: "200px",},
+    { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
+    { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
+      { value: "", text: "選択してください", disabled: true, selected: true },
+      { value: "A", text: "A" },
+      { value: "B", text: "B" },
+      { value: "C", text: "C" },
+      { value: "D", text: "D" },
+      { value: "E", text: "E" },
+    ]},
+    { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
+    { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
+  ];
 
-      // フォームコンテンツの作成関数
-      formElements.forEach(element => {
-          form.appendChild(createFormField(element));
-      });
-
-      // 送信ボタンの作成
-      form.appendChild(createSubmitButton(formConfig.buttonText));
-      formContainer.appendChild(form);
-      form.addEventListener('submit', handleSubmit);
-  }
-
-    // フォーム要素の定義
-    const formElements = [
-      { name: "日付", type: "date", value: "", inline: true, width: "150px" },
-      { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
-        { value: "", text: "選択してください", disabled: true, selected: true },
-      ]},
-      { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
-        { value: "", text: "選択してください", disabled: true, selected: true },
-      ]},
-      { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-      { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-      { name: "タグ", type: "multiselect", value: "", inline: false, width: "200px",},
-      { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-      { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
-        { value: "", text: "選択してください", disabled: true, selected: true },
-        { value: "A", text: "A" },
-        { value: "B", text: "B" },
-        { value: "C", text: "C" },
-        { value: "D", text: "D" },
-        { value: "E", text: "E" },
-      ]},
-      { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
-      { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
-    ];
-
-
+  updateTagOptions()
   // カテゴリのオプション生成
-  const data = await fetchDataFromGAS();
-  const categoryElement = formElements.find((element) => element.name === "カテゴリ");
-
-  // カテゴリのoption選択肢を更新
-  categoryElement.options = Object.keys(data).map((category) => {
-      return { value: category, text: category };
-  });
-
-  const categorySelect = document.getElementById("カテゴリ");
-  categoryElement.options.forEach((option) => {
-      const optionElement = document.createElement("option");
-      optionElement.value = option.value;
-      optionElement.textContent = option.text;
-      categorySelect.appendChild(optionElement);
-  });
-
-  async function fetchDataFromGAS() {
-      const response = await fetch(
-          "https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec"
-      );
-      const data = await response.json();
-      return data;
+  async function updateTagOptions() {
+    const data = await fetchDataFromGAS();
+    const categoryElement = formElements.find((element) => element.name === "カテゴリ");
+    categoryElement.options = Object.keys(data).map((category) => {
+        return { value: category, text: category };
+    });
+      // カテゴリのoption選択肢を更新
+    const categorySelect = document.getElementById("カテゴリ");
+    categoryElement.options.forEach((option) => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        categorySelect.appendChild(optionElement);
+    });
   }
+
+async function fetchDataFromGAS() {
+  const response = await fetch(
+      "https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec"
+  );
+  const data = await response.json();
+  return data;
+}
+
+// メイン関数
+function createForm() {
+    const formConfig = {
+        formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
+    };
+    // タイトルなど共通処理
+    const formContainer = document.getElementById("form-container");
+    const form = document.createElement("form");
+    form.setAttribute("id", formConfig.formId);
+    form.appendChild(createFormTitle(formConfig.formTitle));
+
+    // フォームコンテンツの作成関数
+    formElements.forEach(element => {
+        form.appendChild(createFormField(element));
+    });
+
+    // 送信ボタンの作成
+    form.appendChild(createSubmitButton(formConfig.buttonText));
+    formContainer.appendChild(form);
+    form.addEventListener('submit', handleSubmit);
+}
+
+
+
 
 
 
