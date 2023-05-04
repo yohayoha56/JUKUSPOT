@@ -243,7 +243,7 @@ function createForm() {
 <!-- フォームハンドリング -->
 <script>
     const tagElement = formElements.find((element) => element.name === "タグ");
-    categorySelect.addEventListener("change", (event) => {
+    TagData.addEventListener("change", (event) => {
         const selectedCategory = event.target.value;
         tagElement.options = data[selectedCategory].map((tag) => {
             return { value: tag, text: tag };
