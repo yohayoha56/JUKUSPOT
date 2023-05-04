@@ -74,9 +74,10 @@ fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2h
     optionElement.textContent = option.text;
     categorySelect.appendChild(optionElement);
   });
+  console.log(tagData);
 });
 
-console.log(tagData);
+
 
 
 
@@ -240,7 +241,7 @@ function createForm() {
 
 <!-- フォームハンドリング -->
 <script>
-    const tagElement = formElements.find((element) => element.name === "タグ");
+    const Element = formElements.find((element) => element.name === "タグ");
     TagData.addEventListener("change", (event) => {
         const selectedCategory = event.target.value;
         tagElement.options = data[selectedCategory].map((tag) => {
