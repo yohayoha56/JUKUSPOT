@@ -39,7 +39,7 @@ function call_fetchData(page_call_property) {
   };
 
   fetch(page_call_property["url"], {
-    method: 'GET',
+    method: 'POST',
     headers: { 
       'Content-Type': 'text/plain',
     },
@@ -68,7 +68,7 @@ page_title.style["font-size"]="16px";
 if(newData["ページタイプ"] === "school"){
   page_title.textContent=newData["教室名"]+"管理ページ";
 }else if(newData["ページタイプ"] === "teacher"){
-  page_title.textContent=newData["姓"]+newData["名"]+"マイページ";
+  page_title.textContent=newData["姓"]+"マイページ";
 }
 menu.appendChild(page_title);
 
