@@ -59,10 +59,11 @@ function updateCategoryOptions() {
     headers: { 
       'Content-Type': 'text/plain',
     },
-    body: JSON.stringify("get"),
+    body: "",
     mode: 'cors',
-  }).then(data => {
-    tagData= data;
+  })
+  .then(categories => {
+    tagData= categories;
     const categoryElement = formElements.find((element) => element.name === "カテゴリ");
     categoryElement.options = Object.keys(data).map((category) => {
       return { value: category, text: category };
