@@ -39,7 +39,7 @@ function call_fetchData(page_call_property) {
   };
 
   fetch(page_call_property["url"], {
-    method: 'POST',
+    method: 'GET',
     headers: { 
       'Content-Type': 'text/plain',
     },
