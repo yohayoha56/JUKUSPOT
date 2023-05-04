@@ -66,13 +66,22 @@ fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2h
   createForm(); // Move createForm() here
   console.log(tagData);
 });
+
 // セレクト要素のオプションを更新
 function updateSelectOptions(elementName, optionsData) {
   const selectElement = formElements.find((element) => element.name === elementName);
-  selectElement.options = optionsData.map((option) => {
-    return { value: option, text: option };
+  // 最初に "選択してください" の項目を追加
+  selectElement.options = [{ value: "", text: "選択してください" }];
+  
+  // その他のオプションを追加
+  optionsData.forEach(option => {
+    selectElement.options.push({ value: option, text: option });
   });
+
+  // 最後に "その他" の項目を追加
+  selectElement.options.push({ value: "その他", text: "その他" });
 }
+
 
 // メイン関数
 function createForm() {
@@ -168,6 +177,8 @@ function updateTagOptions() {
       // ボタンの梱包
       const formBox = document.createElement("div");
       formBox.classList.add("form-box");
+      formBox.classList.add("inline-box");
+      formBox.style.width="180px"
       formBox.appendChild(submitButton);
 
       return formBox;
