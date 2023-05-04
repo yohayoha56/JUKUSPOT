@@ -51,33 +51,31 @@
   ];
 
 
-updateCategoryOptions();
 let tagData={}
-function updateCategoryOptions() {
-  fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
-    method: 'GET',
-    headers: { 
-      'Content-Type': 'text/plain',
-    },
-    mode: 'cors',
-  })
-  .then(categories => {
-    tagData= categories;
-    const categoryElement = formElements.find((element) => element.name === "カテゴリ");
-    categoryElement.options = Object.keys(data).map((category) => {
-      return { value: category, text: category };
-    });
-
-    // カテゴリのoption選択肢を更新
-    const categorySelect = document.getElementById("カテゴリ");
-    categoryElement.options.forEach((option) => {
-      const optionElement = document.createElement("option");
-      optionElement.value = option.value;
-      optionElement.textContent = option.text;
-      categorySelect.appendChild(optionElement);
-    });
+fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'text/plain',
+  },
+  mode: 'cors',
+})
+.then(categories => {
+  tagData= categories;
+  const categoryElement = formElements.find((element) => element.name === "カテゴリ");
+  categoryElement.options = Object.keys(data).map((category) => {
+    return { value: category, text: category };
   });
-}
+
+  // カテゴリのoption選択肢を更新
+  const categorySelect = document.getElementById("カテゴリ");
+  categoryElement.options.forEach((option) => {
+    const optionElement = document.createElement("option");
+    optionElement.value = option.value;
+    optionElement.textContent = option.text;
+    categorySelect.appendChild(optionElement);
+  });
+});
+
 console.log(tagData);
 
 
