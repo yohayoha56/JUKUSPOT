@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>費用管理アプリ</title>
+    <title>費用入力フォーム</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="form2.css">
@@ -14,15 +14,23 @@
 <!-- フォームを用意する。 -->
 <div id="form-container"></div>
 
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       createForm();
   });
-  
+
+  let formTitle, formButton,formId
+  formId = "moneyForm"
+  formTitle = `経費入力フォーム`
+  formButton = "回答を提出する"
+
+
+
   // メイン関数
   function createForm() {
       const formConfig = {
-          formId: "myForm", formTitle: "経費管理フォーム", buttonText: "経費を保存",
+          formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
       };
       // タイトルなど共通処理
       const formContainer = document.getElementById("form-container");
@@ -34,46 +42,56 @@
       formElements.forEach(element => {
           form.appendChild(createFormField(element));
       });
+
       // 送信ボタンの作成
       form.appendChild(createSubmitButton(formConfig.buttonText));
       formContainer.appendChild(form);
       form.addEventListener('submit', handleSubmit);
   }
 
-  // フォーム要素の定義
-  const formElements = [
-  { name: "日付", type: "date", value: "", inline: true, width: "150px" },
-  { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
-    { value: "", text: "選択してください", disabled: true, selected: true },
-    { value: "現金", text: "現金" },
-    { value: "クレジットカード", text: "クレジットカード" },
-    { value: "デビットカード", text: "デビットカード" },
-    { value: "電子マネー", text: "電子マネー" },
-    { value: "その他", text: "その他" },
-  ]},
-  { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
-    { value: "", text: "選択してください", disabled: true, selected: true },
-    { value: "食費", text: "食費" },
-    { value: "交通費", text: "交通費" },
-    { value: "通信費", text: "通信費" },
-    { value: "娯楽費", text: "娯楽費" },
-    { value: "住居費", text: "住居費" },
-    { value: "その他", text: "その他" },
-  ]},
-  { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-  { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-  { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-  { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
-    { value: "", text: "選択してください", disabled: true, selected: true },
-    { value: "A", text: "A" },
-    { value: "B", text: "B" },
-    { value: "C", text: "C" },
-    { value: "D", text: "D" },
-    { value: "E", text: "E" },
-  ]},
-  { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
-  { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
-];
+    // フォーム要素の定義
+    const formElements = [
+      { name: "日付", type: "date", value: "", inline: true, width: "150px" },
+      { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
+        { value: "", text: "選択してください", disabled: true, selected: true },
+      ]},
+      { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
+        { value: "", text: "選択してください", disabled: true, selected: true },
+      ]},
+      { name: "出費", type: "number", value: "", inline: true, width: "100px" },
+      { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
+      { name: "タグ", type: "multiselect", value: "", inline: false, width: "200px",},
+      { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
+      { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
+        { value: "", text: "選択してください", disabled: true, selected: true },
+        { value: "A", text: "A" },
+        { value: "B", text: "B" },
+        { value: "C", text: "C" },
+        { value: "D", text: "D" },
+        { value: "E", text: "E" },
+      ]},
+      { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
+      { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
+    ];
+
+
+  // カテゴリのオプション生成
+  const data = await fetchDataFromGAS();
+  const categoryElement = formElements.find((element) => element.name === "カテゴリ");
+
+  // カテゴリのoption選択肢を更新
+  categoryElement.options = Object.keys(data).map((category) => {
+      return { value: category, text: category };
+  });
+
+  const categorySelect = document.getElementById("カテゴリ");
+  categoryElement.options.forEach((option) => {
+      const optionElement = document.createElement("option");
+      optionElement.value = option.value;
+      optionElement.textContent = option.text;
+      categorySelect.appendChild(optionElement);
+  });
+
 
 
   // タイトル、ボタンの作成関数
@@ -148,6 +166,9 @@
           input.setAttribute("class", "hidden_checkbox");
           const checkmark = document.createElement("span")
           checkmark 
+      } else   if (element.type === "multiselect") {
+          input = document.createElement("div");
+          input.setAttribute("class", "multiselect-container");
       } else {
           input = document.createElement("input");
           input.setAttribute("type", element.type);
@@ -205,6 +226,36 @@
 
 <!-- フォームハンドリング -->
 <script>
+    const tagElement = formElements.find((element) => element.name === "タグ");
+    categorySelect.addEventListener("change", (event) => {
+        const selectedCategory = event.target.value;
+        tagElement.options = data[selectedCategory].map((tag) => {
+            return { value: tag, text: tag };
+        });
+
+        const tagSelect = document.getElementById("タグ");
+        tagSelect.innerHTML = "";
+
+        tagElement.options.forEach((option) => {
+            const optionElement = document.createElement("option");
+            optionElement.value = option.value;
+            optionElement.textContent = option.text;
+            tagSelect.appendChild(optionElement);
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
   async function getSelectOptions() {
     const API_KEY = 'secret_EH0c0xWFAXKo55177NHdRFI5od6KNMkYn5hza2pLfaK';
     const DATABASE_ID = '52a8de6b8f194a97b391e2ef06f5a3c5';
