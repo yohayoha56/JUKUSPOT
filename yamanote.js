@@ -10,10 +10,10 @@ const yamanoteLineStations = [
   // カテゴリ選択時に山手線の駅選択肢を表示する関数を追加
   function showYamanoteLineStations() {
     const categorySelect = document.getElementById("カテゴリ");
-    const fare_box = document.createElement("div");
-    fare_box.style.display="none";
-    fare_box.setAttribute("id","fare-display")
-    document.getElementById("タグ-wrapper").after(fare_box);
+    const fareBox = document.createElement("div");
+    fareBox.style.display="none";
+    fareBox.setAttribute("id","fare-display")
+    document.getElementById("タグ-wrapper").insertAdjacentElement('afterend', fareBox);
     categorySelect.addEventListener("change", function () {
       if (this.value === "交通費") {
         const fareDisplay = document.getElementById("fare-display");
