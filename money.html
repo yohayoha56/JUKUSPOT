@@ -319,59 +319,48 @@ function addTagInput() {
 </script>
 
 
-<!-- フォームハンドリング -->
 <script>
+  async function handleSubmit(event) {
+    event.preventDefault(); // デフォルトの送信をキャンセル
+    const form = document.getElementsByTagName("form")[0];
+    const formData = new FormData(form);
+    const data = {};
 
-
-
-
-  async function handleSubmit (event)  {
-  event.preventDefault(); // デフォルトの送信をキャンセル
-  const form = document.getElementsByTagName("form")[0];
-  const formData = new FormData(form);
-  const data = {};
-  // FormDataオブジェクトから連想配列に変換
-  for (const [key, value] of formData.entries()) {
+    // FormDataオブジェクトから連想配列に変換
+    for (const [key, value] of formData.entries()) {
       data[key] = value;
     }
-    
-  // もし「その他」が選択された場合、テキストボックスの値を利用する
-  // if (data["タスク内容"] === "新規タスク作成") {
-  //   data["タスク内容"] = data["other:タスク内容"];
-  // }
-  // delete data["other:タスク内容"]
 
-  // 選択されたタグを取得
-  const tagContainer = document.getElementById("タグ-container");
-  const selectedTags = Array.from(tagContainer.querySelectorAll(".selected")).map(
-    (button) => button.textContent
-  );
+    // 選択されたタグを取得
+    const tagContainer = document.getElementById("タグ-container");
+    const selectedTags = Array.from(
+      tagContainer.querySelectorAll(".selected")
+    ).map((button) => button.textContent);
 
-  // 選択されたタグをフォームデータに追加
-  formData.append("タグ", JSON.stringify(selectedTags));
+    // 選択されたタグをデータに追加
+    data["タグ"] = JSON.stringify(selectedTags);
 
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: JSON.stringify(data),
+        mode: "cors", //CORS対応
+      }
+    );
 
-
-
-  const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain',
-    },
-    body: JSON.stringify(data),
-    mode: 'cors', //CORS対応
-  });
-
-  const text = await response.text();
-  if (text.includes("Success")) {
-    console.log('データが正常に送信されました');
-    form.reset(); // フォームの入力値をリセット
-  } else {
-    console.error(`エラーメッセージ: ${text}`);
+    const text = await response.text();
+    if (text.includes("Success")) {
+      console.log("データが正常に送信されました");
+      form.reset(); // フォームの入力値をリセット
+    } else {
+      console.error(`エラーメッセージ: ${text}`);
+    }
+    script1();
   }
-  script1();
-  };
-
 </script>
 
 
