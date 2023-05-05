@@ -85,19 +85,6 @@ function createForm() {
         formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
     };
 
-    // タグ入力欄を追加する関数
-    function addTagInput() {
-      const tagInputContainer = document.getElementById("タグ-container");
-      const input = document.createElement("input");
-      input.setAttribute("type", "text");
-      input.classList.add("tag-input");
-      tagInputContainer.appendChild(input);
-    }
-
-
-
-
-
     // タイトルなど共通処理
     const formContainer = document.getElementById("form-container");
     const form = document.createElement("form");
@@ -179,6 +166,14 @@ function updateTagOptions() {
     });
 }
 
+// タグ入力欄を追加する関数
+function addTagInput() {
+  const tagInputContainer = document.getElementById("タグ-container");
+  const input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.classList.add("tag-input");
+  tagInputContainer.appendChild(input);
+}
 
   // タイトル、ボタンの作成関数
   function createFormTitle(title) {
@@ -270,6 +265,13 @@ function updateTagOptions() {
         input.setAttribute("name", element.name);
         input.value = element.value;
       }
+      // onclickーーーーーーーーーー
+      if (element.onClick) {
+        input.addEventListener("click", element.onClick);
+      }
+
+
+
       // フォーム要素の梱包
       const formBox = document.createElement("div");
       formBox.appendChild(label);
