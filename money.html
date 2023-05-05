@@ -213,7 +213,7 @@ function updateTagOptions() {
           input.addEventListener("change", (event) => {
             const selectedValue = event.target.value;
             const formBox = event.target.parentElement;
-            const otherInput = document.getElementById(`other:${element.name}`);
+            let otherInput = document.getElementById(`other:${element.name}`);
             if (selectedValue === "その他") {
               if (!otherInput) {
                 const otherInputElement = document.createElement("input");
