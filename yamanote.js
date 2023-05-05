@@ -13,6 +13,7 @@ const yamanoteLineStations = [
     const fare_box = document.createElement("div");
     fare_box.style.display="none";
     fare_box.setAttribute("id","fare-display")
+    document.getElementById("タグ-wrapper").after(fare_box);
     categorySelect.addEventListener("change", function () {
       if (this.value === "交通費") {
         const fareDisplay = document.getElementById("fare-display");
@@ -36,6 +37,7 @@ const yamanoteLineStations = [
     yamanoteLineStations.forEach(station => {
       selectorHTML += `<option value="${station}">${station}</option>`;
     });
+
 
     selectorHTML += `
       </select>
