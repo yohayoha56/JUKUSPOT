@@ -23,7 +23,7 @@
 
   // フォーム要素の定義
   const formElements = [
-    { name: "日付", type: "date", value: "", inline: true, width: "150px" },
+    { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
     { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
       { value: "", text: "選択してください", disabled: true, selected: true },
     ]},
