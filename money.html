@@ -45,23 +45,28 @@
 
 
 // セレクトデータの取得関数
-let tagData = {};
-fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
-  method: 'POST',
-  headers: { 
-    'Content-Type': 'text/plain',
-  },
-  mode: 'cors',
-})
-.then(response => response.json())
-.then(categories => {
+document.addEventListener("DOMContentLoaded", fetchFormData);
+async function fetchFormData() {
+  let tagData = {};
+  const response = await fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    mode: 'cors',
+  });
+
+  const categories = await response.json();
   tagData = categories;
   updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
   updateSelectOptions("支払い方法", tagData.paymentMethods);
   updateSelectOptions("計上項目", tagData.postingItems);
-  createForm(); // Move createForm() here
+  createForm();
   console.log(tagData);
-});
+}
+
+
+
 
 // セレクト要素のオプションを更新
 function updateSelectOptions(elementName, optionsData) {
@@ -320,47 +325,48 @@ function addTagInput() {
 
 
 <script>
-  async function handleSubmit(event) {
-    event.preventDefault(); // デフォルトの送信をキャンセル
-    const form = document.getElementsByTagName("form")[0];
-    const formData = new FormData(form);
-    const data = {};
-
-    // FormDataオブジェクトから連想配列に変換
-    for (const [key, value] of formData.entries()) {
-      data[key] = value;
-    }
-
-    // 選択されたタグを取得
-    const tagContainer = document.getElementById("タグ-container");
-    const selectedTags = Array.from(
-      tagContainer.querySelectorAll(".selected")
-    ).map((button) => button.textContent);
-
-    // 選択されたタグをデータに追加
-    data["タグ"] = JSON.stringify(selectedTags);
-
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain",
-        },
-        body: JSON.stringify(data),
-        mode: "cors", //CORS対応
-      }
-    );
-
-    const text = await response.text();
-    if (text.includes("Success")) {
-      console.log("データが正常に送信されました");
-      form.reset(); // フォームの入力値をリセット
-    } else {
-      console.error(`エラーメッセージ: ${text}`);
-    }
-    script1();
+async function handleSubmit(event) {
+  event.preventDefault();
+  const form = document.getElementsByTagName("form")[0];
+  const formData = new FormData(form);
+  const data = {};
+  for (const [key, value] of formData.entries()) {
+    data[key] = value;
   }
+
+  const tagContainer = document.getElementById("タグ-container");
+  const selectedTags = Array.from(
+    tagContainer.querySelectorAll(".selected")
+  ).map((button) => button.textContent);
+
+  const tagInput = document.querySelector(".tag-input");
+  const tagInputValue = tagInput.value.trim();
+
+  if (tagInputValue !== "") {
+    selectedTags.push(tagInputValue);
+  }
+
+  formData.append("タグ", JSON.stringify(selectedTags));
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: JSON.stringify(data),
+    mode: 'cors',
+  });
+
+  const text = await response.text();
+  if (text.includes("Success")) {
+    console.log('データが正常に送信されました');
+    form.reset();
+    fetchFormData();
+  } else {
+    console.error(`エラーメッセージ: ${text}`);
+  }
+};
+
 </script>
 
 
