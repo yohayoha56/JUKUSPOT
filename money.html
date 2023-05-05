@@ -32,7 +32,8 @@
     ]},
     { name: "出費", type: "number", value: "", inline: true, width: "100px" },
     { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-    { name: "タグ", type: "multiselect", value: "", inline: false, width: "100%",},
+    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100% - 50px)",},
+    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "50px", onClick: addTagInput },
     { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
     { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
 
@@ -83,6 +84,20 @@ function createForm() {
     const formConfig = {
         formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
     };
+
+    // タグ入力欄を追加する関数
+    function addTagInput() {
+      const tagInputContainer = document.getElementById("タグ-container");
+      const input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.classList.add("tag-input");
+      tagInputContainer.appendChild(input);
+    }
+
+
+
+
+
     // タイトルなど共通処理
     const formContainer = document.getElementById("form-container");
     const form = document.createElement("form");
