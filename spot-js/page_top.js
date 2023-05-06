@@ -75,8 +75,6 @@ rows.forEach(row => {
     }
     }
 
-
-
     // 勤怠ステータスの値によって、作成するフォームのを変更
     const formElements = [
         { name: "勤務日", type: "hidden", value: date },
@@ -111,6 +109,14 @@ rows.forEach(row => {
     // 参考情報を挿入
     const additionalContent = createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide);
     formContainer.appendChild(additionalContent);
+
+
+
+    <ul>
+    <li>勤務依頼時間：${workTime} </li>
+    <li>休憩時間：${breakTime} </li>
+    <li>備考・補足：${remarks}</li>
+</ul>   
     
     // フォーム要素を挿入
     const form = document.createElement("form");
@@ -151,23 +157,10 @@ rows.forEach(row => {
 
 
 
-
-
-
-
-
-
-
-
-
-// フォームを送信機能の設定、ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const forms = document.querySelectorAll('.form-content');
-forms.forEach(form => {
-    form.addEventListener('submit', handleSubmit);
-});
 // フォームなしの時、見出し削除ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const h2Element = document.querySelector(".forms-container h2");
-if (forms.length === 0) {
+
+if (!querySelector("#forms-container .form-container")) {
     h2Element.style.display = "none";
 }
 }
