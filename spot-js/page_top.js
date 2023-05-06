@@ -134,16 +134,16 @@ rows.forEach(row => {
 
 
 
-        //非表示部分の処理
-        const forms = document.querySelectorAll('.form-container');
-        const lastForm = forms[forms.length - 1];
-        const formRows = lastForm.querySelectorAll('.form-row');
-        lastForm.getElementsByTagName("h4")[0].innerText="勤務時間に変更がある場合は退勤時に入力してください。"
-        formRows.forEach((formRow, index) => {
-            if (index !== formRows.length - 1 && index !== formRows.length - 2) {
-                formRow.remove()
-            }
-        });
+        // //非表示部分の処理
+        // const forms = document.querySelectorAll('.form-container');
+        // const lastForm = forms[forms.length - 1];
+        // const formRows = lastForm.querySelectorAll('.form-row');
+        // lastForm.getElementsByTagName("h4")[0].innerText="勤務時間に変更がある場合は退勤時に入力してください。"
+        // formRows.forEach((formRow, index) => {
+        //     if (index !== formRows.length - 1 && index !== formRows.length - 2) {
+        //         formRow.remove()
+        //     }
+        // });
 
 
 
