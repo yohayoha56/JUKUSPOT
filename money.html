@@ -347,7 +347,7 @@ async function handleSubmit(event) {
   const allTags = selectedTags.concat(tagInputValues);
 
   if (allTags.length > 0) {
-    data["タグ"] = JSON.stringify(allTags);
+    data["タグ"] = allTags.join(",");
   } else {
     delete data["タグ"];
   }
