@@ -42,12 +42,10 @@
     { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
   ];
 
-
-
 // セレクトデータの取得関数
+let tagData = {};
 document.addEventListener("DOMContentLoaded", fetchFormData);
 async function fetchFormData() {
-  let tagData = {};
   const response = await fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
     method: 'POST',
     headers: {
