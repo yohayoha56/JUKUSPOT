@@ -135,7 +135,7 @@ function showModal(event) {
 
     // フォームタイトルの挿入
     const formHeader = document.createElement("h3");
-    formHeader.textContent = formtitle;
+    formHeader.textContent = formTitle;
     formContainer.appendChild(formHeader);
   
     // 参考情報を挿入
