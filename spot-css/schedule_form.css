@@ -5,6 +5,10 @@
   --green-lighter: #34c057;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* ポップアップスタイルーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .modal {
   display: none;
@@ -36,8 +40,6 @@
   cursor: pointer;
 }
 
-
-
 @media (max-width: 680px) {
   .modal-content {
     background-color: #fefefe;
@@ -48,25 +50,6 @@
 }
 
 
-.modal form .form-box:last-child{
-  width: 180px;
-  margin-top: 8px;
-}
-
-.modal .submit-button {
-  width:100% ;
-  background-color: var(--green-base);
-  border: none;
-  color: white;
-  padding: 8px 16px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
 
 /* フォームーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 .form-container {
@@ -76,20 +59,12 @@
   border: 2px solid #aaa;
   background-color: #eee;
 }
-.form-container:not(:last-child) {
-  margin-bottom: 10px;
-}
 
 .form-content{
   display:flex;
   flex-wrap:wrap;
 }
 
-.form-container .form-row {
-  align-items: center;
-  padding-right: 25px;
-  margin-bottom: 10px;
-}
 
 .form-container .form-inline {
   display: flex;
@@ -98,26 +73,6 @@
   gap: 10px;
 }
 
-.form-container .hosoku {
-  padding:0;
-  margin:0;
-  width:calc(100% - 180px);
-}
-
-.form-container .buttons {
-  padding:0;
-  margin:0;
-  width:180px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-
-.form-container textarea {
-  width: 100%;
-  resize: vertical;
-}
 
 
 /* テキスト周りの微調整 ーーーーーーーーーーーーーーーーーーーーー*/
@@ -130,11 +85,6 @@
 .form-container h3 {
   margin: 0;
   margin-bottom: 4px;
-}
-.form-container select{
-  border:solid 1px;
-  padding:3px;
-  font-weight:bold;
 }
 
 
@@ -153,45 +103,14 @@
   flex-wrap:wrap;
 }
 
-.form-container ul li:nth-child(3){
-  width:100%;
+
+
+label{
+  display:block;
+  padding-bottom:5px;
+  font-weight:bold;
 }
 
-/* モーダルでも定義 */
-.form-container .buttons button {
-  background-color: var(--green-base);
-  border: none;
-  color: white;
-  width:160px;
-  padding: 8px 16px;
-  margin: 4px 2px;
-  margin-top:23px;
-  margin-left:10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-
-
-
-.form-container .buttons button:hover {
-  background-color: var(--green-darker);
-}
-.form-container .buttons button:focus {
-  background-color: var(--green-lighter);
-  outline: none;
-}
-
-
-* {
-  box-sizing: border-box;
-}
 
 
 form{
@@ -199,10 +118,6 @@ form{
   flex-wrap:wrap;
   width:100%;
   gap:10px 20px;
-}
-
-form h2{
-  width:100%;
 }
 
 
@@ -214,12 +129,12 @@ form h2{
   width:100%;
 }
 
-label{
+.form-container select{
   font-weight:bold;
 }
-
-.break-before {
-  clear: both;
+.form-container textarea {
+  width: 100%;
+  resize: vertical;
 }
 
 .time-wrapper{
@@ -231,7 +146,39 @@ label{
   width:60px;
 }
 
-label{
-  display:block;
-  padding-bottom:5px;
+
+
+
+/* ボタンの定義 ーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
+#submitButton-wrapper {
+  padding:0;
+  margin:0;
+  width:180px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#submitButton-wrapper  input {
+  background-color: var(--green-base);
+  border: none;
+  color: white;
+  width:180px;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+
+#submitButton-wrapper   input:hover {
+  background-color: var(--green-darker);
+}
+#submitButton-wrapper   input:focus {
+  background-color: var(--green-lighter);
+  outline: none;
 }
