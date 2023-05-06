@@ -130,17 +130,18 @@ function showModal(event) {
     // 挿入箇所=formContainerの定義
     const formContainer = document.querySelector(".form-container");
 
-    // 閉じるボタンの作成
-    formContainer.innerHTML = `<span class="close closeButton">&times;</span>`;
-
-    // フォームタイトルの挿入
-    const formHeader = document.createElement("h3");
-    formHeader.textContent = formTitle;
-    formContainer.appendChild(formHeader);
-  
-    // 参考情報を挿入
-    const additionalContent = createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide);
-    formContainer.appendChild(additionalContent);
+    // 閉じるボタン、フォームタイトル、参考情報、ガイドの作成
+    formContainer.innerHTML = `
+      <span class="close closeButton">&times;</span>
+      <h3>${formTitle}</h3>
+      <h4>${formInfo}</h4>
+      <ul>
+        <li>スケジュール｜${availability}</li>
+        <li>勤務可能時間｜${availableTime}</li>
+        <li>補足・備考　｜${remarks}</li>
+      </ul>
+      <h4>${formGuide}</h4>
+    `;
   
     // フォーム要素を挿入
     const form = document.createElement("form");
@@ -155,29 +156,6 @@ function showModal(event) {
 
   // #region フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-      // 参考情報の作成関数
-      function createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide) {
-        const additionalContent = document.createElement("div");
-        additionalContent.setAttribute("id", "sankou-info");
-      
-        const additionalHeader = document.createElement("h4");
-        additionalHeader.textContent = formInfo;
-        additionalContent.appendChild(additionalHeader);
-      
-        const additionalList = document.createElement("ul");
-        additionalList.innerHTML = `
-          <li>スケジュール｜${availability}</li>
-          <li>勤務可能時間｜${availableTime}</li>
-          <li>補足・備考　｜${remarks}</li>
-        `;
-        additionalContent.appendChild(additionalList);
-      
-        const formGuideHeader = document.createElement("h4");
-        formGuideHeader.textContent = formGuide;
-        additionalContent.appendChild(formGuideHeader);
-      
-        return additionalContent;
-      }
 
       // モーダルを表示＆クローズボタンの設定
       modal.style.display = "block";

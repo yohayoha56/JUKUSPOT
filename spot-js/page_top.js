@@ -101,22 +101,18 @@ rows.forEach(row => {
     const formContainer = document.createElement("div");
     formContainer.classList.add="form-container"
 
-    // フォームタイトルの挿入
-    const formHeader = document.createElement("h3");
-    formHeader.textContent = formTitle;
-    formContainer.appendChild(formHeader);
-    
-    // 参考情報を挿入
-    const additionalContent = createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide);
-    formContainer.appendChild(additionalContent);
 
-
-
-//     <ul>
-//     <li>勤務依頼時間：${workTime} </li>
-//     <li>休憩時間：${breakTime} </li>
-//     <li>備考・補足：${remarks}</li>
-// </ul>   
+    // フォームタイトル、参考情報、ガイドの作成
+    formContainer.innerHTML = `
+      <h3>${formTitle}</h3>
+      <h4>${formInfo}</h4>
+      <ul>
+        <li>勤務依頼時間：${workTime} </li>
+        <li>休憩時間：${breakTime} </li>
+        <li>備考・補足：${remarks}</li>
+      </ul>
+      <h4>${formGuide}</h4>
+    `;
     
     // フォーム要素を挿入
     const form = document.createElement("form");
@@ -127,13 +123,8 @@ rows.forEach(row => {
     formContainer.appendChild(form)
     form.addEventListener("submit", handleSubmit);
 
-
-
     // 挿入箇所=formContainerの定義
     formsContainer.appendChild(formContainer)
-
-
-
 
 
 });
