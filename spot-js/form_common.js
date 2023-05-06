@@ -9,7 +9,7 @@ function makeFormElement(e) {
     }));
   
     // ラベルの作成
-    const label = `
+    let label = `
       <label for="${name}" class="form-label">
         ${name}:
       </label>
