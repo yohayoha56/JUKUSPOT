@@ -8,6 +8,7 @@
   const baseUrl = 'https://heys45.github.io/SAUCEED/';
   const resourceUrls = [
     'spot-js/load.js',
+    'spot-js/form_common.js',
     'spot-js/debug.js',
     'spot-js/page_top.js',
     'spot-js/page_shift.js',

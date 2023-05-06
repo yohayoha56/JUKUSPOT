@@ -19,6 +19,7 @@ waitForProperties().then((propertiesContainer) => {
   
   // 外部スクリプトの読み込み設定②
   const scripts = [
+    'https://heys45.github.io/SAUCEED/spot-js/form_common.js',
     'https://heys45.github.io/SAUCEED/spot-js/page_top.js',
     'https://heys45.github.io/SAUCEED/spot-js/page_shift.js',
     'https://heys45.github.io/SAUCEED/spot-js/page_call.js',
