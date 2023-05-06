@@ -112,11 +112,11 @@ rows.forEach(row => {
 
 
 
-    <ul>
-    <li>勤務依頼時間：${workTime} </li>
-    <li>休憩時間：${breakTime} </li>
-    <li>備考・補足：${remarks}</li>
-</ul>   
+//     <ul>
+//     <li>勤務依頼時間：${workTime} </li>
+//     <li>休憩時間：${breakTime} </li>
+//     <li>備考・補足：${remarks}</li>
+// </ul>   
     
     // フォーム要素を挿入
     const form = document.createElement("form");
