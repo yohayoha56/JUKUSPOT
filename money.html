@@ -59,6 +59,14 @@ async function fetchFormData() {
   updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
   updateSelectOptions("支払い方法", tagData.paymentMethods);
   updateSelectOptions("計上項目", tagData.postingItems);
+
+  const formContainer = document.getElementById("form-container");
+  const existingForm = document.getElementById("myForm");
+  if (existingForm) {
+    formContainer.removeChild(existingForm);
+  }
+
+
   createForm();
   console.log(tagData);
 }
@@ -325,6 +333,13 @@ function addTagInput() {
 <script>
 async function handleSubmit(event) {
   event.preventDefault();
+
+
+  // 送信ボタンの色を変更
+  const submitButton = document.getElementById("submit-button");
+  submitButton.style.backgroundColor = "#aaaaaa";
+
+
   const form = document.getElementsByTagName("form")[0];
   const formData = new FormData(form);
   const data = {};
@@ -365,6 +380,7 @@ async function handleSubmit(event) {
   if (text.includes("Success")) {
     console.log('データが正常に送信されました');
     form.reset();
+    submitButton.style.backgroundColor = "";
     fetchFormData();
   } else {
     console.error(`エラーメッセージ: ${text}`);
