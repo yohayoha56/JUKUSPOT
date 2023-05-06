@@ -332,19 +332,26 @@ async function handleSubmit(event) {
     data[key] = value;
   }
 
+  // タグの処理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   const tagContainer = document.getElementById("タグ-container");
   const selectedTags = Array.from(
     tagContainer.querySelectorAll(".selected")
   ).map((button) => button.textContent);
 
-  const tagInput = document.querySelector(".tag-input");
-  const tagInputValue = tagInput.value.trim();
+  // 複数のタグ入力欄の値を取得
+  const tagInputs = Array.from(
+    tagContainer.querySelectorAll(".tag-input")
+  );
+  const tagInputValues = tagInputs
+    .map((input) => input.value.trim())
+    .filter((value) => value !== "");
 
-  if (tagInputValue !== "") {
-    selectedTags.push(tagInputValue);
-  }
+  // 選択されたタグと入力されたタグを結合
+  const allTags = selectedTags.concat(tagInputValues);
 
-  formData.append("タグ", JSON.stringify(selectedTags));
+  // タグデータをdataオブジェクトに追加
+  data["タグ"] = JSON.stringify(allTags);
+  //ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
   const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
     method: 'POST',
