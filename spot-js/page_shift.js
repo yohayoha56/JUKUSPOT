@@ -148,6 +148,7 @@ function showModal(event) {
     formElements.forEach((element) => {
       form.appendChild(makeFormElement(element));
     });
+    formContainer.appendChild(form)
     form.addEventListener("submit", handleSubmit);
 
   // #endregion フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  

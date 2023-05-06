@@ -118,6 +118,7 @@ rows.forEach(row => {
     formElements.forEach((element) => {
         form.appendChild(makeFormElement(element));
     });
+    formContainer.appendChild(form)
     form.addEventListener("submit", handleSubmit);
 
 
