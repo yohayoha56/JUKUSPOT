@@ -71,6 +71,7 @@ function makeFormElement(e) {
             <span></span>`;
     } else if (type === "submit") {
         // 送信ボタンの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+        label =""
         formElement = `<input type="submit" value="${value}" class="submit-button">`;
     } else {
         //その他のインプット要素の作成ーーーーーーーーーーーーーーーーーーーーーーー
