@@ -5,34 +5,135 @@ function profile_page() {};
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
+
 const table = document.getElementById('fixed-table');
 const rows = Array.from(table.querySelectorAll('tbody > tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
+
 // 出勤フォームの表示用に今日の日付を定義
 const now = new Date();
 const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 const todayInTokyo = new Date(nowInTokyo);
 todayInTokyo.setHours(0, 0, 0, 0);
 
+// 講師ページか教室ページによって、値を整備する
+let schoolId,schoolName,teacherId,teacherName
+if(newData["ページタイプ"] === "school"){//ーーーーーーーーーーーー
+schoolId = newData["教室ID"]
+schoolName = newData["教室名"]
+teacherName = page_call_property["講師名"]
+teacherId = ""
+}else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
+schoolName = page_call_property["教室名"]
+schoolId = ""
+teacherId = newData["会員ID"]
+teacherName = newData["姓"]+ newData["名"]
+}//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
-// 各列の値を先に定義する？（アイデア）
-
-
-
-// 勤怠ステータスの値によって、作成するフォームのを変更
 rows.forEach(row => {
-    const attendanceStatus = row.querySelector('td:nth-child(3)').innerText;
-    const rowDate = new Date(row.querySelector('td:nth-child(1)').innerText);
-    let formTemplate;
-    if (newData["ページタイプ"] === "school" && attendanceStatus === '退勤報告済み') {
-    //教室承認フォームの作成
-    formTemplate = generateCommonFormTemplate(row, '勤務承認フォーム','教室承認済み','勤務を承認する');
-    formsContainer.insertAdjacentHTML('beforeend', formTemplate);
+    
+    const date = row.querySelector('td:nth-child(1)').innerText;
+    if(newData["ページタイプ"] === "school"){
+        teacherName = row.querySelector('td:nth-child(2)').innerText;
+    }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
+        schoolName = row.querySelector('td:nth-child(2)').innerText;        
+    }
+    const nowStatus = row.querySelector('td:nth-child(3)').innerText;
+    const workTime = row.querySelector('td:nth-child(4)').innerText;
+    const breakTime = row.querySelector('td:nth-child(5)').innerText;
+    const remarks = row.querySelector('td:nth-child(6)').innerText;
+
+    const rowDate = new Date(date);
+    let formId, formTitle, formInfo, formGuide, formButton, newStatus
+
+    if (newData["ページタイプ"] === "school" && nowStatus === '退勤報告済み') {
+        //教室承認フォーム概要の定義
+        formId = "shoninForm"
+        formTitle = `${date}｜${teacherName}`
+        formInfo = "勤務予定の内容"
+        formGuide = "↓勤務時間の変更がある場合は記入してください"
+        formButton = "勤務を承認する"
+        newStatus = "教室承認済み"
     } else if (newData["ページタイプ"] === "teacher") {
-    if (attendanceStatus === '勤務予定' && rowDate <= todayInTokyo) {
-        //出勤報告フォームの作成
-        formTemplate = generateCommonFormTemplate(row, '出勤報告フォーム','出勤報告済み','出勤を報告する');
-        formsContainer.insertAdjacentHTML('beforeend', formTemplate);
+    if (nowStatus === '勤務予定' && rowDate <= todayInTokyo) {
+        //出勤報告フォーム概要の定義
+        formId = "shukkinnForm"
+        formTitle = `${date}｜${schoolName}｜出勤報告`
+        formInfo = "勤務予定の内容"
+        formGuide = "↓出勤報告をしてください"
+        formButton = "出勤を報告する"
+        newStatus = "出勤報告済み"
+
+    } else if (nowStatus === '出勤報告済み') {
+        //出勤報告フォーム概要の定義
+        formId = "shukkinnForm"
+        formTitle = `${date}｜${schoolName}｜退勤報告`
+        formInfo = "勤務予定の内容"
+        formGuide = "↓退勤報告をしてください"
+        formButton = "退勤を報告する"
+        newStatus = "退勤報告済み"   
+    }
+    }
+
+
+
+    // 勤怠ステータスの値によって、作成するフォームのを変更
+    const formElements = [
+        { name: "勤務日", type: "hidden", value: date },
+        { name: "会員ID", type: "hidden", value: teacherId },
+        { name: "講師名", type: "hidden", value: teacherName },
+        { name: "教室ID", type: "hidden", value: schoolId },
+        { name: "教室名", type: "hidden", value: schoolName },
+        { name: "勤怠ステータス", type: "hidden", value: newStatus },
+        { name: "勤務時間の変更", type: "select", value: "", inline: true, width: "180px", options: [
+        { value: "", text: "選択してください" },
+        { value: "勤務時間の変更なし", text: "勤務時間の変更なし" },
+        { value: "勤務時間の変更あり", text: "勤務時間の変更あり" },
+        ]},
+        { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+        { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+        { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
+        { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
+        { name: "submitButton", type: "submit", value: formButton },
+    ];
+
+
+    // #region フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    // 挿入箇所=formContainerの定義
+    const formContainer = document.createElement("div");
+    formContainer.classList.add="form-container"
+
+    // フォームタイトルの挿入
+    const formHeader = document.createElement("h3");
+    titleElement.textContent = formtitle;
+    formContainer.appendChild(formHeader);
+    
+    // 参考情報を挿入
+    const additionalContent = createAdditionalContent(formInfo, availability, availableTime, remarks, formGuide);
+    formContainer.appendChild(additionalContent);
+    
+    // フォーム要素を挿入
+    const form = document.createElement("form");
+    form.setAttribute("id", formId);
+    formElements.forEach((element) => {
+        form.appendChild(makeFormElements(element));
+    });
+    form.addEventListener("submit", handleSubmit);
+
+
+
+    // 挿入箇所=formContainerの定義
+    formsContainer.appendChild(formContainer)
+
+
+
+
+
+});
+
+
+
+
         //非表示部分の処理
         const forms = document.querySelectorAll('.form-container');
         const lastForm = forms[forms.length - 1];
@@ -44,30 +145,19 @@ rows.forEach(row => {
             }
         });
 
-    } else if (attendanceStatus === '出勤報告済み') {
-        //退勤報告フォームの作成
-        formTemplate = generateCommonFormTemplate(row, '退勤報告フォーム','退勤報告済み','退勤を報告する');
-        formsContainer.insertAdjacentHTML('beforeend', formTemplate);
-    }
-    }
-});
-  
-// 勤務時間のオプションを設定するーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-// 勤務開始時間 (時)
-const startHour = document.getElementById('start_hour');
-addOptions(startHour, 8, 22, 1);
-// 勤務開始時間 (分)
-const startMinute = document.getElementById('start_minute');
-addOptions(startMinute, 0, 50, 10);
-// 勤務終了時間 (時)
-const endHour = document.getElementById('end_hour');
-addOptions(endHour, 8, 22, 1);
-// 勤務終了時間 (分)
-const endMinute = document.getElementById('end_minute');
-addOptions(endMinute, 0, 50, 10);
-// 休憩時間
-const breakTime = document.getElementById('break_time');
-addOptions(breakTime, 0, 120, 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // フォームを送信機能の設定、ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const forms = document.querySelectorAll('.form-content');
