@@ -116,7 +116,7 @@ rows.forEach(row => {
     const form = document.createElement("form");
     form.setAttribute("id", formId);
     formElements.forEach((element) => {
-        form.appendChild(makeFormElements(element));
+        form.appendChild(makeFormElement(element));
     });
     form.addEventListener("submit", handleSubmit);
 
