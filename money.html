@@ -346,7 +346,6 @@ async function handleSubmit(event) {
 
   const allTags = selectedTags.concat(tagInputValues);
 
-  // タグデータがある場合だけ、dataオブジェクトに追加
   if (allTags.length > 0) {
     data["タグ"] = JSON.stringify(allTags);
   } else {
