@@ -77,10 +77,10 @@ function makeFormElement(e) {
         formElement = `<input type="${type}" id="${name}" name="${name}" value="${value}">`;
     }
 
-    // フォーム要素の梱包
-    const formBoxClass = `form-box``${inline ? " inline-box" : ""}`;
-    const formBoxStyle = `${width ? `width: ${width};`: ""}${breakAfter ?`margin-right: calc(100% - ${width});` : ""}${type === "hidden" ? "display: none;" : ""}`;
-    
+    // フォーム要素の梱包    
+    const formBoxClass = `form-box${inline ? " inline-box" : ""}`;
+    const formBoxStyle = `${width ? `width: ${width};` : ""}${breakAfter ? `margin-right: calc(100% - ${width});` : ""}${type === "hidden" ? "display: none;" : ""}`;
+
     const formBox =`
     <div class="${formBoxClass}" id="${name}-wrapper" style="${formBoxStyle}"> 
         ${label}
