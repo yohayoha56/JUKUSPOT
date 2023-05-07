@@ -291,3 +291,4 @@ function showValidationError(element, message) {
     submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
   }
 };
+}
