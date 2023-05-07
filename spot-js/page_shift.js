@@ -223,13 +223,11 @@ function showModal(event) {
 }
 
 
-// フォームのアクションを設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 const handleSubmit = async (event) => {
+  // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   event.preventDefault(); // デフォルトの送信をキャンセル
-  clearValidationErrors(); // バリデーションをリフレッシュ
-
-  const form = document.querySelector('form');
+  const form = event.target;
   const formId =form.id
   const formData = new FormData(form);
   const data = {};
@@ -238,6 +236,7 @@ const handleSubmit = async (event) => {
       data[key] = value;
   }
 
+  clearValidationErrors(); // バリデーションをリフレッシュ
   // バリデーションチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   let isValid = true;
   switch (formId) {
@@ -331,7 +330,7 @@ const handleSubmit = async (event) => {
   
   // フォームの無効化とボタンの色を変更
   form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
-  submitButton.style.backgroundColor = "grey";
+  submitButton.style.backgroundColor = "#aaaaaa";
   
   try {
     // データの送信
