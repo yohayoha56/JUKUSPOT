@@ -173,7 +173,6 @@ superNavBar.appendChild(hamburgerMenu);
 
 
 window.addEventListener('resize', () => {
-  adjustSideBar();
   if (window.innerWidth <= 680) {
     const sideBar = document.querySelector('.side-bar');
     sideBar.style.width = '100%';
