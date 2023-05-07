@@ -1,5 +1,5 @@
 function makeFormElement(e) {
-    const { type, name, value, inline, width, breakAfter, options, minHour, maxHour, stepMinute, minMinute, maxMinute } = e;
+    const { type, name, value, inline, flexbox, width, breakAfter, options, minHour, maxHour, stepMinute, minMinute, maxMinute } = e;
   
     // options の disabled と selected を処理
     const processedOptions = options && options.map(option => ({
@@ -79,7 +79,7 @@ function makeFormElement(e) {
     }
 
     // フォーム要素の梱包    
-    const formBoxClass = `form-box${inline ? " inline-box" : ""}`;
+    const formBoxClass = `form-box${inline ? " inline-box" : ""}${flexbox ? " flex-box" : ""}`;
     const formBoxStyle = `${width ? `width: ${width};` : ""}${breakAfter ? `margin-right: calc(100% - ${width});` : ""}${type === "hidden" ? "display: none;" : ""}`;
 
     const formBox =`

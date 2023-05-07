@@ -37,7 +37,7 @@ rows.forEach(row => {
         teacherName = row.querySelector('td:nth-child(2)').innerText;
     }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
         schoolName = row.querySelector('td:nth-child(2)').innerText;        
-    }
+    } else {return;}
     const nowStatus = row.querySelector('td:nth-child(3)').innerText;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
@@ -48,7 +48,7 @@ rows.forEach(row => {
 
     if (newData["ページタイプ"] === "school" && nowStatus === '退勤報告済み') {
         //教室承認フォーム概要の定義
-        formId = "shoninForm"
+        formId = "approvalForm"
         formTitle = `${date}｜${teacherName}`
         formInfo = "勤務予定の内容"
         formGuide = "↓勤務時間の変更がある場合は記入してください"
@@ -57,7 +57,7 @@ rows.forEach(row => {
     } else if (newData["ページタイプ"] === "teacher") {
     if (nowStatus === '勤務予定' && rowDate <= todayInTokyo) {
         //出勤報告フォーム概要の定義
-        formId = "shukkinnForm"
+        formId = "checkInForm"
         formTitle = `${date}｜${schoolName}｜出勤報告`
         formInfo = "勤務予定の内容"
         formGuide = "↓出勤報告をしてください"
@@ -66,7 +66,7 @@ rows.forEach(row => {
 
     } else if (nowStatus === '出勤報告済み') {
         //出勤報告フォーム概要の定義
-        formId = "shukkinnForm"
+        formId = "checkOutForm"
         formTitle = `${date}｜${schoolName}｜退勤報告`
         formInfo = "勤務予定の内容"
         formGuide = "↓退勤報告をしてください"
@@ -83,15 +83,15 @@ rows.forEach(row => {
         { name: "教室ID", type: "hidden", value: schoolId },
         { name: "教室名", type: "hidden", value: schoolName },
         { name: "勤怠ステータス", type: "hidden", value: newStatus },
-        { name: "勤務時間の変更", type: "select", value: "", inline: true, width: "180px", options: [
+        { name: "勤務時間の変更", type: "select", value: "", flexbox: true, width: "180px", options: [
         { value: "", text: "選択してください" },
         { value: "勤務時間の変更なし", text: "勤務時間の変更なし" },
         { value: "勤務時間の変更あり", text: "勤務時間の変更あり" },
         ]},
         { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
         { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-        { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
-        { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
+        { name: "休憩時間", type: "minute", value: "", inline: true, width: "100px", minMinute: 0, maxMinute: 120, stepMinute: 10},
+        { name: "補足・備考", type: "textarea", value: "",width: "100%",},
         { name: "submitButton", type: "submit", value: formButton },
     ];
 
@@ -107,6 +107,7 @@ rows.forEach(row => {
       <h3>${formTitle}</h3>
       <h4>${formInfo}</h4>
       <ul>
+        ${(newData["ページタイプ"] === "teacher") ? `<li>教室：${schoolName} </li>`:''}
         <li>勤務依頼時間：${workTime} </li>
         <li>休憩時間：${breakTime} </li>
         <li>備考・補足：${remarks}</li>
@@ -127,22 +128,27 @@ rows.forEach(row => {
     formsContainer.appendChild(formContainer)
 
 
+    // 表示設定
+    form.getElementById("勤務開始時間-wrapper").style.display="none"
+    form.getElementById("勤務終了時間-wrapper").style.display="none"
+    form.getElementById("休憩時間-wrapper").style.display="none"
+    if(formId == "checkInForm"){
+        form.getElementById("勤務時間の変更-wrapper").style.display="none"
+    }
+    form.getElementById("勤務時間の変更").addEventListener("change", function () {
+        const timeChange = this.value;
+        if(timeChange === "勤務時間の変更あり"){
+            form.getElementById("勤務開始時間-wrapper").style.display="inline-box"
+            form.getElementById("勤務終了時間-wrapper").style.display="inline-box"
+            form.getElementById("休憩時間-wrapper").style.display="inline-box"
+        } else {
+            form.getElementById("勤務開始時間-wrapper").style.display="none"
+            form.getElementById("勤務終了時間-wrapper").style.display="none"
+            form.getElementById("休憩時間-wrapper").style.display="none"
+        }
+    });
+    
 });
-
-
-
-
-        // //非表示部分の処理
-        // const forms = document.querySelectorAll('.form-container');
-        // const lastForm = forms[forms.length - 1];
-        // const formRows = lastForm.querySelectorAll('.form-row');
-        // lastForm.getElementsByTagName("h4")[0].innerText="勤務時間に変更がある場合は退勤時に入力してください。"
-        // formRows.forEach((formRow, index) => {
-        //     if (index !== formRows.length - 1 && index !== formRows.length - 2) {
-        //         formRow.remove()
-        //     }
-        // });
-
 
 
 

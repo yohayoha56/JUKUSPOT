@@ -120,8 +120,8 @@ function showModal(event) {
     ]},
     { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
-    { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", breakAfter:true,minMinute: 0, maxMinute: 120, stepMinute: 10},
-    { name: "補足・備考", type: "textarea", value: "", inline: false ,width: "100%",},
+    { name: "休憩時間", type: "minute", value: "", inline: true, width: "100px",minMinute: 0, maxMinute: 120, stepMinute: 10},
+    { name: "補足・備考", type: "textarea", value: "",width: "100%",},
     { name: "submitButton", type: "submit", value: formButton },
   ];
 // #endregion データとフォーム要素の定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -209,15 +209,7 @@ function showModal(event) {
         }
       });
     }
-    // フォームのカスタマイズ機能
-    function minuteFormAdd(){
-      const timeWrapper = document.getElementById("休憩時間");
-      const selectElement = timeWrapper.querySelector("select");
-      timeWrapper.removeAttribute("id");
-      timeWrapper.removeAttribute("name");
-      selectElement.id = "休憩時間";
-      selectElement.name = "休憩時間";
-    }
+    
     // フォームのカスタマイズ機能
     function changeFormAdd(){
       const formBoxes = document.querySelectorAll('.form-box');
