@@ -1,0 +1,10 @@
+{
+    "liveSassCompile.settings.formats": [
+      {
+        "format": "expanded",
+        "extensionName": ".css",
+        "savePath": "/spot-css"
+      }
+    ],
+    "liveSassCompile.settings.generateMap": false
+  }
