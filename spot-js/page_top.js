@@ -182,31 +182,31 @@ async function handleSubmit(event,remarks) {
   switch (formId) {
     case 'approvalForm': 
       if (!data["勤務時間の変更"]){ isValid = false;
-        showValidationError(document.getElementById("勤務時間の変更-wrapper"), "変更有無の回答をしてください");
+        showValidationError(form.querySelector("#勤務時間の変更-wrapper"), "変更有無の回答をしてください");
       } if(data["勤務時間の変更"] === "変更あり" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
+        showValidationError(form.querySelector("#勤務開始時間-wrapper"), "有効な時間にしてください");
       } if(data["勤務時間の変更"] === "変更あり" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
-      } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {
-        showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
+        showValidationError(form.querySelector("#勤務終了時間-wrapper"), "有効な時間にしてください");
+      } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {isValid = false;
+        showValidationError(form.querySelector("#休憩時間-wrapper"), "有効な時間にしてください");
       }
       break;
     case 'checkInForm':
       break;
     case 'checkOutForm': 
       if (!data["勤務時間の変更"]){ isValid = false;
-        showValidationError(document.getElementById("勤務時間の変更-wrapper"), "変更有無の回答をしてください");
+        showValidationError(form.querySelector("#勤務時間の変更-wrapper"), "変更有無の回答をしてください");
       } if(data["勤務時間の変更"] === "変更あり" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
+        showValidationError(form.querySelector("#勤務開始時間-wrapper"), "有効な時間にしてください");
       } if(data["勤務時間の変更"] === "変更あり" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
-        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
-      } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {
-        showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
+        showValidationError(form.querySelector("#勤務終了時間-wrapper"), "有効な時間にしてください");
+      } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {isValid = false;
+        showValidationError(form.querySelector("#休憩時間-wrapper"), "有効な時間にしてください");
       }
       break;
     case 'answerForm':
       if (!data["講師回答"]){ isValid = false;
-        showValidationError(document.getElementById("講師回答-wrapper"), "勤務可否を回答してください");
+        showValidationError(form.querySelector("#講師回答-wrapper"), "勤務可否を回答してください");
       }
     ; break;
   }  

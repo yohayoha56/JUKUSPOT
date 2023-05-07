@@ -174,15 +174,23 @@ superNavBar.appendChild(hamburgerMenu);
 
 window.addEventListener('resize', () => {
   if (window.innerWidth <= 680) {
+    const contentArea = document.querySelector('.content-area');
+    contentArea.style.display ="block"
     const sideBar = document.querySelector('.side-bar');
     sideBar.style.width = '100%';
+    sideBar.style.height = '';
     sideBar.style.top = '50px';
     sideBar.style.display = 'none';
+    sideBar.style["background-color"] = 'white';
   } else {
+    const contentArea = document.querySelector('.content-area');
+    contentArea.style.display ="flex"
     const sideBar = document.querySelector('.side-bar');
     sideBar.style.width = 'auto';
+    sideBar.style.height = '60vh';
     sideBar.style.top = '0';
     sideBar.style.display = 'block';
+    sideBar.style["background-color"] = '';
   }
 });
 
