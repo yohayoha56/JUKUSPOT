@@ -69,7 +69,50 @@ table {
     text-align:left ;
   }
 
+  @media (max-width: 680px) {
+    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+    #schedule-table tbody td:nth-child(1) {
+      width: 120px;
+      background-color:#19837C;
+      color:white
+    }
+    #schedule-table tbody td:nth-child(2) {
+      width: calc(100% - 120px);
+    }
+    #schedule-table tbody td:nth-child(2)::before {
+      content: "勤務可否：";
+      padding-right:5px;
+    }
+    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+    #schedule-table tbody td:nth-child(3) {
+      width: 100%;
+      text-align:left;
+      font-weight:bold;
+    }
+    #schedule-table tbody td:nth-child(3)::before {
+      content: "勤務可能時間：";
+      padding-right:5px;
+    }
+    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+    #schedule-table tbody td:nth-child(4) {
+      width: 100%;
+    }
+    #schedule-table tbody td:nth-child(4)::before {
+      content: "備考・補足：";
+      display:block;
+      padding-right:5px;
+    }
+    #schedule-table tbody td:nth-child(5) {
+      width: 100%;
+    }
+  }
+  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 
+
+
+
+
+  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
   #shift-table th:nth-child(1) {
     width: 90px;
   }
@@ -100,6 +143,77 @@ table {
 
 
 
+  @media (max-width: 680px) {
+    .table-wrapper tbody tr {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom:5px;
+    }
+    .table-wrapper tbody tr:first-child {
+      display:none;
+    }
+    
+    .table-wrapper {
+      border-collapse: collapse;
+    }
+    
+    .table-wrapper tr {
+      border: 1px solid black; /* 枠線の太さ・色を調整 */
+    }
+    
+    .table-wrapper td {
+      border: none; /* td要素の枠線を削除 */
+    }
+  }
+
+  @media (max-width: 680px) {
+    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+    #shift-table tbody td:nth-child(1) {
+      width: 120px;
+      background-color:#19837C;
+      color:white
+    }
+    #shift-table tbody td:nth-child(2) {
+      width: calc(100% - 120px);
+    }
+    #shift-table tbody td:nth-child(2)::before {
+      content: "講師回答：";
+      padding-right:5px;
+    }
+    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+    #shift-table tbody td:nth-child(3) {
+      width: 200px;
+      text-align:left;
+      font-weight:bold;
+    }
+    #shift-table tbody td:nth-child(3)::before {
+      content: "勤務時間：";
+      padding-right:5px;
+    }
+    #shift-table tbody td:nth-child(4) {
+      width: calc(100% - 200px);
+      text-align:left;
+      font-weight:bold;
+    }
+    #shift-table tbody td:nth-child(4)::before {
+      content: "休憩：";
+      padding-right:5px;
+    }
+    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+    #shift-table tbody td:nth-child(5) {
+      width: 100%;
+    }
+    #shift-table tbody td:nth-child(6) {
+      width: 100%;
+    }
+        #shift-table tbody td:nth-child(5)::before {
+      content: "備考・補足：";
+      display:block;
+      padding-right:5px;
+    }
+  }
+  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+
 
   /* 依頼ボタン */
   .request, .submit,.change,.answer {
@@ -116,3 +230,4 @@ table {
     color: #fff;
     cursor: pointer;
   }
+
