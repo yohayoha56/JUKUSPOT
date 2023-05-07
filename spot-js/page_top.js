@@ -156,7 +156,7 @@ rows.forEach(row => {
 
 
 // フォームなしの時、見出し削除ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const h2Element = document.querySelector(".forms-container h2");
+const h2Element = document.querySelector("#forms-container h2");
 
 if (!document.querySelector("#forms-container .form-container")) {
     h2Element.style.display = "none";

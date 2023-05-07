@@ -52,7 +52,7 @@ table {
     }
 
     .table-wrapper table {
-      min-width: none;
+      min-width: auto;
     }
 
     .table-wrapper tbody tr:first-child {
