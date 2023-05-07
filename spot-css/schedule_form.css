@@ -69,6 +69,7 @@
   display: inline-flex;
   width: 100%;
   gap: 10px 20px;
+  white-space: nowrap;
 }
 
 form{
