@@ -43,7 +43,31 @@ table {
     padding: 2px 8px;
     font-size: 14px;
   }
+
+  @media (max-width: 680px) {
+    .table-wrapper tbody tr {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom:5px;
+    }
+    .table-wrapper tbody tr:first-child {
+      display:none;
+    }
+    
+    .table-wrapper {
+      border-collapse: collapse;
+    }
+    
+    .table-wrapper tr {
+      border: 1px solid black; /* 枠線の太さ・色を調整 */
+    }
+    
+    .table-wrapper td {
+      border: none; /* td要素の枠線を削除 */
+    }
+  }
   
+  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 
   #schedule-table th:nth-child(1) {
     width: 90px;
@@ -138,32 +162,6 @@ table {
   #shift-table th:nth-child(5),
   #shift-table td:nth-child(5) {
     text-align:left ;
-  }
-
-
-
-
-  @media (max-width: 680px) {
-    .table-wrapper tbody tr {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom:5px;
-    }
-    .table-wrapper tbody tr:first-child {
-      display:none;
-    }
-    
-    .table-wrapper {
-      border-collapse: collapse;
-    }
-    
-    .table-wrapper tr {
-      border: 1px solid black; /* 枠線の太さ・色を調整 */
-    }
-    
-    .table-wrapper td {
-      border: none; /* td要素の枠線を削除 */
-    }
   }
 
   @media (max-width: 680px) {
