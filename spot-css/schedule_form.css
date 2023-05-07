@@ -83,8 +83,8 @@ form{
 /* テキスト周りの微調整 ーーーーーーーーーーーーーーーーーーーーー*/
 .form-container h4 {
   margin: 0;
+  margin-top: 6px;
   margin-bottom: 4px;
-  padding-left: 10px;
   width:100%;
 }
 .form-container h3 {
