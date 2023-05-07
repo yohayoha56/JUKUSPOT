@@ -60,8 +60,8 @@
   background-color: #eee;
 }
 
-.forms-container .form-container{
-  margin-bottom: 10px;
+#forms-container .form-container{
+  margin-bottom: 15px;
 }
 
 .form-content{
