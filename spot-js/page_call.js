@@ -170,44 +170,51 @@ hamburgerMenu.addEventListener('click', toggleSideBar);
 const superNavBar = document.querySelector('.super-navbar__actions');
 superNavBar.appendChild(hamburgerMenu);
 
-
+let lastWindowWidth = window.innerWidth;
 
 window.addEventListener('resize', () => {
   if (window.innerWidth <= 680) {
-    const contentArea = document.querySelector('.content-area');
-    contentArea.style.display ="block"
-    const sideBar = document.querySelector('.side-bar');
-    sideBar.style.width = '100%';
-    sideBar.style.height = 'auto';
-    sideBar.style.top = '50px';
-    sideBar.style.display = 'none';
-    sideBar.style["background-color"] = 'white';
+    if (lastWindowWidth > 680) {
+      const contentArea = document.querySelector('.content-area');
+      contentArea.style.display ="block";
+      const sideBar = document.querySelector('.side-bar');
+      sideBar.style.width = '100%';
+      sideBar.style.height = 'auto';
+      sideBar.style.top = '50px';
+      sideBar.style.display = 'none';
+      sideBar.style["background-color"] = 'white';
+    }
   } else {
-    const contentArea = document.querySelector('.content-area');
-    contentArea.style.display ="flex"
-    const sideBar = document.querySelector('.side-bar');
-    sideBar.style.width = 'auto';
-    sideBar.style.height = '60vh';
-    sideBar.style.top = '0';
-    sideBar.style.display = 'block';
-    sideBar.style["background-color"] = '';
+    if (lastWindowWidth <= 680) {
+      const contentArea = document.querySelector('.content-area');
+      contentArea.style.display ="flex";
+      const sideBar = document.querySelector('.side-bar');
+      sideBar.style.width = 'auto';
+      sideBar.style.height = '60vh';
+      sideBar.style.top = '0';
+      sideBar.style.display = 'block';
+      sideBar.style["background-color"] = '';
+    }
   }
+  lastWindowWidth = window.innerWidth;
 });
 
+// 初期表示時にリサイズイベントをトリガーする
+window.dispatchEvent(new Event('resize'));
 
 function toggleSideBar() {
   const sideBar = document.querySelector('.side-bar');
   const menuIcon = document.querySelector('.hamburger-menu span');
   
-  if (sideBar.style.display === 'none') {
+  if (sideBar.style.display === 'none' || sideBar.style.display === '') {
     sideBar.style.display = 'block';
     menuIcon.textContent = '×';
-    menuIcon.style["font-size"]="28px"
-    menuIcon.style["margin-top"]="-5px"
+    menuIcon.style["font-size"]="28px";
+    menuIcon.style["margin-top"]="-5px";
   } else {
     sideBar.style.display = 'none';
     menuIcon.textContent = '≡';
-    menuIcon.style["font-size"]="36px"
-    menuIcon.style["margin-top"]="-14px"
+    menuIcon.style["font-size"]="36px";
+    menuIcon.style["margin-top"]="-14px";
   }
 }
