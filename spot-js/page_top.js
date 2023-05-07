@@ -85,8 +85,8 @@ rows.forEach(row => {
         { name: "勤怠ステータス", type: "hidden", value: newStatus },
         { name: "勤務時間の変更", type: "select", value: "", flexbox: true, width: "100%", options: [
         { value: "", text: "選択してください" },
-        { value: "勤務時間の変更なし", text: "勤務時間の変更なし" },
-        { value: "勤務時間の変更あり", text: "勤務時間の変更あり" },
+        { value: "変更なし", text: "変更なし" },
+        { value: "変更あり", text: "変更あり" },
         ]},
         { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
         { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
@@ -136,7 +136,7 @@ rows.forEach(row => {
     }
     form.querySelector("#勤務時間の変更").addEventListener("change", function () {
         const timeChange = this.value;
-        if(timeChange === "勤務時間の変更あり"){
+        if(timeChange === "変更あり"){
             form.querySelector("#勤務開始時間-wrapper").style.display="inline-box"
             form.querySelector("#勤務終了時間-wrapper").style.display="inline-box"
             form.querySelector("#休憩時間-wrapper").style.display="inline-box"
