@@ -128,28 +128,26 @@ rows.forEach(row => {
 
 
     // 表示設定
-    form.getElementById("勤務開始時間-wrapper").style.display="none"
-    form.getElementById("勤務終了時間-wrapper").style.display="none"
-    form.getElementById("休憩時間-wrapper").style.display="none"
+    form.querySelector("#勤務開始時間-wrapper").style.display="none"
+    form.querySelector("#勤務終了時間-wrapper").style.display="none"
+    form.querySelector("#休憩時間-wrapper").style.display="none"
     if(formId == "checkInForm"){
-        form.getElementById("勤務時間の変更-wrapper").style.display="none"
+        form.querySelector("#勤務時間の変更-wrapper").style.display="none"
     }
-    form.getElementById("勤務時間の変更").addEventListener("change", function () {
+    form.querySelector("#勤務時間の変更").addEventListener("change", function () {
         const timeChange = this.value;
         if(timeChange === "勤務時間の変更あり"){
-            form.getElementById("勤務開始時間-wrapper").style.display="inline-box"
-            form.getElementById("勤務終了時間-wrapper").style.display="inline-box"
-            form.getElementById("休憩時間-wrapper").style.display="inline-box"
+            form.querySelector("#勤務開始時間-wrapper").style.display="inline-box"
+            form.querySelector("#勤務終了時間-wrapper").style.display="inline-box"
+            form.querySelector("#休憩時間-wrapper").style.display="inline-box"
         } else {
-            form.getElementById("勤務開始時間-wrapper").style.display="none"
-            form.getElementById("勤務終了時間-wrapper").style.display="none"
-            form.getElementById("休憩時間-wrapper").style.display="none"
+            form.querySelector("#勤務開始時間-wrapper").style.display="none"
+            form.querySelector("#勤務終了時間-wrapper").style.display="none"
+            form.querySelector("#休憩時間-wrapper").style.display="none"
         }
     });
     
 });
-
-
 
 
 
@@ -161,86 +159,7 @@ if (!querySelector("#forms-container .form-container")) {
 }
 }
 
-function generateCommonFormTemplate(row, formTitle,statusValue,buttonLabel) {
-  const date = row.querySelector('td:nth-child(1)').innerText;
-  const teacher = row.querySelector('td:nth-child(2)').innerText;
-  const workTime = row.querySelector('td:nth-child(4)').innerText;
-  const breakTime = row.querySelector('td:nth-child(5)').innerText;
-  const remarks = row.querySelector('td:nth-child(6)').innerText;
 
-  return `
-    <div class="form-container">
-    <h3>${date}｜${teacher}｜${formTitle}</h3>
-    <ul>
-        <li>勤務依頼時間：${workTime} </li>
-        <li>休憩時間：${breakTime} </li>
-        <li>備考・補足：${remarks}</li>
-    </ul>
-    <h4>↓勤務時間の変更や連絡がある場合は記入して、提出してください</h4>
-    <form class="form-content">
-    <input type="hidden" name="working_day" value="${date}">
-    <input type="hidden" name="teacher_name" value="${teacher}">
-    <input type="hidden" name="classroom_name" value="教室名">
-    <input type="hidden" name="old_remarks" value="${remarks}">
-    <input type="hidden" name="attendance_status" value="${statusValue}">
-        <!-- 勤務開始時間 -->
-        <div class="form-row">
-            <label for="start_hour">勤務開始時間</label>
-            <div class="form-inline">
-                <select id="start_hour" name="start_hour">
-                <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-                <option value="">--</option>
-                </select>
-                <label for="start_minute">時</label>
-                <select id="start_minute" name="start_minute">
-                <option value="">--</option>
-                </select>分
-            </div>
-        </div>
-        <!-- 勤務終了時間 -->
-        <div class="form-row">
-            <label for="end_hour">勤務終了時間</label>
-            <div class="form-inline">
-                <select id="end_hour" name="end_hour">
-                <!-- 8:00 ~ 22:00 の選択肢を生成 -->
-                <option value="">--</option>
-                </select>
-                <label for="end_minute">時</label>
-                <select id="end_minute" name="end_minute">
-                <option value="">--</option>
-                </select>分
-            </div>
-        </div>
-        <!-- 休憩時間 -->
-        <div class="form-row">
-            <label for="break_time">休憩時間</label>
-            <div class="form-inline">
-            <select id="break_time" name="break_time">
-            <option value="">--</option>
-            </select>分
-        </div>
-    </div>
-    <!-- 補足・備考 -->
-    <div class="form-row hosoku">
-        <label for="remarks">補足・備考</label>
-        <textarea id="remarks" name="remarks"></textarea>
-    </div>
-    <div class="form-row buttons">
-        <button type="submit">${buttonLabel}</button>
-    </div>
-    </form>
-    </div>`;
-}
-
-// オプション追加用の関数
-function addOptions(selectElement, start, end, step) {
-    for (let i = start; i <= end; i += step) {
-        const option = document.createElement('option');
-        option.value = i;
-        option.textContent = i;
-        // selectElement.appendChild(option);
-    }
-}
 
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
