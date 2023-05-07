@@ -1,32 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<div class="content-area" style="visibility: hidden;margin-top: 100%;">
 
-    テスト用です。0409/1315
-    <script>
-        // POSTリクエストの送信
-        fetch("https://script.google.com/macros/s/AKfycbyWRaEb4zulsgE2kM3Z7BZ417xuOyg0GHGv2w7cQLfrH0ju8hB17xd7oXH-NWInpGbX/exec", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'text/plain',
-        },
-        body: JSON.stringify({
-            salesId: '9' // 検索条件
-        }),
-        mode: 'cors', //CORS対応
-        })
-        .then(response => response.text()) 
-        .then(data => {
-        var body = document.getElementsByTagName("body")[0];
-        body.insertAdjacentHTML("beforeend", data);
-        });
-    </script>
-    
-</body>
-</html>
+    <div class="side-bar">
+        <ul class="menu">
+        </ul>
+        <p id="latest-update"></p>
+    </div>
+
+    <div class="main-bar">
+        <h2>スポットバイトの流れ</h2>
+        <div id="progress-wrapper">
+            <ul class="progressbar" style="display: flex;">
+                <li id="li-schedule" class="complete">ｽｹｼﾞｭｰﾙ<br>提出</li>
+                <li id="li-request" class="active">シフト<br>ﾘｸｴｽﾄ</li>
+                <li id="li-confirm" class="">シフト<br>確定</li>
+                <li id="li-attendance" class="">勤務<br>報告</li>
+                <li id="li-payment" class="">給与<br>振込</li>
+            </ul>
+        </div>
+        <div id="page-content">
+
+        </div>
+    </div>
+</div>
+
+
+<!--スクリプトの読み込み-->
+<script src="https://heys45.github.io/SAUCEED/spot-js/load.js"></script>
+
+
+
+
+
+
+
+.super-content-wrapper{
+    display: none;
+  }
