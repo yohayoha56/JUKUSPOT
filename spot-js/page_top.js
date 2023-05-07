@@ -140,7 +140,7 @@ rows.forEach(row => {
         if(timeChange == "変更あり"){
             console.log(this.parentNode)
             console.log(this.parentNode.parentNode)
-            console.log(this.parentNode.parentNode.querySelector("勤務開始時間-wrapper"))
+            console.log(this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper"))
             this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="inline-box"
             this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="inline-box"
             this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="inline-box"
