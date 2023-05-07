@@ -149,7 +149,8 @@ function showModal(event) {
       form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", handleSubmit);
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks));
+
 
   // #endregion フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
 
@@ -224,7 +225,7 @@ function showModal(event) {
 
 
 
-const handleSubmit = async (event) => {
+const handleSubmit = async (event,remarks) => {
   // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = event.target;
@@ -321,7 +322,7 @@ const handleSubmit = async (event) => {
     case 'changeForm': hosokuguide = " [教室：依頼取消時] "; break;
     case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
   }  
-  data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
+  data["補足・備考"] = remarks+data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
 
   const submitButton = document.querySelector(".submit-button");

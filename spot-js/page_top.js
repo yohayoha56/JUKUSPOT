@@ -121,7 +121,7 @@ rows.forEach(row => {
         form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", handleSubmit);
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks));
 
     // 挿入箇所=formContainerの定義
     formsContainer.appendChild(formContainer)
@@ -160,7 +160,7 @@ if (!document.querySelector("#forms-container .form-container")) {
 
 
 
-async function handleSubmit(event) {
+async function handleSubmit(event,remarks) {
   // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = event.target;
@@ -246,7 +246,7 @@ function showValidationError(element, message) {
     case 'checkInForm': hosokuguide = " [講師：出勤報告時] "; break;
     case 'checkOutForm': hosokuguide = " [講師：退勤報告時] "; break;
   }  
-  data["補足・備考"] = data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
+  data["補足・備考"] = remarks+data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
 
   const submitButton = document.querySelector(".submit-button");
