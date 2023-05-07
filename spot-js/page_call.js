@@ -171,16 +171,32 @@ const superNavBar = document.querySelector('.super-navbar__actions');
 superNavBar.appendChild(hamburgerMenu);
 
 
+
 window.addEventListener('resize', () => {
+  adjustSideBar();
+  if (window.innerWidth <= 680) {
     const sideBar = document.querySelector('.side-bar');
-    if (window.innerWidth <= 680) {
-        sideBar.style.display = 'none';
-      } else {
-        sideBar.style.display = 'block';
-    }
+    sideBar.style.width = '100%';
+    sideBar.style.top = '50px';
+    sideBar.style.display = 'none';
+  } else {
+    const sideBar = document.querySelector('.side-bar');
+    sideBar.style.width = 'auto';
+    sideBar.style.top = '0';
+    sideBar.style.display = 'block';
+  }
 });
+
 
 function toggleSideBar() {
   const sideBar = document.querySelector('.side-bar');
-  sideBar.style.display = sideBar.style.display === 'none' ? 'block' : 'none';
+  const menuIcon = document.querySelector('.hamburger-menu span');
+  
+  if (sideBar.style.display === 'none') {
+    sideBar.style.display = 'block';
+    menuIcon.textContent = '×';
+  } else {
+    sideBar.style.display = 'none';
+    menuIcon.textContent = '≡';
+  }
 }
