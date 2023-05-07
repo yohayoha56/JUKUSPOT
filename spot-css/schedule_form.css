@@ -60,6 +60,10 @@
   background-color: #eee;
 }
 
+.forms-container .form-container{
+  margin-bottom: 10px;
+}
+
 .form-content{
   display:flex;
   flex-wrap:wrap;
