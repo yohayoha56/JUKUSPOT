@@ -37,7 +37,7 @@ rows.forEach(row => {
         teacherName = row.querySelector('td:nth-child(2)').innerText;
     }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
         schoolName = row.querySelector('td:nth-child(2)').innerText;        
-    } else {return;}
+    } 
     const nowStatus = row.querySelector('td:nth-child(3)').innerText;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
@@ -72,8 +72,8 @@ rows.forEach(row => {
         formGuide = "↓退勤報告をしてください"
         formButton = "退勤を報告する"
         newStatus = "退勤報告済み"   
-    }
-    }
+    } else {return;} } else {return;}
+    
 
     // 勤怠ステータスの値によって、作成するフォームのを変更
     const formElements = [
