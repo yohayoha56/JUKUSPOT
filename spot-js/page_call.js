@@ -10,7 +10,7 @@ A.style["visibility"]="visible";
 
 const page_call_property={
   url: 'https://script.google.com/macros/s/AKfycbxRVM-fFhzJj5CLMH6LrF1FEaFkYUlMY7LxmV5MuqYp0hcFUryhFPS5DW0ciWx5djk/exec',
-  callback: top_page,
+  callback: "top_page",
 }
 if(newData["ページタイプ"] === "school"){
   page_call_property["教室ID"]=newData["教室ID"];
@@ -22,10 +22,10 @@ call_fetchData(page_call_property);
 // サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
 const menuData = [
   // ページ設定
-  { id: "top-menu", title: "トップページ", hasChildElements: false, callback: top_page, url: 'https://script.google.com/macros/s/AKfycbxRVM-fFhzJj5CLMH6LrF1FEaFkYUlMY7LxmV5MuqYp0hcFUryhFPS5DW0ciWx5djk/exec' },
-  { id: "shift-menu", title: "シフト依頼ページ", hasChildElements: true, callback: shift_page, url: 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec' },
-  { id: "kintai-menu", title: "勤怠確認ページ", hasChildElements: true, callback: kintai_page, url: 'https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec' },
-  { id: "profile-menu", title: "講師プロフィール", hasChildElements: true, callback: profile_page, url: 'https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec' },
+  { id: "top-menu", title: "トップページ", hasChildElements: false, callback: "top_page", url: 'https://script.google.com/macros/s/AKfycbxRVM-fFhzJj5CLMH6LrF1FEaFkYUlMY7LxmV5MuqYp0hcFUryhFPS5DW0ciWx5djk/exec' },
+  { id: "shift-menu", title: "シフト依頼ページ", hasChildElements: true, callback: "shift_page", url: 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec' },
+  { id: "kintai-menu", title: "勤怠確認ページ", hasChildElements: true, callback: "kintai_page", url: 'https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec' },
+  { id: "profile-menu", title: "講師プロフィール", hasChildElements: true, callback: "profile_page", url: 'https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec' },
 ];
 
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
@@ -54,8 +54,8 @@ function call_fetchData(page_call_property) {
     target.innerHTML = data;
 
     // Execute callback function
-    if (typeof page_call_property["callback"] === 'function') {
-      page_call_property["callback"]();
+    if (typeof window[page_call_property["callback"]] === 'function') {
+      window[page_call_property["callback"]]();
     }
   });
 }
