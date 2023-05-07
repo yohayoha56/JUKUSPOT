@@ -140,7 +140,6 @@ function showModal(event) {
         <li>勤務可能時間｜${availableTime}</li>
         <li>補足・備考　｜${remarks}</li>
       </ul>
-      <h4>${formGuide}</h4>
     `;
   
     // フォーム要素を挿入
@@ -209,7 +208,7 @@ function showModal(event) {
         }
       });
     }
-    
+
     // フォームのカスタマイズ機能
     function changeFormAdd(){
       const formBoxes = document.querySelectorAll('.form-box');

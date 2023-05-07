@@ -83,7 +83,7 @@ rows.forEach(row => {
         { name: "教室ID", type: "hidden", value: schoolId },
         { name: "教室名", type: "hidden", value: schoolName },
         { name: "勤怠ステータス", type: "hidden", value: newStatus },
-        { name: "勤務時間の変更", type: "select", value: "", flexbox: true, width: "180px", options: [
+        { name: "勤務時間の変更", type: "select", value: "", flexbox: true, width: "100%", options: [
         { value: "", text: "選択してください" },
         { value: "勤務時間の変更なし", text: "勤務時間の変更なし" },
         { value: "勤務時間の変更あり", text: "勤務時間の変更あり" },
@@ -112,7 +112,6 @@ rows.forEach(row => {
         <li>休憩時間：${breakTime} </li>
         <li>備考・補足：${remarks}</li>
       </ul>
-      <h4>${formGuide}</h4>
     `;
     
     // フォーム要素を挿入

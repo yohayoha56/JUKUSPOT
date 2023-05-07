@@ -65,14 +65,19 @@
   flex-wrap:wrap;
 }
 
-
-.form-container .form-inline {
-  display: flex;
-  align-items: center;
-  padding-top:6px;
-  gap: 10px;
+.form-container .flex-box{
+  display: inline-flex;
+  width: 100%;
+  gap: 10px 20px;
 }
 
+form{
+  display:flex;
+  flex-wrap:wrap;
+  width:100%;
+  margin-top: 10px;
+  gap:10px 20px;
+}
 
 
 /* テキスト周りの微調整 ーーーーーーーーーーーーーーーーーーーーー*/
@@ -110,17 +115,6 @@ label{
   padding-bottom:5px;
   font-weight:bold;
 }
-
-
-
-form{
-  display:flex;
-  flex-wrap:wrap;
-  width:100%;
-  gap:10px 20px;
-}
-
-
 
 .form-container input,.form-container select,.form-container textarea{
   font-size:16px;
