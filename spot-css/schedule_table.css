@@ -50,6 +50,11 @@ table {
       flex-wrap: wrap;
       margin-bottom:5px;
     }
+
+    .table-wrapper table {
+      min-width: none;
+    }
+
     .table-wrapper tbody tr:first-child {
       display:none;
     }
