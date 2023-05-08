@@ -247,11 +247,11 @@ const handleSubmit = async (event,remarks) => {
         isValid = false;
         showValidationError(document.getElementById("勤務可否-wrapper"), "勤務可否を選択してください");
       } 
-      if(data["勤務可否"] === "勤務可能" && !data["勤務開始時間_hour"] || !data["勤務開始時間_minute"]){
+      if(data["勤務可否"] === "勤務可能" && (!data["勤務開始時間_hour"] || !data["勤務開始時間_minute"])){
         isValid = false;
         showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
       } 
-      if(data["勤務可否"] === "勤務可能" && !data["勤務終了時間_hour"] || !data["勤務終了時間_minute"]){
+      if(data["勤務可否"] === "勤務可能" && (!data["勤務終了時間_hour"] || !data["勤務終了時間_minute"])){
         isValid = false;
         showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
       } 
