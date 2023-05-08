@@ -335,8 +335,8 @@ const handleSubmit = async (event,remarks) => {
   }  
 
   if(remarks=="-"){remarks==""}
-  if(data["補足・備考"]!=null){
-    data["補足・備考"] = `${remarks}<br><span>${hosokuguide}</span><br>${data["補足・備考"]}`;
+  if(data["補足・備考"]!=""){
+    data["補足・備考"] = `${remarks}<br><span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
   }
 
   const submitButton = document.querySelector(".submit-button");
