@@ -334,7 +334,7 @@ const handleSubmit = async (event,remarks) => {
     case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
   }  
 
-  if(remarks=="-"){remarks==""}
+  if(remarks=="-"){remarks=""}
   if(data["補足・備考"]!=""){
     data["補足・備考"] = `${remarks}<br><span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
   }
