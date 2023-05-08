@@ -241,23 +241,6 @@ const handleSubmit = async (event,remarks) => {
   // バリデーションチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   let isValid = true;
 
-
-  const startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
-  const endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
-
-  if (startTime >= endTime) {
-    isValid = false;
-    showValidationError(document.getElementById("勤務開始時間-wrapper"), "開始時間は終了時間より前に設定してください");
-    showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
-  }
-
-
-
-
-
-
-
-
   switch (formId) {
     case 'submitForm': 
       if (!data["勤務可否"]){
@@ -276,8 +259,7 @@ const handleSubmit = async (event,remarks) => {
       const endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
       if (startTime >= endTime) {
         isValid = false;
-        showValidationError(document.getElementById("勤務開始時間-wrapper"), "終了時間は開始時間より後に");
-        showValidationError(document.getElementById("勤務終了時間-wrapper"), "設定してください");
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
       }
       break;
       // 勤務可否が設定されていないとエラー
