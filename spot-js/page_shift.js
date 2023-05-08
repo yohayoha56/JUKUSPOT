@@ -288,17 +288,27 @@ const handleSubmit = async (event,remarks) => {
         data["取り消し"]= true ;
       } else {
         if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
+          isValid = false;
           showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
         } if(!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
+          isValid = false;
           showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
+        var startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
+        var endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
+        if (startTime >= endTime) {
+          isValid = false;
+          showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
+        }
         } if(!data["休憩時間"]) {
+          isValid = false;
           showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
         }
       }
 
     ; break;
     case 'answerForm':
-      if (!data["講師回答"]){ isValid = false;
+      if (!data["講師回答"]){ 
+        isValid = false;
         showValidationError(document.getElementById("講師回答-wrapper"), "勤務可否を回答してください");
       }
     ; break;
