@@ -1,6 +1,9 @@
 @charset "UTF-8";
 /* テーブルレイアウト調整用CSS */
-table {
+.table-wrapper {
+  overflow-x: auto;
+}
+.table-wrapper table {
   border-collapse: collapse;
   width: 100%;
   min-width: 800px;
@@ -9,32 +12,36 @@ table {
   color: #333;
   overflow-x: auto;
 }
-
-.table-wrapper {
-  overflow-x: auto;
-}
-
-th,
-td {
-  padding: 5px 8px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-
-th {
+.table-wrapper tr:first-child {
   background-color: #f2f2f2;
   font-weight: bold;
 }
-
-tr:nth-child(even) {
+.table-wrapper th, .table-wrapper td {
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.table-wrapper tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-
-tr:hover {
-  background-color: #f2f2f2;
+@media (max-width: 680px) {
+  .table-wrapper table {
+    min-width: auto;
+  }
+  .table-wrapper tr:first-child {
+    display: none;
+  }
+  .table-wrapper tr {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    margin-bottom: 10px;
+  }
+  .table-wrapper td {
+    border: none;
+  }
 }
-
-button {
+.table-wrapper button {
   width: 100%;
   display: inline-block;
   box-sizing: border-box;
@@ -43,60 +50,114 @@ button {
   font-size: 14px;
 }
 
+/* 依頼ボタン */
+.request, .submit, .change, .answer {
+  border: 1px solid #17837C;
+  background-color: #fff;
+  color: #17837C;
+  cursor: pointer;
+}
+
+.request.noticed, .submit.noticed, .change.noticed, .answer.noticed {
+  border: none;
+  background-color: #17837C;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+#worktable th:nth-child(1) {
+  width: 90px;
+}
+#worktable th:nth-child(2) {
+  width: 105px;
+}
+#worktable th:nth-child(3) {
+  width: 105px;
+}
+#worktable th:nth-child(4) {
+  width: 105px;
+}
+#worktable th:nth-child(5) {
+  width: 75px;
+}
+#worktable th:nth-child(6) {
+  width: calc(100% - 480px);
+}
+#worktable th:nth-child(6), #worktable td:nth-child(6) {
+  text-align: left;
+}
 @media (max-width: 680px) {
-  .table-wrapper tbody tr {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 5px;
+  #worktable tbody td:nth-child(1) {
+    width: 120px;
+    background-color: #19837C;
+    color: white;
   }
-  .table-wrapper table {
-    min-width: auto;
+  #worktable tbody td:nth-child(2) {
+    width: calc(100% - 120px);
   }
-  .table-wrapper tbody tr:first-child {
-    display: none;
+  #worktable tbody td:nth-child(2)::before {
+    content: "ステータス：";
+    padding-right: 5px;
   }
-  .table-wrapper {
-    border-collapse: collapse;
+  #worktable tbody td:nth-child(3) {
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
   }
-  .table-wrapper tr {
-    border: 1px solid black; /* 枠線の太さ・色を調整 */
+  #worktable tbody td:nth-child(3)::before {
+    content: "教室：";
+    padding-right: 5px;
   }
-  .table-wrapper td {
-    border: none; /* td要素の枠線を削除 */
+  #worktable tbody td:nth-child(4) {
+    width: 200px;
+    text-align: left;
+    font-weight: bold;
+  }
+  #worktable tbody td:nth-child(4)::before {
+    content: "勤務可能時間：";
+    padding-right: 5px;
+  }
+  #worktable tbody td:nth-child(5) {
+    width: calc(100% - 200px);
+    text-align: left;
+    font-weight: bold;
+  }
+  #worktable tbody td:nth-child(4)::before {
+    content: "休憩時間：";
+    padding-right: 5px;
+  }
+  #worktable tbody td:nth-child(6)::before {
+    content: "備考・補足：";
+    display: block;
+    padding-right: 5px;
+  }
+  #worktable tbody td:nth-child(6) {
+    width: 100%;
   }
 }
-/* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 #schedule-table th:nth-child(1) {
   width: 90px;
 }
-
 #schedule-table th:nth-child(2) {
   width: 95px;
 }
-
 #schedule-table th:nth-child(3) {
   width: 105px;
 }
-
 #schedule-table th:nth-child(4) {
   width: calc(100% - 415px);
 }
-
 #schedule-table th:nth-child(5) {
   width: 125px;
 }
-
-#schedule-table th, #schedule-table td {
-  text-align: center;
-}
-
-#schedule-table th:nth-child(4),
-#schedule-table td:nth-child(4) {
+#schedule-table th:nth-child(4), #schedule-table td:nth-child(4) {
   text-align: left;
 }
-
 @media (max-width: 680px) {
-  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
   #schedule-table tbody td:nth-child(1) {
     width: 120px;
     background-color: #19837C;
@@ -109,7 +170,6 @@ button {
     content: "勤務可否：";
     padding-right: 5px;
   }
-  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
   #schedule-table tbody td:nth-child(3) {
     width: 100%;
     text-align: left;
@@ -119,7 +179,6 @@ button {
     content: "勤務可能時間：";
     padding-right: 5px;
   }
-  /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
   #schedule-table tbody td:nth-child(4) {
     width: 100%;
   }
@@ -132,8 +191,9 @@ button {
     width: 100%;
   }
 }
-/* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-/* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 #shift-table th:nth-child(1) {
   width: 90px;
 }
@@ -152,18 +212,10 @@ button {
 #shift-table th:nth-child(6) {
   width: 125px;
 }
-#shift-table th, #shift-table td {
-  text-align: center;
-}
 #shift-table th:nth-child(5), #shift-table td:nth-child(5) {
   text-align: left;
 }
 @media (max-width: 680px) {
-  #shift-table {
-    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-    /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-  }
   #shift-table tbody td:nth-child(1) {
     width: 120px;
     background-color: #19837C;
@@ -207,22 +259,4 @@ button {
   }
 }
 
-/* ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-/* 依頼ボタン */
-.request, .submit, .change, .answer {
-  border: 1px solid #17837C;
-  background-color: #fff;
-  color: #17837C;
-  cursor: pointer;
-}
-
-.request.noticed, .submit.noticed, .change.noticed, .answer.noticed {
-  border: none;
-  background-color: #17837C;
-  color: #fff;
-  cursor: pointer;
-}
-
-.test {
-  color: red;
-}
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
