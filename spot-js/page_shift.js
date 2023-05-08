@@ -255,8 +255,8 @@ const handleSubmit = async (event,remarks) => {
         isValid = false;
         showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
       } 
-      const startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
-      const endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
+      var startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
+      var endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
       if (startTime >= endTime) {
         isValid = false;
         showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
@@ -265,10 +265,21 @@ const handleSubmit = async (event,remarks) => {
       // 勤務可否が設定されていないとエラー
     case 'requestForm':
       if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
+        isValid = false;
         showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
-      } if(!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
-        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
-      } if(!data["休憩時間"]) {
+      } 
+      if(!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
+        isValid = false;
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください"); 
+      } 
+      var startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
+      var endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
+      if (startTime >= endTime) {
+        isValid = false;
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
+      }
+      if(!data["休憩時間"]) {
+        isValid = false;
         showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
       }
       break;
@@ -334,9 +345,9 @@ const handleSubmit = async (event,remarks) => {
     case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
   }  
 
-  if(remarks=="-"){remarks=""}
+  if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
   if(data["補足・備考"]!=""){
-    data["補足・備考"] = `${remarks}<br><span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
+    data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
   }
 
   const submitButton = document.querySelector(".submit-button");
