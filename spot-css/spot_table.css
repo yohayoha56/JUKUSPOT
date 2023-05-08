@@ -66,73 +66,73 @@
 }
 
 /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-#worktable th:nth-child(1) {
+#work-table th:nth-child(1) {
   width: 90px;
 }
-#worktable th:nth-child(2) {
+#work-table th:nth-child(2) {
   width: 105px;
 }
-#worktable th:nth-child(3) {
+#work-table th:nth-child(3) {
   width: 105px;
 }
-#worktable th:nth-child(4) {
+#work-table th:nth-child(4) {
   width: 105px;
 }
-#worktable th:nth-child(5) {
+#work-table th:nth-child(5) {
   width: 75px;
 }
-#worktable th:nth-child(6) {
+#work-table th:nth-child(6) {
   width: calc(100% - 480px);
 }
-#worktable th:nth-child(6), #worktable td:nth-child(6) {
+#work-table th:nth-child(6), #work-table td:nth-child(6) {
   text-align: left;
 }
 @media (max-width: 680px) {
-  #worktable tbody td:nth-child(1) {
+  #work-table tbody td:nth-child(1) {
     width: 120px;
     background-color: #19837C;
     color: white;
   }
-  #worktable tbody td:nth-child(2) {
+  #work-table tbody td:nth-child(2) {
     width: calc(100% - 120px);
   }
-  #worktable tbody td:nth-child(2)::before {
+  #work-table tbody td:nth-child(2)::before {
     content: "ステータス：";
     padding-right: 5px;
   }
-  #worktable tbody td:nth-child(3) {
+  #work-table tbody td:nth-child(3) {
     width: 100%;
     text-align: left;
     font-weight: bold;
   }
-  #worktable tbody td:nth-child(3)::before {
+  #work-table tbody td:nth-child(3)::before {
     content: "教室：";
     padding-right: 5px;
   }
-  #worktable tbody td:nth-child(4) {
+  #work-table tbody td:nth-child(4) {
     width: 200px;
     text-align: left;
     font-weight: bold;
   }
-  #worktable tbody td:nth-child(4)::before {
+  #work-table tbody td:nth-child(4)::before {
     content: "勤務可能時間：";
     padding-right: 5px;
   }
-  #worktable tbody td:nth-child(5) {
+  #work-table tbody td:nth-child(5) {
     width: calc(100% - 200px);
     text-align: left;
     font-weight: bold;
   }
-  #worktable tbody td:nth-child(4)::before {
+  #work-table tbody td:nth-child(4)::before {
     content: "休憩時間：";
     padding-right: 5px;
   }
-  #worktable tbody td:nth-child(6)::before {
+  #work-table tbody td:nth-child(6)::before {
     content: "備考・補足：";
     display: block;
     padding-right: 5px;
   }
-  #worktable tbody td:nth-child(6) {
+  #work-table tbody td:nth-child(6) {
     width: 100%;
   }
 }
