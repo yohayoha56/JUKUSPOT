@@ -240,18 +240,47 @@ const handleSubmit = async (event,remarks) => {
   clearValidationErrors(); // バリデーションをリフレッシュ
   // バリデーションチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   let isValid = true;
+
+
+  const startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
+  const endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
+
+  if (startTime >= endTime) {
+    isValid = false;
+    showValidationError(document.getElementById("勤務開始時間-wrapper"), "開始時間は終了時間より前に設定してください");
+    showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
+  }
+
+
+
+
+
+
+
+
   switch (formId) {
     case 'submitForm': 
-      if (!data["勤務可否"]){ isValid = false;
+      if (!data["勤務可否"]){
+        isValid = false;
         showValidationError(document.getElementById("勤務可否-wrapper"), "勤務可否を選択してください");
-      } if(data["勤務可否"] === "勤務可能" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
+      } 
+      if(data["勤務可否"] === "勤務可能" && !data["勤務開始時間_hour"] || !data["勤務開始時間_minute"]){
+        isValid = false;
         showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
-      } if(data["勤務可否"] === "勤務可能" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
+      } 
+      if(data["勤務可否"] === "勤務可能" && !data["勤務終了時間_hour"] || !data["勤務終了時間_minute"]){
+        isValid = false;
         showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
-      } if(data["勤務可否"] === "調整中" && !data["補足・備考"]) {
-        showValidationError(document.getElementById("補足・備考-wrapper"), "参考テキストを入力してください");
+      } 
+      const startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
+      const endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
+      if (startTime >= endTime) {
+        isValid = false;
+        showValidationError(document.getElementById("勤務開始時間-wrapper"), "終了時間は開始時間より後に");
+        showValidationError(document.getElementById("勤務終了時間-wrapper"), "設定してください");
       }
       break;
+      // 勤務可否が設定されていないとエラー
     case 'requestForm':
       if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
         showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
