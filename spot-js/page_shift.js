@@ -348,11 +348,13 @@ const handleSubmit = async (event,remarks) => {
   if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
   if(data["補足・備考"]!=""){
     data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
-  }
+  } else {data["補足・備考"] = "-"}
 
   const submitButton = document.querySelector(".submit-button");
   const responseMessage = document.createElement("div");
   responseMessage.classList.add("response-message");
+  responseMessage.textContent = "処理中です。このままお待ちください。";
+
   
   // フォームの無効化とボタンの色を変更
   form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
@@ -371,8 +373,8 @@ const handleSubmit = async (event,remarks) => {
   
     const text = await response.text();
     if (text.includes("Success")) {
-      responseMessage.textContent = "提出が完了しました";
-      responseMessage.style.color = "green";
+      responseMessage.textContent = "提出が完了しました。最新の情報に更新されるので、このままお待ちください。";
+      responseMessage.style.color = "";
       form.reset(); // フォームの入力値をリセット
       call_fetchData(page_call_property); // レスポンスを受け取り次第、call_fetchData を起動
     } else {
