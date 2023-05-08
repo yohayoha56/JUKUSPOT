@@ -54,7 +54,7 @@ function showModal(event) {
   const date = row.cells[0].innerText;
   const availability = row.cells[1].innerText;
   const availableTime = row.cells[2].innerText;
-  const remarks = row.cells[3].innerText;
+  const remarks = row.cells[3].innerHTML;
   const requestStatus = row.cells[4].innerText;
   let formId, formTitle, formInfo, formGuide, formButton
   let schoolId,schoolName,teacherId,teacherName
@@ -339,10 +339,10 @@ const handleSubmit = async (event,remarks) => {
 
   let hosokuguide
   switch (formId) {
-    case 'submitForm': hosokuguide = " [講師：ｽｹｼﾞｭｰﾙ提出時] "; break;
-    case 'requestForm': hosokuguide = " [教室：シフト依頼時] "; break;
-    case 'changeForm': hosokuguide = " [教室：依頼取消時] "; break;
-    case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
+    case 'submitForm': hosokuguide = " [↓講師：ｽｹｼﾞｭｰﾙ提出時] "; break;
+    case 'requestForm': hosokuguide = " [↓教室：シフト依頼時] "; break;
+    case 'changeForm': hosokuguide = " [↓教室：依頼取消時] "; break;
+    case 'answerForm': hosokuguide = " [↓講師：シフト回答時] "; break;
   }  
 
   if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
