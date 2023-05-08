@@ -351,8 +351,11 @@ const handleSubmit = async (event,remarks) => {
     case 'changeForm': hosokuguide = " [教室：依頼取消時] "; break;
     case 'answerForm': hosokuguide = " [講師：シフト回答時] "; break;
   }  
-  data["補足・備考"] = remarks+data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
+  if(remarks=="-"){remarks==""}
+  if(data["補足・備考"]!=null){
+    data["補足・備考"] = `${remarks}<br><span>${hosokuguide}</span><br>${data["補足・備考"]}`;
+  }
 
   const submitButton = document.querySelector(".submit-button");
   const responseMessage = document.createElement("div");
