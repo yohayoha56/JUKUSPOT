@@ -1,8 +1,8 @@
 /* カラー定義 */
 :root {
   --green-base: #17837C;
-  --green-darker: #218838;
-  --green-lighter: #34c057;
+  --green-darker: #0D5D63;
+  --green-lighter: #2BA2A9 ;
 }
 
 * {
