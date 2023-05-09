@@ -25,14 +25,12 @@
   // フォーム要素の定義
   const formElements = [
     { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
-    { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
-    ]},
-    { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
-    ]},
     { name: "出費", type: "number", value: "", inline: true, width: "100px" },
     { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100% - 50px)",},
-    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "50px", onClick: addTagInput },
+    { name: "支払い方法", type: "select", value: "", width: "100%",breakAfter: true, options: []},
+    { name: "カテゴリ", type: "select", value: "",  width: "100%", options: []},
+    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100% - 80px)",},
+    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "80px", onClick: addTagInput },
     { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
     { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
     ]},
@@ -223,7 +221,9 @@ function addTagInput() {
     element.options.forEach(option => {
       const button = document.createElement("button");
       button.textContent = option.text;
+      button.setAttribute("type", "button");
       button.classList.add("option-button");
+      
 
       // クリック時の動作を定義
       button.addEventListener("click", () => {
@@ -373,16 +373,20 @@ function addTagInput() {
   }
 </script>
 
+<style>
+  /* ボタンがアクティブかどうかを視覚的に示す */
+  .button:active {
+    background-color: #dddddd;
+  }
+</style>
 
 <script>
 async function handleSubmit(event) {
   event.preventDefault();
 
-
   // 送信ボタンの色を変更
   const submitButton = document.querySelector(".submit-button");
   submitButton.style.backgroundColor = "#aaaaaa";
-
 
   const form = document.getElementsByTagName("form")[0];
   const formData = new FormData(form);
@@ -429,10 +433,7 @@ async function handleSubmit(event) {
   } else {
     console.error(`エラーメッセージ: ${text}`);
   }
-
-
 };
-
 
 </script>
 
