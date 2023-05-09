@@ -26,14 +26,14 @@
   const formElements = [
     { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
     { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-    { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
     { name: "支払い方法", type: "select", value: "", width: "100%",breakAfter: true, options: []},
     { name: "カテゴリ", type: "select", value: "",  width: "100%", options: []},
-    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100% - 80px)",},
-    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "80px", onClick: addTagInput },
+    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100%)",},
     { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-    { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
-    ]},
+    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "100px", onClick: addTagInput },
+    { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
+    { name: "計上項目", type: "select", value: "", width: "100%", options: [
+      ]},
     { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
     { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
   ];
@@ -237,6 +237,23 @@ function addTagInput() {
         // カテゴリのボタンがクリックされたときにタグの表示を更新
         if (element.name === "カテゴリ") {
           updateTagOptions(button.textContent);
+        }
+
+        // "その他" のボタンがクリックされたときにテキストフィールドを表示
+        let otherInput = document.getElementById(`other:${element.name}`);
+        if (button.textContent === "その他") {
+          if (!otherInput) {
+            const otherInputElement = document.createElement("input");
+            otherInputElement.setAttribute("type", "text");
+            otherInputElement.setAttribute("id", `other:${element.name}`);
+            otherInputElement.setAttribute("name", `other:${element.name}`);
+            otherInput = otherInputElement;
+            formBox.appendChild(otherInput);
+          }
+        } else {
+          if (otherInput) {
+            formBox.removeChild(otherInput);
+          }
         }
       });
 
