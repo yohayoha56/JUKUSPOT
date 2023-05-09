@@ -111,9 +111,6 @@ function createForm() {
     formContainer.appendChild(form);
     form.addEventListener('submit', handleSubmit);
 
-    //カテゴリ選択時のスクリプト
-    const categorySelect = document.getElementById("カテゴリ");
-    categorySelect.addEventListener("change", updateTagOptions);
 
     // 初期設定＋経費ボタンクリック時の処理
     toggleExpenseRelatedFields(false);
@@ -154,26 +151,25 @@ function createForm() {
 }
 
 function updateTagOptions() {
-    const selectedCategory = this.value;
-    const tags = tagData.categories[selectedCategory] || [];
+  const tags = tagData.categories[selectedCategory] || [];
 
-    // タグの選択肢を更新
-    const tagContainer = document.getElementById("タグ-container");
-    tagContainer.innerHTML = ""; // 既存のタグ選択肢をクリア
+  // タグの選択肢を更新
+  const tagContainer = document.getElementById("タグ-container");
+  tagContainer.innerHTML = ""; // 既存のタグ選択肢をクリア
 
-    tags.forEach(tag => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = tag;
-      button.classList.add("tag-button");
+  tags.forEach(tag => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = tag;
+    button.classList.add("tag-button");
 
-      // タグが選択されたときに選択状態を切り替えるイベントリスナーを追加
-      button.addEventListener("click", () => {
-        button.classList.toggle("selected");
-      });
-
-      tagContainer.appendChild(button);
+    // タグが選択されたときに選択状態を切り替えるイベントリスナーを追加
+    button.addEventListener("click", () => {
+      button.classList.toggle("selected");
     });
+
+    tagContainer.appendChild(button);
+  });
 }
 
 // タグ入力欄を追加する関数
@@ -233,6 +229,11 @@ function addTagInput() {
         });
 
         button.classList.add("selected");
+
+        // カテゴリのボタンがクリックされたときにタグの表示を更新
+        if (element.name === "カテゴリ") {
+          updateTagOptions(button.textContent);
+        }
       });
 
       buttonGroup.appendChild(button);

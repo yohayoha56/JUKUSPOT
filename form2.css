@@ -21,7 +21,9 @@ input,select,textarea,.tag-button{
 }
 
 label{
+  display:block;
   font-weight:bold;
+  margin-bottom:10px;
 }
 
 .break-after::after {
@@ -84,3 +86,13 @@ label{
   .button:active {
     background-color: #dddddd;
   }
+
+
+.button-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+}
+.button-group button{
+  border-radius:3px;
+}
