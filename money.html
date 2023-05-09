@@ -373,21 +373,30 @@ function addTagInput() {
   }
 </script>
 
-<style>
-  /* ボタンがアクティブかどうかを視覚的に示す */
-  .button:active {
-    background-color: #dddddd;
-  }
-</style>
+
+
+
+
+
 
 <script>
+
+// フォームの各ラッパー要素に対して、入力が変更されたときに背景色を変更するイベントリスナーを追加
+document.querySelectorAll('form input, form select, form textarea, form button').forEach(element => {
+  element.addEventListener('input', function() {
+    this.closest('[id$="-wrapper"]').style.backgroundColor = '#ffffff'; // 入力が変更された場合、ラッパーの背景色を白にする
+  });
+});
+
+
+
 async function handleSubmit(event) {
   event.preventDefault();
 
   // 送信ボタンの色を変更
   const submitButton = document.querySelector(".submit-button");
   submitButton.style.backgroundColor = "#aaaaaa";
-
+  //フォームの送信値のデフォルト作成
   const form = document.getElementsByTagName("form")[0];
   const formData = new FormData(form);
   const data = {};
@@ -395,6 +404,7 @@ async function handleSubmit(event) {
     data[key] = value;
   }
 
+  //フォームの送信値のカスタム作成
   const tagContainer = document.getElementById("タグ-container");
   const selectedTags = Array.from(
     tagContainer.querySelectorAll(".selected")
@@ -415,6 +425,9 @@ async function handleSubmit(event) {
     delete data["タグ"];
   }
 
+
+  //GASにデータの送信
+
   const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
     method: 'POST',
     headers: {
@@ -427,13 +440,16 @@ async function handleSubmit(event) {
   const text = await response.text();
   if (text.includes("Success")) {
     console.log('データが正常に送信されました');
-    form.reset();
+    // 送信成功時には各ラッパーの背景色を薄い黄色にする
+    document.querySelectorAll('[id$="-wrapper"]').forEach(element => {
+      element.style.backgroundColor = '#ffffcc';
+    });
     submitButton.style.backgroundColor = "";
-    fetchFormData();
   } else {
     console.error(`エラーメッセージ: ${text}`);
   }
 };
+
 
 </script>
 

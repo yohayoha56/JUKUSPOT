@@ -79,3 +79,8 @@ label{
   background-color:#555;
   color:white;  
 }
+
+  /* ボタンがアクティブかどうかを視覚的に示す */
+  .button:active {
+    background-color: #dddddd;
+  }
