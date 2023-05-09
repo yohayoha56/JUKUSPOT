@@ -57,9 +57,9 @@ async function fetchFormData() {
 
   const categories = await response.json();
   tagData = categories;
-  updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
-  updateSelectOptions("支払い方法", tagData.paymentMethods);
-  updateSelectOptions("計上項目", tagData.postingItems);
+  updateSelectOptions("カテゴリ", tagData.categories.map(c => c.category));
+  updateSelectOptions("支払い方法", tagData.paymentMethods.map(p => p.method));
+  updateSelectOptions("計上項目", tagData.postingItems.map(p => p.item));
 
   const formContainer = document.getElementById("form-container");
   const existingForm = document.getElementById("myForm");
