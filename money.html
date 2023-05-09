@@ -91,6 +91,10 @@ function updateSelectOptions(name, optionsData) {
 }
 
 
+
+
+
+
 // メイン関数
 function createForm() {
     const formConfig = {
@@ -257,121 +261,103 @@ function addTagInput() {
             const otherInputElement = document.createElement("input");
             otherInputElement.setAttribute("type", "text");
             otherInputElement.setAttribute("id", `other:${element.name}`);
-            otherInputElement.setAttribute("name", `other:${element.name}`);
+            otherInputElement.classList.add("other-input");
+            buttonGroup.appendChild(otherInputElement);
             otherInput = otherInputElement;
-            formBox.appendChild(otherInput);
           }
-        } else {
-          if (otherInput) {
-            formBox.removeChild(otherInput);
-          }
+          otherInput.style.display = "inline-block";
+        } else if (otherInput) {
+          otherInput.style.display = "none";
         }
       });
 
       buttonGroup.appendChild(button);
     });
 
-    // フォーム要素の梱包
+    // フィールドを梱包
     const formBox = document.createElement("div");
+    formBox.setAttribute("id", `${element.name}-wrapper`);
+    formBox.classList.add("form-box");
     formBox.appendChild(label);
     formBox.appendChild(buttonGroup);
-    formBox.classList.add("form-box");
-    if (element.inline) { formBox.classList.add("inline-box");}
-    formBox.setAttribute("id",`${element.name}-wrapper`);
-    if (element.width) {  formBox.style.width = element.width;}
-    if (element.breakAfter) {formBox.classList.add("break-after");}
+
+    // カテゴリと経費メモの後に改行を追加
+    if (element.breakAfter) {
+      const breakElement = document.createElement("br");
+      formBox.appendChild(breakElement);
+    }
 
     return formBox;
   }
 
-
-  // フォーム要素の作成関数
   function createFormField(element) {
-      // ラベルの作成
-      const label = document.createElement("label");
-      label.setAttribute("for", element.name);
-      label.classList.add("form-label");
-      label.textContent = element.name + ":";
+    // ラベルの作成
+    const label = document.createElement("label");
+    label.setAttribute("for", element.name);
+    label.classList.add("form-label");
+    label.textContent = element.name + ":";
 
-      let input;
-      // セレクトブロパティの作成（その他の自由記入もあり）
-      if (element.type === "select") {
-          input = document.createElement("select");
-          element.options.forEach(option => {
-              const optionElement = document.createElement("option");
-              optionElement.value = option.value;
-              optionElement.textContent = option.text;
-              if (option.disabled) {
-                  optionElement.setAttribute("disabled", "");
-              }
-              if (option.selected) {
-                  optionElement.setAttribute("selected", "");
-              }
-              input.appendChild(optionElement);
-          });
-          // 自由記入の追加
-          input.addEventListener("change", (event) => {
-            const selectedValue = event.target.value;
-            const formBox = event.target.parentElement;
-            let otherInput = document.getElementById(`other:${element.name}`);
-            if (selectedValue === "その他") {
-              if (!otherInput) {
-                const otherInputElement = document.createElement("input");
-                otherInputElement.setAttribute("type", "text");
-                otherInputElement.setAttribute("id", `other:${element.name}`);
-                otherInputElement.setAttribute("name", `other:${element.name}`);
-                // 以下の行を追加
-                otherInput = otherInputElement;
-                formBox.insertBefore(otherInput, input.nextSibling);
-              }
-            } else {
-              if (otherInput) {
-                formBox.removeChild(otherInput);
-              }
-            }
-          });
-      // セレクト以外の作成
-      } else if (element.type === "textarea") {
-          input = document.createElement("textarea");
-      } else if (element.type === "checkbox") {
-          input = document.createElement("input");
-          input.setAttribute("type", "checkbox");
-          input.setAttribute("class", "hidden_checkbox");
-          const checkmark = document.createElement("span")
-          checkmark 
-      } else   if (element.type === "multiselect") {
-          field = document.createElement("div");
-          field.classList.add("multiselect-container");
-          field.setAttribute("id", element.name + "-container");
-      } else {
-          input = document.createElement("input");
-          input.setAttribute("type", element.type);
-      }
-      // 共通処理ーーーーーーーーーー
-      if(input){
-        input.setAttribute("id", element.name);
-        input.setAttribute("name", element.name);
-        input.value = element.value;
-      }
-      // onclickーーーーーーーーーー
-      if (element.onClick) {
+    // 入力フィールドの作成
+    let input;
+    switch (element.type) {
+      case "textarea":
+        input = document.createElement("textarea");
+        break;
+      case "button":
+        input = document.createElement("button");
+        input.setAttribute("type", "button");
         input.addEventListener("click", element.onClick);
-      }
+        break;
+      case "checkbox":
+        input = document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        input.addEventListener("change", (event) => {
+          toggleExpenseRelatedFields(event.target.checked);
+        });
+        break;
+      default:
+        input = document.createElement("input");
+        input.setAttribute("type", element.type);
+        break;
+    }
+    input.setAttribute("id", element.name);
+    input.setAttribute("name", element.name);
+    input.setAttribute("value", element.value);
+    input.classList.add("form-input");
 
+    // フィールドを梱包
+    const formBox = document.createElement("div");
+    formBox.setAttribute("id", `${element.name}-wrapper`);
+    formBox.classList.add("form-box");
+    if (element.inline) {
+      formBox.classList.add("inline-box");
+      formBox.style.width = element.width;
+    }
+    formBox.appendChild(label);
+    formBox.appendChild(input);
 
+    // カテゴリと経費メモの後に改行を追加
+    if (element.breakAfter) {
+      const breakElement = document.createElement("br");
+      formBox.appendChild(breakElement);
+    }
 
-      // フォーム要素の梱包
-      const formBox = document.createElement("div");
-      formBox.appendChild(label);
-      formBox.appendChild(input||field);
-      formBox.classList.add("form-box");
-      if (element.inline) { formBox.classList.add("inline-box");}
-      formBox.setAttribute("id",`${element.name}-wrapper`);
-      if (element.width) {  formBox.style.width = element.width;}
-      if (element.breakAfter) {formBox.classList.add("break-after");}
-      if (element.type === "hidden") { formBox.style.display = "none";}
-      return formBox;
+    return formBox;
   }
+
+  function updatePaymentMethodOptions(selectedCategory) {
+  const paymentMethods = tagData.categories[selectedCategory].paymentMethods || [];
+
+  // 支払い方法の選択肢を更新
+  updateSelectOptions("支払い方法", paymentMethods.map(p => p.method));
+}
+
+// カテゴリのボタンがクリックされたときにタグと支払い方法の表示を更新
+if (element.name === "カテゴリ") {
+  updateTagOptions(button.textContent);
+  updatePaymentMethodOptions(button.textContent); // 追加
+}
+
 
 </script>
 
