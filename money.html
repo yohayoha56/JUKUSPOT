@@ -410,15 +410,11 @@ document.querySelectorAll('form input, form select, form textarea, form button')
   });
 });
 
-
-
 async function handleSubmit(event) {
   event.preventDefault();
 
-  // 送信ボタンの色を変更
   const submitButton = document.querySelector(".submit-button");
   submitButton.style.backgroundColor = "#aaaaaa";
-  //フォームの送信値のデフォルト作成
   const form = document.getElementsByTagName("form")[0];
   const formData = new FormData(form);
   const data = {};
@@ -426,18 +422,11 @@ async function handleSubmit(event) {
     data[key] = value;
   }
 
-  //フォームの送信値のカスタム作成
   const tagContainer = document.getElementById("タグ-container");
-  const selectedTags = Array.from(
-    tagContainer.querySelectorAll(".selected")
-  ).map((button) => button.textContent);
+  const selectedTags = Array.from(tagContainer.querySelectorAll(".selected")).map((button) => button.textContent);
 
-  const tagInputs = Array.from(
-    tagContainer.querySelectorAll(".tag-input")
-  );
-  const tagInputValues = tagInputs
-    .map((input) => input.value.trim())
-    .filter((value) => value !== "");
+  const tagInputs = Array.from(tagContainer.querySelectorAll(".tag-input"));
+  const tagInputValues = tagInputs.map((input) => input.value.trim()).filter((value) => value !== "");
 
   const allTags = selectedTags.concat(tagInputValues);
 
@@ -447,8 +436,16 @@ async function handleSubmit(event) {
     delete data["タグ"];
   }
 
-
-  //GASにデータの送信
+  const buttonGroups = document.querySelectorAll(".button-group");
+  buttonGroups.forEach((group) => {
+    const selectedButton = group.querySelector(".selected");
+    if (selectedButton) {
+      const inputName = group.closest('[id$="-wrapper"]').querySelector("input[type='text']");
+      if (inputName) {
+        data[inputName.name] = selectedButton.textContent;
+      }
+    }
+  });
 
   const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
     method: 'POST',
@@ -462,7 +459,6 @@ async function handleSubmit(event) {
   const text = await response.text();
   if (text.includes("Success")) {
     console.log('データが正常に送信されました');
-    // 送信成功時には各ラッパーの背景色を薄い黄色にする
     document.querySelectorAll('[id$="-wrapper"]').forEach(element => {
       element.style.backgroundColor = '#ffffcc';
     });
@@ -472,7 +468,7 @@ async function handleSubmit(event) {
   }
 };
 
-
+document.querySelector("#myForm").addEventListener("submit", handleSubmit);
 </script>
 
 <script src="https://heys45.github.io/SAUCEED/yamanote.js"></script>
