@@ -13,7 +13,8 @@ form h2{
   width:100%;
 }
 
-input,select,textarea,.tag-button{
+
+input,select,textarea{
   font-size:16px;
   padding:3px 6px;
   border:solid 2px #555555;
@@ -26,16 +27,6 @@ label{
   margin-bottom:10px;
 }
 
-.break-after::after {
-  content: "";
-  display: block;
-  width: 100%;
-}
-
-
-.hidden-checkbox {
-  display: none;
-}
 
 .checkmark {
   display: block;
@@ -66,33 +57,17 @@ label{
   transform: rotate(45deg);
 }
 
-.multiselect-container{
-  display:flex;
-  gap:5px 10px;
-  flex-wrap:wrap;
-  
-}
-.tag-button{
-  width:auto;
-  padding:2px 10px;
-  border-radius:3px;
-}
-.tag-button.selected{
-  background-color:#555;
-  color:white;  
-}
-
-  /* ボタンがアクティブかどうかを視覚的に示す */
-  .button:active {
-    background-color: #dddddd;
-  }
-
-
-.button-group{
+.multiselect-container,.button-group{
   display:flex;
   flex-wrap:wrap;
   gap:8px 10px;
 }
-.button-group button{
-  border-radius:3px;
+
+.button-group button,.tag-button{
+  padding:0px 10px;
+}
+
+.button-group button.selected,.tag-button.selected{
+  background-color:#555;
+  color:white;  
 }
