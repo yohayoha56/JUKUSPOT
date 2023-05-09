@@ -50,6 +50,11 @@ async function fetchFormData() {
     mode: 'cors',
   });
 
+  if (!response.ok) {
+    console.error(`Error: ${response.status} ${response.statusText}`);
+    return;
+  }
+
   const categories = await response.json();
   tagData = categories;
   updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
