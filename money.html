@@ -101,7 +101,11 @@ function createForm() {
 
     // フォームコンテンツの作成関数
     formElements.forEach(element => {
+      if (element.type === "select") {
+        form.appendChild(createButtonOptions(element));
+      } else {
         form.appendChild(createFormField(element));
+      }
     });
 
     // 送信ボタンの作成
@@ -204,6 +208,49 @@ function addTagInput() {
 
       return formBox;
   }
+
+  function createButtonOptions(element) {
+    // ラベルの作成
+    const label = document.createElement("label");
+    label.setAttribute("for", element.name);
+    label.classList.add("form-label");
+    label.textContent = element.name + ":";
+
+    // ボタンのグループ作成
+    const buttonGroup = document.createElement("div");
+    buttonGroup.classList.add("button-group");
+
+    element.options.forEach(option => {
+      const button = document.createElement("button");
+      button.textContent = option.text;
+      button.classList.add("option-button");
+
+      // クリック時の動作を定義
+      button.addEventListener("click", () => {
+        const selectedButtons = buttonGroup.querySelectorAll(".selected");
+        selectedButtons.forEach(selectedButton => {
+          selectedButton.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+      });
+
+      buttonGroup.appendChild(button);
+    });
+
+    // フォーム要素の梱包
+    const formBox = document.createElement("div");
+    formBox.appendChild(label);
+    formBox.appendChild(buttonGroup);
+    formBox.classList.add("form-box");
+    if (element.inline) { formBox.classList.add("inline-box");}
+    formBox.setAttribute("id",`${element.name}-wrapper`);
+    if (element.width) {  formBox.style.width = element.width;}
+    if (element.breakAfter) {formBox.classList.add("break-after");}
+
+    return formBox;
+  }
+
 
   // フォーム要素の作成関数
   function createFormField(element) {
