@@ -121,21 +121,15 @@ function createForm() {
       });
 
       if (isChecked) {
-        const selectedKeijouItemButton = document.querySelector("#計上項目-wrapper .selected");
-        const keijouItem = selectedKeijouItemButton ? selectedKeijouItemButton.textContent : "";
-
         document.getElementById("経費メモ").value = document.getElementById("メモ").value;
         document.getElementById("計上額").value = document.getElementById("出費").value;
-        // "計上項目"の値を選択されたボタンのテキストに設定
-        document.getElementById("計上項目").value = keijouItem;
+
       } else {
     // ボタン選択を解除
       const selectedButtons = document.querySelectorAll("#計上項目-wrapper .selected");
       selectedButtons.forEach(selectedButton => {
         selectedButton.classList.remove("selected");
       });
-
-      document.getElementById("計上項目").value = "";
       document.getElementById("経費メモ").value = "";
       document.getElementById("計上額").value = "";
 
