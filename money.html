@@ -24,12 +24,12 @@
 
   // フォーム要素の定義
   const formElements = [
-    { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
-    { name: "出費", type: "number", value: "", inline: true, width: "100px" },
     { name: "支払い方法", type: "select", value: "", width: "100%",breakAfter: true, options: []},
     { name: "カテゴリ", type: "select", value: "",  width: "100%", options: []},
     { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100%)",},
     { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
+    { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
+    { name: "出費", type: "number", value: "", inline: true, width: "100px" },
     { name: "タグ追加", type: "button", value: "＋", inline: true, width: "100px", onClick: addTagInput },
     { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
     { name: "計上項目", type: "select", value: "", width: "100%", options: [
@@ -72,9 +72,10 @@ async function fetchFormData() {
 // セレクト要素のオプションを更新
 function updateSelectOptions(name, optionsData) {
   const selectElement = formElements.find((element) => element.name === name);
-  // 最初に "選択してください" の項目を追加
-  selectElement.options = [{ value: "", text: "選択してください" }];
+  // // 最初に "選択してください" の項目を追加
+  // selectElement.options = [{ value: "", text: "選択してください" }];
   
+  selectElement.options = []; // 追加
   // その他のオプションを追加
   optionsData.forEach(option => {
     selectElement.options.push({ value: option, text: option });
@@ -125,7 +126,7 @@ function createForm() {
         document.getElementById("計上額").value = document.getElementById("出費").value;
 
       } else {
-    // ボタン選択を解除
+      // ボタン選択を解除
       const selectedButtons = document.querySelectorAll("#計上項目-wrapper .selected");
       selectedButtons.forEach(selectedButton => {
         selectedButton.classList.remove("selected");
@@ -133,7 +134,12 @@ function createForm() {
       document.getElementById("経費メモ").value = "";
       document.getElementById("計上額").value = "";
 
-      }
+      // その他の入力要素をクリア
+      const otherInputs = document.querySelectorAll("input[id^='other:']");
+      otherInputs.forEach(otherInput => {
+        otherInput.value = "";
+      });
+    }
     }
     // 経費ボタンクリック時のトリガー
     document.getElementById("経費-wrapper").addEventListener("click", function (event) {
@@ -440,9 +446,9 @@ async function handleSubmit(event) {
   buttonGroups.forEach((group) => {
     const selectedButton = group.querySelector(".selected");
     if (selectedButton) {
-      const inputName = group.closest('[id$="-wrapper"]').querySelector("input[type='text']");
+      const inputName = group.closest('[id$="-wrapper"]').querySelector("label");
       if (inputName) {
-        data[inputName.name] = selectedButton.textContent;
+        data[inputName.getAttribute("for")] = selectedButton.textContent;
       }
     }
   });
