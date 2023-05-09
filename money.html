@@ -14,67 +14,381 @@
 <!-- フォームを用意する。 -->
 <div id="form-container"></div>
 
+
 <script>
   // フォーム構成の定義
-  let fTitle, fButton, fId;
-  fId = "moneyForm";
-  fTitle = `経費入力フォーム`;
-  fButton = "回答を提出する";
+  let formTitle, formButton,formId
+  formId = "moneyForm"
+  formTitle = `経費入力フォーム`
+  formButton = "回答を提出する"
 
   // フォーム要素の定義
-  const fElements = [
+  const formElements = [
     { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
-    { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: []},
-    { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: []},
+    { name: "支払い方法", type: "select", value: "", inline: true, width: "200px",breakAfter: true, options: [
+    ]},
+    { name: "カテゴリ", type: "select", value: "", inline: true, width: "200px", options: [
+    ]},
     { name: "出費", type: "number", value: "", inline: true, width: "100px" },
     { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100% - 50px)"},
+    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100% - 50px)",},
     { name: "タグ追加", type: "button", value: "＋", inline: true, width: "50px", onClick: addTagInput },
     { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-    { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: []},
+    { name: "計上項目", type: "select", value: "", inline: true, width: "200px", options: [
+    ]},
     { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
     { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
   ];
 
-  // セレクトデータの取得関数
-  let tagData = {};
-  document.addEventListener("DOMContentLoaded", fetchFormData);
-  async function fetchFormData() {
-    const response = await fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain',
-      },
-      mode: 'cors',
-    });
+// セレクトデータの取得関数
+let tagData = {};
+document.addEventListener("DOMContentLoaded", fetchFormData);
+async function fetchFormData() {
+  const response = await fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    mode: 'cors',
+  });
 
-    const categories = await response.json();
-    tagData = categories;
-    updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
-    updateSelectOptions("支払い方法", tagData.paymentMethods);
-    updateSelectOptions("計上項目", tagData.postingItems);
+  const categories = await response.json();
+  tagData = categories;
+  updateSelectOptions("カテゴリ", Object.keys(tagData.categories));
+  updateSelectOptions("支払い方法", tagData.paymentMethods);
+  updateSelectOptions("計上項目", tagData.postingItems);
 
-    const formContainer = document.getElementById("form-container");
-    const existingForm = document.getElementById("myForm");
-    if (existingForm) {
-      formContainer.removeChild(existingForm);
-    }
-
-    createForm();
-    console.log(tagData);
+  const formContainer = document.getElementById("form-container");
+  const existingForm = document.getElementById("myForm");
+  if (existingForm) {
+    formContainer.removeChild(existingForm);
   }
 
-  // セレクト要
+  createForm();
+  console.log(tagData);
+}
 
 
 
 
-
-
-
-
-
+// セレクト要素のオプションを更新
+function updateSelectOptions(name, optionsData) {
+  const selectElement = formElements.find((element) => element.name === name);
+  // 最初に "選択してください" の項目を追加
+  selectElement.options = [{ value: "", text: "選択してください" }];
   
+  // その他のオプションを追加
+  optionsData.forEach(option => {
+    selectElement.options.push({ value: option, text: option });
+  });
+
+  // 最後に "その他" の項目を追加
+  selectElement.options.push({ value: "その他", text: "その他" });
+}
+
+
+// メイン関数
+function createForm() {
+    const formConfig = {
+        formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
+    };
+
+    // タイトルなど共通処理
+    const formContainer = document.getElementById("form-container");
+    const form = document.createElement("form");
+    form.setAttribute("id", formConfig.formId);
+    form.appendChild(createFormTitle(formConfig.formTitle));
+
+    // フォームコンテンツの作成関数
+    formElements.forEach(element => {
+        form.appendChild(createFormField(element));
+    });
+
+    // 送信ボタンの作成
+    form.appendChild(createSubmitButton(formConfig.buttonText));
+    formContainer.appendChild(form);
+    form.addEventListener('submit', handleSubmit);
+
+    //カテゴリ選択時のスクリプト
+    const categorySelect = document.getElementById("カテゴリ");
+    categorySelect.addEventListener("change", updateTagOptions);
+
+    // 初期設定＋経費ボタンクリック時の処理
+    toggleExpenseRelatedFields(false);
+    function toggleExpenseRelatedFields(isChecked) {
+      const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #経費メモ-wrapper");
+      wrappers.forEach(wrapper => {
+        wrapper.style.display = isChecked ? "block" : "none";
+      });
+
+      if (isChecked) {
+        document.getElementById("経費メモ").value = document.getElementById("メモ").value;
+        document.getElementById("計上額").value = document.getElementById("出費").value;
+
+      } else {
+        document.getElementById("計上項目").value = "";
+        document.getElementById("経費メモ").value = "";
+        document.getElementById("計上額").value = "";
+
+      }
+    }
+    // 経費ボタンクリック時のトリガー
+    document.getElementById("経費-wrapper").addEventListener("click", function (event) {
+      const checkbox = event.currentTarget.querySelector(".hidden-checkbox");
+      checkbox.checked = !checkbox.checked;
+      toggleExpenseRelatedFields(checkbox.checked);
+    });
+
+    document.getElementById("経費").addEventListener("change", function (event) {
+      toggleExpenseRelatedFields(event.target.checked);
+    });
+
+    // 別関数、山手線追加
+    showYamanoteLineStations();
+
+    // 
+
+
+}
+
+function updateTagOptions() {
+    const selectedCategory = this.value;
+    const tags = tagData.categories[selectedCategory] || [];
+
+    // タグの選択肢を更新
+    const tagContainer = document.getElementById("タグ-container");
+    tagContainer.innerHTML = ""; // 既存のタグ選択肢をクリア
+
+    tags.forEach(tag => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.textContent = tag;
+      button.classList.add("tag-button");
+
+      // タグが選択されたときに選択状態を切り替えるイベントリスナーを追加
+      button.addEventListener("click", () => {
+        button.classList.toggle("selected");
+      });
+
+      tagContainer.appendChild(button);
+    });
+}
+
+// タグ入力欄を追加する関数
+function addTagInput() {
+  const tagInputContainer = document.getElementById("タグ-container");
+  const input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.classList.add("tag-input");
+  tagInputContainer.appendChild(input);
+}
+
+  // タイトル、ボタンの作成関数
+  function createFormTitle(title) {
+      const titleElement = document.createElement("h2");
+      titleElement.textContent = title;
+      return titleElement;
+  }
+  function createSubmitButton(text) {
+      // ボタンの作成
+      const submitButton = document.createElement("input");
+      submitButton.setAttribute("type", "submit");
+      submitButton.setAttribute("value", text);
+      submitButton.classList.add("submit-button");
+      // ボタンの梱包
+      const formBox = document.createElement("div");
+      formBox.classList.add("form-box");
+      formBox.classList.add("inline-box");
+      formBox.style.width="180px"
+      formBox.appendChild(submitButton);
+
+      return formBox;
+  }
+
+  // フォーム要素の作成関数
+  function createFormField(element) {
+      // ラベルの作成
+      const label = document.createElement("label");
+      label.setAttribute("for", element.name);
+      label.classList.add("form-label");
+      label.textContent = element.name + ":";
+
+      let input;
+      // セレクトブロパティの作成（その他の自由記入もあり）
+      if (element.type === "select") {
+          input = document.createElement("select");
+          element.options.forEach(option => {
+              const optionElement = document.createElement("option");
+              optionElement.value = option.value;
+              optionElement.textContent = option.text;
+              if (option.disabled) {
+                  optionElement.setAttribute("disabled", "");
+              }
+              if (option.selected) {
+                  optionElement.setAttribute("selected", "");
+              }
+              input.appendChild(optionElement);
+          });
+          // 自由記入の追加
+          input.addEventListener("change", (event) => {
+            const selectedValue = event.target.value;
+            const formBox = event.target.parentElement;
+            let otherInput = document.getElementById(`other:${element.name}`);
+            if (selectedValue === "その他") {
+              if (!otherInput) {
+                const otherInputElement = document.createElement("input");
+                otherInputElement.setAttribute("type", "text");
+                otherInputElement.setAttribute("id", `other:${element.name}`);
+                otherInputElement.setAttribute("name", `other:${element.name}`);
+                // 以下の行を追加
+                otherInput = otherInputElement;
+                formBox.insertBefore(otherInput, input.nextSibling);
+              }
+            } else {
+              if (otherInput) {
+                formBox.removeChild(otherInput);
+              }
+            }
+          });
+      // セレクト以外の作成
+      } else if (element.type === "textarea") {
+          input = document.createElement("textarea");
+      } else if (element.type === "checkbox") {
+          input = document.createElement("input");
+          input.setAttribute("type", "checkbox");
+          input.setAttribute("class", "hidden_checkbox");
+          const checkmark = document.createElement("span")
+          checkmark 
+      } else   if (element.type === "multiselect") {
+          field = document.createElement("div");
+          field.classList.add("multiselect-container");
+          field.setAttribute("id", element.name + "-container");
+      } else {
+          input = document.createElement("input");
+          input.setAttribute("type", element.type);
+      }
+      // 共通処理ーーーーーーーーーー
+      if(input){
+        input.setAttribute("id", element.name);
+        input.setAttribute("name", element.name);
+        input.value = element.value;
+      }
+      // onclickーーーーーーーーーー
+      if (element.onClick) {
+        input.addEventListener("click", element.onClick);
+      }
+
+
+
+      // フォーム要素の梱包
+      const formBox = document.createElement("div");
+      formBox.appendChild(label);
+      formBox.appendChild(input||field);
+      formBox.classList.add("form-box");
+      if (element.inline) { formBox.classList.add("inline-box");}
+      formBox.setAttribute("id",`${element.name}-wrapper`);
+      if (element.width) {  formBox.style.width = element.width;}
+      if (element.breakAfter) {formBox.classList.add("break-after");}
+      if (element.type === "hidden") { formBox.style.display = "none";}
+      return formBox;
+  }
+
+</script>
+
+
+<!-- 更新日時の表示 -->
+<p id="last-updated"></p>
+<script>
+  // ページの最終更新日時を取得
+  const lastUpdated = new Date(document.lastModified);
+  
+  // 現在の日時を取得
+  const now = new Date();
+  
+  // 日時のフォーマットを設定
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: false
+  };
+
+  // 最終更新日時と現在日時を比較して表示
+  if (lastUpdated.getTime() === 0) {
+    document.getElementById("last-updated").innerHTML = "このページは更新されていません。";
+  } else if (lastUpdated.getTime() === now.getTime()) {
+    document.getElementById("last-updated").innerHTML = "このページは現在更新されています。";
+  } else if (lastUpdated < now) {
+    document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
+  }
+</script>
+
+
+<script>
+async function handleSubmit(event) {
+  event.preventDefault();
+
+
+  // 送信ボタンの色を変更
+  const submitButton = document.querySelector(".submit-button");
+  submitButton.style.backgroundColor = "#aaaaaa";
+
+
+  const form = document.getElementsByTagName("form")[0];
+  const formData = new FormData(form);
+  const data = {};
+  for (const [key, value] of formData.entries()) {
+    data[key] = value;
+  }
+
+  const tagContainer = document.getElementById("タグ-container");
+  const selectedTags = Array.from(
+    tagContainer.querySelectorAll(".selected")
+  ).map((button) => button.textContent);
+
+  const tagInputs = Array.from(
+    tagContainer.querySelectorAll(".tag-input")
+  );
+  const tagInputValues = tagInputs
+    .map((input) => input.value.trim())
+    .filter((value) => value !== "");
+
+  const allTags = selectedTags.concat(tagInputValues);
+
+  if (allTags.length > 0) {
+    data["タグ"] = allTags.join(",");
+  } else {
+    delete data["タグ"];
+  }
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbwUHrw95OqVOt379tLKguyaAVFSyeK8k9anfl0xnrECQtpQXzx6zRyleHJkJwpvCR_QNQ/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: JSON.stringify(data),
+    mode: 'cors',
+  });
+
+  const text = await response.text();
+  if (text.includes("Success")) {
+    console.log('データが正常に送信されました');
+    form.reset();
+    submitButton.style.backgroundColor = "";
+    fetchFormData();
+  } else {
+    console.error(`エラーメッセージ: ${text}`);
+  }
+
+
+};
+
+
+</script>
+
 <script src="https://heys45.github.io/SAUCEED/yamanote.js"></script>
 
 </body>
