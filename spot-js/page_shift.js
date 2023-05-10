@@ -116,6 +116,10 @@ function showModal(event) {
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
+    { name: "依頼取り消し", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
+      { value: "", text: "取り消ししない" },
+      { value: "取り消し", text: "依頼を取り消す" },
+    ]},
     { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px",minMinute: 0, maxMinute: 120, stepMinute: 10},
@@ -174,6 +178,7 @@ function showModal(event) {
           case 'submitForm':
             document.getElementById("講師回答-wrapper").remove();
             document.getElementById("休憩時間-wrapper").remove();
+            document.getElementById("依頼取り消し-wrapper").remove();
             document.getElementById("勤務開始時間-wrapper").style.display="none";
             document.getElementById("勤務終了時間-wrapper").style.display="none";
             submitFormAdd()
@@ -181,6 +186,7 @@ function showModal(event) {
           case 'requestForm':
             document.getElementById("勤務可否-wrapper").remove();
             document.getElementById("講師回答-wrapper").remove();
+            document.getElementById("依頼取り消し-wrapper").remove();
             minuteFormAdd()
             break;
           case 'changeForm':
@@ -194,6 +200,7 @@ function showModal(event) {
             document.getElementById("勤務開始時間-wrapper").remove();
             document.getElementById("勤務終了時間-wrapper").remove();
             document.getElementById("休憩時間-wrapper").remove();
+            document.getElementById("依頼取り消し-wrapper").remove();
             break;
         }
       }
