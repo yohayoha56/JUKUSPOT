@@ -256,6 +256,7 @@ function showValidationError(element, message) {
     body: JSON.stringify(data),
     mode: 'cors', //CORS対応
   });
+  
 
   // const submitButton = document.querySelector(".submit-button");
   // const responseMessage = document.createElement("div");
