@@ -4,10 +4,7 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
-
-const table = document.getElementById('fixed-table');
-const rows = Array.from(document.querySelectorAll('#fixed-table tr:not(:first-child)'));
+const rows = Array.from(document.querySelectorAll('#work-table tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
 
 // 出勤フォームの表示用に今日の日付を定義
