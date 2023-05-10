@@ -37,7 +37,7 @@ rows.forEach(row => {
     if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
         formId = "approvalForm"
-        formTitle = `${date}｜${teacherName}`
+        formTitle = `${date}｜${teacherName}先生`
         formInfo = "勤務予定の内容"
         formGuide = "↓勤務時間の変更がある場合は記入してください"
         formButton = "勤務を承認する"
@@ -98,7 +98,7 @@ rows.forEach(row => {
         ${(newData["ページタイプ"] === "teacher") ? `<li>教室：${schoolName} </li>`:''}
         <li>勤務依頼時間：${workTime} </li>
         <li>休憩時間：${breakTime} </li>
-        <li>備考・補足：${remarks}</li>
+        <li>備考・補足：<br>${remarks}</li>
       </ul>
     `;
     
