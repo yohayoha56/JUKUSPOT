@@ -29,11 +29,6 @@ rows.forEach(row => {
 
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
-    console.log(rowDate)
-    console.log(nowInTokyo)
-    console.log(newData["ページタイプ"])
-    console.log(nowStatus)
-
     if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
         formId = "approvalForm"
