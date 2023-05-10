@@ -16,7 +16,7 @@
     'spot-css/page_frame.css',
     'spot-css/progressbar.css',
     'spot-css/schedule_form.css',
-    'spot-css/schedule_table.css',
+    'spot-css/spot_table.css',
     'spot-css/school.css',
   ].map(url => baseUrl + url);
   
