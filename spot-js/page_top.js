@@ -170,9 +170,9 @@ async function handleSubmit(event,remarks) {
     case 'approvalForm': 
       if (!data["勤務時間の変更"]){ isValid = false;
         showValidationError(form.querySelector("#勤務時間の変更-wrapper"), "変更有無の回答をしてください");
-      } if(data["勤務時間の変更"] === "変更あり" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"])){isValid = false;
         showValidationError(form.querySelector("#勤務開始時間-wrapper"), "有効な時間にしてください");
-      } if(data["勤務時間の変更"] === "変更あり" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"])){isValid = false;
         showValidationError(form.querySelector("#勤務終了時間-wrapper"), "有効な時間にしてください");
       } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {isValid = false;
         showValidationError(form.querySelector("#休憩時間-wrapper"), "有効な時間にしてください");
@@ -183,9 +183,9 @@ async function handleSubmit(event,remarks) {
     case 'checkOutForm': 
       if (!data["勤務時間の変更"]){ isValid = false;
         showValidationError(form.querySelector("#勤務時間の変更-wrapper"), "変更有無の回答をしてください");
-      } if(data["勤務時間の変更"] === "変更あり" && !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]){isValid = false;
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務開始時間_hour"] || !data["勤務開始時間_hour"])){isValid = false;
         showValidationError(form.querySelector("#勤務開始時間-wrapper"), "有効な時間にしてください");
-      } if(data["勤務時間の変更"] === "変更あり" && !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]){isValid = false;
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務終了時間_hour"] || !data["勤務終了時間_hour"])){isValid = false;
         showValidationError(form.querySelector("#勤務終了時間-wrapper"), "有効な時間にしてください");
       } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {isValid = false;
         showValidationError(form.querySelector("#休憩時間-wrapper"), "有効な時間にしてください");
