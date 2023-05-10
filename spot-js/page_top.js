@@ -26,7 +26,7 @@ rows.forEach(row => {
     const remarks = row.querySelector('td:nth-child(6)').innerText;
 
     const rowDate = new Date(date+"T00:00:00+09:00");
-    
+
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
     console.log(rowDate)
@@ -88,7 +88,7 @@ rows.forEach(row => {
     // 挿入箇所=formContainerの定義
     const formContainer = document.createElement("div");
     formContainer.classList.add("form-container")
-
+    formContainer.classList.add(formId+"-wrapper")
 
     // フォームタイトル、参考情報、ガイドの作成
     formContainer.innerHTML = `
