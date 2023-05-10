@@ -48,7 +48,7 @@ rows.forEach(row => {
 
 
     console.log(newData["ページタイプ"])
-    console.log(nowStatus == '退勤報告済み')
+    console.log(nowStatus)
 
 
 
