@@ -149,7 +149,7 @@ function showModal(event) {
       form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", (event) => handleSubmit(event, remarks));
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks, row));
 
 
   // #endregion フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
@@ -225,7 +225,7 @@ function showModal(event) {
 
 
 
-const handleSubmit = async (event,remarks) => {
+const handleSubmit = async (event, remarks, row) => {
   // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = event.target;
@@ -365,7 +365,24 @@ const handleSubmit = async (event,remarks) => {
   responseMessage.classList.add("response-message");
   responseMessage.textContent = "処理中です。このままお待ちください。";
 
-  
+
+  if (formId=="submitForm"){
+    row.cells[1].innerText = data["勤務可否"];
+    row.cells[2].innerText = data["勤務開始時間"] + " 〜 " + data["勤務終了時間"];
+    row.cells[3].innerHTML = data["補足・備考"];
+    row.cells[4].innerHTML = "提出済";
+    row.style["background-color"] = "#FFF2CC";
+    modal.style.display = "none";
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify(data),
+      mode: 'cors', //CORS対応
+    });
+  } else {
+
   // フォームの無効化とボタンの色を変更
   form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
   submitButton.style.backgroundColor = "#aaaaaa";
@@ -403,5 +420,7 @@ const handleSubmit = async (event,remarks) => {
     // レスポンスメッセージをボタンの下に表示
     submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
   }
+  }
+
 };
 };
