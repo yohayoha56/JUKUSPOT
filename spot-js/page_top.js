@@ -245,7 +245,7 @@ function showValidationError(element, message) {
     case 'checkOutForm': hosokuguide = " [↓講師：退勤報告時] "; break;
   }  
   if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
-  if(data["補足・備考"]!="" || hosokutaime!=""){
+  if(data["補足・備考"]!="" || hosokutime!=""){
     data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${hosokutime}${data["補足・備考"]}`;
   } else {data["補足・備考"] = "-"}
 
