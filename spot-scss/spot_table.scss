@@ -55,7 +55,7 @@
     & tbody td:nth-child(2) { width: calc(100% - 120px); }
     & tbody td:nth-child(2)::before { content: "ステータス："; padding-right: 5px; }
     & tbody td:nth-child(3) { width: 100%; text-align: left; font-weight: bold; }
-    & tbody td:nth-child(3)::before { content: "教室："; padding-right: 5px; }
+    // & tbody td:nth-child(3)::before { content: "教室："; padding-right: 5px; }
     & tbody td:nth-child(4) { width: 200px; text-align: left; font-weight: bold; }
     & tbody td:nth-child(4)::before { content: "勤務可能時間："; padding-right: 5px; }
     & tbody td:nth-child(5) { width: calc(100% - 200px); text-align: left; font-weight: bold; }
@@ -117,6 +117,53 @@
   }
 }
 /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-  
+
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+#shift-table-top {
+  & th:nth-child(1) { width: 90px; }
+  & th:nth-child(2) { width: 105px; }
+  & th:nth-child(3) { width: 105px; }
+  & th:nth-child(4) { width: 105px; }
+  & th:nth-child(5) { width: 75px; }
+  & th:nth-child(6) { width: calc(100% - 500px); }
+  & th:nth-child(7) { width: 125px; }
+  & th:nth-child(6), & td:nth-child(6) { text-align: left; }
+
+  @media (max-width: 680px) {
+    & tbody td:nth-child(1) { width: 120px; background-color: #19837C; color: white; }
+    & tbody td:nth-child(2) { width: calc(100% - 120px); }
+    & tbody td:nth-child(2)::before { content: "講師回答："; padding-right: 5px; }
+    & tbody td:nth-child(3) { width: 100%; text-align: left; font-weight: bold; }
+    // & tbody td:nth-child(3)::before { content: "教室："; padding-right: 5px; }
+    & tbody td:nth-child(4) { width: 200px; text-align: left; font-weight: bold; }
+    & tbody td:nth-child(4)::before { content: "勤務時間："; padding-right: 5px; }
+    & tbody td:nth-child(5) { width: calc(100% - 200px); text-align: left; font-weight: bold;}
+    & tbody td:nth-child(5)::before { content: "休憩："; padding-right: 5px; }
+    & tbody td:nth-child(6) { width: 100%; }
+    & tbody td:nth-child(6)::before { content: "備考・補足："; display: block; padding-right: 5px;}
+    & tbody td:nth-child(7) { width: 100%; }
+  }
+}
+/* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 
   
+.profile-tables table {
+  border-collapse: collapse;
+  width: auto;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #333;
+  overflow-x: auto;
+  }
+  .profile-tables tr:first-child {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  .profile-tables  th, .profile-tables td {
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  .profile-tables tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }

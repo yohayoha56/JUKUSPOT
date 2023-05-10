@@ -114,7 +114,7 @@ function showModal(event) {
     ]},
     { name: "講師回答", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "選択してください" },
-      { value: "勤務可能", text: "勤務可能" },
+      { value: "勤務確定", text: "勤務確定" },
       { value: "勤務不可", text: "勤務不可" },
       { value: "調整中", text: "調整中" },
     ]},
