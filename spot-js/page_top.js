@@ -4,8 +4,8 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
-const rows = Array.from(document.querySelectorAll('#work-table tr:not(:first-child)'));
+const table = document.getElementById("work-table")
+const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
 
 // 出勤フォームの表示用に今日の日付を定義
@@ -44,7 +44,7 @@ rows.forEach(row => {
     const rowDate = new Date(date);
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
-    if (newData["ページタイプ"] === "school" && nowStatus === '退勤報告済み') {
+    if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
         formId = "approvalForm"
         formTitle = `${date}｜${teacherName}`
@@ -52,7 +52,7 @@ rows.forEach(row => {
         formGuide = "↓勤務時間の変更がある場合は記入してください"
         formButton = "勤務を承認する"
         newStatus = "教室承認済み"
-    } else if (newData["ページタイプ"] === "teacher") {
+    } else if (newData["ページタイプ"] == "teacher") {
     if (nowStatus === '勤務予定' && rowDate <= todayInTokyo) {
         //出勤報告フォーム概要の定義
         formId = "checkInForm"
