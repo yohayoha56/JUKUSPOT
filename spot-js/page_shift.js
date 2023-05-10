@@ -50,28 +50,25 @@ function showModal(event) {
 // #region データとフォーム要素の定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   const button = event.target;
   const row = button.closest("tr");
-  // ボタンが押された行のテーブルのデータを取得する
+
+
+  // ボタンが押された行のテーブルのデータを取得する①
   const date = row.cells[0].innerText;
-  const availability = row.cells[1].innerText;
-  const availableTime = row.cells[2].innerText;
-  const remarks = row.cells[3].innerHTML;
-  const requestStatus = row.cells[4].innerText;
+  const remarks = formId==("submitForm"||"requestForm")?
+    row.cells[3].innerHTML:row.cells[4].innerHTML;
+
+  // プロパティ設定
+  const schoolId  = newData["ページタイプ"] == "school"? 
+      newData["教室ID"] : page_call_property["教室ID"];
+  const schoolName  = newData["ページタイプ"] == "school"? 
+      newData["教室名"] : page_call_property["教室名"];
+  const teacherId   = newData["ページタイプ"] == "school"? 
+      page_call_property["会員ID"] : newData["会員ID"];
+  const teacherName  = newData["ページタイプ"] == "school"? 
+      page_call_property["講師名"]: newData["姓"]+ newData["名"];
+
+
   let formId, formTitle, formInfo, formGuide, formButton
-  let schoolId,schoolName,teacherId,teacherName
-
-  // 講師ページか教室ページによって、値を整備する
-  if(newData["ページタイプ"] === "school"){//ーーーーーーーーーーーー
-    schoolId = newData["教室ID"]
-    schoolName = newData["教室名"]
-    teacherId = page_call_property["会員ID"]
-    teacherName = page_call_property["講師名"]
-  }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
-    schoolId = page_call_property["教室ID"]
-    schoolName = page_call_property["教室名"]
-    teacherId = newData["会員ID"]
-    teacherName = newData["姓"]+ newData["名"]
-  }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
   // フォームタイトルなどの定義
     if (button.classList.contains("submit")) {//ーーーーーーーーーー
     formId = "submitForm"
@@ -98,6 +95,7 @@ function showModal(event) {
     formGuide = "↓ 回答内容をご記入ください"
     formButton = "回答を提出する"
   }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
 
   // フォーム要素の定義
   const formElements = [
@@ -136,9 +134,15 @@ function showModal(event) {
       <h3>${formTitle}</h3>
       <h4>${formInfo}</h4>
       <ul>
-        <li>スケジュール｜${availability}</li>
-        <li>勤務可能時間｜${availableTime}</li>
-        <li>補足・備考　｜${remarks}</li>
+      ${formId==("submitForm"||"requestForm")?
+        `<li>スケジュール｜${row.cells[1].innerText}</li>
+        <li>勤務可能時間｜${row.cells[2].innerText}</li>
+        <li>補足・備考　｜${row.cells[3].innerHTML}</li>`
+        :
+        `<li>講師の回答　｜${row.cells[1].innerText}</li>
+        <li>勤務依頼時間｜${row.cells[2].innerText}（休：${row.cells[3].innerText}）</li>
+        <li>補足・備考　｜${row.cells[4].innerHTML}</li>`
+        }
       </ul>
     `;
   
