@@ -237,7 +237,7 @@ function showValidationError(element, message) {
 
     hosokutime= `
     <span style="color:#800000;">
-      ${formId==approvalForm?"勤務時間修正有：":"勤務時間変更申請有："}
+      ${formId=="approvalForm"?"勤務時間修正有：":"勤務時間変更申請有："}
       ${row.cells[3].innerText}（休：${row.cells[4].innerText}）→${data["勤務開始時間"]}〜${data["勤務終了時間"]}（休：${data["休憩時間"]}）
     </span><br>
     `
