@@ -232,13 +232,18 @@ function showValidationError(element, message) {
     hour: "2-digit", minute: "2-digit", second: "2-digit",
   });
 
+
+
   let hosokuguide
   switch (formId) {
     case 'approvalForm': hosokuguide = " [教室：勤務承認時] "; break;
     case 'checkInForm': hosokuguide = " [講師：出勤報告時] "; break;
     case 'checkOutForm': hosokuguide = " [講師：退勤報告時] "; break;
   }  
-  data["補足・備考"] = remarks+data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
+  if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
+  if(data["補足・備考"]!=""){
+    data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
+  } else {data["補足・備考"] = "-"}
 
 
 
@@ -256,7 +261,7 @@ function showValidationError(element, message) {
     body: JSON.stringify(data),
     mode: 'cors', //CORS対応
   });
-  
+
 
   // const submitButton = document.querySelector(".submit-button");
   // const responseMessage = document.createElement("div");
