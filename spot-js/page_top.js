@@ -220,12 +220,7 @@ function showValidationError(element, message) {
 
 
 
-  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
-    + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
-  data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
-    + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
-  
+  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
   data["フォームタイプ"] = formId
   data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
     year: "numeric", month: "2-digit", day: "2-digit",
@@ -233,6 +228,20 @@ function showValidationError(element, message) {
   });
 
 
+  let hosokutime = "";
+  if(data["勤務開始時間_hour"]){
+    data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
+      + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
+    data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
+      + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
+
+    hosokutime= `
+    <span style="color:#800000;">
+      ${formId==approvalForm?"勤務時間修正有：":"勤務時間変更申請有："}
+      ${row.cells[3].innerText}（休：${row.cells[4].innerText}）→${data["勤務開始時間"]}〜${data["勤務終了時間"]}（休：${data["休憩時間"]}）
+    </span><br>
+    `
+  }
 
   let hosokuguide
   switch (formId) {
@@ -242,7 +251,7 @@ function showValidationError(element, message) {
   }  
   if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
   if(data["補足・備考"]!=""){
-    data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
+    data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${hosokutime}${data["補足・備考"]}`;
   } else {data["補足・備考"] = "-"}
 
 
