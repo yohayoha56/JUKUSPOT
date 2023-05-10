@@ -236,9 +236,9 @@ function showValidationError(element, message) {
 
   let hosokuguide
   switch (formId) {
-    case 'approvalForm': hosokuguide = " [教室：勤務承認時] "; break;
-    case 'checkInForm': hosokuguide = " [講師：出勤報告時] "; break;
-    case 'checkOutForm': hosokuguide = " [講師：退勤報告時] "; break;
+    case 'approvalForm': hosokuguide = " [↓教室：勤務承認時] "; break;
+    case 'checkInForm': hosokuguide = " [↓講師：出勤報告時] "; break;
+    case 'checkOutForm': hosokuguide = " [↓講師：退勤報告時] "; break;
   }  
   if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
   if(data["補足・備考"]!=""){

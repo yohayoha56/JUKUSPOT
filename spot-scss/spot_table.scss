@@ -52,14 +52,14 @@
 
   @media (max-width: 680px) {
     & tbody td:nth-child(1) { width: 120px; background-color: #19837C; color: white; }
-    & tbody td:nth-child(2) { width: calc(100% - 120px); }
-    & tbody td:nth-child(2)::before { content: "ステータス："; padding-right: 5px; }
-    & tbody td:nth-child(3) { width: 100%; text-align: left; font-weight: bold; }
+    & tbody td:nth-child(2) { width: calc(100% - 120px);font-weight: bold; }
+    & tbody td:nth-child(2)::before { content: "ｽﾃｰﾀｽ："; padding-right: 5px; }
+    & tbody td:nth-child(3) { width: 100%; text-align: left; }
     // & tbody td:nth-child(3)::before { content: "教室："; padding-right: 5px; }
     & tbody td:nth-child(4) { width: 200px; text-align: left; font-weight: bold; }
-    & tbody td:nth-child(4)::before { content: "勤務可能時間："; padding-right: 5px; }
+    & tbody td:nth-child(4)::before { content: "勤務時間："; padding-right: 5px; }
     & tbody td:nth-child(5) { width: calc(100% - 200px); text-align: left; font-weight: bold; }
-    & tbody td:nth-child(4)::before { content: "休憩時間："; padding-right: 5px; }
+    & tbody td:nth-child(5)::before { content: "休憩時間："; padding-right: 5px; }
     & tbody td:nth-child(6)::before { content: "備考・補足："; display: block; padding-right: 5px; }
     & tbody td:nth-child(6) { width: 100%; }
   }
