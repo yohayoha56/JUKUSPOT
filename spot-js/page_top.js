@@ -23,7 +23,7 @@ rows.forEach(row => {
         newData["教室名"] : row.querySelector('td:nth-child(3)').innerText;;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
-    const remarks = row.querySelector('td:nth-child(6)').innerText;
+    const remarks = row.querySelector('td:nth-child(6)').innerHTML;
 
     const rowDate = new Date(date+"T00:00:00+09:00");
 
