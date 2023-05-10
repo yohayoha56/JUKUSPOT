@@ -1,530 +1,227 @@
-***コードの概要
-JSのエラーと、JS、GASから渡されるデータです
-***要望
-エラーを解決してください
-***コード1
-money.html:356  Uncaught ReferenceError: element is not defined
-    at money.html:356:1
-(匿名) @ money.html:356
-money.html:468  Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
-    at money.html:468:34
-***コード2
-<script>
+form提出後に、元のテーブルのデータを書き換えたい。
+フォーム作成関数、handlesubmit関数に、rowデータを引き継いで、提出時に、tdを修正することはできますか？
+
+function shift_page() {
+
+// 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+// テーブルの行の色をステータスに応じて変更
+// #region 
+const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
+tableRows.forEach(row => {
+  const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
+  if(newData["ページタイプ"] === "school"){
+    switch(rowColorFlag){
+      case "勤務可能": row.style["background-color"] = "#FFF2CC"; break;
+      case "勤務不可": row.style["background-color"] = "#dddddd"; break;
+    }
+  }else if(newData["ページタイプ"] === "teacher"){
+    switch(rowColorFlag){
+      case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
+      case "勤務不可": row.style["background-color"] = "#dddddd"; break;
+    }
+  }
+});
+// #endregion 
+
+// モーダル（フォームの外枠）の挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// #region 
+const modalTemplate=`
+<div id="myModal" class="modal">
+    <div class="modal-content form-container">
+    </div>
+</div>`;
+document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
+const modal = document.getElementById("myModal");
+
+// 全てのrequestボタンにイベントリスナーを追加  
+const btns = document.querySelectorAll("table button");
+btns.forEach((button) => {
+button.addEventListener("click", showModal);
+});
+
+// フォーム外がクリックされた時にフォームを非表示にする
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal();
+  }
+}
+// #endregion 
+
+
+function showModal(event) {
+// #region データとフォーム要素の定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  const button = event.target;
+  const row = button.closest("tr");
+  // ボタンが押された行のテーブルのデータを取得する
+  const date = row.cells[0].innerText;
+  const availability = row.cells[1].innerText;
+  const availableTime = row.cells[2].innerText;
+  const remarks = row.cells[3].innerHTML;
+  const requestStatus = row.cells[4].innerText;
+  let formId, formTitle, formInfo, formGuide, formButton
+  let schoolId,schoolName,teacherId,teacherName
+
+  // 講師ページか教室ページによって、値を整備する
+  if(newData["ページタイプ"] === "school"){//ーーーーーーーーーーーー
+    schoolId = newData["教室ID"]
+    schoolName = newData["教室名"]
+    teacherId = page_call_property["会員ID"]
+    teacherName = page_call_property["講師名"]
+  }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
+    schoolId = page_call_property["教室ID"]
+    schoolName = page_call_property["教室名"]
+    teacherId = newData["会員ID"]
+    teacherName = newData["姓"]+ newData["名"]
+  }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+  // フォームタイトルなどの定義
+    if (button.classList.contains("submit")) {//ーーーーーーーーーー
+    formId = "submitForm"
+    formTitle = `${date}｜スケジュール提出`
+    formInfo = "提出中のスケジュール"
+    formGuide = "↓ ｽｹｼﾞｭｰﾙをご記入ください"
+    formButton = "ｽｹｼﾞｭｰﾙを提出する"
+  }
 
   // フォーム要素の定義
   const formElements = [
-    { name: "支払い方法", type: "select", value: "", width: "100%",breakAfter: true, options: []},
-    { name: "カテゴリ", type: "select", value: "",  width: "100%", options: []},
-    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100%)",},
-    { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
-    { name: "日付", type: "date", value:  new Date().toISOString().split("T")[0], inline: true, width: "150px" },
-    { name: "出費", type: "number", value: "", inline: true, width: "100px" },
-    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "100px", onClick: addTagInput },
-    { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
-    { name: "計上項目", type: "select", value: "", width: "100%", options: [
-      ]},
-    { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
-    { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
+    { name: "勤務日", type: "hidden", value: date },
+    { name: "会員ID", type: "hidden", value: teacherId },
+    { name: "講師名", type: "hidden", value: teacherName },
+    { name: "教室ID", type: "hidden", value: schoolId },
+    { name: "教室名", type: "hidden", value: schoolName },
+    { name: "勤務可否", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
+      { value: "", text: "選択してください" },
+      { value: "勤務可能", text: "勤務可能" },
+      { value: "勤務不可", text: "勤務不可" },
+      { value: "調整中", text: "調整中" },
+    ]},
+    { name: "講師回答", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
+      { value: "", text: "選択してください" },
+      { value: "勤務確定", text: "勤務確定" },
+      { value: "勤務不可", text: "勤務不可" },
+      { value: "調整中", text: "調整中" },
+    ]},
+    { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
+    { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px",minMinute: 0, maxMinute: 120, stepMinute: 10},
+    { name: "補足・備考", type: "textarea", value: "",width: "100%",},
+    { name: "submitButton", type: "submit", value: formButton },
   ];
-
-// セレクトデータの取得関数
-let tagData = {};
-document.addEventListener("DOMContentLoaded", fetchFormData);
-async function fetchFormData() {
-  const response = await fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain',
-    },
-    mode: 'cors',
-  });
-
-  if (!response.ok) {
-    console.error(`Error: ${response.status} ${response.statusText}`);
-    return;
-  }
-
-  const categories = await response.json();
-  tagData = categories;
-  updateSelectOptions("カテゴリ", tagData.categories.map(c => c.category));
-  updateSelectOptions("支払い方法", tagData.paymentMethods.map(p => p.method));
-  updateSelectOptions("計上項目", tagData.postingItems.map(p => p.item));
-
-  const formContainer = document.getElementById("form-container");
-  const existingForm = document.getElementById("myForm");
-  if (existingForm) {
-    formContainer.removeChild(existingForm);
-  }
-
-  createForm();
-  console.log(tagData);
-}
-
-
-
-
-// セレクト要素のオプションを更新
-function updateSelectOptions(name, optionsData) {
-  const selectElement = formElements.find((element) => element.name === name);
-  // // 最初に "選択してください" の項目を追加
-  // selectElement.options = [{ value: "", text: "選択してください" }];
+// #endregion データとフォーム要素の定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   
-  selectElement.options = []; // 追加
-  // その他のオプションを追加
-  optionsData.forEach(option => {
-    selectElement.options.push({ value: option, text: option });
-  });
+  // #region フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    // 挿入箇所=formContainerの定義
+    const formContainer = document.querySelector(".form-container");
 
-  // 最後に "その他" の項目を追加
-  selectElement.options.push({ value: "その他", text: "その他" });
-}
-
-
-// メイン関数
-function createForm() {
-    const formConfig = {
-        formId: "myForm", formTitle: "経費入力フォーム", buttonText: "保存する",
-    };
-
-    // タイトルなど共通処理
-    const formContainer = document.getElementById("form-container");
+    // 閉じるボタン、フォームタイトル、参考情報、ガイドの作成
+    formContainer.innerHTML = `
+      <span class="close closeButton">&times;</span>
+      <h3>${formTitle}</h3>
+      <h4>${formInfo}</h4>
+      <ul>
+        <li>スケジュール｜${availability}</li>
+        <li>勤務可能時間｜${availableTime}</li>
+        <li>補足・備考　｜${remarks}</li>
+      </ul>
+    `;
+  
+    // フォーム要素を挿入
     const form = document.createElement("form");
-    form.setAttribute("id", formConfig.formId);
-    form.appendChild(createFormTitle(formConfig.formTitle));
-
-    // フォームコンテンツの作成関数
-    formElements.forEach(element => {
-      if (element.type === "select") {
-        form.appendChild(createButtonOptions(element));
-      } else {
-        form.appendChild(createFormField(element));
-      }
+    form.setAttribute("id", formId);
+    formElements.forEach((element) => {
+      form.appendChild(makeFormElement(element));
     });
-
-    // 送信ボタンの作成
-    form.appendChild(createSubmitButton(formConfig.buttonText));
-    formContainer.appendChild(form);
-    form.addEventListener('submit', handleSubmit);
+    formContainer.appendChild(form)
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks));
 
 
-    // 初期設定＋経費ボタンクリック時の処理
-    toggleExpenseRelatedFields(false);
-    function toggleExpenseRelatedFields(isChecked) {
-      const wrappers = document.querySelectorAll("#計上項目-wrapper, #計上額-wrapper, #経費メモ-wrapper");
-      wrappers.forEach(wrapper => {
-        wrapper.style.display = isChecked ? "block" : "none";
-      });
+  // #endregion フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
 
-      if (isChecked) {
-        document.getElementById("経費メモ").value = document.getElementById("メモ").value;
-        document.getElementById("計上額").value = document.getElementById("出費").value;
-
-      } else {
-      // ボタン選択を解除
-      const selectedButtons = document.querySelectorAll("#計上項目-wrapper .selected");
-      selectedButtons.forEach(selectedButton => {
-        selectedButton.classList.remove("selected");
-      });
-      document.getElementById("経費メモ").value = "";
-      document.getElementById("計上額").value = "";
-
-      // その他の入力要素をクリア
-      const otherInputs = document.querySelectorAll("input[id^='other:']");
-      otherInputs.forEach(otherInput => {
-        otherInput.value = "";
-      });
-    }
-    }
+  // #region フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
+      // モーダルを表示＆クローズボタンの設定
+      modal.style.display = "block";
+      const closeButton = document.getElementsByClassName("close")[0];
+      closeButton.onclick = () => {
+        modal.style.display = "none";
+      };
+
+ 
+// #endregion フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }
 
-function updateTagOptions(selectedCategory) {
-  const tags = tagData.categories[selectedCategory] || [];
 
-  // タグの選択肢を更新
-  const tagContainer = document.getElementById("タグ-container");
-  tagContainer.innerHTML = ""; // 既存のタグ選択肢をクリア
 
-  tags.forEach(tag => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = tag;
-    button.classList.add("tag-button");
+const handleSubmit = async (event,remarks) => {
+  // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  event.preventDefault(); // デフォルトの送信をキャンセル
+  const form = event.target;
+  const formId =form.id
+  const formData = new FormData(form);
+  const data = {};
+  // FormDataオブジェクトから連想配列に変換
+  for (const [key, value] of formData.entries()) {
+      data[key] = value;
+  }
 
-    // タグが選択されたときに選択状態を切り替えるイベントリスナーを追加
-    button.addEventListener("click", () => {
-      button.classList.toggle("selected");
-    });
-
-    tagContainer.appendChild(button);
+  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
+    + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
+  data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
+    + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
+  
+  data["フォームタイプ"] = formId
+  data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
   });
-}
 
-// タグ入力欄を追加する関数
-function addTagInput() {
-  const tagInputContainer = document.getElementById("タグ-container");
-  const input = document.createElement("input");
-  input.setAttribute("type", "text");
-  input.classList.add("tag-input");
-  tagInputContainer.appendChild(input);
-}
 
-  // タイトル、ボタンの作成関数
-  function createFormTitle(title) {
-      const titleElement = document.createElement("h2");
-      titleElement.textContent = title;
-      return titleElement;
-  }
-  function createSubmitButton(text) {
-      // ボタンの作成
-      const submitButton = document.createElement("input");
-      submitButton.setAttribute("type", "submit");
-      submitButton.setAttribute("value", text);
-      submitButton.classList.add("submit-button");
-      // ボタンの梱包
-      const formBox = document.createElement("div");
-      formBox.classList.add("form-box");
-      formBox.classList.add("inline-box");
-      formBox.style.width="180px"
-      formBox.appendChild(submitButton);
+  const submitButton = document.querySelector(".submit-button");
+  const responseMessage = document.createElement("div");
+  responseMessage.classList.add("response-message");
+  responseMessage.textContent = "処理中です。このままお待ちください。";
 
-      return formBox;
-  }
-
-  function createButtonOptions(element) {
-    // ラベルの作成
-    const label = document.createElement("label");
-    label.setAttribute("for", element.name);
-    label.classList.add("form-label");
-    label.textContent = element.name + ":";
-
-    // ボタンのグループ作成
-    const buttonGroup = document.createElement("div");
-    buttonGroup.classList.add("button-group");
-
-    element.options.forEach(option => {
-      const button = document.createElement("button");
-      button.textContent = option.text;
-      button.setAttribute("type", "button");
-      button.classList.add("option-button");
-      
-
-      // クリック時の動作を定義
-      button.addEventListener("click", () => {
-        const selectedButtons = buttonGroup.querySelectorAll(".selected");
-        selectedButtons.forEach(selectedButton => {
-          selectedButton.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-
-        // カテゴリのボタンがクリックされたときにタグの表示を更新
-        if (element.name === "カテゴリ") {
-          updateTagOptions(button.textContent);
-        }
-
-        // "その他" のボタンがクリックされたときにテキストフィールドを表示
-        let otherInput = document.getElementById(`other:${element.name}`);
-        if (button.textContent === "その他") {
-          if (!otherInput) {
-            const otherInputElement = document.createElement("input");
-            otherInputElement.setAttribute("type", "text");
-            otherInputElement.setAttribute("id", `other:${element.name}`);
-            otherInputElement.classList.add("other-input");
-            buttonGroup.appendChild(otherInputElement);
-            otherInput = otherInputElement;
-          }
-          otherInput.style.display = "inline-block";
-        } else if (otherInput) {
-          otherInput.style.display = "none";
-        }
-      });
-
-      buttonGroup.appendChild(button);
+  
+  // フォームの無効化とボタンの色を変更
+  form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
+  submitButton.style.backgroundColor = "#aaaaaa";
+  
+  try {
+    // データの送信
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify(data),
+      mode: 'cors', //CORS対応
     });
-
-    // フィールドを梱包
-    const formBox = document.createElement("div");
-    formBox.setAttribute("id", `${element.name}-wrapper`);
-    formBox.classList.add("form-box");
-    formBox.appendChild(label);
-    formBox.appendChild(buttonGroup);
-
-    return formBox;
+  
+    const text = await response.text();
+    if (text.includes("Success")) {
+      responseMessage.textContent = "提出が完了しました。最新の情報に更新されるので、このままお待ちください。";
+      responseMessage.style.color = "";
+      form.reset(); // フォームの入力値をリセット
+      call_fetchData(page_call_property); // レスポンスを受け取り次第、call_fetchData を起動
+    } else {
+      responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
+      responseMessage.style.color = "red";
+    }
+  } catch (error) {
+    responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
+    responseMessage.style.color = "red";
+    console.error(`エラーメッセージ: ${error}`);
+  } finally {
+    // フォームとボタンを再度有効化し、ボタンの色を元に戻す
+    form.querySelectorAll("input, button").forEach((element) => element.removeAttribute("disabled"));
+    submitButton.style.backgroundColor = ""; // ボタンの背景色を元に戻す
+  
+    // レスポンスメッセージをボタンの下に表示
+    submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
   }
-
-  function createFormField(element) {
-    // ラベルの作成
-    const label = document.createElement("label");
-    label.setAttribute("for", element.name);
-    label.classList.add("form-label");
-    label.textContent = element.name + ":";
-
-    // 入力フィールドの作成
-    let input;
-    switch (element.type) {
-      case "textarea":
-        input = document.createElement("textarea");
-        break;
-      case "button":
-        input = document.createElement("button");
-        input.setAttribute("type", "button");
-        input.addEventListener("click", element.onClick);
-        break;
-      case "checkbox":
-        input = document.createElement("input");
-        input.setAttribute("type", "checkbox");
-        input.addEventListener("change", (event) => {
-          toggleExpenseRelatedFields(event.target.checked);
-        });
-        break;
-      default:
-        input = document.createElement("input");
-        input.setAttribute("type", element.type);
-        break;
-    }
-    input.setAttribute("id", element.name);
-    input.setAttribute("name", element.name);
-    input.setAttribute("value", element.value);
-    input.classList.add("form-input");
-
-    // フィールドを梱包
-    const formBox = document.createElement("div");
-    formBox.setAttribute("id", `${element.name}-wrapper`);
-    formBox.classList.add("form-box");
-    if (element.inline) {
-      formBox.classList.add("inline-box");
-      formBox.style.width = element.width;
-    }
-    formBox.appendChild(label);
-    formBox.appendChild(input);
-
-    return formBox;
-  }
-
-  function updatePaymentMethodOptions(selectedCategory) {
-  const paymentMethods = tagData.categories[selectedCategory].paymentMethods || [];
-
-  // 支払い方法の選択肢を更新
-  updateSelectOptions("支払い方法", paymentMethods.map(p => p.method));
-}
-
-// カテゴリのボタンがクリックされたときにタグと支払い方法の表示を更新
-if (element.name === "カテゴリ") {
-  updateTagOptions(button.textContent);
-  updatePaymentMethodOptions(button.textContent); // 追加
-}
-***コード3
-
-{
-  "categories": [
-    {
-      "category": "食費",
-      "count": 48,
-      "tags": [
-        {
-          "tag": "スーパー",
-          "count": 19
-        },
-        {
-          "tag": "コンビニ",
-          "count": 18
-        },
-        {
-          "tag": "カフェ",
-          "count": 6
-        },
-        {
-          "tag": "ﾄﾚｰﾆﾝｸﾞ飯",
-          "count": 4
-        },
-        {
-          "tag": "ファストフード",
-          "count": 4
-        },
-        {
-          "tag": "交友外食（食事のみ）",
-          "count": 2
-        },
-        {
-          "tag": "有紗",
-          "count": 2
-        }
-      ],
-      "paymentMethods": [
-        {
-          "method": "現金（ｷｬｯｼｭ）",
-          "count": 40
-        },
-        {
-          "method": "DVC(エクセ)",
-          "count": 3
-        },
-        {
-          "method": "Suica",
-          "count": 2
-        },
-        {
-          "method": "PayPay",
-          "count": 2
-        },
-        {
-          "method": "ゆうちょ振込",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "category": "振替",
-      "count": 7,
-      "tags": [
-        {
-          "tag": "現金（ｷｬｯｼｭ）",
-          "count": 4
-        },
-        {
-          "tag": "DVC(エクセ)",
-          "count": 2
-        },
-        {
-          "tag": "LINE Pay",
-          "count": 1
-        }
-      ],
-      "paymentMethods": [
-        {
-          "method": "ゆうちょ振込",
-          "count": 5
-        },
-        {
-          "method": "現金（ｷｬｯｼｭ）",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "category": "生活費",
-      "count": 4,
-      "tags": [
-        {
-          "tag": "洗剤など",
-          "count": 2
-        },
-        {
-          "tag": "筆記用具など",
-          "count": 1
-        },
-        {
-          "tag": "ゴミ処理",
-          "count": 1
-        }
-      ],
-      "paymentMethods": [
-        {
-          "method": "現金（ｷｬｯｼｭ）",
-          "count": 4
-        }
-      ]
-    },
-    {
-      "category": "住居費",
-      "count": 3,
-      "tags": [
-        {
-          "tag": "水道費",
-          "count": 2
-        },
-        {
-          "tag": "光熱費",
-          "count": 2
-        },
-        {
-          "tag": "家賃",
-          "count": 1
-        }
-      ],
-      "paymentMethods": [
-        {
-          "method": "LINE PAY",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "category": "娯楽費",
-      "count": 2,
-      "tags": [
-        {
-          "tag": "交友費",
-          "count": 1
-        },
-        {
-          "tag": "カラオケ",
-          "count": 1
-        }
-      ],
-      "paymentMethods": [
-        {
-          "method": "現金（ｷｬｯｼｭ）",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "category": "交通費",
-      "count": 2,
-      "tags": [
-        {
-          "tag": "電車",
-          "count": 2
-        }
-      ],
-      "paymentMethods": [
-        {
-          "method": "Suica",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "category": "通信費",
-      "count": 1,
-      "tags": [
-        {
-          "tag": "スマホ",
-          "count": 1
-        },
-        {
-          "tag": "光通信",
-          "count": 1
-        }
-      ],
-      "paymentMethods": []
-    }
-  ],
-  "paymentMethods": [],
-  "postingItems": [
-    {
-      "item": "null",
-      "count": 53
-    },
-    {
-      "item": "会議費",
-      "count": 6
-    },
-    {
-      "item": "住居費",
-      "count": 2
-    },
-    {
-      "item": "交際費",
-      "count": 1
-    },
-    {
-      "item": "交通費",
-      "count": 1
-    }
-  ]
-}
-
+};
+};
