@@ -4,6 +4,7 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
 const rows = Array.from(document.querySelectorAll('#work-table tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
 
@@ -40,7 +41,6 @@ rows.forEach(row => {
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerText;
 
-    const rowDateParts = date.split('-').map(part => parseInt(part, 10)); // ['2023', '05', '10'] -> [2023, 5, 10]
     const rowDate = new Date(date);
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
@@ -53,7 +53,7 @@ rows.forEach(row => {
         formButton = "勤務を承認する"
         newStatus = "教室承認済み"
     } else if (newData["ページタイプ"] === "teacher") {
-    if (nowStatus === '勤務予定' && (rowDateParts[0] < todayInTokyo.getFullYear() || (rowDateParts[0] === todayInTokyo.getFullYear() && (rowDateParts[1] < (todayInTokyo.getMonth() + 1) || (rowDateParts[1] === (todayInTokyo.getMonth() + 1) && rowDateParts[2] <= todayInTokyo.getDate()))))) {
+    if (nowStatus === '勤務予定' && rowDate <= todayInTokyo) {
         //出勤報告フォーム概要の定義
         formId = "checkInForm"
         formTitle = `${date}｜${schoolName}｜出勤報告`
