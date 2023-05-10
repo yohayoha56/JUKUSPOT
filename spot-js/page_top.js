@@ -25,7 +25,7 @@ rows.forEach(row => {
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerText;
 
-    const rowDate = new Date(date+"+09:00");
+    const rowDate = new Date(date+"T+09:00");
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
     console.log(rowDate)
