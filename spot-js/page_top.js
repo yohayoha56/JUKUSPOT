@@ -34,11 +34,11 @@ rows.forEach(row => {
     
     const date = row.querySelector('td:nth-child(1)').innerText;
     if(newData["ページタイプ"] === "school"){
-        teacherName = row.querySelector('td:nth-child(2)').innerText;
+        teacherName = row.querySelector('td:nth-child(3)').innerText;
     }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
-        schoolName = row.querySelector('td:nth-child(2)').innerText;        
+        schoolName = row.querySelector('td:nth-child(3)').innerText;        
     } 
-    const nowStatus = row.querySelector('td:nth-child(3)').innerText;
+    const nowStatus = row.querySelector('td:nth-child(2)').innerText;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerText;
