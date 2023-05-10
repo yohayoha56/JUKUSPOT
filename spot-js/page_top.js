@@ -5,7 +5,9 @@ function profile_page() {};
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById("work-table")
+console.log(table)
 const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
+console.log(rows)
 const formsContainer = document.getElementById('forms-container');
 
 // 出勤フォームの表示用に今日の日付を定義
@@ -43,6 +45,12 @@ rows.forEach(row => {
 
     const rowDate = new Date(date);
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
+
+
+    console.log(newData["ページタイプ"])
+    console.log(nowStatus == '退勤報告済み')
+
+
 
     if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
