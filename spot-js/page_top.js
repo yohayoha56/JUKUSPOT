@@ -5,52 +5,28 @@ function profile_page() {};
 function top_page() {
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById("work-table")
-console.log(table)
 const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
-console.log(rows)
 const formsContainer = document.getElementById('forms-container');
-
 // 出勤フォームの表示用に今日の日付を定義
 const now = new Date();
 const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
-const todayInTokyo = new Date(nowInTokyo);
-todayInTokyo.setHours(0, 0, 0, 0);
-
-// 講師ページか教室ページによって、値を整備する
-let schoolId,schoolName,teacherId,teacherName
-if(newData["ページタイプ"] === "school"){//ーーーーーーーーーーーー
-schoolId = newData["教室ID"]
-schoolName = newData["教室名"]
-teacherName = page_call_property["講師名"]
-teacherId = ""
-}else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
-schoolName = page_call_property["教室名"]
-schoolId = ""
-teacherId = newData["会員ID"]
-teacherName = newData["姓"]+ newData["名"]
-}//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 rows.forEach(row => {
     
     const date = row.querySelector('td:nth-child(1)').innerText;
-    if(newData["ページタイプ"] === "school"){
-        teacherName = row.querySelector('td:nth-child(3)').innerText;
-    }else if(newData["ページタイプ"] === "teacher"){//ーーーーーーーー
-        schoolName = row.querySelector('td:nth-child(3)').innerText;        
-    } 
     const nowStatus = row.querySelector('td:nth-child(2)').innerText;
+    const teacherId = newData["ページタイプ"] == "school"?"":newData["会員ID"];
+    const teacherName = newData["ページタイプ"] == "school"?
+        row.querySelector('td:nth-child(3)').innerText : newData["姓"]+ newData["名"];
+    const schoolId = newData["ページタイプ"] == "school"?newData["教室ID"]:"";
+    const schoolName = newData["ページタイプ"] == "school"? 
+        newData["教室名"] : row.querySelector('td:nth-child(3)').innerText;;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerText;
 
     const rowDate = new Date(date);
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
-
-
-    console.log(newData["ページタイプ"])
-    console.log(nowStatus)
-
-
 
     if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
@@ -61,7 +37,7 @@ rows.forEach(row => {
         formButton = "勤務を承認する"
         newStatus = "教室承認済み"
     } else if (newData["ページタイプ"] == "teacher") {
-    if (nowStatus === '勤務予定' && rowDate <= todayInTokyo) {
+    if (nowStatus === '勤務予定' && rowDate <= nowInTokyo) {
         //出勤報告フォーム概要の定義
         formId = "checkInForm"
         formTitle = `${date}｜${schoolName}｜出勤報告`
