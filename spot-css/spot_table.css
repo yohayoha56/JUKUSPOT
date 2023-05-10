@@ -106,7 +106,7 @@
     text-align: left;
   }
   #work-table tbody td:nth-child(4) {
-    width: 200px;
+    width: 185px;
     text-align: left;
     font-weight: bold;
   }
@@ -115,12 +115,12 @@
     padding-right: 5px;
   }
   #work-table tbody td:nth-child(5) {
-    width: calc(100% - 200px);
+    width: calc(100% - 185px);
     text-align: left;
     font-weight: bold;
   }
   #work-table tbody td:nth-child(5)::before {
-    content: "休憩時間：";
+    content: "休憩：";
     padding-right: 5px;
   }
   #work-table tbody td:nth-child(6)::before {

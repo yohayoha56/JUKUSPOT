@@ -56,10 +56,10 @@
     & tbody td:nth-child(2)::before { content: "ｽﾃｰﾀｽ："; padding-right: 5px; }
     & tbody td:nth-child(3) { width: 100%; text-align: left; }
     // & tbody td:nth-child(3)::before { content: "教室："; padding-right: 5px; }
-    & tbody td:nth-child(4) { width: 200px; text-align: left; font-weight: bold; }
+    & tbody td:nth-child(4) { width: 185px; text-align: left; font-weight: bold; }
     & tbody td:nth-child(4)::before { content: "勤務時間："; padding-right: 5px; }
-    & tbody td:nth-child(5) { width: calc(100% - 200px); text-align: left; font-weight: bold; }
-    & tbody td:nth-child(5)::before { content: "休憩時間："; padding-right: 5px; }
+    & tbody td:nth-child(5) { width: calc(100% - 185px); text-align: left; font-weight: bold; }
+    & tbody td:nth-child(5)::before { content: "休憩："; padding-right: 5px; }
     & tbody td:nth-child(6)::before { content: "備考・補足："; display: block; padding-right: 5px; }
     & tbody td:nth-child(6) { width: 100%; }
   }
