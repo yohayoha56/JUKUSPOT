@@ -53,7 +53,7 @@
   @media (max-width: 680px) {
     & tbody td:nth-child(1) { width: 120px; background-color: #19837C; color: white; }
     & tbody td:nth-child(2) { width: calc(100% - 120px);font-weight: bold; }
-    & tbody td:nth-child(2)::before { content: "ｽﾃｰﾀｽ："; padding-right: 5px; }
+    & tbody td:nth-child(2)::before { content: "ｽﾃｰﾀｽ："; padding-right: 5px;padding-left: 15px; }
     & tbody td:nth-child(3) { width: 100%; text-align: left; }
     // & tbody td:nth-child(3)::before { content: "教室："; padding-right: 5px; }
     & tbody td:nth-child(4) { width: 185px; text-align: left; font-weight: bold; }
@@ -80,7 +80,7 @@
 
   @media (max-width: 680px) {
     & tbody td:nth-child(1) { width: 120px; background-color: #19837C; color: white; }
-    & tbody td:nth-child(2) { width: calc(100% - 120px); }
+    & tbody td:nth-child(2) { width: calc(100% - 120px); text-align: left}
     & tbody td:nth-child(2)::before { content: "勤務可否："; padding-right: 5px; }
     & tbody td:nth-child(3) { width: 100%; text-align: left; font-weight: bold; }
     & tbody td:nth-child(3)::before { content: "勤務可能時間："; padding-right: 5px; }
