@@ -28,6 +28,11 @@ rows.forEach(row => {
     const rowDate = new Date(date);
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
+    console.log(rowDate)
+    console.log(nowInTokyo)
+    console.log(newData["ページタイプ"])
+    console.log(nowStatus)
+
     if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
         formId = "approvalForm"
@@ -37,7 +42,7 @@ rows.forEach(row => {
         formButton = "勤務を承認する"
         newStatus = "教室承認済み"
     } else if (newData["ページタイプ"] == "teacher") {
-    if (nowStatus === '勤務予定' && rowDate <= nowInTokyo) {
+    if (nowStatus == '勤務予定' && rowDate <= nowInTokyo) {
         //出勤報告フォーム概要の定義
         formId = "checkInForm"
         formTitle = `${date}｜${schoolName}｜出勤報告`
