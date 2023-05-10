@@ -7,7 +7,7 @@ function top_page() {
 
 
 const table = document.getElementById('fixed-table');
-const rows = Array.from(table.querySelectorAll('tbody > tr:not(:first-child)'));
+const rows = Array.from(querySelectorAll('#fixed-table tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
 
 // 出勤フォームの表示用に今日の日付を定義
