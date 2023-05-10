@@ -109,7 +109,7 @@ rows.forEach(row => {
         form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", (event) => handleSubmit(event, remarks));
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks,row));
 
     // 挿入箇所=formContainerの定義
     formsContainer.appendChild(formContainer)
@@ -152,7 +152,7 @@ if (!document.querySelector("#forms-container .form-container")) {
 
 
 
-async function handleSubmit(event,remarks) {
+async function handleSubmit(event,remarks,row) {
   // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = event.target;
@@ -241,46 +241,62 @@ function showValidationError(element, message) {
   data["補足・備考"] = remarks+data["タイムスタンプ"].slice(5, -3)+hosokuguide+"\n" + data["補足・備考"];
 
 
-  const submitButton = document.querySelector(".submit-button");
-  const responseMessage = document.createElement("div");
-  responseMessage.classList.add("response-message");
+
+  row.cells[1].innerText = data["勤怠ステータス"];
+  row.cells[5].innerHTML = data["補足・備考"];
+  row.style["background-color"] = "#FFF2CC";
+  let h3Content = form.parentNode.querySelector('h3').textContent;
+  form.parentNode.innerHTML = `<h3>${h3Content}</h3><p>提出が完了しました。</p>`;
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: JSON.stringify(data),
+    mode: 'cors', //CORS対応
+  });
+
+  // const submitButton = document.querySelector(".submit-button");
+  // const responseMessage = document.createElement("div");
+  // responseMessage.classList.add("response-message");
+
+  // // フォームの無効化とボタンの色を変更
+  // form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
+  // submitButton.style.backgroundColor = "#aaaaaa";
   
-  // フォームの無効化とボタンの色を変更
-  form.querySelectorAll("input, button").forEach((element) => element.setAttribute("disabled", "disabled"));
-  submitButton.style.backgroundColor = "#aaaaaa";
+  // try {
+  //   // データの送信
+  //   const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'text/plain',
+  //     },
+  //     body: JSON.stringify(data),
+  //     mode: 'cors', //CORS対応
+  //   });
   
-  try {
-    // データの送信
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain',
-      },
-      body: JSON.stringify(data),
-      mode: 'cors', //CORS対応
-    });
+  //   const text = await response.text();
+  //   if (text.includes("Success")) {
+  //     responseMessage.textContent = "提出が完了しました";
+  //     responseMessage.style.color = "green";
+  //     form.reset(); // フォームの入力値をリセット
+  //     call_fetchData(page_call_property); // レスポンスを受け取り次第、call_fetchData を起動
+  //   } else {
+  //     responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
+  //     responseMessage.style.color = "red";
+  //   }
+  // } catch (error) {
+  //   responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
+  //   responseMessage.style.color = "red";
+  //   console.error(`エラーメッセージ: ${error}`);
+  // } finally {
+  //   // フォームとボタンを再度有効化し、ボタンの色を元に戻す
+  //   form.querySelectorAll("input, button").forEach((element) => element.removeAttribute("disabled"));
+  //   submitButton.style.backgroundColor = ""; // ボタンの背景色を元に戻す
   
-    const text = await response.text();
-    if (text.includes("Success")) {
-      responseMessage.textContent = "提出が完了しました";
-      responseMessage.style.color = "green";
-      form.reset(); // フォームの入力値をリセット
-      call_fetchData(page_call_property); // レスポンスを受け取り次第、call_fetchData を起動
-    } else {
-      responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
-      responseMessage.style.color = "red";
-    }
-  } catch (error) {
-    responseMessage.textContent = "エラーが発生しました。運営に問い合わせてください。";
-    responseMessage.style.color = "red";
-    console.error(`エラーメッセージ: ${error}`);
-  } finally {
-    // フォームとボタンを再度有効化し、ボタンの色を元に戻す
-    form.querySelectorAll("input, button").forEach((element) => element.removeAttribute("disabled"));
-    submitButton.style.backgroundColor = ""; // ボタンの背景色を元に戻す
-  
-    // レスポンスメッセージをボタンの下に表示
-    submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
-  }
+  //   // レスポンスメッセージをボタンの下に表示
+  //   submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
+  // }
 };
 }
