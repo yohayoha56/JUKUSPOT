@@ -118,7 +118,7 @@ function showModal(event) {
     ]},
     { name: "依頼取り消し", type: "select", value: "", inline: true, width: "180px",breakAfter:true, options: [
       { value: "", text: "取り消ししない" },
-      { value: "取り消し", text: "依頼を取り消す" },
+      { value: "依頼を取り消す", text: "依頼を取り消す" },
     ]},
     { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
     { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
@@ -187,13 +187,10 @@ function showModal(event) {
             document.getElementById("勤務可否-wrapper").remove();
             document.getElementById("講師回答-wrapper").remove();
             document.getElementById("依頼取り消し-wrapper").remove();
-            minuteFormAdd()
             break;
           case 'changeForm':
             document.getElementById("勤務可否-wrapper").remove();
             document.getElementById("講師回答-wrapper").remove();
-            minuteFormAdd()
-            changeFormAdd()
             break;
           case 'answerForm':
             document.getElementById("勤務可否-wrapper").remove();
@@ -221,16 +218,6 @@ function showModal(event) {
       });
     }
 
-    // フォームのカスタマイズ機能
-    function changeFormAdd(){
-      const formBoxes = document.querySelectorAll('.form-box');
-      const lastFormBox = formBoxes[formBoxes.length - 1];
-      const cancelButtonBox = lastFormBox.cloneNode(true);
-      const cancelButton = cancelButtonBox.querySelector('input');
-      cancelButton.innerText = '依頼を取消する';
-      cancelButton.classList.add ="cancel-button";
-      buttonBox.parentNode.insertBefore(cancelButtonBox, lastFormBox.nextSibling);
-    }
 // #endregion フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }
 
@@ -295,7 +282,7 @@ const handleSubmit = async (event, remarks, row) => {
       }
       break;
     case 'changeForm': 
-      if (clickedButton.classList.contains('cancel-button')) {
+      if (!data["依頼取り消し"]=="依頼を取り消す") {
         data["取り消し"]= true ;
       } else {
         if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
@@ -392,6 +379,17 @@ const handleSubmit = async (event, remarks, row) => {
       body: JSON.stringify(data),
       mode: 'cors', //CORS対応
     });
+  } else if(formId=="changeForm"){
+    if(data["取り消し"]= true ){
+      row.cells[5].innerText = "取り消し済み";
+      row.style["background-color"] = "rgb(221, 221, 221)";
+    } else{
+      row.cells[2].innerText = data["勤務開始時間"] + " 〜 " + data["勤務終了時間"];
+      row.cells[3].innerText = data["休憩時間"]+"分";
+      row.cells[4].innerHTML = data["補足・備考"];
+      row.cells[5].innerText = "修正済み";
+      row.style["background-color"] = "#FFF2CC";
+    }
   } else {
 
   // フォームの無効化とボタンの色を変更
