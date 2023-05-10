@@ -66,70 +66,70 @@
 }
 
 /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-#work-table th:nth-child(1) {
+#work-table th:nth-child(1), #kintai-table th:nth-child(1) {
   width: 90px;
 }
-#work-table th:nth-child(2) {
+#work-table th:nth-child(2), #kintai-table th:nth-child(2) {
   width: 105px;
 }
-#work-table th:nth-child(3) {
+#work-table th:nth-child(3), #kintai-table th:nth-child(3) {
   width: 105px;
 }
-#work-table th:nth-child(4) {
+#work-table th:nth-child(4), #kintai-table th:nth-child(4) {
   width: 105px;
 }
-#work-table th:nth-child(5) {
+#work-table th:nth-child(5), #kintai-table th:nth-child(5) {
   width: 75px;
 }
-#work-table th:nth-child(6) {
+#work-table th:nth-child(6), #kintai-table th:nth-child(6) {
   width: calc(100% - 480px);
 }
-#work-table th:nth-child(6), #work-table td:nth-child(6) {
+#work-table th:nth-child(6), #work-table td:nth-child(6), #kintai-table th:nth-child(6), #kintai-table td:nth-child(6) {
   text-align: left;
 }
 @media (max-width: 680px) {
-  #work-table tbody td:nth-child(1) {
+  #work-table tbody td:nth-child(1), #kintai-table tbody td:nth-child(1) {
     width: 120px;
     background-color: #19837C;
     color: white;
   }
-  #work-table tbody td:nth-child(2) {
+  #work-table tbody td:nth-child(2), #kintai-table tbody td:nth-child(2) {
     width: calc(100% - 120px);
     font-weight: bold;
   }
-  #work-table tbody td:nth-child(2)::before {
+  #work-table tbody td:nth-child(2)::before, #kintai-table tbody td:nth-child(2)::before {
     content: "ｽﾃｰﾀｽ：";
     padding-right: 5px;
     padding-left: 15px;
   }
-  #work-table tbody td:nth-child(3) {
+  #work-table tbody td:nth-child(3), #kintai-table tbody td:nth-child(3) {
     width: 100%;
     text-align: left;
   }
-  #work-table tbody td:nth-child(4) {
+  #work-table tbody td:nth-child(4), #kintai-table tbody td:nth-child(4) {
     width: 185px;
     text-align: left;
     font-weight: bold;
   }
-  #work-table tbody td:nth-child(4)::before {
+  #work-table tbody td:nth-child(4)::before, #kintai-table tbody td:nth-child(4)::before {
     content: "勤務時間：";
     padding-right: 5px;
   }
-  #work-table tbody td:nth-child(5) {
+  #work-table tbody td:nth-child(5), #kintai-table tbody td:nth-child(5) {
     width: calc(100% - 185px);
     text-align: left;
     font-weight: bold;
   }
-  #work-table tbody td:nth-child(5)::before {
+  #work-table tbody td:nth-child(5)::before, #kintai-table tbody td:nth-child(5)::before {
     content: "休憩：";
     padding-right: 5px;
   }
-  #work-table tbody td:nth-child(6)::before {
+  #work-table tbody td:nth-child(6)::before, #kintai-table tbody td:nth-child(6)::before {
     content: "備考・補足：";
     display: block;
     padding-right: 5px;
   }
-  #work-table tbody td:nth-child(6) {
+  #work-table tbody td:nth-child(6), #kintai-table tbody td:nth-child(6) {
     width: 100%;
   }
 }
@@ -205,10 +205,10 @@
   width: 75px;
 }
 #shift-table th:nth-child(5) {
-  width: calc(100% - 505px);
+  width: calc(100% - 500px);
 }
 #shift-table th:nth-child(6) {
-  width: 130px;
+  width: 125px;
 }
 #shift-table th:nth-child(5), #shift-table td:nth-child(5) {
   text-align: left;
@@ -275,10 +275,10 @@
   width: 75px;
 }
 #shift-table-top th:nth-child(6) {
-  width: calc(100% - 505px);
+  width: calc(100% - 500px);
 }
 #shift-table-top th:nth-child(7) {
-  width: 130px;
+  width: 125px;
 }
 #shift-table-top th:nth-child(6), #shift-table-top td:nth-child(6) {
   text-align: left;
@@ -351,8 +351,5 @@
   padding: 5px 8px;
   border: 1px solid #ccc;
   text-align: center;
-}
-
-.profile-tables tr:nth-child(even) {
-  background-color: #f9f9f9;
+  min-width: 60px;
 }

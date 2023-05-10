@@ -40,7 +40,7 @@
 
 
 /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-#work-table {
+#work-table,#kintai-table {
   & th:nth-child(1) { width: 90px; }
   & th:nth-child(2) { width: 105px; }
   & th:nth-child(3) { width: 105px; }
@@ -163,10 +163,5 @@
     padding: 5px 8px;
     border: 1px solid #ccc;
     text-align: center;
+    min-width:60px
   }
-  .profile-tables tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-
-
-
