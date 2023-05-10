@@ -14,6 +14,147 @@
 <!-- フォームを用意する。 -->
 <div id="form-container"></div>
 
+<script>
+  // フォーム構成の定義
+  const formId = "moneyForm";
+  const formTitle = "経費入力フォーム";
+  const formButton = "回答を提出する";
+
+  // フォーム要素の定義
+  const formElements = [
+    { name: "支払い方法", type: "select", value: "", width: "100%", breakAfter: true, options: [] },
+    { name: "カテゴリ", type: "select", value: "", width: "100%", options: [] },
+    { name: "タグ", type: "multiselect", value: "", inline: true, width: "calc(100%)", },
+    { name: "メモ", type: "textarea", value: "", inline: false, width: "100%" },
+    { name: "日付", type: "date", value: new Date().toISOString().split("T")[0], inline: true, width: "150px" },
+    { name: "出費", type: "number", value: "", inline: true, width: "100px" },
+    { name: "タグ追加", type: "button", value: "＋", inline: true, width: "100px", onClick: addTagInput },
+    { name: "経費", type: "checkbox", value: "", inline: true, breakAfter: true, width: "auto" },
+    { name: "計上項目", type: "select", value: "", width: "100%", options: [] },
+    { name: "計上額", type: "number", value: "", inline: true, breakAfter: true, width: "100px" },
+    { name: "経費メモ", type: "textarea", value: "", inline: true, width: "100%" },
+  ];
+
+  // セレクトデータの取得関数
+  let tagData = {};
+  document.addEventListener("DOMContentLoaded", fetchFormData);
+  async function fetchFormData() {
+    const response = await fetch("https://script.google.com/a/macros/sauceed.tokyo/s/AKfycbyVq8YrNJcJzYT_2henEv7eCR_ZAFrnKurkVRdN7SrYyV2mUPeJEwe8lmm3kbacyc9S/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      mode: 'cors',
+    });
+
+    if (!response.ok) {
+      console.error(`Error: ${response.status} ${response.statusText}`);
+      return;
+    }
+
+    const categories = await response.json();
+    tagData = categories;
+    updateSelectOptions("カテゴリ", tagData.categories.map(c => c.category));
+    updateSelectOptions("支払い方法", tagData.paymentMethods.map(p => p.method));
+    updateSelectOptions("計上項目", tagData.postingItems.map(p => p.item));
+
+    const formContainer = document.getElementById("form-container");
+    const existingForm = document.getElementById("myForm");
+    if (existingForm) {
+      formContainer.removeChild(existingForm);
+    }
+
+    createForm();
+    console.log(tagData);
+  }
+
+  // セレクト要素のオプションを更新
+  function updateSelectOptions(name, optionsData  ) {
+    const element = formElements.find(e => e.name === name);
+    if (element) {
+      element.options = optionsData;
+    }
+  }
+
+  // タグ入力欄の追加
+  function addTagInput() {
+    const tagInput = {
+      name: "タグ",
+      type: "multiselect",
+      value: "",
+      inline: true,
+      width: "calc(100%)",
+    };
+    formElements.splice(3, 0, tagInput);
+    renderForm();
+  }
+
+  // フォームの作成
+  function createForm() {
+    const form = document.createElement("form");
+    form.id = "myForm";
+    form.className = "form";
+    form.innerHTML = `
+      <h2>${formTitle}</h2>
+      ${formElements.map(createElement).join("")}
+      <button type="submit">${formButton}</button>
+    `;
+    document.getElementById("form-container").appendChild(form);
+  }
+
+  // 各要素のレンダリング
+  function createElement(element) {
+    let html = "";
+    switch (element.type) {
+      case "select":
+        html = `
+          <div class="form-group" style="width: ${element.width};">
+            <label>${element.name}:</label>
+            <select>
+              <option value="">選択してください</option>
+              ${element.options.map(option => `<option value="${option}">${option}</option>`).join("")}
+            </select>
+          </div>`;
+        break;
+      case "multiselect":
+        html = `
+          <div class="form-group" style="width: ${element.width};">
+            <label>${element.name}:</label>
+            <input type="text" list="${element.name}List">
+            <datalist id="${element.name}List">
+              ${tagData.tags.map(tag => `<option value="${tag}"></option>`).join("")}
+            </datalist>
+          </div>`;
+        break;
+      case "textarea":
+        html = `
+          <div class="form-group" style="width: ${element.width};">
+            <label>${element.name}:</label>
+            <textarea></textarea>
+          </div>`;
+        break;
+      case "button":
+        html = `
+          <div class="form-group" style="width: ${element.width};">
+            <button type="button" onclick="${element.onClick.name}()">${element.value}</button>
+          </div>`;
+        break;
+      default:
+        html = `
+          <div class="form-group" style="width: ${element.width};">
+            <label>${element.name}:</label>
+            <input type="${element.type}" value="${element.value}">
+          </div>`;
+    }
+    if (element.breakAfter) {
+      html += "<br>";
+    }
+    return html;
+  }
+</script>
+
+
+
 
 <script>
   // フォーム構成の定義
