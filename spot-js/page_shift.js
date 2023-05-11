@@ -94,7 +94,7 @@ function showModal(event) {
     formGuide = "↓ 回答内容をご記入ください"
     formButton = "回答を提出する"
   }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-  
+
   const remarks = (formId=="submitForm"||formId=="requestForm")?
     row.cells[3].innerHTML:row.cells[4].innerHTML;
 
@@ -283,7 +283,7 @@ const handleSubmit = async (event, remarks, row) => {
       }
       break;
     case 'changeForm': 
-      if (!data["依頼取り消し"]=="依頼を取り消す") {
+      if (data["依頼取り消し"]=="依頼を取り消す") {
         data["取り消し"]= true ;
       } else {
         if(!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
@@ -391,6 +391,15 @@ const handleSubmit = async (event, remarks, row) => {
       row.cells[5].innerText = "修正済み";
       row.style["background-color"] = "#FFF2CC";
     }
+    modal.style.display = "none";
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify(data),
+      mode: 'cors', //CORS対応
+    });
   } else {
 
   // フォームの無効化とボタンの色を変更
