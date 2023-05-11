@@ -4,7 +4,8 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 
-
+console.log(newData["ページタイプ"])
+console.log(newData["口座番号(半角数字)"])
   if(newData["ページタイプ"]== "teacher"&&newData["口座番号（半角数字）"] ==null){
     var kojinform_wrapper = document.createElement("div")
     var kojinform = document.createElement("a")

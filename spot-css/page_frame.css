@@ -108,6 +108,10 @@ margin-bottom:0;
   display:none;
 }
 
+.super-navbar__actions {
+  display: block;
+}
+
 .hamburger-menu {
   display: none;
   cursor: pointer;
