@@ -400,6 +400,21 @@ const handleSubmit = async (event, remarks, row) => {
       body: JSON.stringify(data),
       mode: 'cors', //CORS対応
     });
+  } else if(formId=="answerForm"){
+    row.cells[1].innerText = data["依頼への回答"];
+    row.cells[4].innerHTML = data["補足・備考"];
+    row.cells[5].innerText = "回答済み";
+    row.style["background-color"] = "#FFF2CC";
+    modal.style.display = "none";
+    const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify(data),
+      mode: 'cors', //CORS対応
+    });
+
   } else {
 
   // フォームの無効化とボタンの色を変更
