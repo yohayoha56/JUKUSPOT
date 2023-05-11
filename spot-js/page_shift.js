@@ -54,8 +54,7 @@ function showModal(event) {
 
   // ボタンが押された行のテーブルのデータを取得する①
   const date = row.cells[0].innerText;
-  const remarks = (formId=="submitForm"||formId=="requestForm")?
-    row.cells[3].innerHTML:row.cells[4].innerHTML;
+
 
   // プロパティ設定
   const schoolId  = newData["ページタイプ"] == "school"? 
@@ -95,7 +94,9 @@ function showModal(event) {
     formGuide = "↓ 回答内容をご記入ください"
     formButton = "回答を提出する"
   }//ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
+  
+  const remarks = (formId=="submitForm"||formId=="requestForm")?
+    row.cells[3].innerHTML:row.cells[4].innerHTML;
 
   // フォーム要素の定義
   const formElements = [
