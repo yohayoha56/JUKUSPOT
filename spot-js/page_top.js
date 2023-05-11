@@ -6,14 +6,17 @@ function top_page() {
 
 console.log(newData["ページタイプ"])
 console.log(newData["口座番号(半角数字)"])
-  if(newData["ページタイプ"]== "teacher"&&newData["口座番号（半角数字）"] ==null){
-    var kojinform_wrapper = document.createElement("div")
-    var kojinform = document.createElement("a")
-    kojinform_wrapper.appendChild(kojinform)
-    kojinform.setAttribute("href", "https://docs.google.com/forms/d/e/1FAIpQLSdshC5GsKHZhps40FNkEShsnnat6-B4Y_EQdRHk0XlXpwV9mg/viewform?usp=pp_url&entry.1339375578="+newData["会員ID"])
-    kojinform.innerHTML="個人情報、給与振り込み口座の情報を提出してください"
-    document.getElementById("page-content").insertAdjacentElement("afterbegin",kojinform_wrapper)
-    }
+if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角数字）"]){
+  const formURL ="https://docs.google.com/forms/d/e/1FAIpQLSdshC5GsKHZhps40FNkEShsnnat6-B4Y_EQdRHk0XlXpwV9mg/viewform?usp=pp_url"
+  let kojinFormHTML =`
+  <div>
+  <a href="${formURL}&entry.1339375578=${newData["会員ID"]}">
+    勤務開始のため、個人情報と給与振り込み口座の情報を提出してください。
+  </a>
+  </div>
+  `
+  document.getElementById("page-content").insertAdjacentElement("afterbegin",kojinFormHTML)
+}
 
   
 
