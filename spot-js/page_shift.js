@@ -54,7 +54,7 @@ function showModal(event) {
 
   // ボタンが押された行のテーブルのデータを取得する①
   const date = row.cells[0].innerText;
-  const remarks = formId==("submitForm"||"requestForm")?
+  const remarks = (formId=="submitForm"||formId=="requestForm")?
     row.cells[3].innerHTML:row.cells[4].innerHTML;
 
   // プロパティ設定
