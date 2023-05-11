@@ -367,7 +367,7 @@ const handleSubmit = async (event, remarks, row) => {
 
   if (formId=="submitForm"){
     row.cells[1].innerText = data["勤務可否"];
-    row.cells[2].innerText = data["勤務開始時間"] + " 〜 " + data["勤務終了時間"];
+    row.cells[2].innerText = data["勤務開始時間"] + "〜" + data["勤務終了時間"];
     row.cells[3].innerHTML = data["補足・備考"];
     row.cells[4].innerHTML = "提出済";
     row.style["background-color"] = "#FFF2CC";
@@ -385,7 +385,7 @@ const handleSubmit = async (event, remarks, row) => {
       row.cells[5].innerText = "取り消し済み";
       row.style["background-color"] = "rgb(221, 221, 221)";
     } else{
-      row.cells[2].innerText = data["勤務開始時間"] + " 〜 " + data["勤務終了時間"];
+      row.cells[2].innerText = data["勤務開始時間"] + "〜" + data["勤務終了時間"];
       row.cells[3].innerText = data["休憩時間"]+"分";
       row.cells[4].innerHTML = data["補足・備考"];
       row.cells[5].innerText = "修正済み";
