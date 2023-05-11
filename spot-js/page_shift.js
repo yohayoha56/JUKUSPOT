@@ -381,7 +381,7 @@ const handleSubmit = async (event, remarks, row) => {
       mode: 'cors', //CORS対応
     });
   } else if(formId=="changeForm"){
-    if(data["取り消し"]= true ){
+    if(data["取り消し"]== true ){
       row.cells[5].innerText = "取り消し済み";
       row.style["background-color"] = "rgb(221, 221, 221)";
     } else{
