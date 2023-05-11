@@ -139,7 +139,7 @@ function showModal(event) {
       <h3>${formTitle}</h3>
       <h4>${formInfo}</h4>
       <ul>
-      ${formId==("submitForm"||"requestForm")?
+      ${(formId=="submitForm"||formId=="requestForm")?
         `<li>スケジュール｜${row.cells[1].innerText}</li>
         <li>勤務可能時間｜${row.cells[2].innerText}</li>
         <li>補足・備考　｜${row.cells[3].innerHTML}</li>`
