@@ -205,10 +205,10 @@
   width: 75px;
 }
 #shift-table th:nth-child(5) {
-  width: calc(100% - 500px);
+  width: calc(100% - 505px);
 }
 #shift-table th:nth-child(6) {
-  width: 125px;
+  width: 130px;
 }
 #shift-table th:nth-child(5), #shift-table td:nth-child(5) {
   text-align: left;
@@ -275,10 +275,10 @@
   width: 75px;
 }
 #shift-table-top th:nth-child(6) {
-  width: calc(100% - 500px);
+  width: calc(100% - 505px);
 }
 #shift-table-top th:nth-child(7) {
-  width: 125px;
+  width: 130px;
 }
 #shift-table-top th:nth-child(6), #shift-table-top td:nth-child(6) {
   text-align: left;
