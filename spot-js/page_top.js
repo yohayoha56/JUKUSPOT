@@ -4,8 +4,6 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 
-console.log(newData["ページタイプ"])
-console.log(newData["口座番号(半角数字)"])
 if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角数字）"]){
   const formURL ="https://docs.google.com/forms/d/e/1FAIpQLSdshC5GsKHZhps40FNkEShsnnat6-B4Y_EQdRHk0XlXpwV9mg/viewform?usp=pp_url"
   let kojinFormHTML =`
@@ -15,7 +13,7 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
   </a>
   </div>
   `
-  document.getElementById("page-content").insertAdjacentElement("afterbegin",kojinFormHTML)
+  document.getElementById("page-content").insertAdjacentHTML("afterbegin",kojinFormHTML)
 }
 
   
