@@ -19,7 +19,7 @@ function shift_page() {
       }
     } else if (newData["ページタイプ"] === "teacher") {
       switch (rowColorFlag) {
-        case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
+        case "講師提出前": row.style["background-color"] = "#F4CCCC"; break;
         case "勤務不可": row.style["background-color"] = "#dddddd"; break;
       }
       switch (rowColorFlag2) {
