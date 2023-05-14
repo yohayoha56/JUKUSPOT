@@ -29,8 +29,7 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
       }
     } else if (newData["ページタイプ"] === "teacher") {
       switch (rowColorFlag) {
-        case "勤務予定": row.style["background-color"] = "#FFF2CC"; break;
-        case "出勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
+        case "出勤報告済み": row.style["background-color"] = "#FFF2CC"; break;
         case "退勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
       }
     }
