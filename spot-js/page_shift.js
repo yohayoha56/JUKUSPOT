@@ -357,7 +357,7 @@ function shift_page() {
     switch (formId) {
       case 'submitForm': hosokuguide = " [↓講師：ｽｹｼﾞｭｰﾙ提出時] "; break;
       case 'requestForm': hosokuguide = " [↓教室：シフト依頼時] "; break;
-      case 'changeForm': hosokuguide = " [↓教室：依頼取消時] "; break;
+      case 'changeForm': hosokuguide = data["取り消し"] == true?" [↓教室：依頼取消時] ":" [↓教室：依頼修正時] "; break;
       case 'answerForm': hosokuguide = " [↓講師：シフト回答時] "; break;
     }
 

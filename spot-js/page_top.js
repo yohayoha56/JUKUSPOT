@@ -454,7 +454,7 @@ const handleValidation = async (event, remarks, row) => {
 
     let hosokuguide
     switch (form.id) {
-      case 'changeForm': hosokuguide = " [↓教室：依頼取消時] "; break;
+      case 'changeForm': hosokuguide = data["取り消し"] == true?" [↓教室：依頼取消時] ":" [↓教室：依頼修正時] "; break;
       case 'answerForm': hosokuguide = " [↓講師：シフト回答時] "; break;
     }
     if (remarks == "-") { remarks = "" } else { remarks = remarks + "<br>" }
