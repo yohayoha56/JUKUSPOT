@@ -36,7 +36,7 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
     }
   });
   const tableRows2 = document.querySelectorAll('#shift-table-top tr:not(:first-child)');
-  tableRows.forEach(row => {
+  tableRows2.forEach(row => {
     const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
     if (newData["ページタイプ"] === "school") {
       switch (rowColorFlag) {
