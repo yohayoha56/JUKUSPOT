@@ -477,7 +477,7 @@ const handleValidation = async (event, remarks, row) => {
         }
     }
     if (form.id == "answerForm") {
-        row.cells[1].innerText = data["依頼への回答"];
+        row.cells[1].innerText = data["講師回答"];
         row.cells[5].innerHTML = data["補足・備考"];
         row.cells[6].innerText = "回答済み";
         row.style["background-color"] = "#FFF2CC";
