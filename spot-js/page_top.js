@@ -16,6 +16,42 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
   document.getElementById("page-content").insertAdjacentHTML("afterbegin",kojinFormHTML)
 }
 
+
+  // テーブルの行の色をステータスに応じて変更
+  // #region 
+  const tableRows = document.querySelectorAll('#work-table tr:not(:first-child)');
+  tableRows.forEach(row => {
+    const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
+    if (newData["ページタイプ"] === "school") {
+      switch (rowColorFlag) {
+        case "出勤報告済み": row.style["background-color"] = "#FFF2CC"; break;
+        case "退勤報告済み": row.style["background-color"] = "#FFF2CC"; break;
+      }
+    } else if (newData["ページタイプ"] === "teacher") {
+      switch (rowColorFlag) {
+        case "勤務予定": row.style["background-color"] = "#F4CCCC"; break;
+        case "出勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
+        case "退勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
+      }
+    }
+  });
+  const tableRows2 = document.querySelectorAll('#shift-table-tp@ tr:not(:first-child)');
+  tableRows.forEach(row => {
+    const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
+    if (newData["ページタイプ"] === "school") {
+      switch (rowColorFlag) {
+
+        case "調整中": row.style["background-color"] = "#FFF2CC"; break;
+      }
+    } else if (newData["ページタイプ"] === "teacher") {
+      switch (rowColorFlag) {
+        case "調整中": row.style["background-color"] = "#FFF2CC"; break;
+        case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
+      }
+    }
+  });
+  // #endregion 
+
   
 
 
