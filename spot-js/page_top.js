@@ -346,7 +346,7 @@ function showModalForm(event) {
 
     // フォーム中身の作成
     const form = document.createElement("form");
-    form.setAttribute("id", "answerForm");
+    form.setAttribute("id", formId);
     // フォーム要素のデフォルト定義
     const formElements = [
         { name: "勤務日", type: "hidden", value: date },
