@@ -29,18 +29,17 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
       }
     } else if (newData["ページタイプ"] === "teacher") {
       switch (rowColorFlag) {
-        case "勤務予定": row.style["background-color"] = "#F4CCCC"; break;
+        case "勤務予定": row.style["background-color"] = "#FFF2CC"; break;
         case "出勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
         case "退勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
       }
     }
   });
-  const tableRows2 = document.querySelectorAll('#shift-table-tp@ tr:not(:first-child)');
+  const tableRows2 = document.querySelectorAll('#shift-table-top tr:not(:first-child)');
   tableRows.forEach(row => {
     const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
     if (newData["ページタイプ"] === "school") {
       switch (rowColorFlag) {
-
         case "調整中": row.style["background-color"] = "#FFF2CC"; break;
       }
     } else if (newData["ページタイプ"] === "teacher") {
