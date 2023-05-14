@@ -20,10 +20,6 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
 
 
 
-
-
-
-
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById("work-table")
 const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
@@ -311,15 +307,21 @@ function showModalForm(event) {
     const date = row.cells[0].innerText;
     const remarks = row.cells[5].innerHTML; 
 
-    let teacherName , schoolName , formId, formTitle, formInfo, formGuide, formButton
+    let teacherId, teacherName ,schoolId, schoolName , formId, formTitle, formInfo, formGuide, formButton
 
     if (formFlag.contains("change")) {
+        teacherId = "" 
         teacherName = row.cells[2].innerText
+        schoolId = newData["教室ID"]
+        schoolName = newData["教室名"] 
         formId = "changeForm"
         formTitle = `${date}｜${teacherName}先生｜依頼修正`
         formInfo = "依頼中のシフト内容"
         formButton = "シフトを修正する"
     } else if (formFlag.contains("answer")) {
+        teacherId = newData["会員ID"];
+        teacherName =newData["姓"]+ newData["名"];
+        schoolId = "";
         schoolName = row.cells[2].innerText
         formId = "answerForm"
         formTitle = `${date}｜${schoolName}｜依頼回答`
@@ -356,6 +358,7 @@ function showModalForm(event) {
         { name: "補足・備考", type: "textarea", value: "", width: "100%", },
         { name: "submitButton", type: "submit", value: formButton }, //ボタンテキスト変更
     ];
+
     
     // フォーム要素のカスタム定義
     if (formFlag.contains("change")) {
