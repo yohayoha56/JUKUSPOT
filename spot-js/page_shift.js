@@ -29,7 +29,7 @@ function shift_page() {
     }
   });
   const tableRows2 = document.querySelectorAll('#shift-table tr:not(:first-child)');
-  tableRows.forEach(row => {
+  tableRows2.forEach(row => {
     const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
     if (newData["ページタイプ"] === "school") {
       switch (rowColorFlag) {
