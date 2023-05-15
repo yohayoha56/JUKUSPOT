@@ -396,7 +396,9 @@ function shift_page() {
     const submitButton = document.querySelector(".submit-button");
     const responseMessage = document.createElement("div");
     responseMessage.classList.add("response-message");
+    submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
     responseMessage.textContent = "処理中です。このままお待ちください。";
+
 
 
     if (formId == "submitForm") {
@@ -485,8 +487,6 @@ function shift_page() {
         form.querySelectorAll("input, button").forEach((element) => element.removeAttribute("disabled"));
         submitButton.style.backgroundColor = ""; // ボタンの背景色を元に戻す
 
-        // レスポンスメッセージをボタンの下に表示
-        submitButton.parentNode.insertBefore(responseMessage, submitButton.nextSibling);
       }
     }
 
