@@ -333,6 +333,12 @@
 }
 
 /* ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+.profile-tables{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0px 20px;
+}
+
 .profile-tables table {
   border-collapse: collapse;
   width: auto;
@@ -352,4 +358,13 @@
   border: 1px solid #ccc;
   text-align: center;
   min-width: 60px;
+}
+
+.profile-block{
+  display:inline-block;
+  width:100%;
+}
+
+.profile-inline{
+  display:inline-block;
 }
