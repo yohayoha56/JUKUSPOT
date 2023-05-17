@@ -11,8 +11,8 @@ A.style["visibility"]="visible";
 const page_call_property={
   url: 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec', 
   callback: "top_page",
-  "教室ID": newData["ページタイプ"] == "school"?newData["教室ID"]:"",
-  "講師ID": newData["ページタイプ"] == "teacher"?newData["講師ID"]:"",
+  教室ID : newData["ページタイプ"] == "school"?newData["教室ID"]:"",
+  講師ID : newData["ページタイプ"] == "teacher"?newData["講師ID"]:"",
 }
 call_fetchData(page_call_property);
 
