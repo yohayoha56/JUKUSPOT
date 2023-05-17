@@ -18,16 +18,15 @@
 
 /* 横幅の設定 ーーーーーーーーーーーーーーーーーー*/
 .side-bar {
-  width: 220px;
+  width: 240px;
   display: inline-block;
   padding: 20px;
 }
 .main-bar {
-  width: calc(100% - 225px);
+  width: calc(100% - 240px);
   max-width:1100px;
   display: inline-block;
   padding: 15px;
-  margin-left: 5px;
 }
 @media (max-width: 680px) {
   .side-bar{
@@ -40,7 +39,7 @@
   }
 }
 
-.menu {
+.menu, .menu h1{
   list-style: none;
   margin: 0;
   padding: 0;

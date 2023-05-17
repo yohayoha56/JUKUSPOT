@@ -80,9 +80,9 @@ const menu = document.querySelector(".menu");
 
 const page_title = document.createElement("h1");
 if(newData["ページタイプ"] === "school"){
-  page_title.textContent=newData["教室名"]+"管理ページ";
+  page_title.textContent=newData["教室名"]+'<span style="display:inline-block;">管理ページ</span>';
 }else if(newData["ページタイプ"] === "teacher"){
-  page_title.textContent=newData["姓"]+newData["名"]+"マイページ";
+  page_title.textContent=newData["姓"]+newData["名"]+'<span style="display:inline-block;">マイページ</span>';
 }
 menu.appendChild(page_title);
 
