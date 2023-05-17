@@ -3,6 +3,7 @@
   display: flex;
   overflow: visible;
   position: relative;
+  justify-content:space-evenly
 }
 .side-bar{
   position: sticky;
@@ -23,6 +24,7 @@
 }
 .main-bar {
   width: calc(100% - 225px);
+  max-width:1100px;
   display: inline-block;
   padding: 15px;
   margin-left: 5px;
@@ -43,6 +45,7 @@
   margin: 0;
   padding: 0;
   width: 100%;
+  font-size:18px;
 }
   
   /* 親メニュー */
@@ -68,6 +71,7 @@
   background-color: white;
   color: black;
   padding:5px 5px;
+  font-size:16px;
   }
   
   

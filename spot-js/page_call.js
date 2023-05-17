@@ -79,7 +79,6 @@ function call_fetchData(page_call_property) {
 const menu = document.querySelector(".menu");
 
 const page_title = document.createElement("h1");
-page_title.style["font-size"]="16px";
 if(newData["ページタイプ"] === "school"){
   page_title.textContent=newData["教室名"]+"管理ページ";
 }else if(newData["ページタイプ"] === "teacher"){

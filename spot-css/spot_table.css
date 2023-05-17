@@ -340,8 +340,9 @@
     flex-grow: 1;
 }
 
-.profile-block {
+.profile-block ,.profile-block2{
   gap:15px 20px;
+  width:100%;
 }
 
 .profile-tables h2{
@@ -388,6 +389,7 @@
 .profile-block2 tr:nth-child(2){
   position:absolute;
   top:34px;
+  width:100%;
 }
 
 .profile-block2 td, .profile-block2 th{
