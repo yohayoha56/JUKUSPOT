@@ -15,11 +15,13 @@ waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
 
-  // 外部スクリプト読み込みの事前判定
-  const debugUrls = ['dummy'];
-  const currentUrl = window.location.href;
-  const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
+  // URLの末尾指定
+  let last_url = newData["ページタイプ"] == "school" ? 
+  "?juku-cr":"?teacher";
 
+  let url = window.location.href;
+  url += last_url ; // 'your_string' は追加したい任意の文字列です
+  window.history.pushState({}, '', url);
 
   // ヘッダーの画像生成
   let pc_logo_src = newData["ページタイプ"] == "school" ? 
@@ -47,28 +49,21 @@ waitForProperties().then((propertiesContainer) => {
       <div style="position:relative">
         <ul data-orientation="horizontal" class="super-navbar__item-list" dir="ltr"></ul>
       </div>
-      <div class="super-navbar__actions "><a class="notion-link" target="_blank" rel="noopener noreferrer">
-          <div class="super-navbar__cta">ページ更新</div>
-        </a>
-        <div class="hamburger-menu" style="font-size: 36px; margin-top: -14px; color: rgb(102, 102, 102);"><span>≡</span>
-        </div>
+      <div class="super-navbar__actions ">
+        <div id="hamburger-menu" style="font-size: 36px; margin-top: -14px;${headerColor}">
+        <span>≡</span></div>
       </div>
     </nav>
   </div>
   `;
-
   let superHeader = document.querySelector(".super-navbar");
   superHeader.outerHTML = headerHTML;
-
-
-  // URLの末尾指定
-  let last_url = newData["ページタイプ"] == "school" ? 
-  "?juku-cr":"?teacher";
-
-  let url = window.location.href;
-  url += last_url ; // 'your_string' は追加したい任意の文字列です
-  window.history.pushState({}, '', url);
   
+
+  // 外部スクリプト読み込みの事前判定
+  const debugUrls = ['dummy'];
+  const currentUrl = window.location.href;
+  const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
 
   // 外部スクリプトの読み込み設定①
   const stylesheets = [
