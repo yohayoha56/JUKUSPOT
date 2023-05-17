@@ -344,8 +344,8 @@
   gap:15px 20px;
 }
 
-.profile-block h3{
-
+.profile-tables h2{
+  width: 100%; 
 }
 
 .profile-tables table {
