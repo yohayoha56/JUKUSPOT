@@ -38,10 +38,10 @@ waitForProperties().then((propertiesContainer) => {
   <div class="super-navbar minimal" style="position:sticky;${headerColor}">
     <nav aria-label="Main" data-orientation="horizontal" dir="ltr" class="super-navbar__content">
       <div class="notion-link super-navbar__logo">
-        <div class="super-navbar__logo-image">
+        <div class="super-navbar__logo-image" style="display:flex;">
           <img id="pc_logo" src="${pc_logo_src}" style="width: 151px; height: 32px; position: relative;" alt="Logo" style="object-fit:contain;object-position:left">
           <img id="sp_logo" src="${sp_logo_src}" style="width: 32px; height: 32px; position: relative;" alt="Logo" style="object-fit:contain;object-position:left">
-          <h1>;${headerTitle}</h1>
+          <h1>${headerTitle}</h1>
         </div>
       </div>
       <div style="position:relative">

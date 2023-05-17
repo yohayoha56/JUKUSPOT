@@ -1,3 +1,20 @@
+/* ヘッダーの設定 */
+#pc_logo{
+  display: inline-block;
+}
+#sp_logo{
+  display: none;
+}
+@media (max-width: 800px) {
+  #pc_logo{
+    display: none;
+  }
+  #sp_logo{
+    display:inline-block;
+  }
+}
+
+
 /* メインバーの設定 ーーーーーーーーーーーーーーーーーーーー*/
 .content-area {
   display: flex;
