@@ -210,7 +210,7 @@ window.dispatchEvent(new Event('resize'));
 
 function toggleSideBar() {
   const sideBar = document.querySelector('.side-bar');
-  const menuIcon = document.querySelector('.hamburger-menu span');
+  const menuIcon = document.querySelector('#hamburger-menu span');
   
   if (sideBar.style.display === 'none' || sideBar.style.display === '') {
     sideBar.style.display = 'block';
