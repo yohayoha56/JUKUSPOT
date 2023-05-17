@@ -78,13 +78,13 @@ function call_fetchData(page_call_property) {
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const menu = document.querySelector(".menu");
 
-const page_title = document.createElement("h1");
-if(newData["ページタイプ"] === "school"){
-  page_title.innerHTML=newData["教室名"]+'<span style="display:inline-block;">管理ページ</span>';
-}else if(newData["ページタイプ"] === "teacher"){
-  page_title.innerHTML=newData["姓"]+newData["名"]+'<span style="display:inline-block;">マイページ</span>';
-}
-menu.appendChild(page_title);
+// const page_title = document.createElement("h1");
+// if(newData["ページタイプ"] === "school"){
+//   page_title.innerHTML=newData["教室名"]+'<span style="display:inline-block;">管理ページ</span>';
+// }else if(newData["ページタイプ"] === "teacher"){
+//   page_title.innerHTML=newData["姓"]+newData["名"]+'<span style="display:inline-block;">マイページ</span>';
+// }
+// menu.appendChild(page_title);
 
 
 
