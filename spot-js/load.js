@@ -23,20 +23,20 @@ if(targets.includes(newData["ページ表示名"])){
   redata = {redirectKey : newData["教室ID"], redirectTarget:"school"}
 }
 
-if (redirectKey!=null){
-  fetch("GASのURL", {
-    method: 'POST',
-    headers: { 
-      'Content-Type': 'text/plain',
-    },
-    body: JSON.stringify(redata),
-    mode: 'cors',
-  })
-  .then(response => response.text())
-  .then(data => {
+// if (redirectKey!=null){
+//   fetch("GASのURL", {
+//     method: 'POST',
+//     headers: { 
+//       'Content-Type': 'text/plain',
+//     },
+//     body: JSON.stringify(redata),
+//     mode: 'cors',
+//   })
+//   .then(response => response.text())
+//   .then(data => {
 
-  });
-}
+//   });
+// }
 
 
 
