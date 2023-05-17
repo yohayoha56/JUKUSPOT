@@ -173,16 +173,8 @@ function pulldown(childMenu){
 
 
 // サイドバーの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const hamburgerMenu = document.createElement('div');
-hamburgerMenu.classList.add('hamburger-menu');
-hamburgerMenu.innerHTML = '<span>≡</span>';
-hamburgerMenu.style["font-size"]="36px"
-hamburgerMenu.style["margin-top"]="-14px"
-hamburgerMenu.style["color"]="#666"
+const hamburgerMenu = document.getElementById('hamburger-menu');
 hamburgerMenu.addEventListener('click', toggleSideBar);
-
-const superNavBar = document.querySelector('.super-navbar__actions');
-superNavBar.appendChild(hamburgerMenu);
 
 let lastWindowWidth = window.innerWidth;
 
