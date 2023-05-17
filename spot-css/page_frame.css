@@ -1,11 +1,15 @@
 /* ヘッダーの設定 */
+.super-navbar__logo-image{
+  align-items:center;
+}
+
 #pc_logo{
   display: inline-block;
 }
 #sp_logo{
   display: none;
 }
-@media (max-width: 800px) {
+@media (max-width: 680px) {
   #pc_logo{
     display: none;
   }
@@ -13,6 +17,12 @@
     display:inline-block;
   }
 }
+
+.super-navbar h1{
+  margin:0; font-size:18px; font-weight:500; display:inline-block;
+}
+
+
 
 
 /* メインバーの設定 ーーーーーーーーーーーーーーーーーーーー*/
