@@ -1,3 +1,16 @@
+// 0.05秒ごとにsuper.soのドキュメント生成状況を確認ーーーーーーーーーーーーーーーーーー
+function waitForProperties() {
+  return new Promise((resolve) => {
+    const propertiesContainer = document.querySelector(".notion-page__properties");
+    if (!propertiesContainer) {
+      setTimeout(() => resolve(waitForProperties()), 50);
+    } else {
+      resolve(propertiesContainer);
+    }
+  });
+}
+
+
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
@@ -6,6 +19,56 @@ waitForProperties().then((propertiesContainer) => {
   const debugUrls = ['dummy'];
   const currentUrl = window.location.href;
   const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
+
+
+  // ヘッダーの画像生成
+  let pc_logo_src = newData["ページタイプ"] == "school" ? 
+    'https://heys45.github.io/jukust/logo2.png' : 'https://heys45.github.io/jukust/logo1.png';
+
+  let sp_logo_src = newData["ページタイプ"] == "school" ? 
+    'https://heys45.github.io/jukust/logo02.png' : 'https://heys45.github.io/jukust/logo01.png';
+
+  let headerColor = newData["ページタイプ"] == "school" ? 
+    "background-color:#33A614;color:white;":"";
+
+  let headerTitle = newData["ページタイプ"] == "school" ? 
+    `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}マイページ`;
+
+  let headerHTML =`
+  <div class="super-navbar minimal" style="position:sticky;${headerColor}">
+    <nav aria-label="Main" data-orientation="horizontal" dir="ltr" class="super-navbar__content">
+      <div class="notion-link super-navbar__logo">
+        <div class="super-navbar__logo-image">
+          <img id="pc_logo" src="${pc_logo_src}" style="width: 151px; height: 32px; position: relative;" alt="Logo" style="object-fit:contain;object-position:left">
+          <img id="sp_logo" src="${sp_logo_src}" style="width: 32px; height: 32px; position: relative;" alt="Logo" style="object-fit:contain;object-position:left">
+          <h1>;${headerTitle}</h1>
+        </div>
+      </div>
+      <div style="position:relative">
+        <ul data-orientation="horizontal" class="super-navbar__item-list" dir="ltr"></ul>
+      </div>
+      <div class="super-navbar__actions "><a class="notion-link" target="_blank" rel="noopener noreferrer">
+          <div class="super-navbar__cta">ページ更新</div>
+        </a>
+        <div class="hamburger-menu" style="font-size: 36px; margin-top: -14px; color: rgb(102, 102, 102);"><span>≡</span>
+        </div>
+      </div>
+    </nav>
+  </div>
+  `;
+
+  let superHeader = document.querySelector(".super-navbar");
+  superHeader.outerHTML = headerHTML;
+
+
+  // URLの末尾指定
+  let last_url = newData["ページタイプ"] == "school" ? 
+  "?juku-cr":"?teacher";
+
+  let url = window.location.href;
+  url += last_url ; // 'your_string' は追加したい任意の文字列です
+  window.history.pushState({}, '', url);
+  
 
   // 外部スクリプトの読み込み設定①
   const stylesheets = [
@@ -40,17 +103,7 @@ waitForProperties().then((propertiesContainer) => {
   })();
 });
 
-// 0.05秒ごとにsuper.soのドキュメント生成状況を確認ーーーーーーーーーーーーーーーーーー
-function waitForProperties() {
-  return new Promise((resolve) => {
-    const propertiesContainer = document.querySelector(".notion-page__properties");
-    if (!propertiesContainer) {
-      setTimeout(() => resolve(waitForProperties()), 50);
-    } else {
-      resolve(propertiesContainer);
-    }
-  });
-}
+
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
   const properties = Array.from(propertiesContainer.children);
