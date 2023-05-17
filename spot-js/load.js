@@ -1,4 +1,4 @@
-const { redirect } = require("express/lib/response");
+// const { redirect } = require("express/lib/response");
 
 // 0.05秒ごとにsuper.soのドキュメント生成状況を確認ーーーーーーーーーーーーーーーーーー
 function waitForProperties() {
