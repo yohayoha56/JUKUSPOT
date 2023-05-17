@@ -372,7 +372,7 @@
   padding: 5px 8px;
   border: 1px solid #ccc;
   text-align: center;
-  min-width: 65px;
+  min-width: 50px;
 }
 
 .profile-block2 table{
@@ -387,7 +387,7 @@
 }
 .profile-block2 tr:nth-child(2){
   position:absolute;
-  top:30px;
+  top:34px;
 }
 
 .profile-block2 td, .profile-block2 th{
@@ -404,23 +404,23 @@
 .profile-block2 th:nth-child(6), .profile-block2 td:nth-child(6),
 .profile-block2 th:nth-child(7), .profile-block2 td:nth-child(7),
 .profile-block2 th:nth-child(8), .profile-block2 td:nth-child(8)
-{ width:65px; flex-grow: 1;max-width:80px;}
+{ width:50px; flex-grow: 1;max-width:75px;}
 
 .profile-block2 th:nth-child(2), .profile-block2 td:nth-child(2),
 .profile-block2 th:nth-child(9), .profile-block2 td:nth-child(9),
 .profile-block2 th:nth-child(10), .profile-block2 td:nth-child(10),
 .profile-block2 th:nth-child(13), .profile-block2 td:nth-child(13),
 .profile-block2 th:nth-child(14), .profile-block2 td:nth-child(14)
-{ width:80px; flex-grow: 1;max-width:90px;}
+{ width:70px; flex-grow: 1;max-width:100px;}
 
 .profile-block2 th:nth-child(3), .profile-block2 td:nth-child(3),
 .profile-block2 th:nth-child(4), .profile-block2 td:nth-child(4)
-{ width:90px; flex-grow: 1;max-width:100px;}
+{ width:85px; flex-grow: 1;max-width:120px;}
 
 
 .profile-block2 th:nth-child(1), .profile-block2 td:nth-child(1),
 .profile-block2 th:nth-child(11), .profile-block2 td:nth-child(11)
-{ width:100px; flex-grow: 1;max-width:110px;}
+{ width:100px; flex-grow: 1;max-width:130px;}
 
 .profile-textblock td{
   text-align:left;
