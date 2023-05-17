@@ -1,6 +1,8 @@
 /* ヘッダーの設定 */
 .super-navbar__logo-image{
   align-items:center;
+  width: calc(100% - 40px);
+  overflow: hidden;
 }
 
 #pc_logo{

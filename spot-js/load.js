@@ -46,9 +46,6 @@ waitForProperties().then((propertiesContainer) => {
           <h1>${headerTitle}</h1>
         </div>
       </div>
-      <div style="position:relative">
-        <ul data-orientation="horizontal" class="super-navbar__item-list" dir="ltr"></ul>
-      </div>
       <div class="super-navbar__actions ">
         <div id="hamburger-menu" style="font-size: 36px; margin-top: -14px;${headerColor}">
         <span>≡</span></div>
