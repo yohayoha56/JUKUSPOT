@@ -16,12 +16,12 @@ waitForProperties().then((propertiesContainer) => {
   newData = extractProperties(propertiesContainer);
 
   // URLの末尾指定
-  let last_url = newData["ページタイプ"] == "school" ? 
-  "?juku-cr":"?teacher";
-
+  let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?teacher";
   let url = window.location.href;
-  url += last_url ; // 'your_string' は追加したい任意の文字列です
+  let baseUrl = url.split('?')[0]; // '?'を基にURLを分割し、その最初の部分（パラメータがない部分）を取得
+  url = baseUrl + last_url ; // baseURLに新しいパラメータを追加
   window.history.pushState({}, '', url);
+  
 
   // ヘッダーの画像生成
   let pc_logo_src = newData["ページタイプ"] == "school" ? 
