@@ -1,6 +1,10 @@
 /* ヘッダーの設定 */
 .super-navbar__logo-image{
   align-items:center;
+
+}
+
+.super-navbar__logo{
   width: calc(100% - 40px);
   overflow: hidden;
 }
