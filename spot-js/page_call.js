@@ -11,11 +11,8 @@ A.style["visibility"]="visible";
 const page_call_property={
   url: 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec', 
   callback: "top_page",
-}
-if(newData["ページタイプ"] === "school"){
-  page_call_property["教室ID"]=newData["教室ID"];
-}else if(newData["ページタイプ"] === "teacher"){
-  page_call_property["会員ID"]=newData["会員ID"];
+  "教室ID": newData["ページタイプ"] == "school"?newData["教室ID"]:"",
+  "講師ID": newData["ページタイプ"] == "teacher"?newData["講師ID"]:"",
 }
 call_fetchData(page_call_property);
 
@@ -38,8 +35,6 @@ menuData = [
     { id: "profile-menu", title: "講師プロフィール", hasChildElements: false, callback: "profile_page", url: 'https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec' },
   ];
 }
-// もと勤怠
-// https://script.google.com/macros/s/AKfycbzAg7bptaT9umlZy3ThuCtNbi2MLfrBRY_9R65NvwpoJmwJ3JuI2xrF3TzQeTGZG0WT/exec
 
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
@@ -50,7 +45,6 @@ function call_fetchData(page_call_property) {
     "教室名": page_call_property["教室名"],
     "callback": page_call_property["callback"],
     "ページタイプ": newData["ページタイプ"]
-    
   };
 
   fetch(page_call_property["url"], {
@@ -75,21 +69,8 @@ function call_fetchData(page_call_property) {
 
 
 // ここからサイドメニューの作成スクリプト
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const menu = document.querySelector(".menu");
-
-// const page_title = document.createElement("h1");
-// if(newData["ページタイプ"] === "school"){
-//   page_title.innerHTML=newData["教室名"]+'<span style="display:inline-block;">管理ページ</span>';
-// }else if(newData["ページタイプ"] === "teacher"){
-//   page_title.innerHTML=newData["姓"]+newData["名"]+'<span style="display:inline-block;">マイページ</span>';
-// }
-// menu.appendChild(page_title);
-
-
-
-
-
 menuData.forEach((menuItemData) => {
   // メニューの大枠を作成ーーーーーーーーーーーーーーーーーーーーーーー
   const menuItem = document.createElement("li");
