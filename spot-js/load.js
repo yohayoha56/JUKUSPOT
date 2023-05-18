@@ -12,6 +12,16 @@ function waitForProperties() {
   });
 }
 
+
+
+
+
+
+waitForProperties().then((propertiesContainer) => {
+  // プロパティをnewDataに格納する
+  newData = extractProperties(propertiesContainer);
+  
+
   if(newData["ページ表示名"]){
     let redata
     var targets = ["講師トップページ","講師スケジュール提出","講師シフト確定リスト","講師勤怠確認リスト","講師教室確認リスト","講師連絡確認リスト","講師プロフィール","講師よくある質問","講師シフト確定","講師勤怠確認","講師教室確認","講師連絡確認"];
@@ -42,9 +52,7 @@ function waitForProperties() {
 
 
 
-waitForProperties().then((propertiesContainer) => {
-  // プロパティをnewDataに格納する
-  newData = extractProperties(propertiesContainer);
+
 
   // URLの末尾指定
   let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
