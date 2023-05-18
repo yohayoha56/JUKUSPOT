@@ -6,9 +6,20 @@ function top_page() {
 
   var target = document.getElementById("page-content");
   const topHTML =`
-  <div class="super-navbar__logo-image" style="display:flex;">
-  <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 600px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
-  <h1>${headerTitle}</h1>
+  <div class="" style="display:flex;">
+    <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 600px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
+  </div>
+  <div style="padding:20px 0px;>
+    ${newData["ページタイプ"] == "school"?`
+    <p>スポットバイトのご利用ありがとうございます。<br>
+    講師プロフィール・シフト確認は左のタブをクリックしてください。<br>
+    勤務確定／勤務依頼中のシフトは下記よりご確認ください。<br>
+    </p>`:`
+    <p>
+    このページでは勤怠報告とこれからの勤務確認ができます。
+    スケジュールの登録は、左の " シフト管理ページ " よりご提出をお願い致します。
+    </p>`
+    }
   </div>
   `
   target.insertAdjacentHTML("afterbegin",topHTML)
