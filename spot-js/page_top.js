@@ -559,14 +559,4 @@ function fetchdata(data){
 
 
 
-
-
-
-
-
-
-
-
-
-
 }
