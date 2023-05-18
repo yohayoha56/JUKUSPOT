@@ -4,6 +4,17 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 
+  var target = document.getElementById("page-content");
+  const topHTML =`
+  <div class="super-navbar__logo-image" style="display:flex;">
+  <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 600px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
+  <h1>${headerTitle}</h1>
+  </div>
+  `
+  target.insertAdjacentHTML("afterbegin",topHTML)
+
+
+
 if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角数字）"]){
   const formURL ="https://docs.google.com/forms/d/e/1FAIpQLSdshC5GsKHZhps40FNkEShsnnat6-B4Y_EQdRHk0XlXpwV9mg/viewform?usp=pp_url"
   let kojinFormHTML =`
@@ -15,7 +26,6 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
   `
   document.getElementById("page-content").insertAdjacentHTML("afterbegin",kojinFormHTML)
 }
-
 
   // テーブルの行の色をステータスに応じて変更
   // #region 

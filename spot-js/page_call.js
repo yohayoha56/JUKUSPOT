@@ -16,6 +16,15 @@ const page_call_property={
 }
 call_fetchData(page_call_property);
 
+var target = document.getElementById("page-content");
+target.innerHTML = `
+<div class="super-navbar__logo-image" style="display:flex;">
+<img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 600px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
+<h1>${headerTitle}</h1>
+</div>
+`
+
+
 // サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
 let menuData
 if(newData["ページタイプ"] === "school"){
