@@ -44,12 +44,12 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
   const tableRows = document.querySelectorAll('#work-table tr:not(:first-child)');
   tableRows.forEach(row => {
     const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
-    if (newData["ページタイプ"] === "school") {
+    if (newData["ページタイプ"] == "school") {
       switch (rowColorFlag) {
         case "出勤報告済み": row.style["background-color"] = "#FFF2CC"; break;
         case "退勤報告済み": row.style["background-color"] = "#FFF2CC"; break;
       }
-    } else if (newData["ページタイプ"] === "teacher") {
+    } else if (newData["ページタイプ"] == "teacher") {
       switch (rowColorFlag) {
         case "出勤報告済み": row.style["background-color"] = "#FFF2CC"; break;
         case "退勤報告済み": row.style["background-color"] = "#CCF2F4"; break;
