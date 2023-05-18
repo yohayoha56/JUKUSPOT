@@ -61,10 +61,12 @@ if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角�
     const rowColorFlag = row.querySelector('td:nth-child(2)').textContent;
     if (newData["ページタイプ"] === "school") {
       switch (rowColorFlag) {
+        case "勤務不可": row.style["background-color"] = "#dddddd"; break;
         case "調整中": row.style["background-color"] = "#FFF2CC"; break;
       }
     } else if (newData["ページタイプ"] === "teacher") {
       switch (rowColorFlag) {
+        case "勤務不可": row.style["background-color"] = "#dddddd"; break;
         case "調整中": row.style["background-color"] = "#FFF2CC"; break;
         case "講師回答前": row.style["background-color"] = "#F4CCCC"; break;
       }
