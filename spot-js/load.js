@@ -33,7 +33,7 @@ waitForProperties().then((propertiesContainer) => {
       redata = {redirectKey : newData["教室ID"], redirectTarget:"school"}
     }
 
-    if (redirectKey != null) {
+    if (redata["redirectKey"]) {
       fetch("https://script.google.com/macros/s/AKfycbxRVM-fFhzJj5CLMH6LrF1FEaFkYUlMY7LxmV5MuqYp0hcFUryhFPS5DW0ciWx5djk/exec", {
         method: 'POST',
         headers: {
