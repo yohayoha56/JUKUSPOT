@@ -12,32 +12,32 @@ function waitForProperties() {
   });
 }
 
+  if(newData["ページ表示名"]){
+    let redata
+    var targets = ["講師トップページ","講師スケジュール提出","講師シフト確定リスト","講師勤怠確認リスト","講師教室確認リスト","講師連絡確認リスト","講師プロフィール","講師よくある質問","講師シフト確定","講師勤怠確認","講師教室確認","講師連絡確認"];
+    if(targets.includes(newData["ページ表示名"])){
+      redata = {redirectKey : newData["会員ID"], redirectTarget:"teacher"}
+    }
+    var targets = ["教室トップページ","教室シフト管理リスト","教室勤怠確認リスト","教室講師確認リスト","教室連絡確認リスト","教室プロフィール","教室よくある質問","教室シフト管理","教室勤怠管理","教室講師確認","教室連絡確認"];
+    if(targets.includes(newData["ページ表示名"])){
+      redata = {redirectKey : newData["教室ID"], redirectTarget:"school"}
+    }
 
-// let redata
-// var targets = ["講師トップページ","講師スケジュール提出","講師シフト確定リスト","講師勤怠確認リスト","講師教室確認リスト","講師連絡確認リスト","講師プロフィール","講師よくある質問","講師シフト確定","講師勤怠確認","講師教室確認","講師連絡確認"];
-// if(targets.includes(newData["ページ表示名"])){
-//   redata = {redirectKey : newData["講師ID"], redirectTarget:"teacher"}
-// }
-// var targets = ["教室トップページ","教室シフト管理リスト","教室勤怠確認リスト","教室講師確認リスト","教室連絡確認リスト","教室プロフィール","教室よくある質問","教室シフト管理","教室勤怠管理","教室講師確認","教室連絡確認"];
-// if(targets.includes(newData["ページ表示名"])){
-//   redata = {redirectKey : newData["教室ID"], redirectTarget:"school"}
-// }
-
-// if (redirectKey!=null){
-//   fetch("GASのURL", {
-//     method: 'POST',
-//     headers: { 
-//       'Content-Type': 'text/plain',
-//     },
-//     body: JSON.stringify(redata),
-//     mode: 'cors',
-//   })
-//   .then(response => response.text())
-//   .then(data => {
-
-//   });
-// }
-
+    if (redirectKey != null) {
+      fetch("https://script.google.com/macros/s/AKfycbxRVM-fFhzJj5CLMH6LrF1FEaFkYUlMY7LxmV5MuqYp0hcFUryhFPS5DW0ciWx5djk/exec", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(redata),
+        mode: 'cors',
+      })
+      .then(response => response.text())
+      .then(data => {
+        window.location.href = data; // レスポンスのテキストを新しいURLとして設定
+      });
+    }
+  }
 
 
 
