@@ -73,7 +73,7 @@ waitForProperties().then((propertiesContainer) => {
     "background-color:#33A614;color:white;":"";
 
   let headerTitle = newData["ページタイプ"] == "school" ? 
-    `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}マイページ`;
+    `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}先生マイページ`;
 
   let headerHTML =`
   <div class="super-navbar minimal" style="position:sticky;${headerColor}">

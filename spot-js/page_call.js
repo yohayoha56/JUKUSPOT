@@ -19,7 +19,7 @@ call_fetchData(page_call_property);
 var target = document.getElementById("page-content");
 target.innerHTML = `
 <div class="" style="display:flex;">
-<img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 600px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
+<img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 400px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
 </div>
 `
 

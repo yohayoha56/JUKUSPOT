@@ -6,10 +6,11 @@ function top_page() {
 
   var target = document.getElementById("page-content");
   const topHTML =`
-  <div class="" style="display:flex;">
-    <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 600px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
+  <div class="" style="padding-left:70px;display:flex;flex-wrap:wrap; margin-top:20px;align-items:end;font-size:24px;">
+  <img id="top-image" src="https://heys45.github.io/jukust/logo1.png" style="width: 400px; height: auto;margin-left:-70px;" alt="Logo">
+  <p style="margin:0 0 6px 12px;font-weight:bold;color:#666;">${newData["ページタイプ"] == "school"?`教室トップページ`:`講師トップページ`}</p>
   </div>
-  <div style="padding:20px 0px;>
+  <div style="padding:20px 0px;">
     ${newData["ページタイプ"] == "school"?`
     <p>スポットバイトのご利用ありがとうございます。<br>
     講師プロフィール・シフト確認は左のタブをクリックしてください。<br>
@@ -17,7 +18,7 @@ function top_page() {
     </p>`:`
     <p>
     このページでは勤怠報告とこれからの勤務確認ができます。
-    スケジュールの登録は、左の " シフト管理ページ " よりご提出をお願い致します。
+    スケジュールの登録は、左の "シフト管理ページ" よりご提出をお願い致します。
     </p>`
     }
   </div>
