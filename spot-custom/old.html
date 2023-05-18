@@ -1,0 +1,62 @@
+<script>
+    (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState==="complete"){l()}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l)}})();
+    ChannelIO('boot', {
+      "pluginKey": "305bfc19-acf6-4192-a1b7-7cba54142aac"
+    });
+  </script>
+  
+  
+  <script>
+    function loadScript(url) {
+      const script = document.createElement("script");
+      script.defer = true;
+      script.src = url;
+  
+      document.head.appendChild(script);
+    }
+  
+    // 現在のページのURLを取得する
+    const currentPageUrl = window.location.href;
+  
+    // 特定のページでスクリプトを適用しないようにする
+    const excludedPageUrl = "https://jukuspot.com/00dummy-school";
+    if (currentPageUrl !== excludedPageUrl) {
+      loadScript("https://heys45.github.io/jukust/common.js");
+      loadScript("https://heys45.github.io/jukust/t-schedule.js");
+      loadScript("https://heys45.github.io/jukust/t-top.js");
+      loadScript("https://heys45.github.io/jukust/s-shift.js");
+      loadScript("https://heys45.github.io/jukust/t-shift.js");
+      loadScript("https://heys45.github.io/jukust/s-teacher.js");
+      loadScript("https://heys45.github.io/jukust/t-shift.js");
+      loadScript("https://heys45.github.io/jukust/s-top.js");
+      loadScript("https://heys45.github.io/jukust/t-shift.js");
+      loadScript("https://heys45.github.io/jukust/t-prof.js");
+    }
+  </script>
+  
+  
+  <script>
+    function loadStylesheet(url) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.type = "text/css";
+      link.href = url;
+      console.log(link);
+      document.head.appendChild(link);
+    }
+  
+  setTimeout(function() {
+    // 現在のページのURLを取得する
+    const currentPageUrl = window.location.href;
+  
+    // 特定のページでCSSを適用しないようにする
+    const excludedPageUrl = "dummy";
+  
+    // 現在のページのURLがexcludedPageUrlを含まない場合にだけ、CSSを読み込む
+    if (!currentPageUrl.includes(excludedPageUrl)) {
+      loadStylesheet("https://heys45.github.io/jukust/super-raw.css");
+    }
+  }, 300); // 0.3秒後にスクリプトを実行
+  </script>
+  
+  
