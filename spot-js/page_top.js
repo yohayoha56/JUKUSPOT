@@ -66,10 +66,10 @@ rows.forEach(row => {
     
     const date = row.querySelector('td:nth-child(1)').innerText;
     const nowStatus = row.querySelector('td:nth-child(2)').innerText;
-    const teacherId = newData["ページタイプ"] == "school"?"":newData["会員ID"];
+    const teacherId = newData["ページタイプ"] == "school"? "" : newData["会員ID"];
     const teacherName = newData["ページタイプ"] == "school"?
-        row.querySelector('td:nth-child(3)').innerText : newData["姓"]+ newData["名"];
-    const schoolId = newData["ページタイプ"] == "school"?newData["教室ID"]:"";
+        row.querySelector('td:nth-child(3)').innerText : newData["姓"]+newData["名"];
+    const schoolId = newData["ページタイプ"] == "school"? newData["教室ID"] : "";
     const schoolName = newData["ページタイプ"] == "school"? 
         newData["教室名"] : row.querySelector('td:nth-child(3)').innerText;;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
