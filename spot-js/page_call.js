@@ -153,41 +153,51 @@ function pulldown(childMenu){
 
 
 
-// サイドバーの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const hamburgerMenu = document.getElementById('hamburger-menu');
-hamburgerMenu.addEventListener('click', toggleSideBar);
 
-let lastWindowWidth = window.innerWidth;
 
-window.addEventListener('resize', () => {
+// 初期化関数を作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+function initializeLayout() {
+  const contentArea = document.querySelector('.content-area');
+  const sideBar = document.querySelector('.side-bar');
+  
   if (window.innerWidth <= 680) {
-    if (lastWindowWidth > 680) {
-      const contentArea = document.querySelector('.content-area');
-      contentArea.style.display ="block";
-      const sideBar = document.querySelector('.side-bar');
-      sideBar.style.width = '100%';
-      sideBar.style.height = 'auto';
-      sideBar.style.top = '50px';
-      sideBar.style.display = 'none';
-      sideBar.style["background-color"] = 'white';
-    }
+    contentArea.style.display = "block";
+    sideBar.style.width = '100%';
+    sideBar.style.height = 'auto';
+    sideBar.style.top = '50px';
+    sideBar.style.display = 'none';
+    sideBar.style["background-color"] = 'white';
   } else {
-    if (lastWindowWidth <= 680) {
-      const contentArea = document.querySelector('.content-area');
-      contentArea.style.display ="flex";
-      const sideBar = document.querySelector('.side-bar');
-      sideBar.style.width = 'auto';
-      sideBar.style.height = '60vh';
-      sideBar.style.top = '0';
-      sideBar.style.display = 'block';
-      sideBar.style["background-color"] = '';
-    }
+    contentArea.style.display = "flex";
+    sideBar.style.width = 'auto';
+    sideBar.style.height = '60vh';
+    sideBar.style.top = '0';
+    sideBar.style.display = 'block';
+    sideBar.style["background-color"] = '';
   }
+}
+
+// 初回読み込み時にinitializeLayout関数を呼び出す
+initializeLayout()
+
+
+
+// リサイズイベント時にも同じような処理を行う
+let lastWindowWidth = window.innerWidth;
+window.addEventListener('resize', () => {
+  if (window.innerWidth <= 680 && lastWindowWidth > 680) {
+    initializeLayout();
+  } else if (window.innerWidth > 680 && lastWindowWidth <= 680) {
+    initializeLayout();
+  }
+
   lastWindowWidth = window.innerWidth;
 });
 
-// 初期表示時にリサイズイベントをトリガーする
-window.dispatchEvent(new Event('resize'));
+
+// サイドバーの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
+const hamburgerMenu = document.getElementById('hamburger-menu');
+hamburgerMenu.addEventListener('click', toggleSideBar);
 
 function toggleSideBar() {
   const sideBar = document.querySelector('.side-bar');
