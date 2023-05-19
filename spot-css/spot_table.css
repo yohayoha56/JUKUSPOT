@@ -424,6 +424,12 @@
 .profile-block2 th:nth-child(11), .profile-block2 td:nth-child(11)
 { width:100px; flex-grow: 1;max-width:130px;}
 
+.profile-textblock {
+  width:100%;
+  
+}
+
 .profile-textblock td{
   text-align:left;
+  
 }
