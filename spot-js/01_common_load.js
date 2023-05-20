@@ -46,19 +46,6 @@ for (let prop of propertySort) {
   newData2[prop.name] = propertyValues[prop.property];
 }
 
-// newData2をコンソールに表示する
-console.log(newData2);
-
-
-
-
-
-
-
-
-
-
-
 
   
 
@@ -162,14 +149,15 @@ console.log(newData2);
   
   // 外部スクリプトの読み込み設定②
   const scripts = [
-    'https://heys45.github.io/SAUCEED/spot-js/form_common.js',
-    'https://heys45.github.io/SAUCEED/spot-js/page_top.js',
-    'https://heys45.github.io/SAUCEED/spot-js/page_shift.js',
-    'https://heys45.github.io/SAUCEED/spot-js/page_call.js',
+    'https://heys45.github.io/SAUCEED/spot-js/91_func_form.js',
+    'https://heys45.github.io/SAUCEED/spot-js/22_page_top.js',
+    'https://heys45.github.io/SAUCEED/spot-js/21_page_shift.js',
+    'https://heys45.github.io/SAUCEED/spot-js/03_common_guide.js',
+    'https://heys45.github.io/SAUCEED/spot-js/02_common_call.js',
     ...(newData["ページタイプ"] === "school" ? [
     ] : []),
     ...(urlFound ? [//デバッグページの場合には読み込む
-    'https://heys45.github.io/SAUCEED/spot-js/debug.js',
+    'https://heys45.github.io/SAUCEED/spot-js/92_func_debug.js',
   ] : [])
   ];
 

@@ -4,6 +4,7 @@ function profile_page() {};
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page() {
 
+  // トップページのガイドなどの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
   var target = document.getElementById("page-content");
   const topHTML =`
   <div class="" style="padding-left:70px;display:flex;flex-wrap:wrap; margin-top:20px;align-items:end;font-size:24px;">
@@ -11,21 +12,20 @@ function top_page() {
   <p style="margin:0 0 6px 12px;font-weight:bold;color:#666;">${newData["ページタイプ"] == "school"?`教室トップページ`:`講師トップページ`}</p>
   </div>
   <div style="padding:20px 0px;">
+  <p>
+    スポットバイトのご利用ありがとうございます。<br>
     ${newData["ページタイプ"] == "school"?`
-    <p>スポットバイトのご利用ありがとうございます。<br>
     講師プロフィール・シフト確認は左のタブをクリックしてください。<br>
     勤務確定／勤務依頼中のシフトは下記よりご確認ください。<br>
-    </p>`:`
-    <p>
-    このページでは勤怠報告とこれからの勤務確認ができます。
-    スケジュールの登録は、左の "シフト管理ページ" よりご提出をお願い致します。
-    </p>`
-    }
+    `:`
+    このページでは 出勤 / 退勤 の報告とこれからの勤務予定の確認ができます。教室からの勤務依頼への回答も可能です。<br>
+    まずは、スケジュール提出を、左の "シフト管理ページ" よりお願い致します。
+    `}
   </div>
   `
   target.insertAdjacentHTML("afterbegin",topHTML)
 
-
+  // トップページのガイドなどの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 if(newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角数字）"]){
   const formURL ="https://docs.google.com/forms/d/e/1FAIpQLSdshC5GsKHZhps40FNkEShsnnat6-B4Y_EQdRHk0XlXpwV9mg/viewform?usp=pp_url"
