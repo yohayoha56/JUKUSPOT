@@ -20,6 +20,47 @@ function waitForProperties() {
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
+
+
+// scriptタグのidを使って要素を取得する
+let scriptElement = document.getElementById("__NEXT_DATA__");
+
+// scriptタグの内容を取得する
+let jsonText = scriptElement.textContent || scriptElement.innerText;
+
+// 文字列をJSONオブジェクトに変換する
+let jsonData = JSON.parse(jsonText);
+
+// 最初のブロックを取得する
+let firstBlock = Object.values(jsonData.props.pageProps.records.block)[0];
+
+// propertySortとpropertyValuesを取得する
+let propertySort = firstBlock.propertySort;
+let propertyValues = firstBlock.propertyValues;
+
+// 新しいデータオブジェクトを作成する
+let newData2 = {};
+
+// 各プロパティに対して処理を行う
+for (let prop of propertySort) {
+  // propertySortのnameをkey、propertyでpropertyValuesを検索したものをvalueとして新しいデータを作成する
+  newData2[prop.name] = propertyValues[prop.property];
+}
+
+// newData2をコンソールに表示する
+console.log(newData2);
+
+
+
+
+
+
+
+
+
+
+
+
   
 
   async function checkRedirect(newData) {
