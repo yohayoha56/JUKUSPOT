@@ -153,3 +153,33 @@ margin-bottom:0;
       display: inline-block;
   }
 }
+
+
+/* Default styles */
+.content-area {
+  display: flex;
+}
+
+.side-bar {
+  width: auto;
+  height: 60vh;
+  top: 0;
+  display: block;
+  background-color: initial;
+}
+
+/* Styles for screen size 680px or less */
+@media screen and (max-width: 680px) {
+  .content-area {
+    display: block;
+  }
+
+  .side-bar {
+    width: 100%;
+    height: auto;
+    top: 50px;
+    display: none;
+    background-color: white;
+  }
+
+}
