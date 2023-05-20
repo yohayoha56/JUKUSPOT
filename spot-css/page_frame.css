@@ -80,7 +80,7 @@
 }
   
   /* 親メニュー */
-  .group-menu .single-menu{
+  .group-menu ,.single-menu{
   margin-bottom: 5px;
   }
   
@@ -110,7 +110,7 @@
   padding: 0;
   display:none;
   }
-  
+
   .child-menu li::before{
       content:"・";
   }
