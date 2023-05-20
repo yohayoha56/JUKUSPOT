@@ -12,30 +12,28 @@ target.innerHTML = `
 <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 400px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
 </div>
 `
-// 初期のトップページの呼び出し
+// 初回のトップページの呼び出し
 call_fetchData({ "callback" : top_page } );
 
 
 
-
-
 // サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
+const isSchool = newData["ページタイプ"] == "school";
+const isTeacher = newData["ページタイプ"] == "teacher";
+
 let menuData = [
   { id: "top_page", title: "トップページ", class: "single-menu" },
-  { id: "shift_page", title: newData["ページタイプ"] == "school" ? "シフト依頼ページ ▼" : "シフト管理ページ ▼", class: "group-menu" },
+  { id: "shift_page", title: isSchool ? "シフト依頼ページ ▼" : "シフト管理ページ ▼", class: "group-menu" },
   { id: "kintai_page", title: "勤怠確認ページ ▼", class: "group-menu" },
-  { id: "profile_page", title: newData["ページタイプ"] == "school" ? "講師プロフィール ▼" : "マイプロフィール", class: newData["ページタイプ"] == "school" ? "group-menu" : "single-menu" },
+  { id: "profile_page", title: isSchool? "講師プロフィール ▼" : "マイプロフィール", class: isSchool ? "group-menu" : "single-menu" },
 ];
 
-
-// ここからサイドメニューの作成スクリプト
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const childElementsData = newData["ページタイプ"] == "school" ? newData["講師名一覧"] : newData["教室名一覧"];
-const childElementsId = newData["ページタイプ"] == "school" ? newData["講師ID一覧"] : newData["教室ID一覧"];
+const childElementsData = isSchool ? newData["講師名一覧"] : newData["教室名一覧"];
+const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID一覧"];
 
 
 // ここからサイドメニューの作成スクリプト
-// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const menu = document.querySelector(".menu");
 
 menuData.forEach((menuItemData) => {
@@ -94,26 +92,23 @@ childMenus.forEach((childMenu) => {
 
     const page_call_property={
       "callback" : parentId,
-      "講師名" : newData["ページタイプ"] == "school" ? childMenu.innerHTML : "",
-      "会員ID" : newData["ページタイプ"] == "school" ? childMenu.dataset.id : "",
-      "教室名" : newData["ページタイプ"] == "teacher" ? childMenu.innerHTML : "",
-      "教室ID" : newData["ページタイプ"] == "teacher" ? childMenu.dataset.id : "",
+      "講師名" : isSchool ? childMenu.innerHTML : "",
+      "会員ID" : isSchool ? childMenu.dataset.id : "",
+      "教室名" : isTeacher ? childMenu.innerHTML : "",
+      "教室ID" : isTeacher ? childMenu.dataset.id : "",
     }
     call_fetchData(page_call_property);
   });
 });
 
 
-
-
-
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
   const data = {
-    "講師名": newData["ページタイプ"] == "teacher" ? newData["姓"]+newData["名"] : page_call_property["講師名"],
-    "会員ID": newData["ページタイプ"] == "teacher" ? newData["会員ID"] : page_call_property["会員ID"],
-    "教室名": newData["ページタイプ"] == "school" ? cnewData["教室名"] : page_call_property["教室名"],
-    "教室ID": newData["ページタイプ"] == "school" ? cnewData["教室ID"] : page_call_property["教室ID"],
+    "講師名": isTeacher ? newData["姓"]+newData["名"] : page_call_property["講師名"],
+    "会員ID": isTeacher ? newData["会員ID"] : page_call_property["会員ID"],
+    "教室名": isSchool ? cnewData["教室名"] : page_call_property["教室名"],
+    "教室ID": isSchool ? cnewData["教室ID"] : page_call_property["教室ID"],
     "callback": page_call_property["callback"],
     "ページタイプ": newData["ページタイプ"]
   };
@@ -147,45 +142,6 @@ function call_fetchData(page_call_property) {
   });
 }
 
-
-
-// 初期化関数を作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-function initializeLayout() {
-  const contentArea = document.querySelector('.content-area');
-  const sideBar = document.querySelector('.side-bar');
-  
-  if (window.innerWidth <= 680) {
-    contentArea.style.display = "block";
-    sideBar.style.width = '100%';
-    sideBar.style.height = 'auto';
-    sideBar.style.top = '50px';
-    sideBar.style.display = 'none';
-    sideBar.style["background-color"] = 'white';
-  } else {
-    contentArea.style.display = "flex";
-    sideBar.style.width = 'auto';
-    sideBar.style.height = '60vh';
-    sideBar.style.top = '0';
-    sideBar.style.display = 'block';
-    sideBar.style["background-color"] = '';
-  }
-}
-
-
-// 初回読み込み時にinitializeLayout関数を呼び出す
-initializeLayout()
-
-// リサイズイベント時にも同じような処理を行う
-let lastWindowWidth = window.innerWidth;
-window.addEventListener('resize', () => {
-  if (window.innerWidth <= 680 && lastWindowWidth > 680) {
-    initializeLayout();
-  } else if (window.innerWidth > 680 && lastWindowWidth <= 680) {
-    initializeLayout();
-  }
-
-  lastWindowWidth = window.innerWidth;
-});
 
 
 // サイドバーの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
