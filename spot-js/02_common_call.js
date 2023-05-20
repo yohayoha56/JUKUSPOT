@@ -13,7 +13,7 @@ target.innerHTML = `
 </div>
 `
 // 初回のトップページの呼び出し
-call_fetchData({ "callback" : top_page } );
+call_fetchData({ "callback" : "top_page" } );
 
 
 
