@@ -65,7 +65,8 @@ Menus.forEach((Menu) => {
 const groupMenus = document.querySelectorAll(".menu .group-menu .menu-item")
 groupMenus.forEach((groupMenu) => {
   groupMenu.addEventListener("click", (e) => {
-    groupMenu.querySelector(".child-menu").style.display="block";
+    const parentElement =groupMenu.parentElement;
+    parentElement.querySelector(".child-menu").style.display="block";
   });
 });
 
