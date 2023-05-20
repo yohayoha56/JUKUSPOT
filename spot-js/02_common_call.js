@@ -12,6 +12,12 @@ target.innerHTML = `
 <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 400px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
 </div>
 `
+// 初期のトップページの呼び出し
+call_fetchData({ "callback" : top_page } );
+
+
+
+
 
 // サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
 let menuData = [
@@ -96,6 +102,8 @@ childMenus.forEach((childMenu) => {
     call_fetchData(page_call_property);
   });
 });
+
+
 
 
 
