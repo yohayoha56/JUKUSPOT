@@ -1,8 +1,1020 @@
-	{last_edited_by={id=ae8c60a0-788c-4f60-97f1-e033d3236bf7, object=user}, created_time=2023-05-14T13:58:00.000Z, archived=false, object=page, cover=null, url=https://www.notion.so/DB-6f9bf76820f841828c7808affbd97e5f, created_by={object=user, id=ae8c60a0-788c-4f60-97f1-e033d3236bf7}, properties={教室連絡ページ={type=rich_text, rich_text=[], id=jAQB}, 教室ID一覧={id=ne%5BR, rollup={type=array, array=[], function=show_original}, type=rollup}, 完了={type=checkbox, checkbox=false, id=O%5BU%40}, 職歴・自己PR={type=rich_text, rich_text=[], id=h%3A%5BQ}, super｜講師が見るトップページ（新）={formula={string=https://jukuspot.com/6f9bf76820f841828c7808affbd97e5f, type=string}, id=%5BdXx, type=formula}, 応募した全教室={id=%5BJ%60K, rollup={array=[], type=array, function=show_original}, type=rollup}, super｜講師が見るトップページ（jukuspot.com〜）={type=formula, formula={type=string, string=}, id=aDo%7B}, 教室DB0309-とのリレーション（講師DB0309-）={id=xB%3F%5E, relation=[], has_more=false, type=relation}, 電話面談・結果通知済={id=fmUi, type=rollup, rollup={function=show_original, array=[], type=array}}, 算数（小学生）={id=S%5E%7D%7B, type=rich_text, rich_text=[]}, 住民票以外の住所={type=rich_text, rich_text=[], id=_xId}, 教室からのレビュー（公開用）={rich_text=[], id=%5Eihv, type=rich_text}, 英語（小学生）={id=%3F%3AHo, rich_text=[], type=rich_text}, 現代文（高校生）={id=XPMY, rich_text=[], type=rich_text}, 古文・漢文（高校生）={type=rich_text, id=igEb, rich_text=[]}, COM｜電話面談評価={type=rollup, rollup={array=[], type=array, function=show_original}, id=pl%3Cl}, 日本史（高校生）={type=rich_text, rich_text=[], id=jqBH}, トップページ={type=rich_text, id=LKs%3F, rich_text=[]}, 支店名={type=rich_text, rich_text=[], id=i%60%7BK}, 生物（高校生）={rich_text=[], id=%3A%3FYl, type=rich_text}, トップページDB2={rich_text=[], type=rich_text, id=pfxj}, 都道府県（個）={rich_text=[], id=rzri, type=rich_text}, 年齢={type=rich_text, rich_text=[], id=u%5DcP}, 英語（中学生）={type=rich_text, rich_text=[], id=qavb}, 数学（中学生）={rich_text=[], type=rich_text, id=MhQ%5B}, 教室名一覧={id=mmts, rollup={function=show_original, array=[], type=array}, type=rollup}, 生年月日={id=L~%3BW, type=rich_text, rich_text=[]}, 教室確認={type=rich_text, id=MxMy, rich_text=[]}, 初回退勤済={id=v%5D%5Dv, rollup={function=show_original, array=[], type=array}, type=rollup}, 学校名={type=rich_text, rich_text=[], id=a%5CtI}, 文理={type=rich_text, rich_text=[], id=cVqi}, 電話面談担当者={type=rollup, rollup={function=show_original, array=[], type=array}, id=MDX%3A}, 作成日時={last_edited_time=2023-05-14T13:58:00.000Z, type=last_edited_time, id=kJb%7D}, 世界史（高校生）={type=rich_text, rich_text=[], id=%7C%3EpE}, 市区町村（個）={type=rich_text, rich_text=[], id=SjP%60}, 郵便番号（個）={type=rich_text, id=%3DplZ, rich_text=[]}, 学年={rich_text=[], type=rich_text, id=A%3CdU}, 化学（高校生）={id=%3D%5BAr, type=rich_text, rich_text=[]}, 電話番号={id=fmWU, rich_text=[], type=rich_text}, 市区町村={id=BWDT, rich_text=[], type=rich_text}, 最寄り駅={rich_text=[], id=%7DJL%7B, type=rich_text}, 理科（小学生）={id=V%3Fd%5C, rich_text=[], type=rich_text}, 指導経験={rich_text=[], id=%7D%5Co%3A, type=rich_text}, 政治経済・公民（高校生）={type=rich_text, id=XLwr, rich_text=[]}, 小論文（高校生）={type=rich_text, rich_text=[], id=yPPr}, 英語（高校生）={rich_text=[], id=CFwJ, type=rich_text}, 姓={id=h%7C~m, rich_text=[], type=rich_text}, 英会話（その他）={type=rich_text, rich_text=[], id=m%3D~K}, 社会（小学生）={id=jjGF, type=rich_text, rich_text=[]}, メールアドレス={rich_text=[], id=UPat, type=rich_text}, 勤務者ステータス={id=Y%3AIo, type=rollup, rollup={array=[], function=show_original, type=array}}, 指導｜電話面談評価={rollup={function=show_original, array=[], type=array}, type=rollup, id=efMx}, 会員ID={rich_text=[{type=text, plain_text=XXXXX, href=null, text={link=null, content=XXXXX}, annotations={code=false, underline=false, color=default, strikethrough=false, bold=false, italic=false}}], type=rich_text, id=vbAD}, 理系数学（高校生）={type=rich_text, rich_text=[], id=%7Dnq%3E}, 最新ビュー={rollup={array=[], function=show_original, type=array}, id=%3B%7Cb~, type=rollup}, 国語（中学生）={type=rich_text, rich_text=[], id=N_bT}, コメント｜電話面談評価={id=K%3EgY, type=rollup, rollup={array=[], type=array, function=show_original}}, よくある質問={id=m%7D%5CK, rich_text=[], type=rich_text}, 入学年={rich_text=[], id=rWT%3D, type=rich_text}, 入学月={rich_text=[], type=rich_text, id=kVT%60}, 社会（中学生）={id=pxlP, type=rich_text, rich_text=[]}, リスク｜電話面談評価={id=%3EF%3AC, type=rollup, rollup={function=show_original, type=array, array=[]}}, 選考管理DB={id=XDht, relation=[], has_more=false, type=relation}, 地理（高校生）={id=a%7BbS, type=rich_text, rich_text=[]}, 姓（フリガナ）={id=%40qR%5B, rich_text=[], type=rich_text}, 勤怠確認={type=rich_text, id=%5DQ%3BI, rich_text=[]}, 学部={id=uibT, rich_text=[], type=rich_text}, トップページDB1={type=rich_text, rich_text=[], id=%5B%5Ben}, 教室からのレビュー={type=rich_text, id=LliO, rich_text=[]}, 教室DB0309-={type=relation, has_more=false, id=%3CUJb, relation=[]}, 現在の職業={rich_text=[], id=%7B%3Ewf, type=rich_text}, この講師がしたレビュー={type=rich_text, rich_text=[], id=%3FVEQ}, 勤怠｜電話面談評価={type=rollup, rollup={type=array, array=[], function=show_original}, id=%3B%3FnA}, TimeRex入力済={type=rollup, id=%5CgmW, rollup={array=[], type=array, function=show_original}}, 金融機関名={type=rich_text, id=ZycN, rich_text=[]}, 理科（中学生）={rich_text=[], type=rich_text, id=MrFL}, 会員登録日={type=rich_text, rich_text=[], id=z%40zx}, シフト管理={rich_text=[], type=rich_text, id=UpHB}, 口座番号（半角数字）={type=rich_text, rich_text=[], id=%7B%5Bxk}, 性別={id=b%5CXD, rich_text=[], type=rich_text}, 口座名義人名（カナ）={type=rich_text, id=%3F%3APa, rich_text=[]}, 都道府県={type=rich_text, rich_text=[], id=wUgs}, ページタイプ={formula={string=teacher, type=string}, type=formula, id=%3BbRu}, 0327トップフィルター処理={checkbox=false, type=checkbox, id=%3CqF%3F}, 市区町村以下（個）={type=rich_text, rich_text=[], id=vDCq}, 文系数学（高校生）={type=rich_text, rich_text=[], id=ZVFW}, スケジュール提出DB={type=rich_text, id=nxm%3B, rich_text=[]}, 名（フリガナ）={id=DXnu, type=rich_text, rich_text=[]}, 支店番号={type=rich_text, rich_text=[], id=Jq%3E%60}, 名={id=kTf%7D, rich_text=[], type=rich_text}, 学科={type=rich_text, rich_text=[], id=%3Be%5CY}, 国語（小学生）={id=kEUM, rich_text=[], type=rich_text}, セイメイ={formula={string=, type=string}, type=formula, id=IEAe}, 名前={id=title, title=[{href=null, type=text, annotations={code=false, color=default, bold=false, strikethrough=false, italic=false, underline=false}, plain_text=会員DB複製用データ, text={content=会員DB複製用データ, link=null}}], type=title}, 最終更新日時={last_edited_time=2023-05-14T13:58:00.000Z, id=MNcy, type=last_edited_time}, スケジュール提出={type=rich_text, rich_text=[], id=Auwm}, マイプロフィール={type=rich_text, rich_text=[], id=uZlL}, 姓名={formula={string=, type=string}, id=AHRh, type=formula}, 書類選考・合否通知済={id=%5BCT%3C, type=rollup, rollup={array=[], type=array, function=show_original}}, 物理（高校生）={rich_text=[], id=jweP, type=rich_text}}, icon=null, parent={database_id=fd6c3a60-d685-4bad-9eb2-e02b51a12ba7, type=database_id}, id=6f9bf768-20f8-4182-8c78-08affbd97e5f, last_edited_time=2023-05-14T13:58:00.000Z}
-16:22:00	情報	{
-    電話面談担当者={type=rollup, id=MDX%3A, 
-    rollup={array=[], type=array, function=show_original}},
-    教室DB0309-とのリレーション（講師DB0309-）={has_more=false, relation=[], id=xB%3F%5E, type=relation}, 
-    理系数学（高校生）={id=%7Dnq%3E, type=rich_text, rich_text=[]}, 
-    数学（中学生）={type=rich_text, id=MhQ%5B, rich_text=[]}, 最終更新日時={last_edited_time=2023-05-14T13:58:00.000Z, type=last_edited_time, id=MNcy}, 市区町村={type=rich_text, rich_text=[], id=BWDT}, 社会（中学生）={id=pxlP, rich_text=[], type=rich_text}, 英会話（その他）={rich_text=[], id=m%3D~K, type=rich_text}, 教室連絡ページ={type=rich_text, rich_text=[], id=jAQB}, 勤怠確認={rich_text=[], type=rich_text, id=%5DQ%3BI}, セイメイ={id=IEAe, formula={type=string, string=}, type=formula}, 教室からのレビュー={rich_text=[], id=LliO, type=rich_text}, リスク｜電話面談評価={type=rollup, rollup={function=show_original, array=[], type=array}, id=%3EF%3AC}, 日本史（高校生）={rich_text=[], id=jqBH, type=rich_text}, 教室からのレビュー（公開用）={id=%5Eihv, type=rich_text, rich_text=[]}, 化学（高校生）={rich_text=[], type=rich_text, id=%3D%5BAr}, 入学年={type=rich_text, id=rWT%3D, rich_text=[]}, 世界史（高校生）={id=%7C%3EpE, type=rich_text, rich_text=[]}, 姓（フリガナ）={type=rich_text, id=%40qR%5B, rich_text=[]}, 指導経験={rich_text=[], type=rich_text, id=%7D%5Co%3A}, 応募した全教室={id=%5BJ%60K, rollup={type=array, function=show_original, array=[]}, type=rollup}, トップページ={type=rich_text, id=LKs%3F, rich_text=[]}, 都道府県={rich_text=[], id=wUgs, type=rich_text}, 理科（小学生）={id=V%3Fd%5C, rich_text=[], type=rich_text}, 支店名={rich_text=[], type=rich_text, id=i%60%7BK}, 物理（高校生）={rich_text=[], type=rich_text, id=jweP}, この講師がしたレビュー={rich_text=[], id=%3FVEQ, type=rich_text}, super｜講師が見るトップページ（新）={formula={type=string, string=https://jukuspot.com/6f9bf76820f841828c7808affbd97e5f}, id=%5BdXx, type=formula}, 完了={checkbox=false, type=checkbox, id=O%5BU%40}, 生年月日={rich_text=[], type=rich_text, id=L~%3BW}, 電話面談・結果通知済={type=rollup, id=fmUi, rollup={array=[], function=show_original, type=array}}, 住民票以外の住所={type=rich_text, id=_xId, rich_text=[]}, よくある質問={rich_text=[], id=m%7D%5CK, type=rich_text}, 生物（高校生）={id=%3A%3FYl, type=rich_text, rich_text=[]}, 算数（小学生）={type=rich_text, rich_text=[], id=S%5E%7D%7B}, トップページDB2={rich_text=[], id=pfxj, type=rich_text}, 最寄り駅={id=%7DJL%7B, rich_text=[], type=rich_text}, 名={id=kTf%7D, type=rich_text, rich_text=[]}, 指導｜電話面談評価={id=efMx, type=rollup, rollup={function=show_original, type=array, array=[]}}, 国語（小学生）={rich_text=[], type=rich_text, id=kEUM}, 年齢={type=rich_text, rich_text=[], id=u%5DcP}, 性別={type=rich_text, rich_text=[], id=b%5CXD}, 勤怠｜電話面談評価={rollup={array=[], function=show_original, type=array}, id=%3B%3FnA, type=rollup}, 最新ビュー={rollup={function=show_original, type=array, array=[]}, type=rollup, id=%3B%7Cb~}, 教室名一覧={id=mmts, type=rollup, rollup={function=show_original, type=array, array=[]}}, 市区町村以下（個）={rich_text=[], type=rich_text, id=vDCq}, 学年={id=A%3CdU, rich_text=[], type=rich_text}, 名（フリガナ）={type=rich_text, rich_text=[], id=DXnu}, コメント｜電話面談評価={type=rollup, id=K%3EgY, rollup={function=show_original, array=[], type=array}}, 英語（中学生）={type=rich_text, rich_text=[], id=qavb}, 姓={id=h%7C~m, type=rich_text, rich_text=[]}, 学校名={type=rich_text, rich_text=[], id=a%5CtI}, 口座名義人名（カナ）={rich_text=[], id=%3F%3APa, type=rich_text}, 作成日時={last_edited_time=2023-05-14T13:58:00.000Z, id=kJb%7D, type=last_edited_time}, 国語（中学生）={id=N_bT, type=rich_text, rich_text=[]}, 地理（高校生）={id=a%7BbS, type=rich_text, rich_text=[]}, TimeRex入力済={rollup={type=array, array=[], function=show_original}, type=rollup, id=%5CgmW}, 電話番号={id=fmWU, type=rich_text, rich_text=[]}, 教室DB0309-={relation=[], type=relation, has_more=false, id=%3CUJb}, 会員ID={id=vbAD, type=rich_text, rich_text=[{text={content=XXXXX, link=null}, type=text, href=null, annotations={underline=false, code=false, bold=false, italic=false, strikethrough=false, color=default}, plain_text=XXXXX}]}, スケジュール提出={rich_text=[], id=Auwm, type=rich_text}, スケジュール提出DB={id=nxm%3B, rich_text=[], type=rich_text}, 英語（高校生）={id=CFwJ, rich_text=[], type=rich_text}, 口座番号（半角数字）={rich_text=[], id=%7B%5Bxk, type=rich_text}, ページタイプ={type=formula, formula={string=teacher, type=string}, id=%3BbRu}, 現在の職業={id=%7B%3Ewf, type=rich_text, rich_text=[]}, 支店番号={rich_text=[], type=rich_text, id=Jq%3E%60}, 0327トップフィルター処理={checkbox=false, type=checkbox, id=%3CqF%3F}, 勤務者ステータス={rollup={type=array, array=[], function=show_original}, type=rollup, id=Y%3AIo}, 教室ID一覧={type=rollup, rollup={type=array, array=[], function=show_original}, id=ne%5BR}, 政治経済・公民（高校生）={type=rich_text, rich_text=[], id=XLwr}, 入学月={id=kVT%60, type=rich_text, rich_text=[]}, 社会（小学生）={type=rich_text, id=jjGF, rich_text=[]}, 選考管理DB={type=relation, id=XDht, relation=[], has_more=false}, COM｜電話面談評価={rollup={array=[], type=array, function=show_original}, type=rollup, id=pl%3Cl}, 職歴・自己PR={type=rich_text, id=h%3A%5BQ, rich_text=[]}, トップページDB1={rich_text=[], id=%5B%5Ben, type=rich_text}, 書類選考・合否通知済={type=rollup, rollup={array=[], type=array, function=show_original}, id=%5BCT%3C}, 現代文（高校生）={type=rich_text, rich_text=[], id=XPMY}, メールアドレス={type=rich_text, rich_text=[], id=UPat}, 初回退勤済={id=v%5D%5Dv, rollup={function=show_original, type=array, array=[]}, type=rollup}, 古文・漢文（高校生）={id=igEb, rich_text=[], type=rich_text}, 市区町村（個）={id=SjP%60, type=rich_text, rich_text=[]}, 学部={type=rich_text, rich_text=[], id=uibT}, 文理={id=cVqi, type=rich_text, rich_text=[]}, 小論文（高校生）={id=yPPr, type=rich_text, rich_text=[]}, 理科（中学生）={rich_text=[], id=MrFL, type=rich_text}, マイプロフィール={type=rich_text, rich_text=[], id=uZlL}, 名前={title=[{text={link=null, content=会員DB複製用データ}, plain_text=会員DB複製用データ, href=null, type=text, annotations={italic=false, color=default, underline=false, bold=false, code=false, strikethrough=false}}], type=title, id=title}, 姓名={type=formula, id=AHRh, formula={type=string, string=}}, super｜講師が見るトップページ（jukuspot.com〜）={type=formula, id=aDo%7B, formula={string=, type=string}}, 英語（小学生）={id=%3F%3AHo, type=rich_text, rich_text=[]}, 金融機関名={rich_text=[], type=rich_text, id=ZycN}, 教室確認={type=rich_text, id=MxMy, rich_text=[]}, シフト管理={rich_text=[], type=rich_text, id=UpHB}, 会員登録日={type=rich_text, rich_text=[], id=z%40zx}, 文系数学（高校生）={rich_text=[], type=rich_text, id=ZVFW}, 都道府県（個）={rich_text=[], id=rzri, type=rich_text}, 学科={rich_text=[], type=rich_text, id=%3Be%5CY}, 郵便番号（個）={rich_text=[], type=rich_text, id=%3DplZ}}
-16:22:00	情報	姓
+{
+	"props": {
+		"pageProps": {
+			"records": {
+				"block": {
+					"ba578512c11b498798366cccd4f6af5e": {
+						"id": "ba578512c11b498798366cccd4f6af5e",
+						"children": [
+							"fc3aa236cb4e494fb3cbef38c5e0fdcb"
+						],
+						"hasContent": true,
+						"parentId": "0474eed9579d4063934d6df442bba0a3",
+						"title": [
+							[
+								"講師プロフィールの電話面談結果が反映されていない"
+							]
+						],
+						"type": "page",
+						"spaceId": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539",
+						"coverPosition": 0,
+						"cardCoverPosition": 0,
+						"createdTime": 1684403069544,
+						"lastEditedTime": 1684403148532,
+						"createdBy": [
+							{
+								"0": "‣",
+								"1": [
+									{
+										"0": "u",
+										"1": "d56d8b77-97ab-456f-aa61-dd0e35e68623"
+									}
+								]
+							}
+						],
+						"lastEditedBy": [
+							{
+								"0": "‣",
+								"1": [
+									{
+										"0": "u",
+										"1": "d56d8b77-97ab-456f-aa61-dd0e35e68623"
+									}
+								]
+							}
+						],
+						"propertySort": [
+							{
+								"property": "A]b>",
+								"visibility": "show",
+								"type": "number",
+								"name": "No."
+							},
+							{
+								"property": "mLJT",
+								"visibility": "show",
+								"type": "status",
+								"name": "Status"
+							},
+							{
+								"property": "iNGl",
+								"visibility": "show",
+								"type": "multi_select",
+								"name": "種別"
+							},
+							{
+								"property": "Wfrb",
+								"visibility": "show",
+								"type": "multi_select",
+								"name": "画面"
+							},
+							{
+								"property": "DPl~",
+								"visibility": "show",
+								"type": "multi_select",
+								"name": "ページ"
+							},
+							{
+								"property": "lRGr",
+								"visibility": "show",
+								"type": "text",
+								"name": "備考・補足"
+							},
+							{
+								"property": "nLKY",
+								"visibility": "show",
+								"type": "select",
+								"name": "優先度"
+							},
+							{
+								"property": "G=a\\",
+								"visibility": "show",
+								"type": "date",
+								"name": "対応完了予定日"
+							},
+							{
+								"property": "cOVi",
+								"visibility": "show",
+								"type": "text",
+								"name": "対応方針・補足"
+							},
+							{
+								"property": "sLGh",
+								"visibility": "show",
+								"type": "person",
+								"name": "対応者"
+							},
+							{
+								"property": "OrPK",
+								"visibility": "show",
+								"type": "last_edited_time",
+								"name": "更新日時"
+							},
+							{
+								"property": "Lxa\\",
+								"visibility": "show",
+								"type": "last_edited_by",
+								"name": "最終更新者"
+							},
+							{
+								"property": "UnKf",
+								"visibility": "show",
+								"type": "created_by",
+								"name": "記入者"
+							},
+							{
+								"property": "|Szb",
+								"visibility": "show",
+								"type": "created_time",
+								"name": "起票日時"
+							}
+						],
+						"uri": "/ba578512c11b498798366cccd4f6af5e",
+						"fullWidth": false,
+						"smallText": false,
+						"noCover": true,
+						"superProperties": {},
+                        // これ大事
+						"propertyValues": {
+							"A]b>": [
+								[
+									"0"
+								]
+							],
+							"mLJT": [
+								{
+									"color": "default",
+									"value": "Not started"
+								}
+							],
+							"iNGl": [
+								{
+									"color": "gray",
+									"value": "バグ"
+								}
+							],
+							"Wfrb": [
+								{
+									"color": "default",
+									"value": "教室ページ"
+								}
+							],
+							"DPl~": [
+								{
+									"color": "default",
+									"value": "講師プロフィール"
+								}
+							],
+							"nLKY": [
+								{
+									"color": "brown",
+									"value": "高"
+								}
+							],
+							"OrPK": "May 18, 2023 9:45 AM",
+							"Lxa\\": [
+								{
+									"0": "‣",
+									"1": [
+										{
+											"0": "u",
+											"1": "d56d8b77-97ab-456f-aa61-dd0e35e68623"
+										}
+									]
+								}
+							],
+							"UnKf": [
+								{
+									"0": "‣",
+									"1": [
+										{
+											"0": "u",
+											"1": "d56d8b77-97ab-456f-aa61-dd0e35e68623"
+										}
+									]
+								}
+							],
+							"|Szb": "May 18, 2023 9:44 AM"
+						}
+					}
+					"94b22376aaa94f07a5e5abb3a1600284": null,
+					"fd37447a83874f2ea9af29e53b3100a2": {
+						"id": "fd37447a83874f2ea9af29e53b3100a2",
+						"children": [],
+						"hasContent": true,
+						"parentId": "5df96e731bad461ba6d7ef6b634e84d3",
+						"title": [
+							[
+								"プロトタイプ管理ページ"
+							]
+						],
+						"type": "page",
+						"spaceId": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539",
+						"icon": "💠",
+						"coverPosition": 0,
+						"cardCoverPosition": 0,
+						"createdTime": 1674702881761,
+						"lastEditedTime": 1684458566727,
+						"createdBy": [
+							{
+								"0": "‣",
+								"1": [
+									{
+										"0": "u",
+										"1": "ae8c60a0-788c-4f60-97f1-e033d3236bf7"
+									}
+								]
+							}
+						],
+						"lastEditedBy": [
+							{
+								"0": "‣",
+								"1": [
+									{
+										"0": "u",
+										"1": "d56d8b77-97ab-456f-aa61-dd0e35e68623"
+									}
+								]
+							}
+						],
+						"uri": "/fd37447a83874f2ea9af29e53b3100a2",
+						"superProperties": {}
+					},
+					"fc3aa236cb4e494fb3cbef38c5e0fdcb": {
+						"id": "fc3aa236cb4e494fb3cbef38c5e0fdcb",
+						"children": [],
+						"hasContent": false,
+						"parentId": "ba578512c11b498798366cccd4f6af5e",
+						"title": [],
+						"type": "text"
+					},
+					"5eaa284468024bb2843e41599b89fe6b": {
+						"id": "5eaa284468024bb2843e41599b89fe6b",
+						"children": [],
+						"hasContent": false,
+						"parentId": "94b22376aaa94f07a5e5abb3a1600284",
+						"title": [
+							[
+								"バグ・要望リスト"
+							]
+						],
+						"type": "collection_inline",
+						"spaceId": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539",
+						"collectionId": "0474eed9-579d-4063-934d-6df442bba0a3",
+						"icon": "🍀",
+						"superProperties": {},
+                        // ビューの条件設定ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+						"views": [
+							{
+								"groups": [],
+								"id": "c3c57326-2d91-495e-8b52-39271ff71d30",
+								"type": "board",
+								"name": "ステータス管理",
+								"format": {
+									"board_columns": [
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "※ステータス説明"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "起票（D）"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "再起票（D）"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "検討（D/O）"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "対応中（D）"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "確認待ち（U）"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "対応完了"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "対応しない方針（O）"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "積んでおくものリスト"
+												}
+											},
+											"property": "mLJT"
+										},
+										{
+											"value": {
+												"type": "status",
+												"value": {
+													"type": "by_option",
+													"option": "アーカイブ"
+												}
+											},
+											"property": "mLJT"
+										}
+									],
+									"board_columns_by": {
+										"sort": {
+											"type": "manual"
+										},
+										"type": "status",
+										"groupBy": "option",
+										"property": "mLJT",
+										"disableBoardColorColumns": false
+									},
+									"property_filters": [
+										{
+											"id": "fdb73e1e-334d-4699-b512-9ed61b4b5c25",
+											"filter": {
+												"filter": {
+													"value": [
+														{
+															"type": "is_group",
+															"value": "To-do"
+														},
+														{
+															"type": "is_group",
+															"value": "In progress"
+														},
+														{
+															"type": "is_option",
+															"value": "対応完了"
+														},
+														{
+															"type": "is_option",
+															"value": "対応しない方針（O）"
+														},
+														{
+															"type": "is_option",
+															"value": "積んでおくものリスト"
+														}
+													],
+													"operator": "status_is"
+												},
+												"property": "mLJT"
+											}
+										}
+									],
+									"table_subitem_toggle_column": "title"
+								},
+								"visibleColumns": [
+									{
+										"id": "A]b>",
+										"name": "No.",
+										"type": "number",
+										"visible": true
+									},
+									{
+										"id": "title",
+										"name": "内容",
+										"type": "title",
+										"visible": true
+									},
+									{
+										"id": "iNGl",
+										"name": "種別",
+										"type": "multi_select",
+										"options": [
+											{
+												"id": "50e9d100-b4b2-4004-847c-c6b49d1ef23e",
+												"color": "gray",
+												"value": "バグ"
+											},
+											{
+												"id": "b97ca6ca-a1eb-4cd0-8b04-a4608b9d7881",
+												"color": "yellow",
+												"value": "機能要望"
+											},
+											{
+												"id": "f47f6fd7-2aa9-4497-9698-2be55e8eb190",
+												"color": "brown",
+												"value": "デザイン要望"
+											},
+											{
+												"id": "6d7aa67d-5a18-4638-bf20-a6fccf6d574d",
+												"color": "brown",
+												"value": "テキスト要望"
+											},
+											{
+												"id": "e2ee12ad-bf90-40d0-a4a5-8a1201ca0c6b",
+												"color": "red",
+												"value": "その他"
+											}
+										],
+										"visible": true
+									},
+									{
+										"id": "Wfrb",
+										"name": "画面",
+										"type": "multi_select",
+										"options": [
+											{
+												"id": "d8c03b32-58d8-4792-9b7c-9277d92d0269",
+												"color": "brown",
+												"value": "講師ページ"
+											},
+											{
+												"id": "d7f59e9b-381c-435d-8dd7-1334d6bdb113",
+												"color": "default",
+												"value": "教室ページ"
+											},
+											{
+												"id": "7e1d13c3-833b-4ec6-82f3-4d0a16cd4d27",
+												"color": "green",
+												"value": "Notion"
+											},
+											{
+												"id": "bdfbcb58-7f56-4281-b6c6-270fbea37982",
+												"color": "pink",
+												"value": "講師ページ（スマホ）"
+											},
+											{
+												"id": "60077fb1-b614-43d7-86e5-9d9ed1a1e402",
+												"color": "red",
+												"value": "チャネルトーク"
+											},
+											{
+												"id": "c5b58daa-ace8-4340-8149-315ca5c5c9ea",
+												"color": "orange",
+												"value": "その他"
+											}
+										],
+										"visible": true
+									},
+									{
+										"id": "DPl~",
+										"name": "ページ",
+										"type": "multi_select",
+										"options": [
+											{
+												"id": "3519a649-8615-4d69-942e-a4cbbf6a96e6",
+												"color": "brown",
+												"value": "トップページ"
+											},
+											{
+												"id": "eac360e7-050b-42e8-806b-38b3ba5c329d",
+												"color": "brown",
+												"value": "シフト依頼ページ"
+											},
+											{
+												"id": "c3e88684-0dc6-4cfb-be21-9538f1e4ca4e",
+												"color": "gray",
+												"value": "勤怠確認ページ"
+											},
+											{
+												"id": "633e6bbd-64bc-4829-a7e9-2ccbdc1bba80",
+												"color": "default",
+												"value": "講師プロフィール"
+											},
+											{
+												"id": "d92c000c-acfb-4aa8-bbf7-6280713cfc70",
+												"color": "red",
+												"value": "メール"
+											},
+											{
+												"id": "899eae4c-f1a8-4c07-9d21-4b0194f8deef",
+												"color": "yellow",
+												"value": "選考管理DB"
+											},
+											{
+												"id": "fb1fe9a8-e03d-430a-98fe-36779d360b4d",
+												"color": "orange",
+												"value": "その他"
+											}
+										],
+										"visible": true
+									},
+									{
+										"id": "UnKf",
+										"name": "記入者",
+										"type": "created_by",
+										"visible": true
+									}
+								],
+								"boardItems": [],
+								"title": [
+									[
+										"バグ・要望リスト"
+									]
+								],
+								"icon": "🍀",
+								"superProperties": {}
+							}
+						],
+						"viewIds": [
+							"c3c57326-2d91-495e-8b52-39271ff71d30"
+						],
+						"coverPosition": 1,
+						"cover": null,
+						"description": []
+					},
+					"cd60b80e216e4bb6b1ec6fe56bfcae0b": {
+						"id": "cd60b80e216e4bb6b1ec6fe56bfcae0b",
+						"children": [],
+						"hasContent": false,
+						"parentId": "e277f13cc0d94849af62a1398a8602c4",
+						"title": [
+							[
+								"開発ロードマップ0320〜"
+							]
+						],
+						"type": "collection_inline",
+						"spaceId": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539",
+						"collectionId": "4b5fccb2-c0f5-49ce-af75-6e655ad596da",
+						"icon": "🚈",
+						"superProperties": {},
+                        // ここは大事そう！！！ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+						"views": [
+							{
+								"id": "48d776d2-c31e-415f-b89d-773b4094ab9e",
+								"groups": [],
+								"type": "table",
+								"name": "今後の開発事項",
+								"format": {
+									"table_wrap": false,
+									"collection_pointer": {
+										"id": "4b5fccb2-c0f5-49ce-af75-6e655ad596da",
+										"table": "collection",
+										"spaceId": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539"
+									},
+									"collection_view_subitem": {
+										"property": "zbd~"
+									},
+									"collection_page_properties": [
+										{
+											"visible": true,
+											"property": "zbd~"
+										}
+									]
+								},
+								"visibleColumns": [
+									{
+										"id": "title",
+										"name": "要件（解決したいこと）",
+										"type": "title",
+										"width": 493,
+										"visible": true
+									},
+									{
+										"id": "UTuV",
+										"name": "提案者",
+										"type": "person",
+										"width": 100,
+										"visible": true
+									},
+									{
+										"id": "Ygrc",
+										"name": "発生日",
+										"type": "created_time",
+										"width": 120,
+										"visible": true
+									},
+									{
+										"id": "~Lcg",
+										"name": "該当ページ",
+										"type": "multi_select",
+										"options": [
+											{
+												"id": "43d85ee7-3d06-4110-a2b5-038a8cb77f86",
+												"color": "gray",
+												"value": "教室ページ"
+											},
+											{
+												"id": "ef17b546-7120-4cc6-8917-f20582ec4f75",
+												"color": "red",
+												"value": "教室｜シフト管理ページ"
+											},
+											{
+												"id": "edb2bcb4-4978-4d84-8f8b-c6e0de18c353",
+												"color": "green",
+												"value": "講師｜シフト管理ページ"
+											},
+											{
+												"id": "1db91df5-bdb3-436b-9f57-68075327fee5",
+												"color": "default",
+												"value": "講師｜スケジュール提出"
+											},
+											{
+												"id": "f8d5386d-6918-4d15-9020-1b2aaccd9116",
+												"color": "purple",
+												"value": "講師｜トップページ"
+											},
+											{
+												"id": "4278a29c-4713-47c4-86fa-73589f0ebdcb",
+												"color": "orange",
+												"value": "▼▼▼▼▼▼▼▼▼▼▼▼▼"
+											},
+											{
+												"id": "bf011402-1660-469d-82c6-543db97c4aa2",
+												"color": "brown",
+												"value": "教室｜講師プロフィールページ"
+											}
+										],
+										"width": 195,
+										"visible": true
+									},
+									{
+										"id": "{[^U",
+										"name": "ステータス",
+										"type": "status",
+										"options": [
+											{
+												"id": "\\m`m",
+												"color": "green",
+												"value": "ーーー"
+											},
+											{
+												"id": "o:|T",
+												"color": "orange",
+												"value": "NEXT"
+											},
+											{
+												"id": "9ef99e2a-7626-4d30-9db5-17cfb242f39e",
+												"value": "未着手"
+											},
+											{
+												"id": "9e9560f5-2f5b-4d77-801c-22e59d6856a8",
+												"color": "blue",
+												"value": "対応中"
+											},
+											{
+												"id": "bd9ea270-9e6c-417e-992f-7296e71f25a5",
+												"color": "green",
+												"value": "解決！"
+											}
+										],
+										"width": 134,
+										"visible": true
+									},
+									{
+										"id": "H]pP",
+										"name": "メモ",
+										"type": "text",
+										"width": 240,
+										"visible": true
+									},
+									{
+										"id": "svNr",
+										"name": "作業方針",
+										"type": "text",
+										"width": 290,
+										"visible": true
+									},
+									{
+										"id": "IVPJ",
+										"name": "完了予定日",
+										"type": "date",
+										"width": 142,
+										"visible": true
+									},
+									{
+										"id": "~z\\j",
+										"name": "優先度",
+										"type": "select",
+										"options": [
+											{
+												"id": "d8339467-c45e-47e9-836c-1111aa769f55",
+												"color": "gray",
+												"value": "高"
+											}
+										],
+										"width": 173,
+										"visible": true
+									},
+									{
+										"id": "iSQf",
+										"name": "原口check",
+										"type": "checkbox",
+										"width": 131,
+										"visible": true
+									},
+									{
+										"id": "Wuj?",
+										"name": "工数目安",
+										"type": "text",
+										"width": 149,
+										"visible": true
+									}
+								],
+								"items": [],
+								"hideTitle": false,
+								"title": [
+									[
+										"開発ロードマップ0320〜"
+									]
+								],
+								"icon": "🚈",
+								"superProperties": {}
+							}
+						],
+						"viewIds": [
+							"48d776d2-c31e-415f-b89d-773b4094ab9e"
+						],
+						"coverPosition": 1,
+						"cover": null,
+						"description": []
+					},
+					"e277f13cc0d94849af62a1398a8602c4": {
+						"id": "e277f13cc0d94849af62a1398a8602c4",
+						"children": [
+							"cd60b80e216e4bb6b1ec6fe56bfcae0b",
+							"e9e6f338b0804e5a8e1e14c7d76badcf",
+							"23df08b2fad14f228dec60e8e3be5112",
+							"5c85e9a83c4841b6bb9d7cbdd872f4dd",
+							"9e6d6c4e34874532bba14acfd17d24e3",
+							"1f0e9ebab8bf4f9fa3d79b5f65379bdc",
+							"cdcb6657986a41fe896f45ec4441c0cc"
+						],
+						"hasContent": true,
+						"parentId": "fd37447a83874f2ea9af29e53b3100a2",
+						"title": [
+							[
+								"開発ロードマップ",
+								[
+									[
+										"b",
+										null
+									]
+								]
+							]
+						],
+						"type": "toggle",
+						"subType": "sub_sub_header",
+						"depth": 3,
+						"color": null
+					}
+				},
+				"automation": {
+					"72270966-df68-43f3-be72-9028c8f14ffd": {
+						"value": {
+							"id": "72270966-df68-43f3-be72-9028c8f14ffd",
+							"version": 2,
+							"space_id": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539",
+							"parent_table": "collection",
+							"parent_id": "0474eed9-579d-4063-934d-6df442bba0a3",
+							"created_by_id": "d56d8b77-97ab-456f-aa61-dd0e35e68623",
+							"created_by_table": "notion_user",
+							"created_time": 1683780192237,
+							"last_edited_by_id": "d56d8b77-97ab-456f-aa61-dd0e35e68623",
+							"last_edited_by_table": "notion_user",
+							"last_edited_time": 1683780192237,
+							"status": "active",
+							"trigger": {
+								"id": "d4bc2387-6b8b-4e08-9688-74c1d591532d",
+								"type": "notification_event",
+								"event": {
+									"source": {
+										"type": "collection",
+										"pointer": {
+											"id": "0474eed9-579d-4063-934d-6df442bba0a3",
+											"table": "collection",
+											"spaceId": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539"
+										}
+									},
+									"pagesAdded": true,
+									"pagePropertiesEdited": {
+										"type": "any"
+									}
+								}
+							},
+							"alive": true,
+							"action_ids": [
+								"60e64500-eee2-4447-aa98-3ac7a0d0bd34"
+							],
+							"properties": {
+								"name": "原口陽一郎's notifications"
+							}
+						},
+						"role": "reader"
+					}
+				},
+				"automation_action": {
+					"60e64500-eee2-4447-aa98-3ac7a0d0bd34": {
+						"value": {
+							"id": "60e64500-eee2-4447-aa98-3ac7a0d0bd34",
+							"type": "slack_notification",
+							"version": 1,
+							"space_id": "0c2e4c18-61f0-4d2f-a3aa-529ff4b15539",
+							"parent_table": "automation",
+							"parent_id": "72270966-df68-43f3-be72-9028c8f14ffd",
+							"alive": true,
+							"config": {
+								"target": {
+									"id": "C0526DJ42K1",
+									"name": "0977_スポット_エラー対応",
+									"type": "public"
+								},
+								"external_bot_id": "90c49a62-54fe-421d-a56c-bc7493792c26"
+							}
+						},
+						"role": "reader"
+					}
+				},
+				"entity": {
+					"d56d8b77-97ab-456f-aa61-dd0e35e68623": {
+						"id": "d56d8b77-97ab-456f-aa61-dd0e35e68623",
+						"name": "原口陽一郎",
+						"image": "https://assets.super.so/e815c36c-5354-4a83-925a-c3e40b3e5888/images/ba0fd7fa-9e3c-4a7d-9cfe-e5c32fec0fee/10384741_10204537608146277_9033290880334818156_n.jpg"
+					},
+					"ae8c60a0-788c-4f60-97f1-e033d3236bf7": {
+						"id": "ae8c60a0-788c-4f60-97f1-e033d3236bf7",
+						"name": "小田涼平",
+						"image": "https://lh3.googleusercontent.com/a-/AOh14GgwtaZRgHH5pRhOlb-fTwbgUekISH_9azAQWOjC=s100"
+					}
+				},
+				"pageId": "ba578512c11b498798366cccd4f6af5e"
+			},
+			"settings": {
+				"siteId": "e815c36c-5354-4a83-925a-c3e40b3e5888",
+				"domainName": "jukuspot.com",
+				"name": "jukuspot-op",
+				"free": false,
+				"favicon": "https://super-static-assets.s3.amazonaws.com/e815c36c-5354-4a83-925a-c3e40b3e5888/uploads/favicon/ac1b7432-71c6-43bc-b82d-d199ec93c654.png",
+				"fontFamily": "Noto Sans JP",
+				"legacyTheme": "default",
+				"language": "ja",
+				"notionPage": "fd37447a83874f2ea9af29e53b3100a2",
+				"pageProperties": true,
+				"viewSwitcher": false,
+				"siteSearch": false,
+				"themeToggle": false,
+				"mondayFirst": true,
+				"hidePersonInfo": false,
+				"noIndex": true,
+				"cacheTTL": 0,
+				"manualSync": false,
+				"syncStatus": "error",
+				"publishedAt": null,
+				"navbar": {
+					"type": "minimal",
+					"style": {
+						"height": 51,
+						"textColor": "var(--color-text-default)",
+						"backgroundColor": "#ffffff",
+						"ctaTextColor": "#ffffff",
+						"ctaBackgroundColor": "#17837c",
+						"isSticky": true,
+						"shadow": {
+							"type": "small",
+							"color": "#3f3e3e",
+							"opacity": 20
+						}
+					},
+					"links": [],
+					"logo": {
+						"type": "image",
+						"width": 144,
+						"fontSize": 16,
+						"textContent": "jukuspot-op",
+						"imageContent": "https://super-static-assets.s3.amazonaws.com/e815c36c-5354-4a83-925a-c3e40b3e5888/uploads/logo/702db812-8c61-4e39-8c50-78f08952cdb8.png"
+					},
+					"cta": {
+						"type": "page",
+						"label": "ページ更新",
+						"link": "",
+						"pageId": ""
+					},
+					"isSticky": true
+				},
+				"footer": {
+					"type": "stack",
+					"style": {
+						"textColor": "var(--color-text-default)",
+						"backgroundColor": "#e5e5e5"
+					},
+					"links": [],
+					"logo": {
+						"type": "text",
+						"width": 90,
+						"fontSize": 16,
+						"textContent": "jukuspot",
+						"imageContent": ""
+					},
+					"socials": [],
+					"footnote": "© Copyright TOMONOKAI All rights reserved."
+				},
+				"theme": null,
+				"code": {
+					"global": [],
+					"head": [],
+					"body": [
+						{
+							"id": "e815c36c-5354-4a83-925a-c3e40b3e5888:::3f2dc805-d4b7-4713-94dd-cbcb4d7cff55",
+							"content": "<div class=\"content-area\" style=\"visibility: hidden;margin-top: 100%;\">\n\n    <div class=\"side-bar\">\n        <ul class=\"menu\">\n        </ul>\n    </div>\n\n    <div class=\"main-bar\">\n        <div id=\"page-content\">\n\n        </div>\n    </div>\n</div>\n\n\n<!-- カスタムスクリプトの読み込み-->\n<script src=\"https://heys45.github.io/SAUCEED/spot-js/load.js\"></script>\n\n<!-- チャネルトーク読み込み -->\n<script>\n    (function(){var w=window;if(w.ChannelIO){return w.console.error(\"ChannelIO script included twice.\")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement(\"script\");s.type=\"text/javascript\";s.async=true;s.src=\"https://cdn.channel.io/plugin/ch-plugin-web.js\";var x=document.getElementsByTagName(\"script\")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState===\"complete\"){l()}else{w.addEventListener(\"DOMContentLoaded\",l);w.addEventListener(\"load\",l)}})();\n    ChannelIO('boot', {\n      \"pluginKey\": \"305bfc19-acf6-4192-a1b7-7cba54142aac\"\n    });\n</script>"
+						}
+					],
+					"style": [
+						{
+							"id": "e815c36c-5354-4a83-925a-c3e40b3e5888:::9056e6cf-89d6-499b-b276-edcd4ffe77f3",
+							"content": " /*まずは、画面いっぱいまっさらにしておく*/\n .super-navbar{\n    margin-bottom:100vh ;\n    z-index: 3000;\n  }\n\n  .super-content-wrapper{\n    display: none;\n  }"
+						}
+					]
+				},
+				"hasPassword": false
+			},
+			"head": {
+				"url": "https://jukuspot.com/ba578512c11b498798366cccd4f6af5e",
+				"title": "講師プロフィールの電話面談結果が反映されていない",
+				"description": null,
+				"root": {
+					"id": "fd37447a83874f2ea9af29e53b3100a2",
+					"uri": "/",
+					"title": "プロトタイプ管理ページ",
+					"icon": "💠"
+				},
+				"image": null,
+				"favicon": "https://super-static-assets.s3.amazonaws.com/e815c36c-5354-4a83-925a-c3e40b3e5888/uploads/favicon/ac1b7432-71c6-43bc-b82d-d199ec93c654.png",
+				"breadcrumbs": [
+					{
+						"id": "ba578512c11b498798366cccd4f6af5e",
+						"uri": "/ba578512c11b498798366cccd4f6af5e",
+						"title": "講師プロフィールの電話面談結果が反映されていない",
+						"icon": null
+					}
+				]
+			},
+			"hasBlocks": true,
+			"isValidPage": true,
+			"pageId": "ba578512c11b498798366cccd4f6af5e",
+			"pageLocation": "/ba578512c11b498798366cccd4f6af5e",
+			"passwords": null
+		},
+		"__N_SSP": true
+	},
+	"page": "/[...page]",
+	"query": {
+		"page": [
+			"ba578512c11b498798366cccd4f6af5e"
+		]
+	},
+	"buildId": "JlzW9akqzZobRnhyeJ7Uo",
+	"isFallback": false,
+	"dynamicIds": [
+		40242,
+		85354,
+		45581,
+		27983
+	],
+	"gssp": true,
+	"scriptLoader": []
+}
