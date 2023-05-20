@@ -136,24 +136,10 @@ margin-bottom:0;
   align-items: center;
 }
 
-.super-navbar__cta{
-  display:none;
-}
-
 .super-navbar__actions {
   display: block;
 }
 
-.hamburger-menu {
-  display: none;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 680px) {
-  .hamburger-menu {
-      display: inline-block;
-  }
-}
 
 
 /* Default styles */
@@ -169,6 +155,11 @@ margin-bottom:0;
   background-color: initial;
 }
 
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
+
 /* Styles for screen size 680px or less */
 @media screen and (max-width: 680px) {
   .content-area {
@@ -182,5 +173,8 @@ margin-bottom:0;
     display: none;
     background-color: white;
   }
-
+  .hamburger-menu {
+    display: inline-block;
+  }
 }
+
