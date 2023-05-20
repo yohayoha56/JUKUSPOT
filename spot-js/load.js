@@ -14,7 +14,8 @@ function waitForProperties() {
 
 
 
-
+// 新しいデータオブジェクトを作成する
+let newData2 = {};
 
 
 waitForProperties().then((propertiesContainer) => {
@@ -38,8 +39,6 @@ let firstBlock = Object.values(jsonData.props.pageProps.records.block)[0];
 let propertySort = firstBlock.propertySort;
 let propertyValues = firstBlock.propertyValues;
 
-// 新しいデータオブジェクトを作成する
-let newData2 = {};
 
 // 各プロパティに対して処理を行う
 for (let prop of propertySort) {
