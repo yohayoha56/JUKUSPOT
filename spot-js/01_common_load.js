@@ -145,7 +145,7 @@ for (let prop of propertySort) {
     'https://heys45.github.io/SAUCEED/spot-css/spot_form.css',
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
     ] : []),
-  ];a
+  ];
   
   // 外部スクリプトの読み込み設定②
   const scripts = [
