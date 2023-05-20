@@ -16,9 +16,9 @@ target.innerHTML = `
 // サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
 let menuData = [
   { id: "top_page", title: "トップページ", class: "single-menu" },
-  { id: "shift_page", title: newData["ページタイプ"] == "school" ? "シフト依頼ページ" : "シフト管理ページ", class: "group-menu" },
-  { id: "kintai_page", title: "勤怠確認ページ", class: "group-menu" },
-  { id: "profile_page", title: "講師プロフィール", class: newData["ページタイプ"] == "school" ? "group-menu" : "single-menu" },
+  { id: "shift_page", title: newData["ページタイプ"] == "school" ? "シフト依頼ページ ▼" : "シフト管理ページ ▼", class: "group-menu" },
+  { id: "kintai_page", title: "勤怠確認ページ ▼", class: "group-menu" },
+  { id: "profile_page", title: newData["ページタイプ"] == "school" ? "講師プロフィール ▼" : "マイプロフィール", class: newData["ページタイプ"] == "school" ? "group-menu" : "single-menu" },
 ];
 
 
