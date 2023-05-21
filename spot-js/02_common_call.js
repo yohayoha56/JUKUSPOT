@@ -107,11 +107,20 @@ function call_fetchData(page_call_property) {
   const isSchool = newData["ページタイプ"] == "school";
   const isTeacher = newData["ページタイプ"] == "teacher";
 
+  if(isSchool){
+    page_call_property["教室名"]=newData["教室名"];
+    page_call_property["教室ID"]=newData["教室ID"]
+  }
+  if(isTeacher){
+    page_call_property["講師名"]=newData["姓"]+newData["名"];
+    page_call_property["会員ID"]=newData["会員ID"];
+  }
+
   const data = {
-    "講師名": isTeacher ? newData["姓"]+newData["名"] : page_call_property["講師名"],
-    "会員ID": isTeacher ? newData["会員ID"] : page_call_property["会員ID"],
-    "教室名": isSchool ? cnewData["教室名"] : page_call_property["教室名"],
-    "教室ID": isSchool ? cnewData["教室ID"] : page_call_property["教室ID"],
+    "講師名": page_call_property["講師名"],
+    "会員ID": page_call_property["会員ID"],
+    "教室名": page_call_property["教室名"],
+    "教室ID": page_call_property["教室ID"],
     "callback": page_call_property["callback"],
     "ページタイプ": newData["ページタイプ"]
   };
