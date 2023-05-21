@@ -13,7 +13,8 @@ target.innerHTML = `
 </div>
 `
 // 初回のトップページの呼び出し
-call_fetchData({ "callback" : "top_page" } );
+const page_call_property= { "callback" : "top_page" }
+call_fetchData(page_call_property);
 
 
 
@@ -115,7 +116,7 @@ function call_fetchData(page_call_property) {
     page_call_property["講師名"]=newData["姓"]+newData["名"];
     page_call_property["会員ID"]=newData["会員ID"];
   }
-
+Z
   const data = {
     "講師名": page_call_property["講師名"],
     "会員ID": page_call_property["会員ID"],
