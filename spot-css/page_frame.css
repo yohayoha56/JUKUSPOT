@@ -80,10 +80,15 @@
   font-size:18px;
 }
   
-  /* 親メニュー */
-  .group-menu ,.single-menu{
-  margin-bottom: 5px;
-  }
+/* 親メニュー */
+.group-menu ,.single-menu{
+margin-bottom: 5px;
+}
+
+.group-menu .menu-item::after{
+  content:"▼";
+  padding-left:15px;
+}
   
   /* 親メニューと子メニューのスタイル */
   .menu-item, .child-menu li {

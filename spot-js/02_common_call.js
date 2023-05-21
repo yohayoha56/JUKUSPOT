@@ -23,9 +23,9 @@ const isTeacher = newData["ページタイプ"] == "teacher";
 
 let menuData = [
   { id: "top_page", title: "トップページ", class: "single-menu" },
-  { id: "shift_page", title: isSchool ? "シフト依頼ページ　▼" : "シフト管理ページ　▼", class: "group-menu" },
-  { id: "kintai_page", title: "勤怠確認ページ　▼", class: "group-menu" },
-  { id: "profile_page", title: isSchool? "講師プロフィール　▼" : "マイプロフィール", class: isSchool ? "group-menu" : "single-menu" },
+  { id: "shift_page", title: isSchool ? "シフト依頼ページ" : "シフト管理ページ", class: "group-menu" },
+  { id: "kintai_page", title: "勤怠確認ページ", class: "group-menu" },
+  { id: "profile_page", title: isSchool? "講師プロフィール" : "マイプロフィール", class: isSchool ? "group-menu" : "single-menu" },
 ];
 
 const childElementsData = isSchool ? newData["講師名一覧"] : newData["教室名一覧"];
