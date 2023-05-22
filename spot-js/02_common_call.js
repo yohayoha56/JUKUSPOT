@@ -38,81 +38,87 @@ const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID
 const menu = document.querySelector(".menu");
 
 menuData.forEach((menuItemData) => {
-  const menuItem = document.createElement("li");
-  menuItem.classList.add(menuItemData.class);
-  menuItem.id = menuItemData.id;
-
-  menuItem.innerHTML = `
-    <div class="menu-item">${menuItemData.title}</div>
-    ${menuItemData.class == "group-menu"? `
-    <ul class="child-menu">
-      ${childElementsData.map((element, index) =>
-        `<li data-id="${childElementsId[index]}">${element}</li>`
-      ).join("")}
-    </ul>
-    `: ``}
+  let menuHTML = `
+    <li class="${menuItemData.class}" id="${menuItemData.id}">
+      <div class="menu-item">${menuItemData.title}</div>
+      ${menuItemData.class == "group-menu" ? `
+      <ul class="child-menu">
+        ${childElementsData.map((element, index) =>
+          `<li data-id="${childElementsId[index]}">${element}</li>`
+        ).join("")}
+      </ul>` : ""}
+    </li>
   `;
 
-  menu.appendChild(menuItem);
+  menu.innerHTML += menuHTML;
 });
 
 // ここからサイドメニューのイベントリスナースクリプト
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const Menus = document.querySelectorAll(".menu-item")
-Menus.forEach((Menu) => {
-  Menu.addEventListener("click", (e) => {
-    document.querySelectorAll(".child-menu").forEach(element => {
+// アドイベントリスナーのテンプレート
+function addEventListenerToMenu(menuSelector, eventHandler) {
+  const menus = document.querySelectorAll(menuSelector);
+  menus.forEach(menu => {
+      menu.addEventListener('click', eventHandler);
+});}
+// チャイルドメニュー全てを非表示
+addEventListenerToMenu(".menu-item", (e) => {
+  document.querySelectorAll(".child-menu").forEach(element => {
       element.style.display="none";
-    });
-  });
+});});
+// クリックされたチャイルドメニュー表示
+addEventListenerToMenu(".menu .group-menu .menu-item", (e) => {
+  const parentElement = e.target.parentElement;
+  parentElement.querySelector(".child-menu").style.display="block";
+});
+// シングルメニュークリック時のイベントハンドラ
+addEventListenerToMenu(".menu .single-menu", (e) => {
+  const page_call_property = { "callback" : e.target.id };
+  call_fetchData(page_call_property);
+});
+// チャイルドメニュークリック時のイベントハンドラ
+addEventListenerToMenu(".menu .group-menu .child-menu li", (e) => {
+  const page_call_property = {
+    [isSchool ? "講師名" : "教室名"]: e.target.innerHTML,
+    [isSchool ? "会員ID" : "教室ID"]: e.target.dataset.id,
+    "callback": e.target.closest('.group-menu').id
+  };
+  call_fetchData(page_call_property);
 });
 
-const groupMenus = document.querySelectorAll(".menu .group-menu .menu-item")
-groupMenus.forEach((groupMenu) => {
-  groupMenu.addEventListener("click", (e) => {
-    const parentElement =groupMenu.parentElement;
-    parentElement.querySelector(".child-menu").style.display="block";
-  });
-});
 
-const singleMenus = document.querySelectorAll(".menu .single-menu");
-singleMenus.forEach((singleMenu) => {
-  singleMenu.addEventListener("click", () => {
-    const page_call_property={
-      "callback" : singleMenu.id,
-    }
-    call_fetchData(page_call_property);
-  });
-});
 
-const childMenus = document.querySelectorAll(".menu .group-menu .child-menu li");
-childMenus.forEach((childMenu) => {
-  childMenu.addEventListener("click", () => {
-    // 親のgroup-menuのIDを取得する
-    const parentId = childMenu.closest('.group-menu').id;
+// サイドバー関連の設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
+const hamburgerMenu = document.getElementById('hamburger-menu');
+hamburgerMenu.addEventListener('click', toggleSideBar);
 
-    const page_call_property={
-      "callback" : parentId,
-      "講師名" : isSchool ? childMenu.innerHTML : "",
-      "会員ID" : isSchool ? childMenu.dataset.id : "",
-      "教室名" : isTeacher ? childMenu.innerHTML : "",
-      "教室ID" : isTeacher ? childMenu.dataset.id : "",
-    }
-    call_fetchData(page_call_property);
-  });
-});
+function toggleSideBar() {
+  const sideBar = document.querySelector('.side-bar');
+  const menuIcon = document.querySelector('#hamburger-menu span');
+  
+  if (sideBar.style.display === 'none' || sideBar.style.display === '') {
+    sideBar.style.display = 'block';
+    menuIcon.textContent = '×';
+    menuIcon.style["font-size"]="28px";
+    menuIcon.style["margin-top"]="-5px";
+  } else {
+    sideBar.style.display = 'none';
+    menuIcon.textContent = '≡';
+    menuIcon.style["font-size"]="36px";
+    menuIcon.style["margin-top"]="-14px";
+  }
+}
+
 
 
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
-  const isSchool = newData["ページタイプ"] == "school";
-  const isTeacher = newData["ページタイプ"] == "teacher";
 
-  if(isSchool){
+  if(newData["ページタイプ"] == "school"){
     page_call_property["教室名"]=newData["教室名"];
     page_call_property["教室ID"]=newData["教室ID"]
   }
-  if(isTeacher){
+  if(newData["ページタイプ"] == "teacher"){
     page_call_property["講師名"]=newData["姓"]+newData["名"];
     page_call_property["会員ID"]=newData["会員ID"];
   }
@@ -148,32 +154,10 @@ function call_fetchData(page_call_property) {
     var target = document.getElementById("page-content");
     target.innerHTML = data;
 
-    // Execute callback function
+    //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
       window[page_call_property["callback"]]();
     }
   });
 }
 
-
-
-// サイドバーの設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const hamburgerMenu = document.getElementById('hamburger-menu');
-hamburgerMenu.addEventListener('click', toggleSideBar);
-
-function toggleSideBar() {
-  const sideBar = document.querySelector('.side-bar');
-  const menuIcon = document.querySelector('#hamburger-menu span');
-  
-  if (sideBar.style.display === 'none' || sideBar.style.display === '') {
-    sideBar.style.display = 'block';
-    menuIcon.textContent = '×';
-    menuIcon.style["font-size"]="28px";
-    menuIcon.style["margin-top"]="-5px";
-  } else {
-    sideBar.style.display = 'none';
-    menuIcon.textContent = '≡';
-    menuIcon.style["font-size"]="36px";
-    menuIcon.style["margin-top"]="-14px";
-  }
-}
