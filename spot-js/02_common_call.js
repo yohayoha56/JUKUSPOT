@@ -72,8 +72,8 @@ addEventListenerToMenu(".menu .group-menu .menu-item", (e) => {
   parentElement.querySelector(".child-menu").style.display="block";
 });
 // シングルメニュークリック時のイベントハンドラ
-addEventListenerToMenu(".menu .single-menu", (e) => {
-  const page_call_property = { "callback" : e.target.id };
+addEventListenerToMenu(".menu .single-menu .menu-item", (e) => {
+  const page_call_property = { "callback": e.target.closest('.single-menu').id };
   call_fetchData(page_call_property);
 });
 // チャイルドメニュークリック時のイベントハンドラ
