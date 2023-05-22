@@ -160,7 +160,7 @@ margin-bottom:0;
   background-color: initial;
 }
 
-.hamburger-menu {
+#hamburger-menu {
   display: none;
   cursor: pointer;
 }
@@ -178,7 +178,7 @@ margin-bottom:0;
     display: none;
     background-color: white;
   }
-  .hamburger-menu {
+  #hamburger-menu {
     display: inline-block;
   }
 }
