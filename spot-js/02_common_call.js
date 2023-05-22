@@ -140,22 +140,21 @@ function call_fetchData(page_call_property) {
       url = 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec';
   }
   
+  // ガイドの挿入を実行する。
+  insertGuide(page_call_property);
 
+  // APIにて情報を取得
   fetch(url, {
     method: 'POST',
-    headers: { 
-      'Content-Type': 'text/plain',
-    },
+    headers: { 'Content-Type': 'text/plain',},
     body: JSON.stringify(data),
     mode: 'cors',
   })
   .then(response => response.text())
   .then(data => {
+    // メインコンテンツの挿入
     var target = document.getElementById("page-content");
-    target.innerHTML = data;
-
-    // ガイドの挿入を実行する。
-    insertGuide(page_call_property);
+    target.insertAdjacentHTML("beforeend",data)
 
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
