@@ -79,9 +79,9 @@ function insertGuide(page_call_property){
         case "kintai_page":
             pageTitle = `勤怠確認ページ`;
             pageGuide = isSchool?`
-
+                勤務が完了したシフトが表示されます。
             `:`
-
+                勤務が完了したシフトが表示されます。
             `;
 
             // トップページのガイドなどの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -99,9 +99,10 @@ function insertGuide(page_call_property){
         case "profile_page": 
             pageTitle = isSchool?`講師プロフィール`:`マイプロフィール`;
             pageGuide = isSchool?`
-
+                登録されているプロフィール情報が表示されます。<br>
+                指導可能科目は、講師登録時の任意選択となっています。最新の指導可能科目は講師に直接ご確認ください。<br>
             `:`
-
+                登録されているプロフィール情報が表示されます。<br>
             `;
 
             // トップページのガイドなどの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
