@@ -154,6 +154,9 @@ function call_fetchData(page_call_property) {
     var target = document.getElementById("page-content");
     target.innerHTML = data;
 
+    // ガイドの挿入を実行する。
+    insertGuide(page_call_property);
+
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
       window[page_call_property["callback"]]();
