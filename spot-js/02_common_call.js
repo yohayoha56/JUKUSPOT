@@ -110,7 +110,6 @@ function toggleSideBar() {
 }
 
 
-
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
 function call_fetchData(page_call_property) {
 
@@ -158,7 +157,7 @@ function call_fetchData(page_call_property) {
 
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
-      window[page_call_property["callback"]]();
+      window[page_call_property["callback"]](page_call_property);
     }
   });
 }

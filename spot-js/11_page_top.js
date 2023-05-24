@@ -41,8 +41,6 @@ function top_page() {
 
   
 
-
-
 // フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById("work-table")
 const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
