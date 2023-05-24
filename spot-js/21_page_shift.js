@@ -1,4 +1,4 @@
-function shift_page() {
+function shift_page(page_call_property) {
 
   // 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
