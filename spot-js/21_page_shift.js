@@ -257,7 +257,6 @@ function shift_page() {
   }
 
 
-
   const handleSubmit = async (event, remarks, row) => {
     // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     event.preventDefault(); // デフォルトの送信をキャンセル
