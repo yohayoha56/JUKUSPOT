@@ -87,6 +87,10 @@ function shift_page() {
     page_call_property["講師名"] : newData["姓"] + newData["名"];
 
 
+  console.log(schoolId)
+  console.log(schoolName)
+  console.log(teacherId)
+  console.log(teacherName)
 
 
   function showModal(event) {
