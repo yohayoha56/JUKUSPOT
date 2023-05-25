@@ -204,3 +204,7 @@ margin-bottom:0;
 .page-guide-wrapper p{
   padding:20px 15px 0px 15px
 }
+
+.page-guide-wrapper span{
+  font-weight:bold;
+}
