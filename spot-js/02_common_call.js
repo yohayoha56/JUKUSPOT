@@ -39,6 +39,7 @@ if (isSchool) {
   childElementsData = newData["教室名一覧"];
 }
 const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID一覧"];
+console.log(childElementsData)
 
 
 // ここからサイドメニューの作成スクリプト
