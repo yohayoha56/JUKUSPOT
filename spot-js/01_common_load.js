@@ -143,6 +143,7 @@ for (let prop of propertySort) {
     'https://heys45.github.io/SAUCEED/spot-css/schedule_form.css',
     'https://heys45.github.io/SAUCEED/spot-css/spot_table.css',
     'https://heys45.github.io/SAUCEED/spot-css/spot_form.css',
+    'https://heys45.github.io/SAUCEED/spot-css/spot_chat.css',
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
     ] : []),
   ];

@@ -22,71 +22,7 @@ function insertGuide(page_call_property){
         target.insertAdjacentHTML("beforeend",kojinFormHTML);
     }
     if(page_call_property["callback"]=="chat_page"){
-        let chatAreaHTML =`<style>
-        .chat-header {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          background-color: #1B7871;
-          color: white;
-          padding: 0.5em;
-          gap: 0.5em;
-        }
-        
-        .chat-title {
-          flex: 1 0 auto;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        
-        .reload-time, .reload-button {
-          white-space: nowrap;
-        }
-        
-        .reload-button {
-          background-color: white;
-          color: #1B7871;
-          padding: 3px 10px;
-          border-radius: 10px;
-        }
-      
-        .chat-log-area {
-          display: flex;
-          flex-direction: column;
-        }
-      
-        .chat-log {
-          display: flex;
-          flex-direction: row-reverse;
-        }
-      
-        .info-box {
-          display: flex;
-          flex-direction: column;
-          align-items: start;
-          justify-content: flex-start;
-          width: 60px;
-          color: #B9B9B9;
-        }
-      
-        .chat-box {
-          display: inline-block;
-          max-width: 400px;
-          color: #1B7871;
-        }
-      
-        .sent .chat-box {
-          background-color: #DFF4F0;
-        }
-      
-        .received .chat-box {
-          background-color: white;
-        }
-        
-      </style>
-      
-      
+        let chatAreaHTML =`
       <div class="chat-area">
         <div class="chat-header">
           <span class="chat-title">〜〜教室とのチャット履歴</span>
