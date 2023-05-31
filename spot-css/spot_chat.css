@@ -28,13 +28,36 @@
 }
 
 .chat-log-area {
+    padding:15px 0 ; 
+    background-color: #F4F4F4;
     display: flex;
     flex-direction: column;
+    min-height: 500px;
 }
 
 .chat-log {
+    margin: 10px 15px;
     display: flex;
+    gap:10px;
+}
+.chat-log.sent {
     flex-direction: row-reverse;
+}
+
+
+.chat-box {
+    display: inline-block;
+    padding:5px 15px;
+    max-width: 400px;
+    color: #1B7871;
+}
+
+.sent .chat-box {
+    background-color: #DFF4F0;
+}
+
+.received .chat-box {
+    background-color: white;
 }
 
 .info-box {
@@ -46,16 +69,17 @@
     color: #B9B9B9;
 }
 
-.chat-box {
-    display: inline-block;
-    max-width: 400px;
-    color: #1B7871;
+.chat-submit-area{
+    background-color:#E9EAF2;
+    padding:10px 15px;
+    display:flex;
 }
 
-.sent .chat-box {
-    background-color: #DFF4F0;
+#chatForm{
+    display:flex;
 }
 
-.received .chat-box {
-    background-color: white;
+#メッセージ-wrapper{
+    flex: 1 0 auto;
+    white-space: nowrap;
 }
