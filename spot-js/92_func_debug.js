@@ -7,17 +7,18 @@
   // 外部リソースのURLを配列として定義します。
   const baseUrl = 'https://heys45.github.io/SAUCEED/';
   const resourceUrls = [
-    'spot-js/load.js',
-    'spot-js/form_common.js',
-    'spot-js/debug.js',
-    'spot-js/page_top.js',
-    'spot-js/page_shift.js',
-    'spot-js/page_call.js',
+    'spot-js/01_common_load.js',
+    'spot-js/02_common_call.js',
+    'spot-js/03_common_guide.js',
+    'spot-js/11_page_top.js',
+    'spot-js/21_page_shift.js',
+    'spot-js/91_func_form.js',
+    'spot-js/92_func_debug.js',
     'spot-css/page_frame.css',
     'spot-css/progressbar.css',
     'spot-css/schedule_form.css',
-    'spot-css/spot_table.css',
-    'spot-css/school.css',
+    'spot-css/spot_form.css',
+    'spot-css/spot_table.css'
   ].map(url => baseUrl + url);
   
   // 各リソースの最終更新日時を取得するPromiseを作成し、Promise.allで実行します。
