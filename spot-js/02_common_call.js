@@ -22,12 +22,27 @@ call_fetchData(page_call_property);
 const isSchool = newData["ページタイプ"] == "school";
 const isTeacher = newData["ページタイプ"] == "teacher";
 
+
+// ダミーページの事前判定用
+const debugUrls = ['dummy'];
+const currentUrl = window.location.href;
+const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
+
 let menuData = [
   { id: "top_page",     title: "トップページ",                                 class: "single-menu" },
   { id: "shift_page",   title: isSchool ? "シフト依頼ページ" : "シフト管理ページ", class: "group-menu" },
   { id: "kintai_page",  title: "勤怠確認ページ",                                class: "group-menu" },
   { id: "profile_page", title: isSchool? "講師プロフィール" : "マイプロフィール",  class: isSchool ? "group-menu" : "single-menu" },
+  ...(urlFound ? [//デバッグページの場合には読み込む
+  { id: "chat_page", title: isSchool? "講師連絡ページ" : "教室連絡ページ",  class: "group-menu"},
+  ] : [])
 ];
+
+
+
+
+
+
 
 
 let childElementsData  = [];
