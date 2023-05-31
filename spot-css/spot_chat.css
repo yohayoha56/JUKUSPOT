@@ -83,3 +83,7 @@
     flex: 1 0 auto;
     white-space: nowrap;
 }
+#メッセージ-wrapper textarea{
+    width:100%;
+    font-size:16px;
+}
