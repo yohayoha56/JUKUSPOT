@@ -33,7 +33,7 @@ async function handleSubmit(event) {
     hour: "2-digit", minute: "2-digit", second: "2-digit",
   });
 
-  const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+  const response = await fetch( "https://script.google.com/macros/s/AKfycbwc5wu1HOL0RkT7WOWO5jrLbVBskvNEiqV8gwias6gMCs0yFCSW45t6-lp8VbelwRl3/exec", {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
