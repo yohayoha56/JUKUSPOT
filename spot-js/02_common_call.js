@@ -162,6 +162,8 @@ function call_fetchData(page_call_property) {
   switch (page_call_property["callback"]) {
     case "profile_page":
       url = 'https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec'; break;
+    case "chat_page":
+      url = 'https://script.google.com/macros/s/AKfycbwLXeaxdJQgOwxL9zIlRBejQHBx6GUhhBfWrZ228CbBWG6aNbUOgodaZdYYEzStvM7Lig/exec'; break;
     default:
       url = 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec';
   }
@@ -178,9 +180,18 @@ function call_fetchData(page_call_property) {
   })
   .then(response => response.text())
   .then(data => {
-    // メインコンテンツの挿入
-    var target = document.getElementById("page-content");
-    target.insertAdjacentHTML("beforeend",data)
+
+    if(page_call_property["callback"]=="chat_page"){
+      // チャットログの表示
+      var target = document.querySelector(".chat-log-area");
+      target.insertAdjacentHTML("beforeend",data)
+
+    } else {
+      // メインコンテンツの挿入
+      var target = document.getElementById("page-content");
+      target.insertAdjacentHTML("beforeend",data)
+    }
+
 
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
