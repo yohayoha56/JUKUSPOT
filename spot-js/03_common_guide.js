@@ -50,25 +50,18 @@ function insertGuide(page_call_property){
         <div class="chat-submit-area">
           <form id="chatForm">
             <div class="form-box" id="会員ID-wrapper" style="display: none;"> 
-              <label for="会員ID" class="form-label">会員ID:</label>
               <input type="hidden" id="会員ID" name="会員ID" value=""> 
             </div>
             <div class="form-box" id="講師名-wrapper" style="display: none;"> 
-              <label for="講師名" class="form-label">講師名:</label>
               <input type="hidden" id="講師名" name="講師名" value=""> 
             </div>
             <div class="form-box" id="教室ID-wrapper" style="display: none;"> 
-              <label for="教室ID" class="form-label">教室ID:</label>
               <input type="hidden" id="教室ID" name="教室ID" value=""> 
             </div>
             <div class="form-box" id="教室名-wrapper" style="display: none;">     
-              <label for="教室名" class="form-label">教室名:</label>
               <input type="hidden" id="教室名" name="教室名" value=""> 
             </div>
-            <div class="form-box" id="メッセージ-wrapper" style="width: 100%;"> 
-              <label for="メッセージ" class="form-label">
-                補足・備考:
-              </label>
+            <div class="form-box" id="メッセージ-wrapper"> 
               <textarea id="メッセージ" name="メッセージ"></textarea> 
             </div>
             <div class="form-box" id="chatButton-wrapper" style=""> 

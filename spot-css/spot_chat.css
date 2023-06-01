@@ -87,3 +87,23 @@
     width:100%;
     font-size:16px;
 }
+
+
+/* 日付変更線 */
+.day-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .day-line hr {
+    flex-grow: 1;
+    border: none;
+    height: 1px;
+    background: #000;
+  }
+  
+  .date-text {
+    padding: 0 10px;
+  }
