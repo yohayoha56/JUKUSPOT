@@ -8,10 +8,10 @@ const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}
 const form = document.getElementById("chatForm")
 form.addEventListener("submit", (event) => handleSubmit(event));
 
-const hiddenElements = form.querySelectorAll("input")
+const hiddenElements = form.querySelectorAll(":scope > input")
 for( let hiddenElement of hiddenElements){
     const id = hiddenElement.id
-    hiddenElement.value=newData["id"]
+    hiddenElement.value=newData[id]
 }
 
 
