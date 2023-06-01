@@ -30,37 +30,15 @@ function insertGuide(page_call_property){
           <span class="reload-button" >更新する</span>
         </div>
         <div class="chat-log-area">
-          <div class="chat-log sent">
-            <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
-            <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>      
-          </div>
-          <div class="chat-log received" style="padding:3px 8px;">
-            <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
-            <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>
-          </div>
-          <div class="chat-log sent">
-            <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
-            <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>      
-          </div>
-          <div class="chat-log received" style="padding:3px 8px;">
-            <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
-            <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>
-          </div>
+        <!-- ここにチャットのログを表示する -->
+
         </div>
         <div class="chat-submit-area">
           <form id="chatForm">
-            <div class="form-box" id="会員ID-wrapper" style="display: none;"> 
-              <input type="hidden" id="会員ID" name="会員ID" value=""> 
-            </div>
-            <div class="form-box" id="講師名-wrapper" style="display: none;"> 
-              <input type="hidden" id="講師名" name="講師名" value=""> 
-            </div>
-            <div class="form-box" id="教室ID-wrapper" style="display: none;"> 
-              <input type="hidden" id="教室ID" name="教室ID" value=""> 
-            </div>
-            <div class="form-box" id="教室名-wrapper" style="display: none;">     
-              <input type="hidden" id="教室名" name="教室名" value=""> 
-            </div>
+            <input type="hidden" id="会員ID" name="会員ID" value=""> 
+            <input type="hidden" id="講師名" name="講師名" value=""> 
+            <input type="hidden" id="教室ID" name="教室ID" value="">  
+            <input type="hidden" id="教室名" name="教室名" value=""> 
             <div class="form-box" id="メッセージ-wrapper"> 
               <textarea id="メッセージ" name="メッセージ"></textarea> 
             </div>
