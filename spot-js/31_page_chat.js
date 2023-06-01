@@ -5,7 +5,7 @@ function chat_page(page_call_property) {
 const now = new Date();
 const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 
-const form = getElementById("chatForm")
+const form = document.getElementById("chatForm")
 form.addEventListener("submit", (event) => handleSubmit(event));
 
 const hiddenElements = form.querySelectorAll("input")
