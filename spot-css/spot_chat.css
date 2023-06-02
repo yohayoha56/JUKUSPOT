@@ -60,7 +60,7 @@
     border-radius: 8px;
     max-width: 400px;
     color: #1B7871;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); /* 水平オフセット 垂直オフセット ぼかし広がり 色 */
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05); /* 水平オフセット 垂直オフセット ぼかし広がり 色 */
 }
 
 .sent .chat-box {
@@ -149,6 +149,7 @@
     border-radius: 50%; /* 丸形にする */
     width: 30px;
     height: 30px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05); /* 水平オフセット 垂直オフセット ぼかし広がり 色 */
   }
   .icon-container i {
     color: #1B7871; /* アイコンの色を指定 */
