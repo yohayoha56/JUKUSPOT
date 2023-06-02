@@ -3,6 +3,7 @@ function chat_page(page_call_property) {
 
 
 // メッセージ提出フォームに初期値の付与
+const form = document.getElementById("chatForm")
 const hiddenElements = form.querySelectorAll(":scope > input")
 for( let hiddenElement of hiddenElements){
     const id = hiddenElement.id
@@ -14,7 +15,6 @@ readCheck(form)
 
 
 // チャットの送信機能、メッセージ生成機能の追加
-const form = document.getElementById("chatForm")
 form.addEventListener("submit", (event) => handleSubmit(event));
 
   
