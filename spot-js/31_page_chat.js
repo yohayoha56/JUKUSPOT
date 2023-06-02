@@ -1,25 +1,35 @@
 // トップページのGASレスポンスを受け取った後に行う処理。
 function chat_page(page_call_property) {
 
-// 出勤フォームの表示用に今日の日付を定義
-const now = new Date();
-const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 
-const form = document.getElementById("chatForm")
-form.addEventListener("submit", (event) => handleSubmit(event));
-
+// メッセージ提出フォームに初期値の付与
 const hiddenElements = form.querySelectorAll(":scope > input")
 for( let hiddenElement of hiddenElements){
     const id = hiddenElement.id
     hiddenElement.value=page_call_property[id]
 }
 
-// 既読処理の実行
+// 既読処理の実行（⭐️メッセージ提出フォームの初期値の付与の後）
 readCheck(form)
 
 
+// チャットの送信機能、メッセージ生成機能の追加
+const form = document.getElementById("chatForm")
+form.addEventListener("submit", (event) => handleSubmit(event));
+
+  
+// 更新するボタンの設定
+const reloadButton = document.querySelector('.reload-button');
+reloadButton.addEventListener('click', handleReloadButtonClick);
+function handleReloadButtonClick() {
+    call_fetchData(page_call_property);
+}
+
+
+
+
 async function handleSubmit(event) {
-    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーー
     event.preventDefault(); // デフォルトの送信をキャンセル
     const form = event.target;
     const formData = new FormData(form);
@@ -74,6 +84,9 @@ async function handleSubmit(event) {
 
     const chatArea = document.querySelector(".chat-log-area")
     chatArea.insertAdjacentHTML("beforeend",addHTML)
+    
+    const textarea = document.getElementById("メッセージ");
+    textarea.value = "";
 
 
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 

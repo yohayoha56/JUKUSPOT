@@ -110,9 +110,11 @@
 #chatButton-wrapper .submit-button {
     background-color: #1B7871;
     border-radius: 4px;
+    border: none;
     padding: 4px 16px;
     color: white;
     font-size: 14px;
+    cursor: pointer;
 }
 
 
