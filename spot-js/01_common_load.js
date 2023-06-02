@@ -144,7 +144,6 @@ for (let prop of propertySort) {
     'https://heys45.github.io/SAUCEED/spot-css/spot_table.css',
     'https://heys45.github.io/SAUCEED/spot-css/spot_form.css',
     'https://heys45.github.io/SAUCEED/spot-css/spot_chat.css',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css', // Font Awesome
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
     ] : []),
   ];
@@ -157,7 +156,7 @@ for (let prop of propertySort) {
     'https://heys45.github.io/SAUCEED/spot-js/31_page_chat.js',
     'https://heys45.github.io/SAUCEED/spot-js/03_common_guide.js',
     'https://heys45.github.io/SAUCEED/spot-js/02_common_call.js',
-    "https://kit.fontawesome.com/ae75e0f159.js"
+    "https://kit.fontawesome.com/ae75e0f159.js", // Font Awesome
     ...(newData["ページタイプ"] === "school" ? [
     ] : []),
     ...(urlFound ? [//デバッグページの場合には読み込む
