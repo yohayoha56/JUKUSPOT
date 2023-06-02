@@ -21,17 +21,19 @@ function insertGuide(page_call_property){
                             </a></div>`
         target.insertAdjacentHTML("beforeend",kojinFormHTML);
     }
+
     if(page_call_property["callback"]=="chat_page"){
         let chatAreaHTML =`
       <div class="chat-area">
         <div class="chat-header">
-          <span class="chat-title">〜〜教室とのチャット履歴</span>
-          <span class="reload-time">5/23 9:00時点</span>
+          <span class="chat-title">
+          ${newData["ページタイプ"]=="school"?`${page_call_property["講師名"]}先生`:`${page_call_property["教室名"]}`}とのチャット履歴</span>
+          <span class="reload-time">
+          ${new Date().toLocaleString("ja-JP", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"})}時点</span>
           <span class="reload-button" >更新する</span>
         </div>
         <div class="chat-log-area">
         <!-- ここにチャットのログを表示する -->
-
         </div>
         <div class="chat-submit-area">
           <form id="chatForm">
