@@ -157,6 +157,7 @@ for (let prop of propertySort) {
     'https://heys45.github.io/SAUCEED/spot-js/31_page_chat.js',
     'https://heys45.github.io/SAUCEED/spot-js/03_common_guide.js',
     'https://heys45.github.io/SAUCEED/spot-js/02_common_call.js',
+    "https://kit.fontawesome.com/ae75e0f159.js"
     ...(newData["ページタイプ"] === "school" ? [
     ] : []),
     ...(urlFound ? [//デバッグページの場合には読み込む
