@@ -14,6 +14,14 @@ for( let hiddenElement of hiddenElements){
     hiddenElement.value=page_call_property[id]
 }
 
+// 既読処理の実行
+readCheck(form)
+
+
+
+
+
+
 
 
 async function handleSubmit(event) {
@@ -43,6 +51,31 @@ async function handleSubmit(event) {
     mode: 'cors', //CORS対応
   });
 
+};
+
+
+async function readCheck(form) {
+    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    const formData = new FormData(form);
+    const data = {};
+    // FormDataオブジェクトから連想配列に変換
+    for (const [key, value] of formData.entries()) {
+        data[key] = value;
+    }
+  
+    // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
+    data["ページタイプ"] = newData["ページタイプ"]
+    data["既読フラグ"] = true
+  
+    const response = await fetch( "https://script.google.com/macros/s/AKfycbwc5wu1HOL0RkT7WOWO5jrLbVBskvNEiqV8gwias6gMCs0yFCSW45t6-lp8VbelwRl3/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+      body: JSON.stringify(data),
+      mode: 'cors', //CORS対応
+    });
+  
 };
 
 }

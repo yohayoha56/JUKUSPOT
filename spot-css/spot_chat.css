@@ -82,6 +82,8 @@
     align-items: end;
 }
 
+
+/* サブミットえれりあーーーーーーーーーーー */
 .chat-submit-area{
     background-color:#E9EAF2;
     padding:10px 15px;
@@ -97,9 +99,20 @@
     flex: 1 0 auto;
     white-space: nowrap;
 }
+
 #メッセージ-wrapper textarea{
     width:100%;
     font-size:16px;
+    padding: 4px 8px !important;
+    border-radius: 4px;
+}
+
+#chatButton-wrapper .submit-button {
+    background-color: #1B7871;
+    border-radius: 4px;
+    padding: 4px 16px;
+    color: white;
+    font-size: 14px;
 }
 
 
