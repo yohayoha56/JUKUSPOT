@@ -1,3 +1,8 @@
+.chat-area{
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
 
 .chat-header {
     display: flex;
