@@ -11,7 +11,7 @@ form.addEventListener("submit", (event) => handleSubmit(event));
 const hiddenElements = form.querySelectorAll(":scope > input")
 for( let hiddenElement of hiddenElements){
     const id = hiddenElement.id
-    hiddenElement.value=newData[id]
+    hiddenElement.value=page_call_property[id]
 }
 
 
@@ -27,7 +27,8 @@ async function handleSubmit(event) {
       data[key] = value;
   }
 
-  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
+  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
+  data["ページタイプ"] = newData["ページタイプ"]
   data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
     year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit", second: "2-digit",
