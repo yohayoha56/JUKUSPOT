@@ -110,3 +110,14 @@
     padding: 0 15px;
     color:#B9B9B9 ;
   }
+
+
+  .icon-container {
+    display: inline-block;
+    background-color: #ffffff; /* 白色の背景 */
+    border-radius: 50%; /* 丸形にする */
+    padding: 10px; /* アイコンと背景の間に余白をつける */
+  }
+  .icon-container i {
+    color: #1B7871; /* アイコンの色を指定 */
+  }
