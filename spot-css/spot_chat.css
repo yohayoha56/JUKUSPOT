@@ -32,6 +32,7 @@
     color: #1B7871;
     padding: 3px 10px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .chat-log-area {
@@ -124,7 +125,7 @@
     align-items: center;
     width: 100%;
     text-align: center;
-    padding: 5px 15px;
+    padding: 15px 15px 5px 15px;
   }
   
   .day-line hr {

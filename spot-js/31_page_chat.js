@@ -1,6 +1,9 @@
 // トップページのGASレスポンスを受け取った後に行う処理。
 function chat_page(page_call_property) {
 
+const scrollArea = document.querySelector('.chat-log-area');
+scrollArea.scrollTop = scrollArea.scrollHeight;
+    
 
 // メッセージ提出フォームに初期値の付与
 const form = document.getElementById("chatForm")
@@ -55,7 +58,7 @@ async function handleSubmit(event) {
     // メッセージの最後の日付を取得
     const dayElements = document.querySelectorAll(".day-line .date-text");
     const lastDate = dayElements[dayElements.length -1].textContent
-    let addHTML
+    let addHTML =""
 
 
     // 日付が初めてのものであれば、<div class="day-line">を追加
@@ -84,6 +87,7 @@ async function handleSubmit(event) {
 
     const chatArea = document.querySelector(".chat-log-area")
     chatArea.insertAdjacentHTML("beforeend",addHTML)
+    scrollArea.scrollTop = scrollArea.scrollHeight;
     
     const textarea = document.getElementById("メッセージ");
     textarea.value = "";
