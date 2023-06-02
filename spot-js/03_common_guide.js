@@ -30,7 +30,7 @@ function insertGuide(page_call_property){
           ${newData["ページタイプ"]=="school"?`${page_call_property["講師名"]}先生`:`${page_call_property["教室名"]}`}とのチャット履歴</span>
           <span class="reload-time">
           ${new Date().toLocaleString("ja-JP", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"})}時点</span>
-          <span class="reload-button" >更新する</span>
+          <span class="reload-button" ><i class="fa-solid fa-rotate-right" style="color: #1B7871;"></i> 更新する</span>
         </div>
         <div class="chat-log-area">
         <!-- ここにチャットのログを表示する -->
