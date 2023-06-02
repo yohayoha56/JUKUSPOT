@@ -117,11 +117,15 @@
 
 
   .icon-container {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     background-color: #ffffff; /* 白色の背景 */
     border-radius: 50%; /* 丸形にする */
-    padding: 10px; /* アイコンと背景の間に余白をつける */
+    width: 30px;
+    height: 30px;
   }
   .icon-container i {
     color: #1B7871; /* アイコンの色を指定 */
+    font-size: 20px; /* アイコンのサイズを指定 */
   }
