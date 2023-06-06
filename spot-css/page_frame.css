@@ -21,6 +21,13 @@
 #sp_logo{
   display: none;
 }
+.super-navbar__logo{
+  width: 100%;
+}
+.super-navbar__actions{
+  width:0px ;
+}
+
 @media (max-width: 680px) {
   #pc_logo{
     display: none;
@@ -28,11 +35,19 @@
   #sp_logo{
     display:inline-block;
   }
+
+  .super-navbar__logo{
+    width: calc(100% - 45px);
+  }
+  .super-navbar__actions{
+    width:45px ;
+  }
 }
 
 .super-navbar h1{
   margin:0; font-size:18px; font-weight:500; display:inline-block;
 }
+
 
 
 
