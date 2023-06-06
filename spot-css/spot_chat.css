@@ -108,6 +108,12 @@
     padding: 4px 8px !important;
     border-radius: 4px;
 }
+textarea.expanded{
+    height: 90px;
+}
+
+
+
 
 #chatButton-wrapper .submit-button {
     background-color: #1B7871;
