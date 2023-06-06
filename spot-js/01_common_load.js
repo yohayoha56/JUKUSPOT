@@ -105,7 +105,7 @@ for (let prop of propertySort) {
     'https://heys45.github.io/jukust/logo02.png' : 'https://heys45.github.io/jukust/logo01.png';
 
   let headerColor = newData["ページタイプ"] == "school" ? 
-    "background-color:#33A614;color:white;":"background-color:white;color:#33A614;";
+    "background-color:#33A614;color:white;":"";
   let hamburgerColor = newData["ページタイプ"] == "school" ? 
     "background-color:white;color:#33A614;":"background-color:#33A614;color:white;";
 
