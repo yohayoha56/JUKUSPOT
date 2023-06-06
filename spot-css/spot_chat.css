@@ -1,9 +1,13 @@
 .chat-area{
     border-radius: 16px;
     margin: 50px 0;
+    height: 600px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
 }
 
-
+/* チャットヘッダー部分ーーーーーーーーーーーーーーーー */
 .chat-header {
     display: flex;
     flex-wrap: wrap;
@@ -36,12 +40,13 @@
     cursor: pointer;
 }
 
+/* チャットログエリア部分ーーーーーーーーーーーーーーーー */
 .chat-log-area {
     padding:15px 0 ; 
     background-color: #F4F4F4;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    flex: 1
     overflow-y: scroll;
 }
 
@@ -53,7 +58,6 @@
 .chat-log.sent {
     flex-direction: row-reverse;
 }
-
 
 .chat-box {
     display: inline-block;
@@ -85,7 +89,7 @@
 }
 
 
-/* サブミットえれりあーーーーーーーーーーー */
+/* サブミットエリアーーーーーーーーーーー */
 .chat-submit-area{
     background-color:#E9EAF2;
     padding:10px 15px;
