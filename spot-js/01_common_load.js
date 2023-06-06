@@ -105,7 +105,9 @@ for (let prop of propertySort) {
     'https://heys45.github.io/jukust/logo02.png' : 'https://heys45.github.io/jukust/logo01.png';
 
   let headerColor = newData["ページタイプ"] == "school" ? 
-    "background-color:#33A614;color:white;":"";
+    "background-color:#33A614;color:white;":"background-color:white;color:#33A614;";
+  let hamburgerColor = newData["ページタイプ"] == "school" ? 
+    "background-color:white;color:#33A614;":"background-color:#33A614;color:white;";
 
   let headerTitle = newData["ページタイプ"] == "school" ? 
     `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}先生マイページ`;
@@ -120,8 +122,8 @@ for (let prop of propertySort) {
           <h1>${headerTitle}</h1>
         </div>
       </div>
-      <div class="super-navbar__actions ">
-        <div id="hamburger-menu" style="font-size: 36px; margin-top: -14px;${headerColor}">
+      <div class="super-navbar__actions" style="display: flex;align-items: center;${hamburgerColor}">
+        <div id="hamburger-menu" style="font-size: 36px; margin-top: -14px;">
         <span>≡</span></div>
       </div>
     </nav>

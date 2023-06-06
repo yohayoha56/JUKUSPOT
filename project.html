@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAUCEED｜プロジェクトページ</title>
+</head>
+<body>
+
+    <div>projectTable</div>
+
+    <div class="projectTable">
+        <div class="project" style="display: flex;">
+            <div class="projectArea" style="width: 300px;">
+                <div class="projectHeader">
+                    <span class="projectName"></span>
+                    <span class="projectInfo1"></span>
+                    <span class="projectInfo2"></span>
+                </div>
+                <hr style="padding:10px;">
+                <div class="taskArea">
+                    <div class="task">
+                        <span class="taskInfo"></span>
+                        <span class="taskName"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="logArea">
+                <div class="log">
+                    <div class="logHeader">
+                        <span class="logInfo"></span>
+                    </div>
+                    <div class="logDone">
+                        <span>Done｜</span><span class="logDoneContent"></span>
+                    </div>
+                    <div class="logNext">
+                        <span>Next ｜</span><span class="logNextContent"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+formatDate(now(), "MMMM D YYYY, HH:mm") == March 30 2010, 12:00
+formatDate(now(), "YYYY/MM/DD, HH:mm") == 2010/03/30, 12:00
+formatDate(now(), "MM/DD/YYYY, HH:mm") == 03/30/2010, 12:00
+formatDate(now(), "HH:mm A") == 12:00 PM
+formatDate(now(), "M/D/YY") == 3/30/10

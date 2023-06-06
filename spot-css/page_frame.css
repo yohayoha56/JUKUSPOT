@@ -4,6 +4,12 @@
 
 }
 
+
+.super-navbar__content{
+  padding: 0;
+}
+
+
 .super-navbar__logo{
   width: calc(100% - 40px);
   overflow: hidden;
