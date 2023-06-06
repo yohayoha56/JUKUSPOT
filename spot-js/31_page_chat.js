@@ -29,6 +29,22 @@ function handleReloadButtonClick() {
 }
 
 
+let textarea = document.getElementById('メッセージ');
+
+textarea.addEventListener('focus', function() {
+  this.classList.add('expanded');
+});
+textarea.addEventListener('blur', function() {
+  if (this.value == "") {
+    this.classList.remove('expanded');
+  }
+});
+textarea.addEventListener('input', function() {
+  this.classList.add('expanded');
+});
+
+
+
 
 
 async function handleSubmit(event) {
@@ -91,6 +107,7 @@ async function handleSubmit(event) {
     
     const textarea = document.getElementById("メッセージ");
     textarea.value = "";
+    textarea.classList.remove('expanded');
 
 
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
