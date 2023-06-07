@@ -22,6 +22,57 @@ function insertGuide(page_call_property){
         target.insertAdjacentHTML("beforeend",kojinFormHTML);
     }
 
+
+    // ダミーページの事前判定用
+    const debugUrls = ['dummy'];
+    const currentUrl = window.location.href;
+    const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
+
+    // お知らせ欄出力
+    if(page_call_property["callback"]=="top_page" && urlFound){
+
+    let newsHTML =`
+    <div class="news-area">
+        <div class="chat-header">
+          <span class="chat-title"><i class="fa-solid fa-bullhorn"></i>お知らせ一覧</span>
+        </div>
+        <div class="chat-log-area">
+        <!-- ここにお知らせログを表示する -->
+            <div class="news-log">
+                <div class="info-box">
+                    <span class="timestamp">16:10</span>
+                    <span class="category">16:10</span>
+                </div>
+                <div class="news-box">
+                    お知らせが入ります。
+                </div>              
+            </div>
+            <div class="news-log">
+                <div class="info-box">
+                    <span class="timestamp">16:10</span>
+                    <span class="category">16:10</span>
+                </div>
+                <div class="news-box">
+                    お知らせが入ります。
+                </div>              
+            </div>
+            <div class="news-log">
+                <div class="info-box">
+                    <span class="timestamp">16:10</span>
+                    <span class="category">16:10</span>
+                </div>
+                <div class="news-box">
+                    お知らせが入ります。
+                </div>              
+            </div>
+
+        </div>
+    </div>
+    `
+    target.insertAdjacentHTML("beforeend",kojinFormHTML);
+    }
+
+
     if(page_call_property["callback"]=="chat_page"){
         let chatAreaHTML =`
       <div class="chat-area">
