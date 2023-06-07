@@ -69,7 +69,7 @@ function insertGuide(page_call_property){
         </div>
     </div>
     `
-    target.insertAdjacentHTML("beforeend",kojinFormHTML);
+    target.insertAdjacentHTML("beforeend",newsHTML);
     }
 
 
