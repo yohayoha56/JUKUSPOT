@@ -12,6 +12,7 @@
     border:solid;
 }
 
+/* プロジェクトエリアのスタイル */
 .projectArea{
     padding:5px 10px;
     border-right:solid;
@@ -30,3 +31,31 @@ hr{
     height:1px;
     background:black;
     border:none}
+
+/* ログエリアのスタイル */
+.logArea{
+    padding:5px 10px
+}
+
+form input{
+    height:20px;
+    padding:2px;
+    margintop:10px;
+}
+
+.f_date{
+    width:110px;
+}
+
+.f_工数{
+    width:50px
+}
+
+.f_場所{
+    width:150px;
+}
+.f_done, .f_next{
+    width:100%;
+    margin-top:8px;
+    margin-bottom:0;
+}
