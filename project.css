@@ -1,0 +1,32 @@
+*{
+    font-size:0.9rem;
+}
+
+.project{
+    display: flex;
+    border:solid;
+    border-bottom:0;
+}
+
+.project:last-child{
+    border:solid;
+}
+
+.projectArea{
+    padding:5px 10px;
+    border-right:solid;
+}
+
+.projectArea span{
+    display:inline-block;
+    width:100%;
+}
+.projectName{
+    font-weight:bold;
+}
+
+
+hr{
+    height:1px;
+    background:black;
+    border:none}

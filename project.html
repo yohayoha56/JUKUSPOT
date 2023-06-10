@@ -12,36 +12,24 @@
     <div>projectTable</div>
 
     <div class="projectTable">
-        <div class="project" style="display: flex;">
-            <div class="projectArea" style="width: 300px;">
-                <div class="projectHeader">
-                    <span class="projectName"></span>
-                    <span class="projectInfo1"></span>
-                    <span class="projectInfo2"></span>
-                </div>
-                <hr style="padding:10px;">
-                <div class="taskArea">
-                    <div class="task">
-                        <span class="taskInfo"></span>
-                        <span class="taskName"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="logArea">
-                <div class="log">
-                    <div class="logHeader">
-                        <span class="logInfo"></span>
-                    </div>
-                    <div class="logDone">
-                        <span>Done｜</span><span class="logDoneContent"></span>
-                    </div>
-                    <div class="logNext">
-                        <span>Next ｜</span><span class="logNextContent"></span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <script>
+            fetch("https://script.google.com/macros/s/AKfycbwbM7zqxTI2yLZMOX760Z4rLgZCVncGk41maAxD63fuYpdlDk2ywnuebgrJaLoHx7kO/exec", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: JSON.stringify({
+                }),
+                mode: 'cors', //CORS対応
+              })
+              .then(response => response.text()) 
+              .then(data => {
+    
+                var target = document.querySelector(".projectTable");
+                target.innerHTML(data);
+              })
+        </script>
+            
     </div>
     
 </body>
