@@ -25,6 +25,42 @@
                 target.innerHTML = data;
 
 
+
+                // 新規プロジェクトフォーム初期値追加ーーーーーーーーーーーーーーーーーーー
+                // 新規プロジェクト追加ボタンがクリックされたときの処理
+                document.querySelector('.projectCreateWrapper button').addEventListener('click', function() {
+                    var selectedClientValue = document.querySelector('.projectTableHeader select.selectedClient').value;
+                    var selectedClientText = document.querySelector('.projectTableHeader select.selectedClient').selectedOptions[0].text;
+                    document.querySelector('.projectCreateForm .f_client').value = selectedClientValue;
+                    document.querySelector('.projectCreateForm .f_client_view').textContent = selectedClientText;
+                });
+
+                // クライアントのセレクト要素が変更されたときの処理ーーーーーーーーーーーー
+                document.querySelector('.projectTableHeader select.selectedClient').addEventListener('change', function() {
+                    var selectedClientValue = this.value;
+                    var selectedClientText = this.selectedOptions[0].text;
+                    document.querySelector('.projectCreateForm .f_client').value = selectedClientValue;
+                    document.querySelector('.projectCreateForm .f_client_view').textContent = selectedClientText;
+                });
+
+
+
+
+
+
+                // 今日の日付を取得し、新規追加用フォームにセット
+                var today = new Date().toISOString().split('T')[0];
+                var createDateInput = document.querySelector('.logCreateForm .f_date');
+                createDateInput.value = today;
+
+
+
+
+
+
+
+
+
                 // 更新用フォームの表示・非表示を制御
                 var updateButtons = document.querySelectorAll('.logHeader button');
                 for (let button of updateButtons) {
@@ -42,11 +78,6 @@
                     var form = parent.nextElementSibling;
                     toggleFormDisplay(form);
                 });
-
-                // 今日の日付を取得し、新規追加用フォームにセット
-                var today = new Date().toISOString().split('T')[0];
-                var createDateInput = document.querySelector('.logCreateForm .f_date');
-                createDateInput.value = today;
                 
 
                 function toggleFormDisplay(form) {
