@@ -2,6 +2,42 @@
     font-size:0.9rem;
 }
 
+
+h1{
+    font-size:1.5rem;
+}
+
+.projectTableHeader{
+    display:flex;   
+}
+
+.projectTableHeader .selectedClient{
+    width:150px;
+}
+.projectTableHeader .clientCreateWrapper button{
+    width:150px;
+    margin-left:10px;
+}
+.projectTableHeader .clientCreateForm{
+    width:150px;
+    margin-left:10px;
+}
+.projectTableHeader .projectCreateWrapper button{
+    width:150px;
+    margin-left:10px;
+}
+
+
+
+.projectTableHeader .clientCreateForm .f_client{
+    width:150px;
+    box-sizing: border-box;
+}
+
+
+
+
+
 .project{
     display: flex;
     border:solid;
