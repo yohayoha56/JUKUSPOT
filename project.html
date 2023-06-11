@@ -46,18 +46,10 @@
 
 
 
-
-
                 // 今日の日付を取得し、新規追加用フォームにセット
                 var today = new Date().toISOString().split('T')[0];
                 var createDateInput = document.querySelector('.logCreateForm .f_date');
                 createDateInput.value = today;
-
-
-
-
-
-
 
 
 
@@ -76,6 +68,22 @@
                 createButton.addEventListener('click', function(e) {
                     var parent = e.target.closest('.logCreateWrapper');
                     var form = parent.nextElementSibling;
+                    toggleFormDisplay(form);
+                });
+
+                // 新規クライアント追加用フォームの表示・非表示を制御
+                var createButton = document.querySelector('.clientCreateWrapper button');
+                createButton.addEventListener('click', function(e) {
+                    var parent = e.target.closest('.projectTableHeader');
+                    var form = parent.querySelector(".clientCreateForm");
+                    toggleFormDisplay(form);
+                });
+
+                // 新規クライアント追加用フォームの表示・非表示を制御
+                var createButton = document.querySelector('.projectCreateWrapper button');
+                createButton.addEventListener('click', function(e) {
+                    var parent = e.target.closest('.projectTableHeader');
+                    var form = parent.querySelector(".projectCreateForm");
                     toggleFormDisplay(form);
                 });
                 
