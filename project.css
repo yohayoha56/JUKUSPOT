@@ -34,8 +34,20 @@ hr{
 
 /* ログエリアのスタイル */
 .logArea{
-    padding:5px 10px
+    padding:5px 10px;
 }
+
+.logHeader button{
+    display:inline-block;
+    margin-left:20px;
+    font-size:10px;
+}
+.logCreateWrapper button{
+
+    font-size:10px;
+}
+
+
 
 form input{
     height:20px;
