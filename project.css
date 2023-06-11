@@ -8,7 +8,8 @@ h1{
 }
 
 .projectTableHeader{
-    display:flex;   
+    display:flex;  
+    flex-wrap:wrap;
 }
 
 .projectTableHeader .selectedClient{
@@ -20,22 +21,12 @@ h1{
 }
 .projectTableHeader .clientCreateForm{
     width:150px;
-    margin-left:10px;
+
 }
 .projectTableHeader .projectCreateWrapper button{
     width:150px;
     margin-left:10px;
 }
-
-
-
-.projectTableHeader .clientCreateForm .f_client{
-    width:150px;
-    box-sizing: border-box;
-}
-
-
-
 
 
 .project{
@@ -90,6 +81,15 @@ form input{
     padding:2px;
     margin-top:10px;
 }
+form select{
+    height:20px;
+    padding:2px;
+    margin-top:10px;
+    box-sizing:content-box;
+}
+.f_project{
+    width:300px;
+}
 
 .f_date{
     width:110px;
@@ -98,14 +98,23 @@ form input{
 .f_工数{
     width:50px
 }
+.f_工数目安{
+    width:50px
+}
 
 .f_場所{
+    width:150px;
+}
+.f_status{
     width:150px;
 }
 .f_done, .f_next{
     width:100%;
     margin-top:8px;
     margin-bottom:0;
+}
+.f_client{
+    width:150px;
 }
 
 .logUpdateForm, .logCreateForm {
