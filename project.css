@@ -59,3 +59,7 @@ form input{
     margin-top:8px;
     margin-bottom:0;
 }
+
+.logUpdateForm, .logCreateForm {
+    display: none;
+}
