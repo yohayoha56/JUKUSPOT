@@ -96,6 +96,38 @@
                     }
                 }
 
+
+                var forms = document.getElementsByTagName("form");
+                for(var i=0; i<forms.length; i++) {
+                    forms[i].addEventListener("submit", handleSubmit);
+                }
+
+                async function handleSubmit(event) {
+                    event.preventDefault();
+                    const form = event.target;
+                    const formData = new FormData(form);
+                    const data = {};
+                    
+                    for (const [key, value] of formData.entries()) {
+                        data[key] = value;
+                    }
+                    
+                    await fetch("https://script.google.com/macros/s/AKfycbxzcw4pMg85nH1wB4KNT_zdXkP-FCfVxcfzGl66v3izfkFP3GoyxXNJme4IGpfAZWTHOA/exec", {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'text/plain',
+                        },
+                        body: JSON.stringify(data),
+                        mode: 'cors',
+                    });
+                }
+
+
+
+
+
+
+
               })
         </script>            
 
