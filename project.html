@@ -64,7 +64,7 @@
                 }
 
                 // 新規ログ追加用フォームの表示・非表示を制御
-                var createButton = document.querySelectorAll('.logCreateWrapper button');
+                var createButtons = document.querySelectorAll('.logCreateWrapper button');
                 for (let button of createButtons) {
                     buutton.addEventListener('click', function(e) {
                     var parent = e.target.closest('.logCreateWrapper');
