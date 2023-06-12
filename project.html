@@ -48,8 +48,10 @@
 
                 // 今日の日付を取得し、新規追加用フォームにセット
                 var today = new Date().toISOString().split('T')[0];
-                var createDateInput = document.querySelector('.logCreateForm .f_date');
-                createDateInput.value = today;
+                var createDateInput = document.querySelectorAll('.f_date');
+                for (let DateInput of createDateInput) {
+                    DateInput.value = today;
+                }
 
 
 
