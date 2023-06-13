@@ -34,7 +34,7 @@ let menuData = [
   { id: "kintai_page",  title: "勤怠確認ページ",                                class: "group-menu" },
   { id: "profile_page", title: isSchool? "講師プロフィール" : "マイプロフィール",  class: isSchool ? "group-menu" : "single-menu" },
   ...(urlFound ? [//デバッグページの場合には読み込む
-  { id: "chat_page", title: isSchool? "講師連絡ページ" : "教室連絡ページ",  class: "group-menu"},
+  { id: "chat_page", title: isSchool? "講師とメッセージ" : "教室とメッセージ",  class: "group-menu"},
   ] : [])
 ];
 
