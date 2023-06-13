@@ -91,7 +91,7 @@ function insertGuide(page_call_property){
                 <p>Loading...</p>
             </div>
         </div>`
-        target.insertAdjacentHTML("beforeend",chatAreaHTML);
+        target.insertAdjacentHTML("beforeend",loadAreaHTML);
     }
 
 
