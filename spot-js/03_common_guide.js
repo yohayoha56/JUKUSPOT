@@ -84,6 +84,16 @@ function insertGuide(page_call_property){
     target.insertAdjacentHTML("beforeend",newsHTML);
     }
 
+    if(page_call_property["callback"]!="chat_page" && urlFound){
+        let loadAreaHTML =`
+        <div id="loading" style="display: none;">
+            <div class="loading-content">
+                <p>Loading...</p>
+            </div>
+        </div>`
+        target.insertAdjacentHTML("beforeend",chatAreaHTML);
+    }
+
 
     if(page_call_property["callback"]=="chat_page"){
         let chatAreaHTML =`
@@ -97,6 +107,11 @@ function insertGuide(page_call_property){
         </div>
         <div class="chat-log-area">
         <!-- ここにチャットのログを表示する -->
+            <div id="loading" style="display: none;">
+                <div class="loading-content">
+                    <p>Loading...</p>
+                </div>
+            </div>
         </div>
         <div class="chat-submit-area">
           <form id="chatForm">
@@ -115,7 +130,31 @@ function insertGuide(page_call_property){
         target.insertAdjacentHTML("beforeend",chatAreaHTML);
     }
 
+
+
 }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ページタイプとコールバックに基づいてページタイトルとガイドを返す関数ーーーーーーーーーーーーーーー
 function getPageTitleAndGuide(pageType, callback) {

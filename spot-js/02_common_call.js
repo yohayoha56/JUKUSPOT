@@ -175,6 +175,9 @@ function call_fetchData(page_call_property) {
   .then(response => response.text())
   .then(data => {
 
+    const loadArea = document.getElementById("loadingg")
+    if(loadArea){loadArea.remove()}
+
     if(page_call_property["callback"]=="chat_page"){
       // チャットログの表示
       var target = document.querySelector(".chat-log-area");
