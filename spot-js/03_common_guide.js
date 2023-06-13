@@ -17,10 +17,12 @@ function insertGuide(page_call_property){
         ${page_call_property["講師名"]?` > ${page_call_property["講師名"]}先生`:""}`:`
         ${page_call_property["教室名"]?` > ${page_call_property["教室名"]}`:""}`}
     </div>
+    <!--
     <div class="" style="padding-left:70px;display:flex;flex-wrap:wrap; margin-top:20px;align-items:end;font-size:24px;">
     <img id="top-image" src="https://heys45.github.io/jukust/logo1.png" style="max-width: 400px; width: 100%; height: auto;margin-left:-70px;" alt="Logo">
     <p style="margin:0 0 6px 12px;font-weight:bold;color:#666;">${title}</p>
     </div>
+    -->
     <div style="padding:20px 0px;" class="page-guide-wrapper">
     <p>${guide}</p>
     </div>
