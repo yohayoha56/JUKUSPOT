@@ -7,12 +7,12 @@ scrollArea.scrollTop = scrollArea.scrollHeight;
 // 講師の電話番号出力
 const phoneNumber = document.getElementById("call-number")
 const phoneNumberHTML = `
-<div class="phoneArea" style="background:yellow;">
-<p>急ぎの連絡の場合は、${ newData["ページタイプ"]== "school" ? "講師の携帯番号" : "教室の電話番号"}"${phoneNumber.innerhtml}"に直接ご連絡ください</p>
+<div class="phoneArea" style="background:rgb(255, 242, 204);">
+<p>急ぎの連絡の場合は、${ newData["ページタイプ"]== "school" ? "講師の携帯番号" : "教室の電話番号"}"${phoneNumber.innerHTML}"に直接ご連絡ください</p>
 </div>
 `
 scrollArea.insertAdjacentHTML("beforebegin",phoneNumberHTML);
-phoneNumber.remove
+phoneNumber.remove();
 
 // メッセージ提出フォームに初期値の付与
 const form = document.getElementById("chatForm")
