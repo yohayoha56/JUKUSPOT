@@ -8,7 +8,7 @@ scrollArea.scrollTop = scrollArea.scrollHeight;
 const phoneNumber = document.getElementById("call-number")
 const phoneNumberHTML = `
 <div class="phoneArea" style="background:yellow;">
-<p>急ぎの連絡の場合は、${ data["ページタイプ"]== "school" ? "講師の携帯番号" : "教室の電話番号"}"${phoneNumber.innerhtml}"に直接ご連絡ください</p>
+<p>急ぎの連絡の場合は、${ newData["ページタイプ"]== "school" ? "講師の携帯番号" : "教室の電話番号"}"${phoneNumber.innerhtml}"に直接ご連絡ください</p>
 </div>
 `
 scrollArea.insertAdjacentHTML("beforebegin",phoneNumberHTML);
