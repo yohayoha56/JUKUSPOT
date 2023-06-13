@@ -39,12 +39,6 @@ let menuData = [
 ];
 
 
-
-
-
-
-
-
 let childElementsData  = [];
 if (isSchool) {
   const lastNameList = newData["講師[姓]一覧"];

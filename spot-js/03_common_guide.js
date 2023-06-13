@@ -1,10 +1,20 @@
 function insertGuide(page_call_property){
+    
+    let headerTitle = newData["ページタイプ"] == "school" ? 
+    `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}先生マイページ`;
+
     // ページによって、トップ部分にガイドの挿入を行うための関数
     const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
+
+
+    
 
     // ページタイトル＋サービスロゴ＋ガイドの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
     var target = document.getElementById("page-content");
     target.innerHTML =`
+    <div class="Breadcrumbs">
+        ${headerTitle}>${title}>${newData["ページタイプ"] == "school" ? `${page_call_property["講師名"]}先生`:page_call_property["教室名"]}
+    </div>
     <div class="" style="padding-left:70px;display:flex;flex-wrap:wrap; margin-top:20px;align-items:end;font-size:24px;">
     <img id="top-image" src="https://heys45.github.io/jukust/logo1.png" style="max-width: 400px; width: 100%; height: auto;margin-left:-70px;" alt="Logo">
     <p style="margin:0 0 6px 12px;font-weight:bold;color:#666;">${title}</p>
@@ -140,7 +150,7 @@ function getPageTitleAndGuide(pageType, callback) {
                 "guide": "このページでは 出勤 / 退勤 の報告とこれからの勤務予定の確認ができます。教室からの勤務依頼への回答も可能です。<br>まずは、スケジュール提出を、左の<span>シフト管理ページ</span>よりお願い致します。"
             },
             "shift_page": {
-                "title": "講師トップページ",
+                "title": "シフト管理ページ",
                 "guide": `
                 【スケジュール提出方法】<br>①右側の<span>提出する</span>ボタンをクリックしてください。<br>②ポップアップが表示されますので、勤務の可否を登録してください。<br>
                 ・勤務可能／勤務不可／調整中　※勤務可能な場合は可能な時間を入力してください。<br>③<span>スケジュールを提出する</span>ボタンをクリックすると提出完了です。<br>
