@@ -97,8 +97,8 @@ function insertGuide(page_call_property){
                 <input type="submit" value="送信" class="submit-button"> 
             </div>
           </form>
-          <p>>チャットで送信した内容はメールでも${newData["ページタイプ"]=="school"?"講師":"教室"}に通知されます。</p>
-        </div>
+          </div>
+          <p>チャットで送信した内容はメールでも${newData["ページタイプ"]=="school"?"講師":"教室"}に通知されます。</p>
       </div>`
         target.insertAdjacentHTML("beforeend",chatAreaHTML);
     }
