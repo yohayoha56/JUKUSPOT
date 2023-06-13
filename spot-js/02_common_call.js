@@ -176,7 +176,7 @@ function call_fetchData(page_call_property) {
   .then(data => {
 
     const loadArea = document.getElementById("loadingg")
-    if(loadArea){loadArea.remove()}
+    // if(loadArea){loadArea.remove()}
 
     if(page_call_property["callback"]=="chat_page"){
       // チャットログの表示

@@ -136,26 +136,6 @@ function insertGuide(page_call_property){
 
 
 
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ページタイプとコールバックに基づいてページタイトルとガイドを返す関数ーーーーーーーーーーーーーーー
 function getPageTitleAndGuide(pageType, callback) {
     let titlesAndGuides = {
