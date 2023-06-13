@@ -198,11 +198,6 @@ margin-bottom:0;
 
 
 /* ページガイドのデザイン */
-.Breadcrumbs{
-  padding-top: ;
-}
-
-
 
 .page-guide-wrapper{
   margin:20px 0px;
@@ -226,4 +221,35 @@ margin-bottom:0;
 
 .page-guide-wrapper span{
   font-weight:bold;
+}
+
+
+
+/* ローディング　ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+.loader-container {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding:100px
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #1B7871;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
+
+.loading-text{
+  padding-top:20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

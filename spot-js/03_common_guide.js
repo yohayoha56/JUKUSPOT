@@ -88,8 +88,8 @@ function insertGuide(page_call_property){
         let loadAreaHTML =`
         <div id="loading" class="loader-container">
             <div class="loader"></div>
-            <div class="loading-content">
-                <p>Loading...</p>
+            <div class="loading-text">
+                <p>最新情報を取得中です</p>
             </div>
         </div>`
         target.insertAdjacentHTML("beforeend",loadAreaHTML);
@@ -110,8 +110,8 @@ function insertGuide(page_call_property){
         <!-- ここにチャットのログを表示する -->
             <div id="loading" class="loader-container">
                 <div class="loader"></div>
-                <div class="loading-content">
-                    <p>Loading...</p>
+                <div class="loading-text">
+                    <p>最新情報を取得中です</p>
                 </div>
             </div>
         </div>
