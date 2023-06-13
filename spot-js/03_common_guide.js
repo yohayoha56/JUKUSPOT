@@ -86,7 +86,8 @@ function insertGuide(page_call_property){
 
     if(page_call_property["callback"]!="chat_page" && urlFound){
         let loadAreaHTML =`
-        <div id="loading" style="display: none;">
+        <div id="loading" class="loader-container">
+            <div class="loader"></div>
             <div class="loading-content">
                 <p>Loading...</p>
             </div>
@@ -107,7 +108,8 @@ function insertGuide(page_call_property){
         </div>
         <div class="chat-log-area">
         <!-- ここにチャットのログを表示する -->
-            <div id="loading" style="display: none;">
+            <div id="loading" class="loader-container">
+                <div class="loader"></div>
                 <div class="loading-content">
                     <p>Loading...</p>
                 </div>
