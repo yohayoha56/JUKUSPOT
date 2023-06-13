@@ -13,7 +13,9 @@ function insertGuide(page_call_property){
     var target = document.getElementById("page-content");
     target.innerHTML =`
     <div class="Breadcrumbs">
-        ${headerTitle}>${title}>${newData["ページタイプ"] == "school" ? `${page_call_property["講師名"]}先生`:page_call_property["教室名"]}
+        ${headerTitle} > ${title}${newData["ページタイプ"] == "school" ? `
+        ${page_call_property["講師名"]?` > ${page_call_property["講師名"]}先生`:""}`:`
+        ${page_call_property["教室名"]?` > ${page_call_property["教室名"]}`:""}`}
     </div>
     <div class="" style="padding-left:70px;display:flex;flex-wrap:wrap; margin-top:20px;align-items:end;font-size:24px;">
     <img id="top-image" src="https://heys45.github.io/jukust/logo1.png" style="max-width: 400px; width: 100%; height: auto;margin-left:-70px;" alt="Logo">
