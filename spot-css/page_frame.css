@@ -71,7 +71,7 @@
 .side-bar {
   width: 240px;
   display: inline-block;
-  padding: 20px 15px;
+  padding: 25px 15px;
 }
 .main-bar {
   width: calc(100% - 240px);
