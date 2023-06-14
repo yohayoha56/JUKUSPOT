@@ -205,16 +205,6 @@ margin-bottom:0;
   position:relative;
 }
 
-.page-guide-wrapper::before{
-  content:"📗 ページ説明";
-  font-weight:bold;
-  font-size:18px;
-  color:#555;
-  position:absolute;
-  top: 10px;
-  left:15px
-}
-
 .page-guide-wrapper p{
   padding:20px 15px 0px 15px
 }
