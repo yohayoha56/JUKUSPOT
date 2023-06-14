@@ -90,12 +90,9 @@ async function handleSubmit(event) {
 
     // メッセージの最後の日付を取得
     const dayElements = document.querySelectorAll(".day-line .date-text");
-    const lastDate = dayElements[dayElements.length -1].textContent
     let addHTML =""
-
-
     // 日付が初めてのものであれば、<div class="day-line">を追加
-    if (formattedDate !== lastDate) {
+    if (dayElements.length > 0 && formattedDate !== dayElements[dayElements.length -1].textContent) {
         addHTML +=`<div class="day-line"><hr>
                     <span class="date-text">${formattedDate}</span>
                 <hr></div>`;
