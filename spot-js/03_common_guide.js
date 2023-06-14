@@ -23,8 +23,8 @@ function insertGuide(page_call_property){
     <p style="margin:0 0 6px 12px;font-weight:bold;color:#666;">${title}</p>
     </div>
     -->
-    <div style="padding:20px 0px;" class="page-guide-wrapper">
-    <p style="ont-weight: bold;font-size: 18px;color: #555;">📗 ${title} ページ説明</p>
+    <div class="page-guide-wrapper">
+    <p class="page-buide-title">📗　${title}｜ページ説明</p>
     <p>${guide}</p>
     </div>
     `

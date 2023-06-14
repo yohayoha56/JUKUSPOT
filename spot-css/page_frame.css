@@ -215,20 +215,21 @@ margin-bottom:0;
 }
 
 
-/* ページガイドのデザイン */
+/* ページガイドのデザインーーーーーーーーーーーーーーーーーーーーーーー */
 
 .page-guide-wrapper{
   margin:20px 0px;
   background-color:#EDF6F5;
   position:relative;
 }
-
-.page-guide-wrapper p{
-  padding:20px 15px 0px 15px
+.page-guide-title{
+  font-weight: bold;
+  font-size: 18px;
+  color: #555;
 }
 
-.page-guide-wrapper span{
-  font-weight:bold;
+.page-guide-wrapper p{
+  padding:15px;
 }
 
 
