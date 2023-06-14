@@ -60,7 +60,6 @@
 .side-bar{
   position: sticky;
   top: 50px;
-  z-index: 1000;
   height: 60vh; 
 }
 .modal {
@@ -80,9 +79,6 @@
   padding: 25px 15px;
 }
 @media (max-width: 680px) {
-  .side-bar{
-    display: none;
-  }
   .main-bar{
     width: 100%;
     padding:10px;
@@ -154,6 +150,13 @@ margin-bottom:0;
 
 
 /* サイドバーの設定用＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾ */
+
+
+
+
+
+
+
 .super-navbar.minimal {
   display: flex;
   justify-content: space-between;
@@ -185,6 +188,7 @@ margin-bottom:0;
   }
 
   .side-bar {
+    z-index: 1000;
     width: 100%;
     height: auto;
     top: 50px;
@@ -193,6 +197,17 @@ margin-bottom:0;
   }
   #hamburger-menu {
     display: inline-block;
+  }
+
+  #overlay {
+      position: fixed; /* Changed from absolute to fixed */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      display:none;
   }
 }
 
@@ -243,3 +258,4 @@ margin-bottom:0;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
