@@ -67,6 +67,13 @@ async function handleSubmit(event) {
         data[key] = value;
     }
 
+    // メッセージが未入力、もしくはスペースや改行のみの場合はスクリプトを終了
+    if (!data["メッセージ"] || data["メッセージ"].trim() === '') {
+        return;
+    }
+
+
+
     // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
     data["ページタイプ"] = newData["ページタイプ"]
     data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
