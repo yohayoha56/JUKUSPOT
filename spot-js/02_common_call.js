@@ -129,7 +129,7 @@ function toggleSideBar() {
     menuIcon.style["margin-top"]="-5px";
   } else {
     sideBar.style.display = 'none';
-    overlay.style.display = "block"
+    overlay.style.display = "none"
     menuIcon.textContent = '≡';
     menuIcon.style["font-size"]="36px";
     menuIcon.style["margin-top"]="-14px";
