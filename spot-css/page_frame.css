@@ -180,6 +180,9 @@ margin-bottom:0;
   display: none;
   cursor: pointer;
 }
+#overlay {
+  display: none;
+}
 
 /* Styles for screen size 680px or less */
 @media screen and (max-width: 680px) {
