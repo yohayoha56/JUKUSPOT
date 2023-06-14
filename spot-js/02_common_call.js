@@ -112,7 +112,7 @@ addEventListenerToMenu(".menu .group-menu .child-menu li", (e) => {
 const hamburgerMenu = document.getElementById('hamburger-menu');
 hamburgerMenu.addEventListener('click', toggleSideBar);
 
-document.getElementsByTagName("body").insertAdjacentHTML("afterbegin",'<div id="overlay"></div>')
+document.getElementsByTagName("body")[0].insertAdjacentHTML("afterbegin",'<div id="overlay"></div>')
 const overlay = document.getElementById("overlay");
 overlay.addEventListener('click', toggleSideBar);
 
