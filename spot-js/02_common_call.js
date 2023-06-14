@@ -108,27 +108,36 @@ addEventListenerToMenu(".menu .group-menu .child-menu li", (e) => {
 });
 
 
-
 // サイドバー関連の設定ーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const hamburgerMenu = document.getElementById('hamburger-menu');
 hamburgerMenu.addEventListener('click', toggleSideBar);
 
+document.getElementsByTagName("body").insertAdjacentHTML("afterbegin",'<div id="overlay"></div>')
+const overlay = document.getElementById("overlay");
+overlay.addEventListener('click', toggleSideBar);
+
 function toggleSideBar() {
   const sideBar = document.querySelector('.side-bar');
   const menuIcon = document.querySelector('#hamburger-menu span');
+  const overlay = document.getElementById("overlay")
   
   if (sideBar.style.display === 'none' || sideBar.style.display === '') {
     sideBar.style.display = 'block';
+    overlay.style.display = "block"
     menuIcon.textContent = '×';
     menuIcon.style["font-size"]="28px";
     menuIcon.style["margin-top"]="-5px";
   } else {
     sideBar.style.display = 'none';
+    overlay.style.display = "block"
     menuIcon.textContent = '≡';
     menuIcon.style["font-size"]="36px";
     menuIcon.style["margin-top"]="-14px";
   }
 }
+
+
+
 
 
 // GASを起動するためのスクリプトーーーーーーーーーーーーーーーーーーーー
