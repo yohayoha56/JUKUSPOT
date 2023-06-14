@@ -91,7 +91,7 @@ function insertGuide(page_call_property){
     fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain',},
-        body: JSON.stringify(data),
+        body: JSON.stringify(page_call_property),
         mode: 'cors',
     })
     .then(response => response.text())
