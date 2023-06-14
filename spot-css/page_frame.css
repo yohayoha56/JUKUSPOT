@@ -232,6 +232,10 @@ margin-bottom:0;
   padding:15px;
 }
 
+.page-guide-wrapper span{
+  font-weight:bold;
+}
+
 
 
 /* ローディング　ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
