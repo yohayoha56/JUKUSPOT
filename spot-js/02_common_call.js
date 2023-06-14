@@ -175,7 +175,7 @@ function call_fetchData(page_call_property) {
   .then(response => response.text())
   .then(data => {
 
-    const loadArea = document.getElementById("loadingg")
+    const loadArea = document.getElementById("loading")
     if(loadArea){loadArea.remove()}
 
     if(page_call_property["callback"]=="chat_page"){
