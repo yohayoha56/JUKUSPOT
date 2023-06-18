@@ -24,7 +24,7 @@ function insertGuide(page_call_property){
     </div>
     -->
     <div class="page-guide-wrapper">
-    <p class="page-buide-title">📗　${title}｜ページ説明</p>
+    <p class="page-guide-title">📗　${title}｜ページ説明</p>
     <p>${guide}</p>
     </div>
     `
