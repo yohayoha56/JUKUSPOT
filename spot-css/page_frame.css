@@ -226,6 +226,7 @@ margin-bottom:0;
   font-weight: bold;
   font-size: 18px;
   color: #555;
+  padding-bottom: 0 !important;
 }
 
 .page-guide-wrapper p{
