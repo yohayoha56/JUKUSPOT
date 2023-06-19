@@ -1,3 +1,9 @@
+h2{
+    border-left:solid 6px #1B7871;
+    padding-left: 12px;
+    font-size: 22px;
+    margin-top: 40px;
+ }
 
 .news-header{
     display: flex;
@@ -45,8 +51,3 @@
    border-radius:5px
 }
 
-h2{
-   border-left:solid 6px #1B7871;
-   padding-left: 12px;
-   font-size:0px;
-}
