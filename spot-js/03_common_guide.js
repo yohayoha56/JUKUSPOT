@@ -51,7 +51,7 @@ function insertGuide(page_call_property){
         <div class="news-header">
           <span class="news-title"><i class="fa-solid fa-bullhorn"></i>お知らせ一覧</span>
         </div>
-        <div class="chat-log-area">
+        <div class="news-log-area">
         <!-- ここにお知らせログを表示する -->
             <div class="news-log">
                 <div class="info-box">
