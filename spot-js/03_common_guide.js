@@ -48,15 +48,15 @@ function insertGuide(page_call_property){
 
     let newsHTML =`
     <div class="news-area">
-        <div class="chat-header">
-          <span class="chat-title"><i class="fa-solid fa-bullhorn"></i>お知らせ一覧</span>
+        <div class="news-header">
+          <span class="news-title"><i class="fa-solid fa-bullhorn"></i>お知らせ一覧</span>
         </div>
         <div class="chat-log-area">
         <!-- ここにお知らせログを表示する -->
             <div class="news-log">
                 <div class="info-box">
-                    <span class="timestamp">16:10</span>
-                    <span class="category">16:10</span>
+                    <span class="timestamp">2023/6/19</span>
+                    <span class="category">カテゴリー</span>
                 </div>
                 <div class="news-box">
                     お知らせが入ります。
@@ -64,8 +64,8 @@ function insertGuide(page_call_property){
             </div>
             <div class="news-log">
                 <div class="info-box">
-                    <span class="timestamp">16:10</span>
-                    <span class="category">16:10</span>
+                    <span class="timestamp">2023/6/19</span>
+                    <span class="category">カテゴリー</span>
                 </div>
                 <div class="news-box">
                     お知らせが入ります。
@@ -73,8 +73,8 @@ function insertGuide(page_call_property){
             </div>
             <div class="news-log">
                 <div class="info-box">
-                    <span class="timestamp">16:10</span>
-                    <span class="category">16:10</span>
+                    <span class="timestamp">2023/6/19</span>
+                    <span class="category">カテゴリー</span>
                 </div>
                 <div class="news-box">
                     お知らせが入ります。
