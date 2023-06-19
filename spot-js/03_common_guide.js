@@ -53,33 +53,12 @@ function insertGuide(page_call_property){
         </div>
         <div class="news-log-area">
         <!-- ここにお知らせログを表示する -->
-            <div class="news-log">
-                <div class="info-box">
-                    <span class="timestamp">2023/6/19</span>
-                    <span class="category">カテゴリー</span>
-                </div>
-                <div class="news-box">
-                    お知らせが入ります。
-                </div>              
+        <div id="loading" class="loader-container">
+            <div class="loader"></div>
+            <div class="loading-text">
+                <p>最新情報を取得中です</p>
             </div>
-            <div class="news-log">
-                <div class="info-box">
-                    <span class="timestamp">2023/6/19</span>
-                    <span class="category">カテゴリー</span>
-                </div>
-                <div class="news-box">
-                    お知らせが入ります。
-                </div>              
-            </div>
-            <div class="news-log">
-                <div class="info-box">
-                    <span class="timestamp">2023/6/19</span>
-                    <span class="category">カテゴリー</span>
-                </div>
-                <div class="news-box">
-                    お知らせが入ります。
-                </div>              
-            </div>
+        </div>
 
         </div>
     </div>
