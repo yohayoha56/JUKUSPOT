@@ -5,6 +5,31 @@ h2{
     margin-top: 40px;
  }
 
+/* ページガイドのデザインーーーーーーーーーーーーーーーーーーーーーーー */
+
+.page-guide-wrapper{
+    margin:20px 0px;
+    background-color:#EDF6F5;
+    position:relative;
+  }
+  .page-guide-title{
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    padding-bottom: 0 !important;
+  }
+  
+  .page-guide-wrapper p{
+    padding:15px;
+  }
+  
+  .page-guide-wrapper span{
+    font-weight:bold;
+  }
+  
+  
+/* お知らせのデザインーーーーーーーーーーーーーーーーーーーーーーーーー */
+
 .news-header{
     display: flex;
     flex-wrap: wrap;
@@ -15,9 +40,14 @@ h2{
     gap: 10px;
 }
 
+.news-title i{
+   padding-right:10px;
+}
+
+
 
 .news-log-area {
-    padding: 10px 15px;
+    padding: 15px 15px 10px 15px;
     background-color: #F4F4F4;
     display: flex;
     flex-direction: column;
@@ -26,21 +56,22 @@ h2{
 }
 
 .news-log{
-     padding-bottom:10px;
+   padding-bottom:10px;
    border-bottom:solid white ;
    margin-bottom:10px
 
 }
 
 
-
 .news-area .info-box{
     display: flex;
     flex-direction: row;
-    gap:10px;
+    width:100%;
+    gap:15px;
     align-items: start;
     justify-content: flex-start;
     color:black;
+    margin-bottom:5px;
    
 }
 
@@ -51,3 +82,31 @@ h2{
    border-radius:5px
 }
 
+  /* ローディング　ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+  .loader-container {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding:100px
+  }
+  
+  .loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #1B7871;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+  }
+  
+  .loading-text{
+    padding-top:20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
