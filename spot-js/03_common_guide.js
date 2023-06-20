@@ -85,7 +85,7 @@ function insertGuide(page_call_property){
 
     }
 
-    if(page_call_property["callback"]!="chat_page" && urlFound){
+    if(page_call_property["callback"]!="chat_page" ){
         let loadAreaHTML =`
         <div id="loading" class="loader-container">
             <div class="loader"></div>
