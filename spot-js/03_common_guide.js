@@ -46,42 +46,39 @@ function insertGuide(page_call_property){
     // お知らせ欄出力
     if(page_call_property["callback"]=="top_page" && urlFound){
 
-    let newsHTML =`
-    <div class="news-area">
-        <div class="news-header">
-          <span class="news-title"><i class="fa-solid fa-bullhorn"></i>お知らせ一覧</span>
-        </div>
-        <div class="news-log-area">
-        <!-- ここにお知らせログを表示する -->
-        <div id="loading" class="loader-container">
-            <div class="loader"></div>
-            <div class="loading-text">
-                <p>最新情報を取得中です</p>
+        // ローディング画面を出力しておく
+        let newsHTML =`
+        <div class="news-area">
+            <div class="news-header">
+              <span class="news-title"><i class="fa-solid fa-bullhorn"></i>お知らせ一覧</span>
+            </div>
+            <div class="news-log-area" id="news-log-area">
+            <!-- ここにお知らせログを表示する -->
+            <div id="loading" class="loader-container">
+                <div class="loader"></div>
+                <div class="loading-text">
+                    <p>最新情報を取得中です</p>
+                </div>
+            </div>
             </div>
         </div>
+        `
+        target.insertAdjacentHTML("beforeend",newsHTML);
 
-        </div>
-    </div>
-    `
-    target.insertAdjacentHTML("beforeend",newsHTML);
-
-
-    // APIにて情報を取得
-    // fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'text/plain',},
-    //     body: JSON.stringify(page_call_property),
-    //     mode: 'cors',
-    // })
-    // .then(response => response.text())
-    // .then(data => {
-    //     console.log("success")
-    // });
-      
-
-
-
-
+        //お知らせを取得する 
+        fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain',},
+            body: JSON.stringify(data),
+            mode: 'cors',
+          })
+          .then(response => response.text())
+          .then(data => {
+        
+            const newsArea = document.getElementById("news-log-area")
+            newsArea.innerHTML(data)
+        
+          });
 
     }
 
