@@ -144,10 +144,12 @@ function call_fetchData(page_call_property) {
   if(newData["ページタイプ"] == "school"){
     page_call_property["教室名"]=newData["教室名"];
     page_call_property["教室ID"]=newData["教室ID"]
+    page_call_property["ページタイプ"]= "school"
   }
   if(newData["ページタイプ"] == "teacher"){
     page_call_property["講師名"]=newData["姓"]+newData["名"];
     page_call_property["会員ID"]=newData["会員ID"];
+    page_call_property["ページタイプ"]= "teacher"
   }
 
   const data = {
@@ -195,8 +197,6 @@ function call_fetchData(page_call_property) {
       var target = document.getElementById("page-content");
       target.insertAdjacentHTML("beforeend",data)
     }
-
-
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
       window[page_call_property["callback"]](page_call_property);
