@@ -65,21 +65,6 @@ function insertGuide(page_call_property){
         `
         target.insertAdjacentHTML("beforeend",newsHTML);
 
-        //お知らせを取得する 
-        fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain',},
-            body: JSON.stringify(data),
-            mode: 'cors',
-          })
-          .then(response => response.text())
-          .then(data => {
-        
-            const newsArea = document.getElementById("news-log-area")
-            newsArea.innerHTML = data;
-        
-          });
-
     }
 
     if(page_call_property["callback"]!="chat_page" ){
