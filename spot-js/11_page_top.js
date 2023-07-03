@@ -183,6 +183,27 @@ if (!document.querySelector("#forms-container .form-container")) {
     h2Element.style.display = "none";
 }
 
+// お知らせ欄出力
+const debugUrls = ['dummy'];
+const currentUrl = window.location.href;
+const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
+
+if(urlFound){
+    //お知らせを取得する 
+    fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain',},
+        body: JSON.stringify(data),
+        mode: 'cors',
+      })
+      .then(response => response.text())
+      .then(data => {
+        const newsArea = document.getElementById("news-log-area")
+        newsArea.innerHTML = data;
+      });
+
+}
+
 
 
 async function handleSubmit(event,remarks,row) {
