@@ -76,7 +76,7 @@ function insertGuide(page_call_property){
           .then(data => {
         
             const newsArea = document.getElementById("news-log-area")
-            newsArea.innerHTML(data)
+            newsArea.innerHTML = data;
         
           });
 
