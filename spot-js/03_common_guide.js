@@ -57,7 +57,7 @@ function insertGuide(page_call_property){
             <div id="loading" class="loader-container">
                 <div class="loader"></div>
                 <div class="loading-text">
-                    <p>最新情報を取得中です</p>
+                    <p>お知らせを取得中です</p>
                 </div>
             </div>
             </div>
