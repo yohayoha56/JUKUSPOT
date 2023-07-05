@@ -162,9 +162,6 @@ for (let prop of propertySort) {
     "https://kit.fontawesome.com/ae75e0f159.js", // Font Awesome
     ...(newData["ページタイプ"] === "school" ? [
     ] : []),
-    ...(urlFound ? [//デバッグページの場合には読み込む
-    'https://heys45.github.io/SAUCEED/spot-js/92_func_debug.js',
-  ] : [])
   ];
 
   // 外部スクリプトの読み込み（JSのみ非同期で読み込み）
