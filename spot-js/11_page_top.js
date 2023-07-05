@@ -64,6 +64,9 @@ rows.forEach(row => {
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerHTML;
     const rowDate = new Date(date+"T00:00:00+09:00");
+    const newstart = row.dataset.newstart
+    const newfin = row.dataset.newfin
+    const newbreak = row.dataset.newbreak
 
 
 
@@ -108,9 +111,7 @@ rows.forEach(row => {
         { name: "教室名", type: "hidden", value: schoolName },
         { name: "勤怠ステータス", type: "hidden", value: newStatus },
         { name: "勤務時間の変更", type: "select", value: "", flexbox: true, width: "100%", options: [
-        { value: "", text: "選択してください" },
-        { value: "変更なし", text: "変更なし" },
-        { value: "変更あり", text: "変更あり" },
+        { value: "", text: "選択してください" }, { value: "変更なし", text: "変更なし" }, { value: "変更あり", text: "変更あり" },
         ]},
         { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
         { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px" ,minHour: 8, maxHour: 22, stepMinute: 10},
@@ -150,14 +151,30 @@ rows.forEach(row => {
     // 挿入箇所=formContainerの定義
     formsContainer.appendChild(formContainer)
 
-
     // 表示設定
     form.querySelector("#勤務開始時間-wrapper").style.display="none"
     form.querySelector("#勤務終了時間-wrapper").style.display="none"
     form.querySelector("#休憩時間-wrapper").style.display="none"
+
     if(formId == "checkInForm"){
         form.querySelector("#勤務時間の変更-wrapper").style.display="none"
     }
+    if(formId == "approvalForm" && newstart!=null){
+      form.querySelector("#勤務時間の変更-wrapper").style.display="none"
+      form.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
+      form.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
+      form.querySelector("#休憩時間-wrapper").style.display="inline-block"
+      form.querySelector("#勤務開始時間-wrapper #勤務開始時間_hour").value = newstart.split(":")[0];
+      form.querySelector("#勤務開始時間-wrapper #勤務開始時間_minute").value = newstart.split(":")[1];
+      form.querySelector("#勤務終了時間-wrapper #勤務終了時間_hour").value = newfins.split(":")[0];
+      form.querySelector("#勤務終了時間-wrapper #勤務終了時間_minute").value = newfin.split(":")[1];
+      form.querySelector("#休憩時間-wrapper #休憩時間").value = newbreak;
+
+
+    }
+
+
+
     form.querySelector("#勤務時間の変更").addEventListener("change", function () {
         const timeChange = this.value;
         console.log(timeChange)
