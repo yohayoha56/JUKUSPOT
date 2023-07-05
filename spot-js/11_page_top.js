@@ -199,7 +199,7 @@ if(urlFound){
       .then(response => response.text())
       .then(data => {
         const newsArea = document.getElementById("news-log-area")
-        newsArea.innerText = data;
+        newsArea.innerHTML = data;
       });
 
 }
