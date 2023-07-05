@@ -85,7 +85,7 @@ rows.forEach(row => {
     if (nowStatus == '勤務予定' && rowDate <= nowInTokyo) {
         //出勤報告フォーム概要の定義
         formId = "checkInForm"
-        formTitle = `${date}｜${schoolName}｜出勤報告`
+        formTitle = `${date}｜出勤報告`
         formInfo = "勤務予定の内容"
         formGuide = "↓出勤報告をしてください"
         formButton = "出勤を報告する"
@@ -94,7 +94,7 @@ rows.forEach(row => {
     } else if (nowStatus === '出勤報告済み') {
         //出勤報告フォーム概要の定義
         formId = "checkOutForm"
-        formTitle = `${date}｜${schoolName}｜退勤報告`
+        formTitle = `${date}｜退勤報告`
         formInfo = "勤務予定の内容"
         formGuide = "↓退勤報告をしてください"
         formButton = "退勤を報告する"
