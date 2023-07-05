@@ -90,7 +90,11 @@ h2{
     align-items: center;
     height: 100%;
     width: 100%;
-    padding:60px
+    padding:100px
+  }
+
+  .news-log-area .loader-container{
+    padding:50px
   }
   
   .loader {
