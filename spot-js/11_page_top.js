@@ -160,7 +160,7 @@ rows.forEach(row => {
         form.querySelector("#勤務時間の変更-wrapper").style.display="none"
     }
     if(formId == "approvalForm" && newbreak!=""){
-      form.querySelector("#勤務時間の変更-wrapper").innerHTML='<span style="color:#800000;display:inline-block">講師から勤務時間の変更申請があります。<br>修正の必要があれば、修正の上、「勤務を承認する」ボタンをクリックしてください。</span>'
+      form.querySelector("#勤務時間の変更-wrapper").innerHTML='<span style="color:#800000;display:inline-block">講師から勤務時間の変更申請があります。 修正の必要があれば、修正の上、「勤務を承認する」ボタンをクリックしてください。</span>'
       form.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
       form.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
       form.querySelector("#休憩時間-wrapper").style.display="inline-block"
