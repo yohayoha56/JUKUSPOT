@@ -165,9 +165,9 @@ rows.forEach(row => {
       form.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
       form.querySelector("#休憩時間-wrapper").style.display="inline-block"
       form.querySelector("#勤務開始時間-wrapper #勤務開始時間_hour").value = newstart.split(":")[0];
-      form.querySelector("#勤務開始時間-wrapper #勤務開始時間_minute").value = newstart.split(":")[1];
+      form.querySelector("#勤務開始時間-wrapper #勤務開始時間_minute").value = newstart.split(":")[1]== "00" ? "0" : newstart.split(":")[1];
       form.querySelector("#勤務終了時間-wrapper #勤務終了時間_hour").value = newfin.split(":")[0];
-      form.querySelector("#勤務終了時間-wrapper #勤務終了時間_minute").value = newfin.split(":")[1];
+      form.querySelector("#勤務終了時間-wrapper #勤務終了時間_minute").value = newfin.split(":")[1]== "00" ? "0" : newfin.split(":")[1];
       form.querySelector("#休憩時間-wrapper #休憩時間").value = newbreak;
 
 
