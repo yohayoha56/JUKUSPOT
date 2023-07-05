@@ -41,11 +41,12 @@ function top_page(page_call_property) {
 
   
 
-// フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// 出勤、退勤、、承認フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const table = document.getElementById("work-table")
 const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
 const formsContainer = document.getElementById('forms-container');
-// 出勤フォームの表示用に今日の日付を定義
+
+// 出勤フォームの表示条件に使う、今日の日付を定義（出勤日が今日以前だと、出勤フォームを作成。）
 const now = new Date();
 const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 
@@ -62,8 +63,10 @@ rows.forEach(row => {
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerHTML;
-
     const rowDate = new Date(date+"T00:00:00+09:00");
+
+
+
 
     let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
