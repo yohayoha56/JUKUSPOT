@@ -94,8 +94,8 @@ h2{
   }
   
   .loader {
-    border: 10px solid #f3f3f3;
-    border-top: 10px solid #1B7871;
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #1B7871;
     border-radius: 50%;
     width: 60px;
     height: 60px;
