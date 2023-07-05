@@ -1,2 +1,0 @@
-NotionAPI_Conditions
-{"method":"POST","headers":{"Authorization":"Bearer secret_uj0IliJ1nRqij5cs7Vt51IkllMDDBAKYHVaJUJaPiN0","Notion-Version":"2021-08-16","Content-Type":"application/json"},"muteHttpExceptions":true,"payload":"{\"filter\":{\"property\":\"会員ID\",\"rich_text\":{\"equals\":\"9999992\"}},\"page_size\":100}"}
