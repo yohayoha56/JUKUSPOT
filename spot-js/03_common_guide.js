@@ -54,7 +54,7 @@ function insertGuide(page_call_property){
             </div>
             <div class="news-log-area" id="news-log-area">
             <!-- ここにお知らせログを表示する -->
-            <div id="loading" class="loader-container">
+            <div id="loading2" class="loader-container">
                 <div class="loader"></div>
                 <div class="loading-text">
                     <p>お知らせを取得中です</p>
