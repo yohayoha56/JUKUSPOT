@@ -159,7 +159,7 @@ rows.forEach(row => {
     if(formId == "checkInForm"){
         form.querySelector("#勤務時間の変更-wrapper").style.display="none"
     }
-    if(formId == "approvalForm" && newbreak!=null){
+    if(formId == "approvalForm" && newbreak!=""){
       form.querySelector("#勤務時間の変更-wrapper").innerHTML='<span style="color:#800000;display:inline-block">講師から勤務時間の変更申請があります。<br>修正の必要があれば、修正の上、「勤務を承認する」ボタンをクリックしてください。</span>'
       form.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
       form.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
@@ -172,23 +172,23 @@ rows.forEach(row => {
     }
 
     if(form.querySelector("#勤務時間の変更")){
-    form.querySelector("#勤務時間の変更").addEventListener("change", function () {
-        const timeChange = this.value;
-        console.log(timeChange)
-        if(timeChange == "変更あり"){
-            console.log(this.parentNode)
-            console.log(this.parentNode.parentNode)
-            console.log(this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper"))
-            this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
-            this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
-            this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="inline-block"
-        } else {
-            this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="none"
-            this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="none"
-            this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="none"
-        }
-    });
-  }
+      form.querySelector("#勤務時間の変更").addEventListener("change", function () {
+          const timeChange = this.value;
+          console.log(timeChange)
+          if(timeChange == "変更あり"){
+              console.log(this.parentNode)
+              console.log(this.parentNode.parentNode)
+              console.log(this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper"))
+              this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
+              this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
+              this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="inline-block"
+          } else {
+              this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="none"
+              this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="none"
+              this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="none"
+          }
+      });
+    }
     
 });
 
