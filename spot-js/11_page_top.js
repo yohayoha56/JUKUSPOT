@@ -198,6 +198,9 @@ if(urlFound){
       })
       .then(response => response.text())
       .then(data => {
+        const loadArea2 = document.getElementById("loading2")
+        if(loadArea2){loadArea2.remove()}
+
         const newsArea = document.getElementById("news-log-area")
         newsArea.innerHTML = data;
       });
