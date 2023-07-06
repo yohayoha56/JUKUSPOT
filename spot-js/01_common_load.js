@@ -1,5 +1,6 @@
 // const { redirect } = require("express/lib/response");
 
+console.log("test1")
 // 0.05秒ごとにsuper.soのドキュメント生成状況を確認ーーーーーーーーーーーーーーーーーー
 function waitForProperties() {
   return new Promise((resolve) => {
@@ -15,36 +16,37 @@ function waitForProperties() {
 
 
 // 新しいデータオブジェクトを作成する
-let newData2 = {};
+// let newData2 = {};
 
 
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
+  console.log("test2")
 
 
-// scriptタグのidを使って要素を取得する
-let scriptElement = document.getElementById("__NEXT_DATA__");
+// // scriptタグのidを使って要素を取得する
+// let scriptElement = document.getElementById("__NEXT_DATA__");
 
-// scriptタグの内容を取得する
-let jsonText = scriptElement.textContent || scriptElement.innerText;
+// // scriptタグの内容を取得する
+// let jsonText = scriptElement.textContent || scriptElement.innerText;
 
-// 文字列をJSONオブジェクトに変換する
-let jsonData = JSON.parse(jsonText);
+// // 文字列をJSONオブジェクトに変換する
+// let jsonData = JSON.parse(jsonText);
 
-// 最初のブロックを取得する
-let firstBlock = Object.values(jsonData.props.pageProps.records.block)[0];
+// // 最初のブロックを取得する
+// let firstBlock = Object.values(jsonData.props.pageProps.records.block)[0];
 
-// propertySortとpropertyValuesを取得する
-let propertySort = firstBlock.propertySort;
-let propertyValues = firstBlock.propertyValues;
+// // propertySortとpropertyValuesを取得する
+// let propertySort = firstBlock.propertySort;
+// let propertyValues = firstBlock.propertyValues;
 
 
-// 各プロパティに対して処理を行う
-for (let prop of propertySort) {
-  // propertySortのnameをkey、propertyでpropertyValuesを検索したものをvalueとして新しいデータを作成する
-  newData2[prop.name] = propertyValues[prop.property];
-}
+// // 各プロパティに対して処理を行う
+// for (let prop of propertySort) {
+//   // propertySortのnameをkey、propertyでpropertyValuesを検索したものをvalueとして新しいデータを作成する
+//   newData2[prop.name] = propertyValues[prop.property];
+// }
 
 
   
@@ -132,7 +134,7 @@ for (let prop of propertySort) {
   let superHeader = document.querySelector(".super-navbar");
   superHeader.outerHTML = headerHTML;
   
-
+  console.log("test3")
   // 外部スクリプト読み込みの事前判定
   const debugUrls = ['dummy'];
   const currentUrl = window.location.href;
@@ -172,7 +174,7 @@ for (let prop of propertySort) {
     }
   })();
 });
-
+console.log("test4")
 
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
