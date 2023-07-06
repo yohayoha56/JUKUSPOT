@@ -1,22 +1,49 @@
 // const { redirect } = require("express/lib/response");
 
-console.log("test1")
-// 0.05秒ごとにsuper.soのドキュメント生成状況を確認ーーーーーーーーーーーーーーーーーー
 function waitForProperties() {
-  return new Promise((resolve) => {
-    const propertiesContainer = document.querySelector(".notion-page__properties");
-    if (!propertiesContainer) {
-      setTimeout(() => resolve(waitForProperties()), 50);
-    } else {
-      resolve(propertiesContainer);
-    }
+  let timeoutId;
+  return new Promise((resolve, reject) => {
+    const checkProperties = () => {
+      const propertiesContainer = document.querySelector(".notion-page__properties");
+      if (propertiesContainer) {
+        clearTimeout(timeoutId);  // 成功したらタイムアウトをクリアします
+        resolve(propertiesContainer);
+      } else if (!timeoutId) {  // timeoutId が未設定ならタイムアウトを設定します
+        timeoutId = setTimeout(() => reject('timeout'), 3000);
+      } else {  // それ以外の場合は再試行を続けます
+        setTimeout(checkProperties, 50);
+      }
+    };
+    checkProperties();
   });
 }
 
+function handleTimeout() {
+  // タイムアウトが発生したときに実行する処理をここに書きます
+  console.log("Time out occurred!");
+
+  //新しいデータオブジェクトを作成する
+  let newData2 = {};
+  let scriptElement = document.getElementById("__NEXT_DATA__");
+  let jsonText = scriptElement.textContent || scriptElement.innerText;
+  let jsonData = JSON.parse(jsonText);
+  let firstBlock = Object.values(jsonData.props.pageProps.records.block)[0];
+  let propertySort = firstBlock.propertySort;
+  let propertyValues = firstBlock.propertyValues;
+  for (let prop of propertySort) {
+    // propertySortのnameをkey、propertyでpropertyValuesを検索したものをvalueとして新しいデータを作成する
+    newData2[prop.name] = propertyValues[prop.property];
+  }
+  console.log(newData2)
 
 
-// 新しいデータオブジェクトを作成する
-// let newData2 = {};
+
+
+
+
+
+}
+
 
 
 waitForProperties().then((propertiesContainer) => {
@@ -24,33 +51,7 @@ waitForProperties().then((propertiesContainer) => {
   newData = extractProperties(propertiesContainer);
   console.log("test2")
 
-
-// // scriptタグのidを使って要素を取得する
-// let scriptElement = document.getElementById("__NEXT_DATA__");
-
-// // scriptタグの内容を取得する
-// let jsonText = scriptElement.textContent || scriptElement.innerText;
-
-// // 文字列をJSONオブジェクトに変換する
-// let jsonData = JSON.parse(jsonText);
-
-// // 最初のブロックを取得する
-// let firstBlock = Object.values(jsonData.props.pageProps.records.block)[0];
-
-// // propertySortとpropertyValuesを取得する
-// let propertySort = firstBlock.propertySort;
-// let propertyValues = firstBlock.propertyValues;
-
-
-// // 各プロパティに対して処理を行う
-// for (let prop of propertySort) {
-//   // propertySortのnameをkey、propertyでpropertyValuesを検索したものをvalueとして新しいデータを作成する
-//   newData2[prop.name] = propertyValues[prop.property];
-// }
-
-
   
-
   async function checkRedirect(newData) {
     let redata;
     var targets = ["講師トップページ", "講師スケジュール提出", "講師シフト確定リスト", "講師勤怠確認リスト", "講師教室確認リスト", "講師連絡確認リスト", "講師プロフィール", "講師よくある質問", "講師シフト確定", "講師勤怠確認", "講師教室確認", "講師連絡確認"];
