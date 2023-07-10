@@ -228,7 +228,7 @@ if(urlFound){
         let messageElements = document.querySelectorAll(".news-message");
         messageElements.forEach((element) => {
             element.addEventListener("click", function() {
-                let classroomName = this.innerText.split(" ")[1]; // Get the classroom name from the inner text of the p element
+                let classroomName = this.innerText.replace(/\[.*?\]\s*/, "").trim(); // Remove the unread messages count and get the classroom name
                 let classroomId = this.getAttribute("data-id"); // Get the classroom id from the data-id attribute
   
                 page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
