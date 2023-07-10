@@ -224,23 +224,21 @@ if(urlFound){
 
         const newsArea = document.getElementById("news-log-area")
         newsArea.innerHTML = data;
+
+        let messageElements = document.querySelectorAll(".news-message");
+        messageElements.forEach((element) => {
+            element.addEventListener("click", function() {
+                let classroomName = this.innerText.split(" ")[1]; // Get the classroom name from the inner text of the p element
+                let classroomId = this.getAttribute("data-id"); // Get the classroom id from the data-id attribute
+  
+                page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
+                page_call_property[isSchool ? "会員ID" : "教室ID"] = classroomId;
+                page_call_property["callback"] = "chat_page";
+  
+                call_fetchData(page_call_property);
+            });
+        });
       });
-
-      let messageElements = document.querySelectorAll(".news-message");
-      messageElements.forEach((element) => {
-          element.addEventListener("click", function() {
-              let classroomName = this.innerText.split(" ")[1]; // Get the classroom name from the inner text of the p element
-              let classroomId = this.getAttribute("data-id"); // Get the classroom id from the data-id attribute
-
-              let page_call_property = {};
-              page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
-              page_call_property[isSchool ? "会員ID" : "教室ID"] = classroomId;
-              page_call_property["callback"] = "chat_page";
-
-              call_fetchData(page_call_property);
-          });
-      });
-
 
 }
 
