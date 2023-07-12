@@ -204,43 +204,38 @@ if (!document.querySelector("#forms-container .form-container")) {
     h2Element.style.display = "none";
 }
 
-// お知らせ欄出力
-const debugUrls = ['dummy'];
-const currentUrl = window.location.href;
-const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
 
-if(urlFound){
-    //お知らせを取得する 
-    fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain',},
-        body: JSON.stringify(page_call_property),
-        mode: 'cors',
-      })
-      .then(response => response.text())
-      .then(data => {
-        const loadArea2 = document.getElementById("loading2")
-        if(loadArea2){loadArea2.remove()}
+//お知らせを取得する 
+fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTmPamN4vz8bdvl7SrUgWaBdyMf2JUzFOCt2C/exec", {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain',},
+    body: JSON.stringify(page_call_property),
+    mode: 'cors',
+  })
+  .then(response => response.text())
+  .then(data => {
+    const loadArea2 = document.getElementById("loading2")
+    if(loadArea2){loadArea2.remove()}
 
-        const newsArea = document.getElementById("news-log-area")
-        newsArea.innerHTML = data;
+    const newsArea = document.getElementById("news-log-area")
+    newsArea.innerHTML = data;
 
-        let messageElements = document.querySelectorAll(".news-message");
-        messageElements.forEach((element) => {
-            element.addEventListener("click", function() {
-                let classroomName = this.innerText.replace(/\[.*?\]\s*/, "").trim(); // Remove the unread messages count and get the classroom name
-                let classroomId = this.getAttribute("data-id"); // Get the classroom id from the data-id attribute
-  
-                page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
-                page_call_property[isSchool ? "会員ID" : "教室ID"] = classroomId;
-                page_call_property["callback"] = "chat_page";
-  
-                call_fetchData(page_call_property);
-            });
+    let messageElements = document.querySelectorAll(".news-message");
+    messageElements.forEach((element) => {
+        element.addEventListener("click", function() {
+            let classroomName = this.innerText.replace(/\[.*?\]\s*/, "").trim(); // Remove the unread messages count and get the classroom name
+            let classroomId = this.getAttribute("data-id"); // Get the classroom id from the data-id attribute
+
+            page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
+            page_call_property[isSchool ? "会員ID" : "教室ID"] = classroomId;
+            page_call_property["callback"] = "chat_page";
+
+            call_fetchData(page_call_property);
         });
-      });
+    });
+  });
 
-}
+
 
 
 
