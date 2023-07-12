@@ -88,7 +88,8 @@ h2{
   text-decoration: underline;
   text-decoration-color: blue;
   cursor: pointer;
-  padding-right: 50px;
+  margin-right: 50px;
+  border-bottom: solid 1px;
 }
 .news-message span{
   color:red;
