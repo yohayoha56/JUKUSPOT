@@ -82,6 +82,22 @@ h2{
    border-radius:5px
 }
 
+.news-message{
+  display:inline-block;
+  color:blue;
+  text-decoration: underline;
+  text-decoration-color: blue;
+  cursor: pointer;
+}
+.news-message span{
+  color:red;
+  text-decoration:none;
+}
+
+
+
+
+
   /* ローディング　ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
   .loader-container {
     display: flex;
