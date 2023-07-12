@@ -85,8 +85,6 @@ h2{
 .news-message{
   display:inline-block;
   color:blue;
-  text-decoration: underline;
-  text-decoration-color: blue;
   cursor: pointer;
   margin-right: 50px;
   border-bottom: solid 1px;
