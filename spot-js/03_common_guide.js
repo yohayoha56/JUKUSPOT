@@ -38,13 +38,10 @@ function insertGuide(page_call_property){
     }
 
 
-    // ダミーページの事前判定用
-    const debugUrls = ['dummy'];
-    const currentUrl = window.location.href;
-    const urlFound = debugUrls.some(debugUrl => currentUrl.includes(debugUrl));
+
 
     // お知らせ欄出力
-    if(page_call_property["callback"]=="top_page" && urlFound){
+    if(page_call_property["callback"]=="top_page"){
 
         // ローディング画面を出力しておく
         let newsHTML =`
