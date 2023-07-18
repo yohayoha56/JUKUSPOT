@@ -81,10 +81,10 @@ waitForProperties().then((propertiesContainer) => {
 
 
   // URLからクエリパラメータを取得
-  let urlObj = new URL(url);
-  let params = new URLSearchParams(urlObj.search);
-  paramsP = params.get("p");
-  paramsID = params.get("id");
+  // let urlObj = new URL(url);
+  // let params = new URLSearchParams(urlObj.search);
+  // paramsP = params.get("p");
+  // paramsID = params.get("id");
 
   // URLの変換処理（後ろに教室講師のフラグをつけてあげる）
   let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
