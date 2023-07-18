@@ -208,8 +208,10 @@ function call_fetchData(page_call_property) {
 
     if(page_call_property["callback"]=="chat_page"){
       // チャットログの表示
+      const data2 = JSON.parse(data);
+      console.log(data2.callback)
       var target = document.querySelector(".chat-log-area");
-      target.insertAdjacentHTML("beforeend",data)
+      target.insertAdjacentHTML("beforeend",data2.html)
 
     } else if(page_call_property["callback"]=="top_page") {
       // メインコンテンツの挿入
