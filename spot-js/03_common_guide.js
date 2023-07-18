@@ -7,15 +7,25 @@ function insertGuide(page_call_property){
     const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
 
 
-    
-
     // ページタイトル＋サービスロゴ＋ガイドの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
     var target = document.getElementById("page-content");
     target.innerHTML =`
-    <div class="Breadcrumbs">
-        ${headerTitle} > ${title}${newData["ページタイプ"] == "school" ? `
-        ${page_call_property["講師名"]?` > ${page_call_property["講師名"]}先生`:""}`:`
-        ${page_call_property["教室名"]?` > ${page_call_property["教室名"]}`:""}`}
+    <div class="sub-header">
+        <div class="Breadcrumbs">
+            ${headerTitle} > ${title}${newData["ページタイプ"] == "school" ? `
+            ${page_call_property["講師名"]?` > ${page_call_property["講師名"]}先生`:""}`:`
+            ${page_call_property["教室名"]?` > ${page_call_property["教室名"]}`:""}`}
+        </div>
+
+        ${page_call_property["callback"]=="top_page"|| (page_call_property["callback"]=="profile_page" && newData["ページタイプ"] == "teacher")?"":`
+        <div class="shortcut-buttons">
+            ${page_call_property["callback"]=="shift_page"?"":
+            `<span class="shortcut-button" id="sb-shift" data-callback="shift_page">${newData["ページタイプ"] == "school" ? `シフト依頼`:`シフト管理`}へ</span>`}
+            ${page_call_property["callback"]=="kintai_page"?"":`<span class="shortcut-button" id="sb-kintai" data-callback="kintai_page">勤怠確認へ</span>`}
+            ${page_call_property["callback"]=="profile_page"?"":`<span class="shortcut-button" id="sb-profile" data-callback="profile_page">プロフィールへ</span>`}
+            ${page_call_property["callback"]=="chat_page"?"":`<span class="shortcut-button" id="sb-chat" data-callback="chat_page">メッセージへ</span>`}
+        </div>`}
+
     </div>
     <!--
     <div class="" style="padding-left:70px;display:flex;flex-wrap:wrap; margin-top:20px;align-items:end;font-size:24px;">
@@ -28,6 +38,18 @@ function insertGuide(page_call_property){
     <p>${guide}</p>
     </div>
     `
+
+    var buttons = document.getElementsByClassName("shortcut-button");
+    // 各ボタンに対してイベントリスナーを設定
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function(event) {
+            var callback = event.target.getAttribute("data-callback");
+            page_call_property["callback"] = callback;
+            call_fetchData(page_call_property);
+        });
+    }
+
+
 
     if(page_call_property["callback"]=="top_page"&& newData["ページタイプ"]== "teacher"&& !newData["口座番号（半角数字）"]){
         const formURL ="https://docs.google.com/forms/d/e/1FAIpQLSdshC5GsKHZhps40FNkEShsnnat6-B4Y_EQdRHk0XlXpwV9mg/viewform?usp=pp_url"
