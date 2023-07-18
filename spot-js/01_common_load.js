@@ -36,12 +36,6 @@ function handleTimeout() {
   }
   console.log(newData2)
 
-
-
-
-
-
-
 }
 
 
@@ -89,12 +83,17 @@ waitForProperties().then((propertiesContainer) => {
   }
 
 
-
-
-
   // URLの末尾指定
   let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
   let url = window.location.href;
+
+  // URLからクエリパラメータを取得
+  let params = new URLSearchParams(url.search);
+  let pValue = params.get("p");
+  let idValue = params.get("id");
+  console.log("p="+pValue,"id="+idValue)
+
+  // URLの変換処理（後ろに教室講師のフラグをつけてあげる）
   let baseUrl = url.split('?')[0]; // '?'を基にURLを分割し、その最初の部分（パラメータがない部分）を取得
   url = baseUrl + last_url ; // baseURLに新しいパラメータを追加
   window.history.pushState({}, '', url);
@@ -135,7 +134,7 @@ waitForProperties().then((propertiesContainer) => {
   let superHeader = document.querySelector(".super-navbar");
   superHeader.outerHTML = headerHTML;
   
-  console.log("test3")
+
   // 外部スクリプト読み込みの事前判定
   const debugUrls = ['dummy'];
   const currentUrl = window.location.href;
@@ -175,7 +174,7 @@ waitForProperties().then((propertiesContainer) => {
     }
   })();
 });
-console.log("test4")
+
 
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
