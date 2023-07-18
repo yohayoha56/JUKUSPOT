@@ -39,8 +39,7 @@ function handleTimeout() {
 }
 
 
-
-
+let paramsID, paramsP;
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
@@ -87,8 +86,8 @@ waitForProperties().then((propertiesContainer) => {
 
   // URLからクエリパラメータを取得
   let params = new URLSearchParams(url.search);
-  let paramsP = params.get("p");
-  let paramsID = params.get("id");
+  paramsP = params.get("p");
+  paramsID = params.get("id");
 
   // URLの変換処理（後ろに教室講師のフラグをつけてあげる）
   let baseUrl = url.split('?')[0]; // '?'を基にURLを分割し、その最初の部分（パラメータがない部分）を取得
@@ -170,8 +169,6 @@ waitForProperties().then((propertiesContainer) => {
       await loadScript(scriptUrl);
     }
   })();
-
-  return paramsID,paramsP;
 });
 
 
