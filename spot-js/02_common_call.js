@@ -33,7 +33,6 @@ let menuData = [
   { id: "chat_page", title: isSchool? "講師とメッセージ" : "教室とメッセージ",  class: "group-menu"},
 ];
 
-
 let childElementsData  = [];
 if (isSchool) {
   const lastNameList = newData["講師[姓]一覧"];
@@ -55,7 +54,7 @@ let page_call_property
 if(menuData.map(menu => menu.id).includes(paramsP) && childElementsId.includes(paramsID)){
   const matchingIndex = childElementsId.indexOf(paramsID); 
   const matchingData = childElementsData[matchingIndex]; 
-  
+
   page_call_property = {
     "callback" : paramsP,
     [isSchool ? "講師名" : "教室名"]: matchingData,

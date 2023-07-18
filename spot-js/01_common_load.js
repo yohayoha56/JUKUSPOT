@@ -80,16 +80,15 @@ waitForProperties().then((propertiesContainer) => {
   // リダイレクト用スクリプト（終わり）ーーーーーーーーーーーーーーーー
 
 
-  // URLの末尾指定
-  let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
-  let url = window.location.href;
-
   // URLからクエリパラメータを取得
-  let params = new URLSearchParams(url.search);
+  let urlObj = new URL(url);
+  let params = new URLSearchParams(urlObj.search);
   paramsP = params.get("p");
   paramsID = params.get("id");
 
   // URLの変換処理（後ろに教室講師のフラグをつけてあげる）
+  let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
+  let url = window.location.href;
   let baseUrl = url.split('?')[0]; // '?'を基にURLを分割し、その最初の部分（パラメータがない部分）を取得
   url = baseUrl + last_url ; // baseURLに新しいパラメータを追加
   window.history.pushState({}, '', url);
