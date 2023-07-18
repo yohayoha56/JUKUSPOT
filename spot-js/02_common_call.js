@@ -69,14 +69,6 @@ call_fetchData(page_call_property);
 
 
 
-
-
-
-
-
-
-
-
 // ここからサイドメニューの作成スクリプト
 // ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const menu = document.querySelector(".menu");
@@ -185,7 +177,7 @@ function call_fetchData(page_call_property) {
     "callback": page_call_property["callback"],
     "ページタイプ": newData["ページタイプ"]
   };
-
+  
   let url;
   switch (page_call_property["callback"]) {
     case "profile_page":
@@ -219,10 +211,16 @@ function call_fetchData(page_call_property) {
       var target = document.querySelector(".chat-log-area");
       target.insertAdjacentHTML("beforeend",data)
 
-    } else {
+    } else if(page_call_property["callback"]=="top_page") {
       // メインコンテンツの挿入
       var target = document.getElementById("page-content");
       target.insertAdjacentHTML("beforeend",data)
+    } else {
+      // メインコンテンツの挿入
+      const data = JSON.parse(data);
+      console.log(data.callback)
+      var target = document.getElementById("page-content");
+      target.insertAdjacentHTML("beforeend",data.html)
     }
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
