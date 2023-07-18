@@ -12,9 +12,6 @@ target.innerHTML = `
 <img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 400px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
 </div>
 `
-// 初回のトップページの呼び出し
-const page_call_property= { "callback" : "top_page" }
-call_fetchData(page_call_property);
 
 
 
@@ -50,6 +47,35 @@ if (isSchool) {
 }
 const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID一覧"];
 console.log(childElementsData)
+
+
+
+// 初回のトップページの呼び出し
+let page_call_property
+if(menuData.map(menu => menu.id).includes(paramsP) && childElementsId.includes(paramsID)){
+  const matchingIndex = childElementsId.indexOf(paramsID); 
+  const matchingData = childElementsData[matchingIndex]; 
+  
+  page_call_property = {
+    "callback" : paramsP,
+    [isSchool ? "講師名" : "教室名"]: matchingData,
+    [isSchool ? "会員ID" : "教室ID"]: paramsID
+  };
+
+} else {
+  page_call_property= { "callback" : "top_page" }
+}
+call_fetchData(page_call_property);
+
+
+
+
+
+
+
+
+
+
 
 
 // ここからサイドメニューの作成スクリプト
