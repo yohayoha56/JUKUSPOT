@@ -20,10 +20,10 @@ function insertGuide(page_call_property){
         ${page_call_property["callback"]=="top_page"|| (page_call_property["callback"]=="profile_page" && newData["ページタイプ"] == "teacher")?"":`
         <div class="shortcut-buttons">
             ${page_call_property["callback"]=="shift_page"?"":
-            `<span class="shortcut-button" id="sb-shift" data-callback="shift_page">${newData["ページタイプ"] == "school" ? `シフト依頼`:`シフト管理`}へ</span>`}
-            ${page_call_property["callback"]=="kintai_page"?"":`<span class="shortcut-button" id="sb-kintai" data-callback="kintai_page">勤怠確認へ</span>`}
-            ${page_call_property["callback"]=="profile_page"?"":`<span class="shortcut-button" id="sb-profile" data-callback="profile_page">プロフィールへ</span>`}
-            ${page_call_property["callback"]=="chat_page"?"":`<span class="shortcut-button" id="sb-chat" data-callback="chat_page">メッセージへ</span>`}
+            `<span class="shortcut-button" id="sb-shift" data-callback="shift_page">${newData["ページタイプ"] == "school" ? `シフト依頼`:`シフト管理`}へ<i class="fa-regular fa-circle-right"></i></span>`}
+            ${page_call_property["callback"]=="kintai_page"?"":`<span class="shortcut-button" id="sb-kintai" data-callback="kintai_page">勤怠確認へ<i class="fa-regular fa-circle-right"></i></span>`}
+            ${page_call_property["callback"]=="profile_page"?"":`<span class="shortcut-button" id="sb-profile" data-callback="profile_page">プロフィールへ<i class="fa-regular fa-circle-right"></i></span>`}
+            ${page_call_property["callback"]=="chat_page"?"":`<span class="shortcut-button" id="sb-chat" data-callback="chat_page">メッセージへ<i class="fa-regular fa-circle-right"></i></span>`}
         </div>`}
 
     </div>

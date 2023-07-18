@@ -133,7 +133,26 @@ h2{
 
 
   /* ショートカットボタン */
+  .sub-header{
+    display:flex;
+    gap:10px 20px;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
 
   .shortcut-buttons{
-    display: none;
+    display: inline-flex;
+    gap:10px;
+    font-size:15px;
+    flex-wrap:wrap;
   }
+
+  .shortcut-button{
+    display:inline-block;
+    background-color:#19837C;
+    color:white;
+    padding:3px 15px;
+
+  }
+
+  #sb-kintai{display:none;}
