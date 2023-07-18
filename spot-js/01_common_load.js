@@ -40,12 +40,10 @@ function handleTimeout() {
 
 
 
+
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
-  console.log("test2")
-
-  
 
   // リダイレクト用スクリプトーーーーーーーーーーーーーーーーーーーーー
   async function checkRedirect(newData) {
@@ -89,9 +87,8 @@ waitForProperties().then((propertiesContainer) => {
 
   // URLからクエリパラメータを取得
   let params = new URLSearchParams(url.search);
-  let pValue = params.get("p");
-  let idValue = params.get("id");
-  console.log("p="+pValue,"id="+idValue)
+  let paramsP = params.get("p");
+  let paramsID = params.get("id");
 
   // URLの変換処理（後ろに教室講師のフラグをつけてあげる）
   let baseUrl = url.split('?')[0]; // '?'を基にURLを分割し、その最初の部分（パラメータがない部分）を取得
@@ -173,6 +170,8 @@ waitForProperties().then((propertiesContainer) => {
       await loadScript(scriptUrl);
     }
   })();
+
+  return paramsID,paramsP;
 });
 
 
