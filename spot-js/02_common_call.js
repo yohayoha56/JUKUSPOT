@@ -213,10 +213,10 @@ function call_fetchData(page_call_property) {
 
     } else if(page_call_property["callback"]=="top_page") {
       // メインコンテンツの挿入
-      const data = JSON.parse(data);
-      console.log(data.callback)
+      const data2 = JSON.parse(data);
+      console.log(data2.callback)
       var target = document.getElementById("page-content");
-      target.insertAdjacentHTML("beforeend",data.html)
+      target.insertAdjacentHTML("beforeend",data2.html)
     } else {
       // メインコンテンツの挿入
       var target = document.getElementById("page-content");
