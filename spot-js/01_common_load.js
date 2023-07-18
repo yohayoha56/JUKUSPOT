@@ -46,6 +46,8 @@ waitForProperties().then((propertiesContainer) => {
   console.log("test2")
 
   
+
+  // リダイレクト用スクリプトーーーーーーーーーーーーーーーーーーーーー
   async function checkRedirect(newData) {
     let redata;
     var targets = ["講師トップページ", "講師スケジュール提出", "講師シフト確定リスト", "講師勤怠確認リスト", "講師教室確認リスト", "講師連絡確認リスト", "講師プロフィール", "講師よくある質問", "講師シフト確定", "講師勤怠確認", "講師教室確認", "講師連絡確認"];
@@ -77,10 +79,8 @@ waitForProperties().then((propertiesContainer) => {
       window.location.href = data; 
     }
   }
-  
-  if (newData["ページ表示名"]) {
-    checkRedirect(newData);
-  }
+  if (newData["ページ表示名"]) { checkRedirect(newData);}
+  // リダイレクト用スクリプト（終わり）ーーーーーーーーーーーーーーーー
 
 
   // URLの末尾指定
