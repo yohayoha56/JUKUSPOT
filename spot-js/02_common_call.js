@@ -205,21 +205,25 @@ function call_fetchData(page_call_property) {
 
     const loadArea = document.getElementById("loading")
     if(loadArea){loadArea.remove()}
+
     const data2 = JSON.parse(data);
     console.log(data2.callback)
+    
+    // Callbackが一致する場合のみデータ出力を行う
+    if(data2.callback == page_call_property["callback"]) {
+      if(page_call_property["callback"]=="chat_page"){
+        // チャットログの表示
+        var target = document.querySelector(".chat-log-area");
+        target.insertAdjacentHTML("beforeend",data2.html)
 
-    if(page_call_property["callback"]=="chat_page"){
-      // チャットログの表示
-      var target = document.querySelector(".chat-log-area");
-      target.insertAdjacentHTML("beforeend",data2.html)
-
-    } else {  // メインコンテンツの挿入
-      var target = document.getElementById("page-content");
-      target.insertAdjacentHTML("beforeend",data2.html)
-    }
-    //　ガイド以外のカスタムコードを実行する
-    if (typeof window[page_call_property["callback"]] === 'function') {
-      window[page_call_property["callback"]](page_call_property);
+      } else {  // メインコンテンツの挿入
+        var target = document.getElementById("page-content");
+        target.insertAdjacentHTML("beforeend",data2.html)
+      }
+      //　ガイド以外のカスタムコードを実行する
+      if (typeof window[page_call_property["callback"]] === 'function') {
+        window[page_call_property["callback"]](page_call_property);
+      }
     }
   });
 }
