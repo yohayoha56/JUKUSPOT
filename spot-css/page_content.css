@@ -152,7 +152,7 @@ h2{
     background-color:#19837C;
     color:white;
     padding:3px 15px;
-
+    cursor: pointer;
   }
 
   #sb-kintai{display:none;}
