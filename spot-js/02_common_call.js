@@ -213,16 +213,12 @@ function call_fetchData(page_call_property) {
       var target = document.querySelector(".chat-log-area");
       target.insertAdjacentHTML("beforeend",data2.html)
 
-    } else if(page_call_property["callback"]=="top_page") {
+    } else {
       // メインコンテンツの挿入
       const data2 = JSON.parse(data);
       console.log(data2.callback)
       var target = document.getElementById("page-content");
       target.insertAdjacentHTML("beforeend",data2.html)
-    } else {
-      // メインコンテンツの挿入
-      var target = document.getElementById("page-content");
-      target.insertAdjacentHTML("beforeend",data)
     }
     //　ガイド以外のカスタムコードを実行する
     if (typeof window[page_call_property["callback"]] === 'function') {
