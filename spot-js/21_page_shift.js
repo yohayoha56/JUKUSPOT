@@ -159,9 +159,9 @@ function shift_page(page_call_property) {
           { value: "依頼を取り消す", text: "依頼を取り消す" },
         ]
       },
-      { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 1 },
-      { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 1 },
-      { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", minMinute: 0, maxMinute: 120, stepMinute: 1 },
+      { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 },
+      { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 },
+      { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", minMinute: 0, maxMinute: 120, stepMinute: 10 },
       { name: "補足・備考", type: "textarea", value: "", width: "100%", },
       { name: "submitButton", type: "submit", value: formButton },
     ];
