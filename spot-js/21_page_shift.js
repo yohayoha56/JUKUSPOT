@@ -277,16 +277,12 @@ function shift_page(page_call_property) {
         
       });
     }
-    
+
     if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
       const alertArea = document.getElementById("answerForm");
       showWorkStatusAlert(alertArea, "is-ng-alert" , "教室に勤務不可と伝えているシフトです。<br>トラブル防止のため、一度【勤務不可】と回答したシフトを変更する際は、事前に教室の了承を得るようにして下さい");
     }
 
-    if (button.classList.contains("is-confirmed")) {//ーーーーーーーーーー
-      const alertArea = document.getElementById("changeForm");
-      showWorkStatusAlert(alertArea, "is-confirmde-alert", "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
-    }
 
 
 
