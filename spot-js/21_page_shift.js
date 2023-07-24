@@ -249,7 +249,7 @@ function shift_page(page_call_property) {
       alertMessage.style.fontSize = "0.8rem";
       alertMessage.style.marginTop = "4px";
       alertMessage.innerHTML = message;
-      element.appendChild(alertMessage);
+      element.prependChild(alertMessage);
     }
 
     // フォームのカスタマイズ機能
@@ -271,8 +271,8 @@ function shift_page(page_call_property) {
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可") {
-          const workStatusWrapper = document.getElementById("勤務可否-wrapper");
-          showWorkStatusAlert(workStatusWrapper, "work-status-alert", "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
+          const alertArea = document.getElementById("submitButton-wrapper");
+          showWorkStatusAlert( alertArea, "work-status-alert", "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
         }
         
       });
