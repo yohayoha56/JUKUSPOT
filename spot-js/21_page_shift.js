@@ -257,11 +257,11 @@ function shift_page(page_call_property) {
         const workStatus = this.value;
         const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
         const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
-        const alertMessages = document.getElementsByClassName("work-status-alert");
+        const alertMessages = document.querySelectorAll(".work-status-alert");
 
         startTimeWrapper.style.display = "none";
         endTimeWrapper.style.display = "none";
-        Array.from(alertMessages).forEach((alertMessage) => { alertMessage.remove(); });
+        alertMessages.forEach(element => { element.remove() });
 
         if (workStatus === "勤務可能") {
           startTimeWrapper.style.display = "block";
