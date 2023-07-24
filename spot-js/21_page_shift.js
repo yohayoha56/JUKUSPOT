@@ -242,9 +242,9 @@ function shift_page(page_call_property) {
     }
 
     // フォームの回答状況に応じたアラート表示スクリプト
-    function showWorkStatusAlert(element, message) {
+    function showWorkStatusAlert(element, classname, message) {
       const alertMessage = document.createElement("div");
-      alertMessage.className = "work-status-alert";
+      alertMessage.className = classname;
       alertMessage.style.color = "red";
       alertMessage.style.fontSize = "0.8rem";
       alertMessage.style.marginTop = "4px";
@@ -272,15 +272,20 @@ function shift_page(page_call_property) {
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可") {
           const workStatusWrapper = document.getElementById("勤務可否-wrapper");
-          showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
+          showWorkStatusAlert(workStatusWrapper, "work-status-alert", "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
         }
         
       });
     }
+    
+    if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
+      const alertArea = document.getElementById("answerForm");
+      showWorkStatusAlert(alertArea, "is-ng-alert" , "教室に勤務不可と伝えているシフトです。<br>トラブル防止のため、一度【勤務不可】と回答したシフトを変更する際は、事前に教室の了承を得るようにして下さい");
+    }
 
     if (button.classList.contains("is-confirmed")) {//ーーーーーーーーーー
       const alertArea = document.getElementById("changeForm");
-      showWorkStatusAlert(alertArea , "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
+      showWorkStatusAlert(alertArea, "is-confirmde-alert", "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
     }
 
 
