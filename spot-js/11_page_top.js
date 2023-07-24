@@ -468,9 +468,6 @@ function showModalForm(event) {
     }
 
 
-
-
-
     formElements.forEach((element) => {
       form.appendChild(makeFormElement(element));
     });
@@ -483,7 +480,7 @@ function showModalForm(event) {
     closeButton.onclick = () => {
       modal.style.display = "none";
     };
-    
+
     if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
       const alertArea = document.getElementById("answerForm");
       showWorkStatusAlert(alertArea, "is-ng-alert" , "教室に勤務不可と伝えているシフトです。<br>トラブル防止のため、一度【勤務不可】と回答したシフトを変更する際は、事前に教室の了承を得るようにして下さい");
