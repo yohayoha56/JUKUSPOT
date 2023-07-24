@@ -248,7 +248,7 @@ function shift_page(page_call_property) {
           ${message}
         </div>
       `;
-      element.innerHTML += alertMessage;
+      element.appendChild(alertMessage);
     }
 
     // フォームのカスタマイズ機能
@@ -261,21 +261,19 @@ function shift_page(page_call_property) {
         const workStatusWrapper = document.getElementById("勤務可否-wrapper");
         console.log(workStatus)
         // Remove previous alerts
+        startTimeWrapper.style.display = "none";
+        endTimeWrapper.style.display = "none";
+        const alertMessages = document.querySelectorAll(".work-status-alert");
+        alertMessages.forEach(element => { element.remove() });
 
 
         if (workStatus === "勤務可能") {
-          console.log("可能だよ")
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
-        } else {
-          console.log("可能以外だよ")
-          startTimeWrapper.style.display = "none";
-          endTimeWrapper.style.display = "none";
-          if(workStatus === "勤務不可") {
-            console.log("勤務不可だよ")
-            showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
-          }
-        } 
+        } else if(workStatus === "勤務不可") {
+          showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
+        }
+        
       });
     }
 
