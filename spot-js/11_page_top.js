@@ -377,6 +377,7 @@ btns.forEach((button) => {
 function showModalForm(event) {
 
     // クリック要素の情報を取得
+    const button = event.target;
     const formFlag =event.target.classList
     const row = event.target.closest("tr");
     const date = row.cells[0].innerText;
