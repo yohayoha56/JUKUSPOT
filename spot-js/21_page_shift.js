@@ -243,11 +243,12 @@ function shift_page(page_call_property) {
 
     // フォームの回答状況に応じたアラート表示スクリプト
     function showWorkStatusAlert(element, message) {
-      const alertMessage = `
-        <div class="work-status-alert" style="color: red; font-size: 0.8rem; margin-top: 4px;">
-          ${message}
-        </div>
-      `;
+      const alertMessage = document.createElement("div");
+      alertMessage.className = "work-status-alert";
+      alertMessage.style.color = "red";
+      alertMessage.style.fontSize = "0.8rem";
+      alertMessage.style.marginTop = "4px";
+      alertMessage.innerHTML = message;
       element.appendChild(alertMessage);
     }
 
