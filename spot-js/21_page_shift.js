@@ -138,7 +138,7 @@ function shift_page(page_call_property) {
       { name: "教室ID", type: "hidden", value: schoolId },
       { name: "教室名", type: "hidden", value: schoolName },
       {
-        name: "勤務可否", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
+        name: "勤務可否", type: "select", value: "", inline: true, breakAfter: true, options: [
           { value: "", text: "選択してください" },
           { value: "勤務可能", text: "勤務可能" },
           { value: "勤務不可", text: "勤務不可" },
@@ -146,7 +146,7 @@ function shift_page(page_call_property) {
         ]
       },
       {
-        name: "講師回答", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
+        name: "講師回答", type: "select", value: "", inline: true, breakAfter: true, options: [
           { value: "", text: "選択してください" },
           { value: "勤務確定", text: "勤務確定" },
           { value: "勤務不可", text: "勤務不可" },
@@ -154,7 +154,7 @@ function shift_page(page_call_property) {
         ]
       },
       {
-        name: "依頼取り消し", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
+        name: "依頼取り消し", type: "select", value: "", inline: true, breakAfter: true, options: [
           { value: "", text: "取り消ししない" },
           { value: "依頼を取り消す", text: "依頼を取り消す" },
         ]
@@ -270,7 +270,7 @@ function shift_page(page_call_property) {
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可"){
           const workStatusWrapper =document.getElementById("勤務可否-wrapper");
-          showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は変更してください。");
+          showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
         } 
       });
     }
