@@ -254,14 +254,14 @@ function shift_page(page_call_property) {
     // フォームのカスタマイズ機能
     function submitFormAdd() {
       document.getElementById("勤務可否").addEventListener("change", function () {
+        console.log
         const workStatus = this.value;
         const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
         const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
         const workStatusWrapper = document.getElementById("勤務可否-wrapper");
 
         // Remove previous alerts
-        const alertMessages = document.querySelectorAll(".work-status-alert");
-        alertMessages.forEach(element => { element.remove() });
+
 
         if (workStatus === "勤務可能") {
           startTimeWrapper.style.display = "block";
