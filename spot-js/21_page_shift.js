@@ -259,7 +259,6 @@ function shift_page(page_call_property) {
         const workStatus = this.value;
         const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
         const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
-        const workStatusWrapper = document.getElementById("勤務可否-wrapper");
         console.log(workStatus)
         // Remove previous alerts
         startTimeWrapper.style.display = "none";
@@ -272,11 +271,21 @@ function shift_page(page_call_property) {
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可") {
+          const workStatusWrapper = document.getElementById("勤務可否-wrapper");
           showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
         }
         
       });
     }
+
+    if (button.classList.contains("is-confirmed")) {//ーーーーーーーーーー
+      const alertArea = document.getElementById("changeForm");
+      showWorkStatusAlert(alertArea , "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
+    }
+
+
+
+
 
     // #endregion フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   }
