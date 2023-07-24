@@ -434,6 +434,17 @@ function showModalForm(event) {
         { name: "submitButton", type: "submit", value: formButton }, //ボタンテキスト変更
     ];
 
+    // フォームの回答状況に応じたアラート表示スクリプト
+    function showWorkStatusAlert(element, message) {
+      const alertMessage = document.createElement("div");
+      alertMessage.className = "work-status-alert";
+      alertMessage.style.color = "red";
+      alertMessage.style.fontSize = "0.8rem";
+      alertMessage.style.marginTop = "4px";
+      alertMessage.innerHTML = message;
+      element.appendChild(alertMessage);
+    }
+
     
     // フォーム要素のカスタム定義
     if (formFlag.contains("change")) {
@@ -454,6 +465,13 @@ function showModalForm(event) {
               { value: "勤務不可", text: "勤務不可" },{ value: "調整中", text: "調整中" },]}
         formElements.splice(6, 0, addElement1);
     }
+
+    if (button.classList.contains("is-confirmed")) {//ーーーーーーーーーー
+      const alertArea = document.getElementById("changeForm");
+      showWorkStatusAlert(alertArea , "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
+    }
+
+
 
     formElements.forEach((element) => {
       form.appendChild(makeFormElement(element));
