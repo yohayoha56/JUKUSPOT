@@ -443,7 +443,7 @@ function showModalForm(event) {
       alertMessage.style.fontSize = "0.8rem";
       alertMessage.style.marginTop = "4px";
       alertMessage.innerHTML = message;
-      element.prependChild(alertMessage);
+      element.prepend(alertMessage);
     }
 
     
