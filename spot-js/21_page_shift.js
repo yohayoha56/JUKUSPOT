@@ -254,22 +254,25 @@ function shift_page(page_call_property) {
     // フォームのカスタマイズ機能
     function submitFormAdd() {
       document.getElementById("勤務可否").addEventListener("change", function () {
-        console.log
+        console.log("test")
         const workStatus = this.value;
         const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
         const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
         const workStatusWrapper = document.getElementById("勤務可否-wrapper");
-
+        console.log(workStatus)
         // Remove previous alerts
 
 
         if (workStatus === "勤務可能") {
+          console.log("可能だよ")
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
         } else {
+          console.log("可能以外だよ")
           startTimeWrapper.style.display = "none";
           endTimeWrapper.style.display = "none";
           if(workStatus === "勤務不可") {
+            console.log("勤務不可だよ")
             showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
           }
         } 
