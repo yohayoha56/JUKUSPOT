@@ -269,9 +269,8 @@ function shift_page(page_call_property) {
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可"){
+          const workStatusWrapper =document.getElementById("勤務可否-wrapper");
           showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は変更してください。");
-          startTimeWrapper.style.display = "none";
-          endTimeWrapper.style.display = "none";
         } 
       });
     }
