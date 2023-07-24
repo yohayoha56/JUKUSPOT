@@ -300,11 +300,11 @@ function shift_page(page_call_property) {
         break;
       // 勤務可否が設定されていないとエラー
       case 'requestForm':
-        if (!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
+        if (!data["勤務開始時間_hour"] || !data["勤務開始時間_minute"]) {
           isValid = false;
           showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
         }
-        if (!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
+        if (!data["勤務終了時間_hour"] || !data["勤務終了時間_minute"]) {
           isValid = false;
           showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
         }
@@ -323,10 +323,10 @@ function shift_page(page_call_property) {
         if (data["依頼取り消し"] == "依頼を取り消す") {
           data["取り消し"] = true;
         } else {
-          if (!data["勤務開始時間_hour"] || !data["勤務開始時間_hour"]) {
+          if (!data["勤務開始時間_hour"] || !data["勤務開始時間_minute"]) {
             isValid = false;
             showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
-          } if (!data["勤務終了時間_hour"] || !data["勤務終了時間_hour"]) {
+          } if (!data["勤務終了時間_hour"] || !data["勤務終了時間_minute"]) {
             isValid = false;
             showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
             var startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
