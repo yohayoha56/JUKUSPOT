@@ -251,8 +251,6 @@ function shift_page(page_call_property) {
       element.innerHTML += alertMessage;
     }
 
-
-
     // フォームのカスタマイズ機能
     function submitFormAdd() {
       document.getElementById("勤務可否").addEventListener("change", function () {
@@ -269,7 +267,7 @@ function shift_page(page_call_property) {
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可"){
-          const workStatusWrapper =document.getElementById("勤務可否-wrapper");
+          var workStatusWrapper =document.getElementById("勤務可否-wrapper");
           showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
         } 
       });
