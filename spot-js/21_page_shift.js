@@ -257,17 +257,18 @@ function shift_page(page_call_property) {
         const workStatus = this.value;
         const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
         const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
+        const workStatusWrapper =document.getElementById("勤務可否-wrapper");
+        
         const alertMessages = document.querySelectorAll(".work-status-alert");
+        alertMessages.forEach(element => { element.remove() });
 
         startTimeWrapper.style.display = "none";
         endTimeWrapper.style.display = "none";
-        alertMessages.forEach(element => { element.remove() });
 
         if (workStatus === "勤務可能") {
           startTimeWrapper.style.display = "block";
           endTimeWrapper.style.display = "block";
         } else if(workStatus === "勤務不可"){
-          var workStatusWrapper =document.getElementById("勤務可否-wrapper");
           showWorkStatusAlert(workStatusWrapper, "勤務不可に設定すると、教室はシフト依頼ができなくなります。<br>勤務可能になった場合は再度変更してください。");
         } 
       });
