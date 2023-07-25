@@ -1,6 +1,6 @@
 
 function profile_page(page_call_property) {
-  if(urlFound){
+  if(urlFound && isSchool){
     console.log("test")
 
     const firstContactHTML =`
