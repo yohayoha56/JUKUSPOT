@@ -15,9 +15,9 @@ function profile_page(page_call_property) {
         <button id="send-message">この内容で講師にメッセージを送る</button>
     </div>
     `
-    
+
     const target = document.querySelector(".profile-tables")
-    target.insertAdjacentText("beforebegin",firstContactHTML)
+    target.insertAdjacentHTML("beforebegin",firstContactHTML)
 
     const buttons = document.querySelectorAll('.request-button');
     const messageBox = document.getElementById('message-box');
