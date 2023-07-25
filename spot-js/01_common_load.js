@@ -154,6 +154,7 @@ waitForProperties().then((propertiesContainer) => {
     'https://heys45.github.io/SAUCEED/spot-js/11_page_top.js',
     'https://heys45.github.io/SAUCEED/spot-js/21_page_shift.js',
     'https://heys45.github.io/SAUCEED/spot-js/31_page_chat.js',
+    'https://heys45.github.io/SAUCEED/spot-js/41_page_prof.js',
     'https://heys45.github.io/SAUCEED/spot-js/03_common_guide.js',
     'https://heys45.github.io/SAUCEED/spot-js/02_common_call.js',
     "https://kit.fontawesome.com/ae75e0f159.js", // Font Awesome
