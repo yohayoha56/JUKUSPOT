@@ -2,6 +2,41 @@
 function profile_page(page_call_property) {
   if(urlFound){
     console.log("test")
+
+    const firstContacthtml =`
+    <div id="teacher-request-buttons">
+    <button class="request-button" id="btn-request-now">ぜひ勤務の依頼をしたい</button>
+    <button class="request-button" id="btn-request-later">今すぐではないが依頼したい</button>
+    <button class="request-button" id="btn-request-confirm">確認したい事項がある</button>
+    <button class="request-button" id="btn-no-need">この講師の紹介は不要です</button>
+    </div>
+    <div id="message-box" style="display:none;">
+        <textarea id="message-input" rows="4" cols="50"></textarea>
+        <button id="send-message">この内容で講師にメッセージを送る</button>
+    </div>
+    `
+    const target = document.querySelector(".profile-tables")
+    target.insertAdjacentElement(firstContacthtml,"beforebegin")
+
+    const buttons = document.querySelectorAll('.request-button');
+    const messageBox = document.getElementById('message-box');
+    const messageInput = document.getElementById('message-input');
+
+    const messages = {
+        'btn-request-now': `プロフィールを確認し、ぜひ、${newData["教室名"]}で勤務いただきたいと考えています。今日明日中に、提出いただくスケジュールを参考にシフトを依頼いたします！スケジュールに変更がありましたら、お早めにご修正ください。`,
+        'btn-request-later': `プロフィールを確認し、ぜひ、${newData["教室名"]}で勤務いただきたいと考えています。直近スケジュールの調整が必要なため、【1週間以内に】連絡いたします。目安としては、〇〇頃からの勤務依頼を考えています。`,
+        'btn-request-confirm': `プロフィールを確認し、とても興味を持っております。勤務依頼をするにあたって、〇〇についてご確認させていただきたいです。`,
+        'btn-no-need': `以下の状況を教えて下さい（ここだけメッセージじゃなく選択フォーム） 1, まだ直接連絡をとっていない 2. 連絡済み、お断りは伝えていない 3. 連絡済み、お断りについても共有済み。`,
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            messageBox.style.display = "block";
+            messageInput.value = messages[this.id];
+        });
+    });
+
+
   }  
 
 
