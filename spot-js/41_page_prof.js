@@ -3,7 +3,7 @@ function profile_page(page_call_property) {
   if(urlFound){
     console.log("test")
 
-    const firstContacthtml =`
+    const firstContactHTML =`
     <div id="teacher-request-buttons">
     <button class="request-button" id="btn-request-now">ぜひ勤務の依頼をしたい</button>
     <button class="request-button" id="btn-request-later">今すぐではないが依頼したい</button>
@@ -16,7 +16,7 @@ function profile_page(page_call_property) {
     </div>
     `
     const target = document.querySelector(".profile-tables")
-    target.insertAdjacentElement(firstContacthtml,"beforebegin")
+    target.insertAdjacentText("beforebegin",firstContactHTML)
 
     const buttons = document.querySelectorAll('.request-button');
     const messageBox = document.getElementById('message-box');
