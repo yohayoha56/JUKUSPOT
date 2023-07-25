@@ -97,12 +97,22 @@ function profile_page(page_call_property) {
                 formContainer.innerHTML = chatSubmitAreaHTML;
                 const messageInput = document.querySelector('#メッセージ');
                 messageInput.value = messages[relatedButton.id];
+
+                // Set the kitaido text
+                const kitaidoText = relatedButton.innerText;
+                document.querySelector('#kitaido').innerText = kitaidoText;
+
                 modal.style.display = "block";
 
                 // Set the close button for the modal
                 const closeButton = document.getElementsByClassName("close")[0];
                 closeButton.onclick = () => {
                     modal.style.display = "none";
+
+                    // Reset all checkboxes and button colors when the modal is closed
+                    const checkboxes = document.querySelectorAll('.checkbox-input');
+                    checkboxes.forEach(checkbox => checkbox.checked = false);
+                    buttons.forEach(button => button.style.backgroundColor = "#19837C");
                 };
   
             });
@@ -112,9 +122,14 @@ function profile_page(page_call_property) {
         window.onclick = function (event) {
             if (event.target == modal) {
             modal.style.display = "none";
+
+            // Reset all checkboxes and button colors when the modal is closed
+            const checkboxes = document.querySelectorAll('.checkbox-input');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+            buttons.forEach(button => button.style.backgroundColor = "#19837C");
             }
         };
-    
+        
 
         
     };
