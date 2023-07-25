@@ -1,13 +1,28 @@
 
-.button-container {
-    display: flex;
-    flex-wrap:nowrap;
-    align-items: center;
-    background-color: #19837C;
-    padding:5px 15px;
-    width:280px;
-    cursor: pointer;
-  }
+    #teacher-request-buttons{
+        display: inline-flex;
+        gap: 20px;
+        font-size: 15px;
+        flex-wrap: wrap;
+    }
+
+
+    .button-container {
+        display: flex;
+        flex-wrap:nowrap;
+        align-items: center;
+        background-color: #19837C;
+        padding:5px 15px;
+        width:280px;
+        cursor: pointer;
+    }
+
+    
+    #teacher-request-buttons .request-button{
+        display: inline-block;
+        color: white;
+        padding: 4px 10px;
+    }
   
 
   .checkbox-input  {
@@ -37,20 +52,7 @@
   }
 
 
-  #teacher-request-buttons{
-    display: inline-flex;
-    gap: 10px;
-    font-size: 15px;
-    flex-wrap: wrap;
-    justify-content:space-evenly;
-  }
-  
-  #teacher-request-buttons .request-button{
-      display: inline-block;
-      color: white;
-      padding: 4px 10px;
 
-  }
 
 
 
