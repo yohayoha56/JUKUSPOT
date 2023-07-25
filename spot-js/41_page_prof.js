@@ -57,14 +57,14 @@ function profile_page(page_call_property) {
         }
 
         const chatSubmitAreaHTML =`
-        <p><span>講師への期待度：</span><span id="kitaido"></span></p>
-        <p>以下の内容でメッセージを送ります</p>
-        <div class="chat-submit-area" >
+        <p style="padding:10px 0:">講師への期待度：<span id="kitaido" style="font-weight:bold;"></span></p>
+        <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>必要に応じて修正してください</p>
+        <div class="chat-submit-area" style="padding: 10px 0;" >
             <form id="chatForm">
                 <input type="hidden" id="会員ID" name="会員ID" value="9999992"><input type="hidden" id="講師名" name="講師名" value="小田涼平TEST"> 
                 <input type="hidden" id="教室ID" name="教室ID" value="99999"><input type="hidden" id="教室名" name="教室名" value="ダミー教室"> 
-                <div class="form-box" id="メッセージ-wrapper"> 
-                    <textarea id="メッセージ" name="メッセージ" rows="4" cols="50" style="width:100%;"></textarea> 
+                <div class="form-box" id="メッセージ-wrapper"  style="width:100%;"> 
+                    <textarea id="メッセージ" name="メッセージ" rows="4" cols="50"></textarea> 
                 </div>
                 <div class="form-box" id="chatButton-wrapper" style=""> 
                     <input type="submit" value="送信" class="submit-button"> 
