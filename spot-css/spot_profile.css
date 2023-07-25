@@ -5,7 +5,8 @@
     align-items: center;
     background-color: #19837C;
     padding:5px 15px;
-    width:290px
+    width:280px;
+    cursor: pointer;
   }
   
 
@@ -13,38 +14,26 @@
     display: none;
   }
   
-  .checkbox-input  + label:before {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color:white;
-    border: 1px solid #000;
-    box-sizing:content-box;
-
-    vertical-align: middle;  
+  .checkbox-input + label::before {
+      content: "";
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background-color: white;
+      border: 1px solid #000;
+      box-sizing: content-box;
+      vertical-align: middle;
+      position: relative;
   }
   
-  .checkbox-input:checked + label:before {
-    background: blue;
-    content: "✔";
-    color: white;
-    text-align: center;
-  }
-
-
-
-
-  
-  .request-button {
-
-    border: none;
-    cursor: pointer;
-  }
-  
-  .request-button:active,
-  .request-button:checked {
-    background-color: #bfbfbf;
+  .checkbox-input:checked + label::before {
+      background-color: white;
+      content: "\f00c";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      text-align: center;  /* チェックマークを中央に寄せる */
+      line-height: 22px;  /* チェックマークの垂直位置を調整する */
+      font-size: 18px;    /* チェックマークの大きさを調整する */
   }
 
 
@@ -53,15 +42,14 @@
     gap: 10px;
     font-size: 15px;
     flex-wrap: wrap;
-    padding:10px;
     justify-content:space-evenly;
   }
   
   #teacher-request-buttons .request-button{
       display: inline-block;
       color: white;
-      padding: 3px 15px;
-      cursor: pointer;
+      padding: 4px 10px;
+
   }
 
 
