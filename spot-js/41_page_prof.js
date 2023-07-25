@@ -53,12 +53,23 @@ function profile_page(page_call_property) {
         'btn-no-need': `以下の状況を教えて下さい（ここだけメッセージじゃなく選択フォーム） 1, まだ直接連絡をとっていない 2. 連絡済み、お断りは伝えていない 3. 連絡済み、お断りについても共有済み。`,
     }
 
+
     buttons.forEach(button => {
         button.addEventListener('click', function() {
-            messageBox.style.display = "block";
-            messageInput.value = messages[this.id];
+          // Uncheck all checkboxes
+          const checkboxes = document.querySelectorAll('.checkbox-input');
+          checkboxes.forEach(checkbox => checkbox.checked = false);
+      
+          // Check the checkbox related to the clicked button
+          const relatedCheckbox = document.getElementById('checkbox-' + this.id.split('-')[1]);
+          relatedCheckbox.checked = true;
+      
+          // Show and update the message box
+          messageBox.style.display = "block";
+          messageInput.value = messages[this.id];
         });
-    });
+      });
+      
 
 
   }  
