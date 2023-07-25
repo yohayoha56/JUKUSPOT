@@ -1,5 +1,4 @@
 function kintai_page(page_call_property) {};
-function profile_page(page_call_property) {};
 
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page(page_call_property) {

@@ -6,16 +6,12 @@ B.after(A);
 A.style["margin-top"]=0;
 A.style["visibility"]="visible";
 
+
+
 var target = document.getElementById("page-content");
-target.innerHTML = `
-<div class="" style="display:flex;">
-<img id="top-image" src='https://heys45.github.io/jukust/logo1.png' style="width: 400px; height: auto;" alt="Logo" style="object-fit:contain;object-position:left">
-</div>
-`
 
 
-
-// サイドメニューの設定スクリプトーーーーーーーーーーーーーーーーーーーー
+// 条件分岐の判定フラグーーーーーーーーーーーーーーーーーーーー
 const isSchool = newData["ページタイプ"] == "school";
 const isTeacher = newData["ページタイプ"] == "teacher";
 
