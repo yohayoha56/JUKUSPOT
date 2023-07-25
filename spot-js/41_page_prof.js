@@ -1,7 +1,6 @@
 
 function profile_page(page_call_property) {
   if(urlFound && isSchool){
-    console.log("test")
 
     const firstContactHTML =`
     <div id="teacher-request-buttons">
@@ -69,19 +68,7 @@ function profile_page(page_call_property) {
           messageInput.value = messages[this.id];
         });
       });
-      
-
-
-  }  
-
-
-
-
-
-
-
-
-
-
-
+    }
 };
+
+
