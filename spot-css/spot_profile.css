@@ -25,7 +25,7 @@
     vertical-align: middle;  
   }
   
-  .checkbox-input :checked + label:before {
+  .checkbox-input:checked + label:before {
     background: blue;
     content: "✔";
     color: white;

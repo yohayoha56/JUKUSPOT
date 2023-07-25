@@ -53,6 +53,7 @@ function profile_page(page_call_property) {
 
     buttons.forEach(button => {
         button.addEventListener('click', function(event) {
+            event.stopPropagation();
             // Uncheck all checkboxes
             const checkboxes = document.querySelectorAll('.checkbox-input');
             checkboxes.forEach(checkbox => checkbox.checked = false);
