@@ -30,8 +30,6 @@ function profile_page(page_call_property) {
     </div>
     </div>
 
-
-
     <div id="message-box" style="display:none;">
         <textarea id="message-input" rows="4" cols="50"></textarea>
         <button id="send-message">この内容で講師にメッセージを送る</button>
@@ -41,7 +39,8 @@ function profile_page(page_call_property) {
     const target = document.querySelector(".profile-tables")
     target.insertAdjacentHTML("beforebegin",firstContactHTML)
 
-    const buttons = document.querySelectorAll('.request-button');
+
+    const buttons = document.querySelectorAll('.button-container');
     const messageBox = document.getElementById('message-box');
     const messageInput = document.getElementById('message-input');
 
@@ -52,23 +51,29 @@ function profile_page(page_call_property) {
         'btn-no-need': `以下の状況を教えて下さい（ここだけメッセージじゃなく選択フォーム） 1, まだ直接連絡をとっていない 2. 連絡済み、お断りは伝えていない 3. 連絡済み、お断りについても共有済み。`,
     }
 
-
     buttons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Uncheck all checkboxes
-          const checkboxes = document.querySelectorAll('.checkbox-input');
-          checkboxes.forEach(checkbox => checkbox.checked = false);
-      
-          // Check the checkbox related to the clicked button
-          const relatedCheckbox = document.getElementById('checkbox-' + this.id.split('-')[1]);
-          relatedCheckbox.checked = true;
-      
-          // Show and update the message box
-          messageBox.style.display = "block";
-          messageInput.value = messages[this.id];
+        button.addEventListener('click', function(event) {
+            // Uncheck all checkboxes
+            const checkboxes = document.querySelectorAll('.checkbox-input');
+            checkboxes.forEach(checkbox => checkbox.checked = false);
+
+            // Check the checkbox related to the clicked button container
+            const relatedCheckbox = this.querySelector('.checkbox-input');
+            relatedCheckbox.checked = true;
+
+            // Get the related button
+            const relatedButton = this.querySelector('.request-button');
+        
+            // Show and update the message box
+            messageBox.style.display = "block";
+            messageInput.value = messages[relatedButton.id];
         });
-      });
-    }
+    });
+
+
+
+
+
 };
 
-
+};
