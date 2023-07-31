@@ -525,7 +525,7 @@ function showModal(event) {
         { name: "教室ID", type: "hidden", value: schoolId },
         { name: "教室名", type: "hidden", value: schoolName }, //ここからカスタムを挿入
         { name: "補足・備考", type: "textarea", value: "", width: "100%", },
-        { name: "submitButton", type: "submit", value: formButton }, //ボタンテキスト変更
+        { name: "submitButton", type: "submit", value: formButton, width: "100%"  }, //ボタンテキスト変更
     ];
 
     // フォーム要素のカスタム定義
