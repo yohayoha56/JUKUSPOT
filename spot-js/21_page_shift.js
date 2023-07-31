@@ -134,9 +134,6 @@ function shift_page(page_call_property) {
     const closeButton = document.getElementsByClassName("close")[0];
     closeButton.onclick = () => {
         modal.style.display = "none";
-        const checkboxes = document.querySelectorAll('.checkbox-input');
-        checkboxes.forEach(checkbox => checkbox.checked = false);
-        buttons.forEach(button => button.style.backgroundColor = "#19837C");
     };
 
     // チャットの送信機能、メッセージ生成機能の追加ーーーーーーーーーーーーーー
