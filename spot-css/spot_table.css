@@ -57,6 +57,13 @@
   color: #17837C;
   cursor: pointer;
 }
+/* 依頼ボタン */
+.ng {
+  border: 1px solid #555555;
+  background-color: #fff;
+  color: #555555;
+  cursor: pointer;
+}
 
 .request.noticed, .submit.noticed, .change.noticed, .answer.noticed {
   border: none;
