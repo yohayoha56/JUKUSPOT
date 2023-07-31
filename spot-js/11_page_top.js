@@ -473,13 +473,13 @@ const modal = document.getElementById("myModal");
     const submitButtonWrapper = document.querySelector("#chatButton-wrapper");
     const messageElement = document.createElement("p");
     messageElement.textContent = "送信中です。送信完了すると閉じます";
-    submitButtonWrapper.appendChild(messageElement);
+    submitButtonWrapper.after(messageElement);
     
     setTimeout(() => {
       // モーダルを閉じるコード
-      const modalElement = document.querySelector(".modal-content");
-      modalElement.style.display = "none";
-    }, 2000);
+      const modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    }, 3000);
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
     const response = await fetch( "https://script.google.com/macros/s/AKfycbwc5wu1HOL0RkT7WOWO5jrLbVBskvNEiqV8gwias6gMCs0yFCSW45t6-lp8VbelwRl3/exec", {
         method: 'POST',
