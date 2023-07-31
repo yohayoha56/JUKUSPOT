@@ -278,20 +278,32 @@ function shift_page(page_call_property) {
     function changeFormAdd(){
       const cancellationWrapper = document.getElementById("依頼取り消し-wrapper");
       showWorkStatusAlert(cancellationWrapper, "work-status-alert", "▼ 依頼修正時は、「依頼を修正する」を選択してください");
-    
+      const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
+      const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
+      const breakTimeWrapper = document.getElementById("休憩時間-wrapper");
+      startTimeWrapper.style.display = "none";
+      endTimeWrapper.style.display = "none";    
+      breakTimeWrapper.style.display = "none";
+
       const cancellationSelect = document.querySelector('[name="依頼取り消し"]');
       cancellationSelect.addEventListener("change", function () {
         const cancellationStatus = this.value;
         if (cancellationStatus === "依頼を修正する") {
           const alertMessages = document.querySelectorAll(".work-status-alert");
           alertMessages.forEach(element => { element.style.display = "none"; });
+          startTimeWrapper.style.display = "block";
+          endTimeWrapper.style.display = "block";
+          breakTimeWrapper.style.display = "block";
+
         } else {
           const alertMessages = document.querySelectorAll(".work-status-alert");
           alertMessages.forEach(element => { element.style.display = "block"; });
+          startTimeWrapper.style.display = "none";
+          endTimeWrapper.style.display = "none";    
+          breakTimeWrapper.style.display = "none";
         }
       });
     }
-
 
 
     if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
