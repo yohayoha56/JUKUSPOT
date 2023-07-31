@@ -74,8 +74,6 @@ function shift_page(page_call_property) {
   // #endregion 
 
 
-
-
   // ページ情報の定義
   const schoolId = newData["ページタイプ"] == "school" ?
     newData["教室ID"] : page_call_property["教室ID"];
@@ -155,8 +153,8 @@ function shift_page(page_call_property) {
       },
       {
         name: "依頼取り消し", type: "select", value: "", inline: true, breakAfter: true, options: [
-          { value: "", text: "取り消ししない" },
           { value: "依頼を取り消す", text: "依頼を取り消す" },
+          { value: "", text: "依頼を修正する" },
         ]
       },
       { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 },
@@ -230,6 +228,7 @@ function shift_page(page_call_property) {
         case 'changeForm':
           document.getElementById("勤務可否-wrapper").remove();
           document.getElementById("講師回答-wrapper").remove();
+          changeFormAdd()
           break;
         case 'answerForm':
           document.getElementById("勤務可否-wrapper").remove();
@@ -255,7 +254,6 @@ function shift_page(page_call_property) {
     // フォームのカスタマイズ機能
     function submitFormAdd() {
       document.getElementById("勤務可否").addEventListener("change", function () {
-        console.log("test")
         const workStatus = this.value;
         const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
         const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
@@ -265,7 +263,6 @@ function shift_page(page_call_property) {
         endTimeWrapper.style.display = "none";
         const alertMessages = document.querySelectorAll(".work-status-alert");
         alertMessages.forEach(element => { element.remove() });
-
 
         if (workStatus === "勤務可能") {
           startTimeWrapper.style.display = "block";
@@ -277,6 +274,25 @@ function shift_page(page_call_property) {
         
       });
     }
+
+    function changeFormAdd(){
+      const cancellationWrapper = document.getElementById("依頼取り消し-wrapper");
+      showWorkStatusAlert(cancellationWrapper, "work-status-alert", "▼ 依頼修正時は、「依頼を修正する」を選択してください");
+    
+      const cancellationSelect = document.querySelector('[name="依頼取り消し"]');
+      cancellationSelect.addEventListener("change", function () {
+        const cancellationStatus = this.value;
+        if (cancellationStatus === "依頼を修正する") {
+          const alertMessages = document.querySelectorAll(".work-status-alert");
+          alertMessages.forEach(element => { element.style.display = "none"; });
+        } else {
+          const alertMessages = document.querySelectorAll(".work-status-alert");
+          alertMessages.forEach(element => { element.style.display = "block"; });
+        }
+      });
+    }
+
+
 
     if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
       const alertArea = document.getElementById("answerForm");
