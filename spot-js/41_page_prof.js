@@ -105,9 +105,18 @@ function profile_page(page_call_property) {
                     checkboxes.forEach(checkbox => checkbox.checked = false);
                     buttons.forEach(button => button.style.backgroundColor = "#19837C");
                 };
-  
-            });
-        });
+
+                // チャットの送信機能、メッセージ生成機能の追加ーーーーーーーーーーーーーー
+                const form = document.getElementById("chatForm")
+                const hiddenElements = form.querySelectorAll(":scope > input")
+                for( let hiddenElement of hiddenElements){
+                    const id = hiddenElement.id
+                    hiddenElement.value=page_call_property[id]
+                }
+                form.addEventListener("submit", (event) => handleSubmit(event));
+        
+                    });
+                });
 
         window.onclick = function (event) {
             if (event.target == modal) {
@@ -118,14 +127,7 @@ function profile_page(page_call_property) {
             }
         };
         
-        // チャットの送信機能、メッセージ生成機能の追加ーーーーーーーーーーーーーー
-        const form = document.getElementById("chatForm")
-        const hiddenElements = form.querySelectorAll(":scope > input")
-        for( let hiddenElement of hiddenElements){
-            const id = hiddenElement.id
-            hiddenElement.value=page_call_property[id]
-        }
-        form.addEventListener("submit", (event) => handleSubmit(event));
+
 
         async function handleSubmit(event) {
             // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーー
