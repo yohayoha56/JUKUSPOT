@@ -309,6 +309,19 @@ function shift_page(page_call_property) {
       submitButton.type = "button";
 
       submitButton.addEventListener("click", function() {
+        // フォームデータの取得
+        const formData = new FormData(form);
+        const data = {};
+        for (const [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+        // バリデーションチェック
+        const isValid = validateForm(data, formId);
+        if (isValid == false) { return; }
+
+
+
+
         this.value = "シフトを修正する";
         this.type = "submit";
         const alertArea = document.getElementById("changeForm");
@@ -326,31 +339,29 @@ function shift_page(page_call_property) {
     // }
 
 
-    
-
-
-
-
-
-
     // #endregion フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   }
 
+  const validateForm = (data, formId) => {
+    // バリデーション事前定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    function showValidationError(element, message) {
+      const errorMessage = document.createElement("div");
+      errorMessage.classList.add("error-message");
+      errorMessage.textContent = message;
+      errorMessage.style.color = "red";
+      errorMessage.style.fontSize = "0.8rem";
+      errorMessage.style.marginTop = "4px";
+      element.appendChild(errorMessage);
+    }
 
-  const handleSubmit = async (event, remarks, row) => {
-    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    event.preventDefault(); // デフォルトの送信をキャンセル
-    const form = event.target;
-    const formId = form.id
-    const formData = new FormData(form);
-    const data = {};
-    // FormDataオブジェクトから連想配列に変換
-    for (const [key, value] of formData.entries()) {
-      data[key] = value;
+    function clearValidationErrors() {
+      const errorMessages = document.getElementsByClassName("error-message");
+      while (errorMessages[0]) {
+        errorMessages[0].parentNode.removeChild(errorMessages[0]);
+      }
     }
 
     clearValidationErrors(); // バリデーションをリフレッシュ
-    // バリデーションチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     let isValid = true;
 
     switch (formId) {
@@ -416,7 +427,6 @@ function shift_page(page_call_property) {
             showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
           }
         }
-
         ; break;
       case 'answerForm':
         if (!data["講師回答"]) {
@@ -426,24 +436,27 @@ function shift_page(page_call_property) {
         ; break;
     }
 
-    if (isValid == false) { return; }
-    // バリデーションの処理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-    function showValidationError(element, message) {
-      const errorMessage = document.createElement("div");
-      errorMessage.classList.add("error-message");
-      errorMessage.textContent = message;
-      errorMessage.style.color = "red";
-      errorMessage.style.fontSize = "0.8rem";
-      errorMessage.style.marginTop = "4px";
-      element.appendChild(errorMessage);
+    return isValid
+  }
+
+
+
+
+  const handleSubmit = async (event, remarks, row) => {
+    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    event.preventDefault(); // デフォルトの送信をキャンセル
+    const form = event.target;
+    const formId = form.id
+    const formData = new FormData(form);
+    const data = {};
+    // FormDataオブジェクトから連想配列に変換
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
     }
 
-    function clearValidationErrors() {
-      const errorMessages = document.getElementsByClassName("error-message");
-      while (errorMessages[0]) {
-        errorMessages[0].parentNode.removeChild(errorMessages[0]);
-      }
-    }
+    // バリデーションチェック
+    const isValid = validateForm(data, formId);
+    if (isValid == false) { return; }
 
 
 
