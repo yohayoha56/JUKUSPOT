@@ -311,6 +311,8 @@ function shift_page(page_call_property) {
       submitButton.addEventListener("click", function() {
         this.value = "シフトを修正する";
         this.type = "submit";
+        const alertArea = document.getElementById("changeForm");
+        showWorkStatusAlert(alertArea, "is-confirmde-alert" , "シフト確定後、講師の合意のないシフト修正・シフト取消は、法律違反になる場合があります。<br>特に、前日・当日については、電話で必ず合意を取ってください。<br>修正後は【確定前】の状態になるため、再び講師の回答が必要になります。");
       });
     }
 
@@ -318,11 +320,13 @@ function shift_page(page_call_property) {
       const alertArea = document.getElementById("answerForm");
       showWorkStatusAlert(alertArea, "is-ng-alert" , "教室に勤務不可と伝えているシフトです。<br>トラブル防止のため、一度【勤務不可】と回答したシフトを変更する際は、事前に教室の了承を得るようにして下さい");
     }
-    if (button.classList.contains("is-confirmed")) {//ーーーーーーーーーー
-      const alertArea = document.getElementById("changeForm");
-      showWorkStatusAlert(alertArea, "is-confirmde-alert" , "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
-    }
+    // if (button.classList.contains("is-confirmed")) {//ーーーーーーーーーー
+    //   const alertArea = document.getElementById("changeForm");
+    //   showWorkStatusAlert(alertArea, "is-confirmde-alert" , "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
+    // }
 
+
+    
 
 
 
