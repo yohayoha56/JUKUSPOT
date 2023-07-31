@@ -478,6 +478,20 @@ const modal = document.getElementById("myModal");
         body: JSON.stringify(data),
         mode: 'cors', //CORS対応
     });
+    if (response.ok) { // if HTTP-status is 200-299
+      // get the response body
+      const submitButtonWrapper = document.querySelector("#chatButton-wrapper");
+      const messageElement = document.createElement("p");
+      messageElement.textContent = "送信中です。送信完了すると閉じます";
+      submitButtonWrapper.appendChild(messageElement);
+      
+      setTimeout(() => {
+        // モーダルを閉じるコード
+        const modalElement = document.querySelector(".modal-content");
+        modalElement.style.display = "none";
+      }, 1000);
+    }
+
   };  
 
 
