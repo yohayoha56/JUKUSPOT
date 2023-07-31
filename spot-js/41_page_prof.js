@@ -77,39 +77,29 @@ function profile_page(page_call_property) {
             button.addEventListener('click', function(event) {
                 event.stopPropagation();
 
-                // Uncheck all checkboxes
                 const checkboxes = document.querySelectorAll('.checkbox-input');
                 checkboxes.forEach(checkbox => checkbox.checked = false);
     
-                // Check the checkbox related to the clicked button container
                 const relatedCheckbox = this.querySelector('.checkbox-input');
                 relatedCheckbox.checked = true;
     
-                // Get the related button
                 const relatedButton = this.querySelector('.request-button');
             
-                // Change the color of button container to #19837C
                 buttons.forEach(button => button.style.backgroundColor = "grey");
                 this.style.backgroundColor = "#19837C";
   
-                // Show and update the chat submit area in the modal
                 const formContainer = modal.querySelector('.form-container');
                 formContainer.innerHTML = chatSubmitAreaHTML;
                 const messageInput = document.querySelector('#メッセージ');
                 messageInput.value = messages[relatedButton.id];
 
-                // Set the kitaido text
                 const kitaidoText = relatedButton.innerText;
                 document.querySelector('#kitaido').innerText = kitaidoText;
 
                 modal.style.display = "block";
-
-                // Set the close button for the modal
                 const closeButton = document.getElementsByClassName("close")[0];
                 closeButton.onclick = () => {
                     modal.style.display = "none";
-
-                    // Reset all checkboxes and button colors when the modal is closed
                     const checkboxes = document.querySelectorAll('.checkbox-input');
                     checkboxes.forEach(checkbox => checkbox.checked = false);
                     buttons.forEach(button => button.style.backgroundColor = "#19837C");
@@ -118,12 +108,10 @@ function profile_page(page_call_property) {
             });
         });
 
-        // Hide the modal when the area outside of the form is clicked
         window.onclick = function (event) {
             if (event.target == modal) {
             modal.style.display = "none";
 
-            // Reset all checkboxes and button colors when the modal is closed
             const checkboxes = document.querySelectorAll('.checkbox-input');
             checkboxes.forEach(checkbox => checkbox.checked = false);
             buttons.forEach(button => button.style.backgroundColor = "#19837C");

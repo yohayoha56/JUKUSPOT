@@ -91,6 +91,30 @@ function shift_page(page_call_property) {
   console.log(teacherName)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   function showModal(event) {
     // #region データとフォーム要素の定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー    
     const button = event.target;
