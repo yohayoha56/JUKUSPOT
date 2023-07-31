@@ -40,16 +40,16 @@ function top_page(page_call_property) {
 
   
 
-// 出勤、退勤、、承認フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-const table = document.getElementById("work-table")
-const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
-const formsContainer = document.getElementById('forms-container');
+  // 出勤、退勤、、承認フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  const table = document.getElementById("work-table")
+  const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
+  const formsContainer = document.getElementById('forms-container');
 
-// 出勤フォームの表示条件に使う、今日の日付を定義（出勤日が今日以前だと、出勤フォームを作成。）
-const now = new Date();
-const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
+  // 出勤フォームの表示条件に使う、今日の日付を定義（出勤日が今日以前だと、出勤フォームを作成。）
+  const now = new Date();
+  const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 
-rows.forEach(row => {
+  rows.forEach(row => {
     
     const date = row.querySelector('td:nth-child(1)').innerText;
     const nowStatus = row.querySelector('td:nth-child(2)').innerText;
@@ -145,7 +145,7 @@ rows.forEach(row => {
         form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", (event) => handleSubmit(event, remarks,row));
+    form.addEventListener("submit", (event) => handleSubmit3(event, remarks,row));
 
     // 挿入箇所=formContainerの定義
     formsContainer.appendChild(formContainer)
@@ -238,7 +238,7 @@ fetch("https://script.google.com/macros/s/AKfycby5LHLF3RQB1SeOtleLTSs9t9pT7lbqTm
 
 
 
-async function handleSubmit(event,remarks,row) {
+async function handleSubmit3(event,remarks,row) {
   // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   event.preventDefault(); // デフォルトの送信をキャンセル
   const form = event.target;
@@ -355,7 +355,7 @@ function showValidationError(element, message) {
 };
 
 
-
+// モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const modalTemplate = `
 <div id="myModal" class="modal">
     <div class="modal-content form-container">
@@ -365,15 +365,124 @@ document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTem
 const modal = document.getElementById("myModal");
 
 
+  // フォーム外がクリックされた時にフォームを非表示にする
+  window.onclick = function (event) {
+    if (event.target == modal) { modal.style.display = "none";}
+  }
 
-// シフト関連フォーム作成スクリプトの起動スクリプト
-const btns = document.querySelectorAll("#shift-table-top button");
-btns.forEach((button) => {
-  button.addEventListener("click", showModalForm);
-});
+  // ngを含まない全てのrequestボタンにイベントリスナーを追加  
+  const btns = document.querySelectorAll("#shift-table-top button:not(.ng)");
+  btns.forEach((button) => {
+    button.addEventListener("click", showModal);
+  });
+  // ngを含むボタンにイベントリスナーを追加
+  const ngBtns = document.querySelectorAll("#shift-table-top button.ng");
+  ngBtns.forEach((button) => {
+    button.addEventListener("click", showNgModal);
+  });
+
+  function showNgModal(event) {
+
+    const button = event.target;
+    const row = button.closest("tr");
+    // ボタンが押された行のテーブルのデータを取得する①
+    const date = row.cells[0].innerText;
+    // フォームタイトルなどの定義
+    let message =""
+    let nganouncetext=""
+    if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
+      message=`勤務不可となっていますが、時間を変更して再度依頼希望です。依頼するため、【${date}の勤務依頼への回答】を【勤務不可】から、【調整中】に変更してください。`
+      nganouncetext="勤務不可の回答のシフトを修正するには、講師にステータスを変更してもらう必要があります。"
+    } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
+      message=`勤務不可となっていますが、勤務依頼を希望しています。【${date}のスケジュール】を【勤務不可】から、【勤務可能】に変更してください。`
+      nganouncetext="勤務不可のスケジュールに依頼をするには、講師にスケジュールを変更してもらう必要があります。"
+    }
+
+    let teacherId, teacherName ,schoolId, schoolName , formId, formTitle, formInfo, formGuide, formButton
+
+    if (formFlag.contains("change")) {
+        teacherId = "" 
+        teacherName = row.cells[2].innerText
+        schoolId = newData["教室ID"]
+        schoolName = newData["教室名"] 
+    } else if (formFlag.contains("answer")) {
+        teacherId = newData["会員ID"];
+        teacherName =newData["姓"]+ newData["名"];
+        schoolId = "";
+        schoolName = row.cells[2].innerText
+    }
+
+    const chatSubmitAreaHTML =`
+    <span class="close closeButton">&times;</span>
+    <div class="chat-submit-area" style="padding: 10px 0;" >
+        <form id="chatForm">
+            <p style="padding:10px 0;font-weight:bold;" class="ng-anounce"></p>
+            <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>こちらから講師に変更依頼のメッセージを送れます。<br>必要に応じて修正し、送信ボタンを押してください。</p>
+            <input type="hidden" id="会員ID" name="会員ID" value="${teacherId}"><input type="hidden" id="講師名" name="講師名" value="${teacherName}"> 
+            <input type="hidden" id="教室ID" name="教室ID" value="${schoolId}"><input type="hidden" id="教室名" name="教室名" value="${schoolName}"> 
+            <div class="form-box" id="メッセージ-wrapper"  style="width:100%;"> 
+                <textarea id="メッセージ" name="メッセージ" rows="4" cols="50"></textarea> 
+            </div>
+            <div class="form-box" id="chatButton-wrapper" style=""> 
+                <input type="submit" value="送信" class="submit-button"> 
+            </div>
+        </form>
+    </div>
+    `
+    const formContainer = modal.querySelector('.form-container');
+    formContainer.innerHTML = chatSubmitAreaHTML;
+
+    const messageInput = document.querySelector('#メッセージ');
+    messageInput.value = message;
+
+    const nganounce = document.querySelector('.ng-anounce');
+    nganounce.innerHTML =nganouncetext
+
+
+    modal.style.display = "block";
+    const closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = () => {
+        modal.style.display = "none";
+    };
+
+    // チャットの送信機能、メッセージ生成機能の追加ーーーーーーーーーーーーーー
+    const form = document.getElementById("chatForm")
+
+    form.addEventListener("submit", (event) => handleSubmit2(event));
+
+  }
+
+  async function handleSubmit2(event) {
+    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーー
+    event.preventDefault(); // デフォルトの送信をキャンセル
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = {};
+    // FormDataオブジェクトから連想配列に変換
+    for (const [key, value] of formData.entries()) {  data[key] = value;}
+    // メッセージが未入力、もしくはスペースや改行のみの場合はスクリプトを終了
+    if (!data["メッセージ"] || data["メッセージ"].trim() === '') { return;}
+    // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
+    data["ページタイプ"] = newData["ページタイプ"]
+    data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
+        year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit", second: "2-digit",
+    });
+    // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
+    const response = await fetch( "https://script.google.com/macros/s/AKfycbwc5wu1HOL0RkT7WOWO5jrLbVBskvNEiqV8gwias6gMCs0yFCSW45t6-lp8VbelwRl3/exec", {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(data),
+        mode: 'cors', //CORS対応
+    });
+  };  
+
+
 
 // 特に、講師名や教室名が追加されるので、その行ずれに注意をする必要がある。
-function showModalForm(event) {
+function showModal(event) {
 
     // クリック要素の情報を取得
     const button = event.target;
@@ -470,7 +579,7 @@ function showModalForm(event) {
       form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", (event) => handleValidation(event, remarks, row));
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks, row));
 
     // モーダル非表示スクリプト
     modal.style.display = "block";
@@ -486,58 +595,81 @@ function showModalForm(event) {
 }
 
 
-const handleValidation = async (event, remarks, row) => {
+const validateForm = (data, form) => {
+  // バリデーション事前定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  function showValidationError(element, message) {
+    const errorMessage = document.createElement("div");
+    errorMessage.classList.add("error-message");
+    errorMessage.textContent = message;
+    errorMessage.style.color = "red";
+    errorMessage.style.fontSize = "0.8rem";
+    errorMessage.style.marginTop = "4px";
+    element.appendChild(errorMessage);
+  }
+
+  function clearValidationErrors() {
+    const errorMessages = document.getElementsByClassName("error-message");
+    while (errorMessages[0]) {
+      errorMessages[0].parentNode.removeChild(errorMessages[0]);
+    }
+  }
+
+  clearValidationErrors(); // バリデーションをリフレッシュ
+  let isValid = true;
+
+  if (form.id=="changeForm" && data["依頼取り消し"] == "依頼を取り消す") {
+      data["取り消し"] = true;
+  } else if(form.id=="changeForm" ){
+      if (!data["勤務開始時間_hour"] || !data["勤務開始時間_minute"]) {
+          isValid = false;
+          showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
+        } if (!data["勤務終了時間_hour"] || !data["勤務終了時間_minute"]) {
+          isValid = false;
+          showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
+          var startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
+          var endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
+          if (startTime >= endTime) {
+            isValid = false;
+            showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
+          }
+        } if (!data["休憩時間"]) {
+          isValid = false;
+          showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
+        }
+  }
+  // 回答フォームの場合
+  if (form.id=="answerForm" && !data["講師回答"]) {
+      isValid = false;
+      showValidationError(document.getElementById("講師回答-wrapper"), "勤務可否を回答してください");
+  }
+  return isValid
+}
+
+
+
+const handleSubmit = async (event, remarks, row) => {
     // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     event.preventDefault(); // デフォルトの送信をキャンセル
     const form = event.target;
+    const formId = form.id //⭐️⭐️⭐️
     const formData = new FormData(form);
-
-    // Formの回答をdataに格納
     const data = {};
     for (const [key, value] of formData.entries()) {
       data[key] = value;
     }
-
-    // バリデーション処理
-    clearValidationErrors(); 
-    let isValid = true;
-    // 修正フォームの場合 
-    if (form.id=="changeForm" && data["依頼取り消し"] == "依頼を取り消す") {
-        data["取り消し"] = true;
-    } else if(form.id=="changeForm" ){
-        if (!data["勤務開始時間_hour"] || !data["勤務開始時間_minute"]) {
-            isValid = false;
-            showValidationError(document.getElementById("勤務開始時間-wrapper"), "有効な時間にしてください");
-          } if (!data["勤務終了時間_hour"] || !data["勤務終了時間_minute"]) {
-            isValid = false;
-            showValidationError(document.getElementById("勤務終了時間-wrapper"), "有効な時間にしてください");
-            var startTime = parseInt(data["勤務開始時間_hour"]) * 60 + parseInt(data["勤務開始時間_minute"]);
-            var endTime = parseInt(data["勤務終了時間_hour"]) * 60 + parseInt(data["勤務終了時間_minute"]);
-            if (startTime >= endTime) {
-              isValid = false;
-              showValidationError(document.getElementById("勤務終了時間-wrapper"), "終了時間は開始時間より後に設定してください");
-            }
-          } if (!data["休憩時間"]) {
-            isValid = false;
-            showValidationError(document.getElementById("休憩時間-wrapper"), "有効な時間にしてください");
-          }
-    }
-    // 回答フォームの場合
-    if (form.id=="answerForm" && !data["講師回答"]) {
-        isValid = false;
-        showValidationError(document.getElementById("講師回答-wrapper"), "勤務可否を回答してください");
-    }
-
+    
+    // バリデーションチェック
+    const isValid = validateForm(data, form);
     if (isValid == false) { return; }
 
 
-
-    // データの整理
+    // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     data["勤務開始時間"] = data["勤務開始時間_hour"] + ':'
       + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
     data["勤務終了時間"] = data["勤務終了時間_hour"] + ':'
       + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
 
+    data["フォームタイプ"] = formId
     data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
       year: "numeric", month: "2-digit", day: "2-digit",
       hour: "2-digit", minute: "2-digit", second: "2-digit",
@@ -581,24 +713,6 @@ const handleValidation = async (event, remarks, row) => {
 };
 
 
-// バリデーションリフレッシュ関数
-function clearValidationErrors() {
-    const errorMessages = document.getElementsByClassName("error-message");
-    while (errorMessages[0]) {
-        errorMessages[0].parentNode.removeChild(errorMessages[0]);
-    }
-}
-// バリデーション表示関数
-function showValidationError(element, message) {
-    const errorMessage = document.createElement("div");
-    errorMessage.classList.add("error-message");
-    errorMessage.textContent = message;
-    errorMessage.style.color = "red";
-    errorMessage.style.fontSize = "0.8rem";
-    errorMessage.style.marginTop = "4px";
-    element.appendChild(errorMessage);
-}
-
 function fetchdata(data){
     // データの送信処理
     fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
@@ -610,10 +724,6 @@ function fetchdata(data){
     mode: 'cors', //CORS対応
     });
 }
-
-
-
-
 
 
 }
