@@ -579,7 +579,7 @@ function showModal(event) {
     };
 
     if (formFlag.contains("change")){
-      changeFormAdd
+      changeFormAdd()
     }
 
 
