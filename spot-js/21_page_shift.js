@@ -303,8 +303,18 @@ function shift_page(page_call_property) {
           breakTimeWrapper.style.display = "none";
         }
       });
-    }
 
+      const submitButton = document.querySelector(".submit-button");
+      const form = document.querySelector("form");  
+
+      submitButton.value = "修正内容を確認";
+      submitButton.type = "button";
+
+      submitButton.addEventListener("click", function() {
+        this.value = "シフトを修正する";
+        this.type = "submit";
+      });
+    }
 
     if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
       const alertArea = document.getElementById("answerForm");
