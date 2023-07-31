@@ -305,8 +305,6 @@ function shift_page(page_call_property) {
       });
 
       const submitButton = document.querySelector(".submit-button");
-      const form = document.querySelector("form");  
-
       submitButton.value = "修正内容を確認";
       submitButton.type = "button";
 
