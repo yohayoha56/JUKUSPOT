@@ -114,7 +114,7 @@ function shift_page(page_call_property) {
     <span class="close closeButton">&times;</span>
     <div class="chat-submit-area" style="padding: 10px 0;" >
         <form id="chatForm">
-            <p style="padding:10px 0:" class="ng-anounce"></p>
+            <p style="padding:10px 0;font-weight:bold;" class="ng-anounce"></p>
             <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>こちらから講師に変更依頼のメッセージを送れます。<br>必要に応じて修正し、送信ボタンを押してください。</p>
             <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
             <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
