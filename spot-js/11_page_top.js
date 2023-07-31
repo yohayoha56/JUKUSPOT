@@ -415,7 +415,6 @@ function showModalForm(event) {
         <li>講師の回答　｜${row.cells[1].innerText}</li>
         <li>勤務依頼時間｜${row.cells[3].innerText}（休：${row.cells[4].innerText}）</li>
         <li>補足・備考　｜${row.cells[5].innerHTML}</li>
-      }
       </ul>
     `;
 
