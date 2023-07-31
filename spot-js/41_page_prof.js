@@ -70,7 +70,7 @@ function profile_page(page_call_property) {
                 <div class="form-box" id="chatButton-wrapper" style=""> 
                     <input type="submit" value="送信" class="submit-button"> 
                 </div>
-                </form>
+            </form>
         </div>
         `
 
@@ -115,8 +115,8 @@ function profile_page(page_call_property) {
                 }
                 form.addEventListener("submit", (event) => handleSubmit(event));
         
-                    });
-                });
+            });
+        });
 
         window.onclick = function (event) {
             if (event.target == modal) {

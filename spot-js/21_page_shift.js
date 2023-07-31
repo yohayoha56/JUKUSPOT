@@ -56,14 +56,9 @@ function shift_page(page_call_property) {
       <div class="modal-content form-container">
       </div>
   </div>`;
+
   document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
   const modal = document.getElementById("myModal");
-
-  // 全てのrequestボタンにイベントリスナーを追加  
-  const btns = document.querySelectorAll("table button");
-  btns.forEach((button) => {
-    button.addEventListener("click", showModal);
-  });
 
   // フォーム外がクリックされた時にフォームを非表示にする
   window.onclick = function (event) {
@@ -72,7 +67,6 @@ function shift_page(page_call_property) {
     }
   }
   // #endregion 
-
 
   // ページ情報の定義
   const schoolId = newData["ページタイプ"] == "school" ?
@@ -93,26 +87,103 @@ function shift_page(page_call_property) {
 
 
 
+  // ngを含むボタンにイベントリスナーを追加
+  const ngBtns = document.querySelectorAll("table button.ng");
+  ngBtns.forEach((button) => {
+    button.addEventListener("click", showNgModal);
+  });
+
+  function showNgModal(event) {
+
+    const button = event.target;
+    const row = button.closest("tr");
+    // ボタンが押された行のテーブルのデータを取得する①
+    const date = row.cells[0].innerText;
+    // フォームタイトルなどの定義
+    let message =""
+    if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
+      message=`依頼を行うために、${date}の勤務依頼の回答を勤務不可から、調整中に変更してください。`
+    } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
+      message=`依頼を行うために、${date}のスケジュールを勤務不可から、勤務可能に変更してください。`
+    }
+
+    const chatSubmitAreaHTML =`
+    <span class="close closeButton">&times;</span>
+    <div class="chat-submit-area" style="padding: 10px 0;" >
+        <form id="chatForm">
+            <p style="padding:10px 0:">講師への期待度：<span id="kitaido" style="font-weight:bold;"></span></p>
+            <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>必要に応じて修正してください</p>
+            <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
+            <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
+            <div class="form-box" id="メッセージ-wrapper"  style="width:100%;"> 
+                <textarea id="メッセージ" name="メッセージ" rows="4" cols="50"></textarea> 
+            </div>
+            <div class="form-box" id="chatButton-wrapper" style=""> 
+                <input type="submit" value="送信" class="submit-button"> 
+            </div>
+        </form>
+    </div>
+    `
+    const formContainer = modal.querySelector('.form-container');
+    formContainer.innerHTML = chatSubmitAreaHTML;
+
+    const messageInput = document.querySelector('#メッセージ');
+    messageInput.value = message;
+
+    modal.style.display = "block";
+    const closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = () => {
+        modal.style.display = "none";
+        const checkboxes = document.querySelectorAll('.checkbox-input');
+        checkboxes.forEach(checkbox => checkbox.checked = false);
+        buttons.forEach(button => button.style.backgroundColor = "#19837C");
+    };
+
+    // チャットの送信機能、メッセージ生成機能の追加ーーーーーーーーーーーーーー
+    const form = document.getElementById("chatForm")
+    const hiddenElements = form.querySelectorAll(":scope > input")
+    for( let hiddenElement of hiddenElements){
+        const id = hiddenElement.id
+        hiddenElement.value=page_call_property[id]
+    }
+    form.addEventListener("submit", (event) => handleSubmit2(event));
+
+  }
+
+  async function handleSubmit2(event) {
+    // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーー
+    event.preventDefault(); // デフォルトの送信をキャンセル
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = {};
+    // FormDataオブジェクトから連想配列に変換
+    for (const [key, value] of formData.entries()) {  data[key] = value;}
+    // メッセージが未入力、もしくはスペースや改行のみの場合はスクリプトを終了
+    if (!data["メッセージ"] || data["メッセージ"].trim() === '') { return;}
+    // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
+    data["ページタイプ"] = newData["ページタイプ"]
+    data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
+        year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit", second: "2-digit",
+    });
+    // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
+    const response = await fetch( "https://script.google.com/macros/s/AKfycbwc5wu1HOL0RkT7WOWO5jrLbVBskvNEiqV8gwias6gMCs0yFCSW45t6-lp8VbelwRl3/exec", {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(data),
+        mode: 'cors', //CORS対応
+    });
+  };  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // ngを含まない全てのrequestボタンにイベントリスナーを追加  
+  const btns = document.querySelectorAll("table button:not(.ng)");
+  btns.forEach((button) => {
+    button.addEventListener("click", showModal);
+  });
 
 
   function showModal(event) {
