@@ -101,18 +101,21 @@ function shift_page(page_call_property) {
     const date = row.cells[0].innerText;
     // フォームタイトルなどの定義
     let message =""
+    let status=""
     if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
       message=`依頼を行うために、${date}の勤務依頼の回答を勤務不可から、調整中に変更してください。`
+      nganouncetext="勤務不可の回答のシフトを修正するには、講師にステータスを変更してもらう必要があります。"
     } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
       message=`依頼を行うために、${date}のスケジュールを勤務不可から、勤務可能に変更してください。`
+      nganouncetext="勤務不可のスケジュールに依頼をするには、講師にスケジュールを変更してもらう必要があります。"
     }
 
     const chatSubmitAreaHTML =`
     <span class="close closeButton">&times;</span>
     <div class="chat-submit-area" style="padding: 10px 0;" >
         <form id="chatForm">
-            <p style="padding:10px 0:">講師への期待度：<span id="kitaido" style="font-weight:bold;"></span></p>
-            <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>必要に応じて修正してください</p>
+            <p style="padding:10px 0:" class="ng-anounce"></p><br>
+            <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>講師にメッセージを送れます。必要に応じて修正し、送信してください。</p>
             <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
             <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
             <div class="form-box" id="メッセージ-wrapper"  style="width:100%;"> 
@@ -129,6 +132,10 @@ function shift_page(page_call_property) {
 
     const messageInput = document.querySelector('#メッセージ');
     messageInput.value = message;
+
+    const nganounce = document.querySelector('.ng-anounce');
+    nganounce.innerHTML =nganouncetext
+
 
     modal.style.display = "block";
     const closeButton = document.getElementsByClassName("close")[0];
