@@ -1,10 +1,11 @@
 // トップページのGASレスポンスを受け取った後に行う処理。
 function chat_page(page_call_property) {
 
+// スクロールエリアーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const scrollArea = document.querySelector('.chat-log-area');
 scrollArea.scrollTop = scrollArea.scrollHeight;
 
-// 講師の電話番号出力
+// 講師の電話番号出力ーーーーーーーーーーーーーーーーーーーーーーーーーーー
 const phoneNumber = document.getElementById("call-number")
 const phoneNumberHTML = `
 <div class="phoneArea" style="background:rgb(255, 242, 204);padding:4px 12px;">
@@ -15,32 +16,23 @@ if(document.querySelector("phoneArea")){document.querySelector("phoneArea").remo
 scrollArea.insertAdjacentHTML("beforebegin",phoneNumberHTML);
 phoneNumber.remove();
 
-// メッセージ提出フォームに初期値の付与
+// メッセージ提出フォームに初期値の付与ーーーーーーーーーーーーーーーーーー
 const form = document.getElementById("chatForm")
 const hiddenElements = form.querySelectorAll(":scope > input")
 for( let hiddenElement of hiddenElements){
     const id = hiddenElement.id
     hiddenElement.value=page_call_property[id]
 }
-
-// 既読処理の実行（⭐️メッセージ提出フォームの初期値の付与の後）
-readCheck(form)
-
-
-// チャットの送信機能、メッセージ生成機能の追加
-form.addEventListener("submit", (event) => handleSubmit(event));
-
   
-// 更新するボタンの設定
+// メッセージリロードボタンの設定ーーーーーーーーーーーーーーーーーーーーー
 const reloadButton = document.querySelector('.reload-button');
 reloadButton.addEventListener('click', handleReloadButtonClick);
 function handleReloadButtonClick() {
     call_fetchData(page_call_property);
 }
 
-
+// メッセージエリアの設定ーーーーーーーーーーーーーーーーーーーーーーーーー
 let textarea = document.getElementById('メッセージ');
-
 textarea.addEventListener('focus', function() {
   this.classList.add('expanded');
 });
@@ -54,8 +46,8 @@ textarea.addEventListener('input', function() {
 });
 
 
-
-
+// チャットの送信機能、メッセージ生成機能の追加ーーーーーーーーーーーーーー
+form.addEventListener("submit", (event) => handleSubmit(event));
 
 async function handleSubmit(event) {
     // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーー
@@ -137,6 +129,8 @@ async function handleSubmit(event) {
 
 };
 
+// 既読処理の実行（⭐️メッセージ提出フォームの初期値の付与の後）ーーーーーー
+readCheck(form)
 
 async function readCheck(form) {
     // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
