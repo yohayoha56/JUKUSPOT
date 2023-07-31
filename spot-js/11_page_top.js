@@ -487,9 +487,10 @@ function showModal(event) {
 
     // クリック要素の情報を取得
     const button = event.target;
-    const formFlag =event.target.classList
     const row = event.target.closest("tr");
     const date = row.cells[0].innerText;
+
+    const formFlag =event.target.classList
     const remarks = row.cells[5].innerHTML; 
 
     let teacherId, teacherName ,schoolId, schoolName , formId, formTitle, formInfo, formGuide, formButton
@@ -515,6 +516,38 @@ function showModal(event) {
     }
 
 
+    // フォーム要素のデフォルト定義
+    const formElements = [
+        { name: "勤務日", type: "hidden", value: date },
+        { name: "フォームタイプ", type: "hidden", value: formId },
+        { name: "会員ID", type: "hidden", value: teacherId },
+        { name: "講師名", type: "hidden", value: teacherName },
+        { name: "教室ID", type: "hidden", value: schoolId },
+        { name: "教室名", type: "hidden", value: schoolName }, //ここからカスタムを挿入
+        { name: "補足・備考", type: "textarea", value: "", width: "100%", },
+        { name: "submitButton", type: "submit", value: formButton }, //ボタンテキスト変更
+    ];
+
+    // フォーム要素のカスタム定義
+    if (formFlag.contains("change")) {
+      let addElement1 = 
+        { name: "依頼取り消し", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
+            { value: "", text: "取り消ししない" },{ value: "依頼を取り消す", text: "依頼を取り消す" }]}
+      let addElement2 = 
+        { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 }
+      let addElement3 = 
+        { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 }
+      let addElement4 = 
+        { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", minMinute: 0, maxMinute: 120, stepMinute: 10 }
+      formElements.splice(6, 0, addElement1, addElement2, addElement3, addElement4,);
+    } else if (formFlag.contains("answer")) {
+        let addElement1 = 
+          { name: "講師回答", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
+              { value: "", text: "選択してください" },{ value: "勤務確定", text: "勤務確定" },
+              { value: "勤務不可", text: "勤務不可" },{ value: "調整中", text: "調整中" },]}
+        formElements.splice(6, 0, addElement1);
+    }
+  
     // フォーム外枠の作成
     const formContainer = document.querySelector(".modal-content.form-container");
     formContainer.innerHTML = `
@@ -531,17 +564,24 @@ function showModal(event) {
     // フォーム中身の作成
     const form = document.createElement("form");
     form.setAttribute("id", formId);
-    // フォーム要素のデフォルト定義
-    const formElements = [
-        { name: "勤務日", type: "hidden", value: date },
-        { name: "フォームタイプ", type: "hidden", value: formId },
-        { name: "会員ID", type: "hidden", value: teacherId },
-        { name: "講師名", type: "hidden", value: teacherName },
-        { name: "教室ID", type: "hidden", value: schoolId },
-        { name: "教室名", type: "hidden", value: schoolName }, //ここからカスタムを挿入
-        { name: "補足・備考", type: "textarea", value: "", width: "100%", },
-        { name: "submitButton", type: "submit", value: formButton }, //ボタンテキスト変更
-    ];
+    formElements.forEach((element) => {
+      form.appendChild(makeFormElement(element));
+    });
+    formContainer.appendChild(form)
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks, row));
+
+
+    // モーダル非表示スクリプト
+    modal.style.display = "block";
+    const closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    if (formFlag.contains("change")){
+      changeFormAdd
+    }
+
 
     // フォームの回答状況に応じたアラート表示スクリプト
     function showWorkStatusAlert(element,classname, message) {
@@ -554,40 +594,58 @@ function showModal(event) {
       element.prepend(alertMessage);
     }
 
-    
-    // フォーム要素のカスタム定義
-    if (formFlag.contains("change")) {
-        let addElement1 = 
-          { name: "依頼取り消し", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
-              { value: "", text: "取り消ししない" },{ value: "依頼を取り消す", text: "依頼を取り消す" }]}
-        let addElement2 = 
-          { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 }
-        let addElement3 = 
-          { name: "勤務終了時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 }
-        let addElement4 = 
-          { name: "休憩時間", type: "minute", value: "", inline: true, width: "160px", minMinute: 0, maxMinute: 120, stepMinute: 10 }
-        formElements.splice(6, 0, addElement1, addElement2, addElement3, addElement4,);
-    } else if (formFlag.contains("answer")) {
-        let addElement1 = 
-          { name: "講師回答", type: "select", value: "", inline: true, width: "180px", breakAfter: true, options: [
-              { value: "", text: "選択してください" },{ value: "勤務確定", text: "勤務確定" },
-              { value: "勤務不可", text: "勤務不可" },{ value: "調整中", text: "調整中" },]}
-        formElements.splice(6, 0, addElement1);
+    function changeFormAdd(){
+      const cancellationWrapper = document.getElementById("依頼取り消し-wrapper");
+      showWorkStatusAlert(cancellationWrapper, "work-status-alert", "▼ 依頼修正時は、「依頼を修正する」を選択してください");
+      const startTimeWrapper = document.getElementById("勤務開始時間-wrapper");
+      const endTimeWrapper = document.getElementById("勤務終了時間-wrapper");
+      const breakTimeWrapper = document.getElementById("休憩時間-wrapper");
+      startTimeWrapper.style.display = "none";
+      endTimeWrapper.style.display = "none";    
+      breakTimeWrapper.style.display = "none";
+
+      const cancellationSelect = document.querySelector('[name="依頼取り消し"]');
+      cancellationSelect.addEventListener("change", function () {
+        const cancellationStatus = this.value;
+        if (cancellationStatus === "") {
+          const alertMessages = document.querySelectorAll(".work-status-alert");
+          alertMessages.forEach(element => { element.style.display = "none"; });
+          startTimeWrapper.style.display = "block";
+          endTimeWrapper.style.display = "block";
+          breakTimeWrapper.style.display = "block";
+
+        } else {
+          const alertMessages = document.querySelectorAll(".work-status-alert");
+          alertMessages.forEach(element => { element.style.display = "block"; });
+          startTimeWrapper.style.display = "none";
+          endTimeWrapper.style.display = "none";    
+          breakTimeWrapper.style.display = "none";
+        }
+      });
+
+      const submitButton = document.querySelector(".submit-button");
+      submitButton.value = "修正内容を確認";
+      submitButton.type = "button";
+
+      submitButton.addEventListener("click", function() {
+        // フォームデータの取得
+        const formData = new FormData(form);
+        const data = {};
+        for (const [key, value] of formData.entries()) {
+          data[key] = value;
+        }
+        // バリデーションチェック
+        const isValid = validateForm(data, formId);
+        if (isValid == false) { return; }
+
+        setTimeout(() => {
+          this.value = "シフトを修正する";
+          this.type = "submit";
+          const alertArea = document.getElementById("submitButton-wrapper");
+          showWorkStatusAlert(alertArea, "is-confirmde-alert" , "【まだ完了していません】シフト確定後の、講師の合意のないシフト修正・シフト取消は、法律違反になる場合があります。<br>修正後は講師の回答再度必要になるため、特に前日・当日については、電話で必ず合意を取ってください。");
+        }, 500);  // 1秒後に実行
+      });
     }
-
-
-    formElements.forEach((element) => {
-      form.appendChild(makeFormElement(element));
-    });
-    formContainer.appendChild(form)
-    form.addEventListener("submit", (event) => handleSubmit(event, remarks, row));
-
-    // モーダル非表示スクリプト
-    modal.style.display = "block";
-    const closeButton = document.getElementsByClassName("close")[0];
-    closeButton.onclick = () => {
-      modal.style.display = "none";
-    };
 
     if (button.classList.contains("is-ng")) {//ーーーーーーーーーー
       const alertArea = document.getElementById("answerForm");
