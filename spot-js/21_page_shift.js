@@ -103,10 +103,10 @@ function shift_page(page_call_property) {
     let message =""
     let status=""
     if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
-      message=`依頼を行うために、${date}の勤務依頼の回答を勤務不可から、調整中に変更してください。`
+      message=`勤務不可となっていますが、時間を変更して再度依頼希望です。依頼するため、【${date}の勤務依頼への回答】を【勤務不可】から、【調整中】に変更してください。`
       nganouncetext="勤務不可の回答のシフトを修正するには、講師にステータスを変更してもらう必要があります。"
     } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
-      message=`依頼を行うために、${date}のスケジュールを勤務不可から、勤務可能に変更してください。`
+      message=`勤務不可となっていますが、勤務依頼を希望しています。【${date}のスケジュール】を【勤務不可】から、【勤務可能】に変更してください。`
       nganouncetext="勤務不可のスケジュールに依頼をするには、講師にスケジュールを変更してもらう必要があります。"
     }
 
@@ -114,8 +114,8 @@ function shift_page(page_call_property) {
     <span class="close closeButton">&times;</span>
     <div class="chat-submit-area" style="padding: 10px 0;" >
         <form id="chatForm">
-            <p style="padding:10px 0:" class="ng-anounce"></p><br>
-            <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>講師にメッセージを送れます。必要に応じて修正し、送信してください。</p>
+            <p style="padding:10px 0:" class="ng-anounce"></p>
+            <p style="padding:10px 0:"><i class="fa-solid fa-circle-arrow-down"></i>こちらから講師にメッセージを送れます。<br>　必要に応じて修正し、講師に変更依頼を送ってください。</p>
             <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
             <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
             <div class="form-box" id="メッセージ-wrapper"  style="width:100%;"> 
