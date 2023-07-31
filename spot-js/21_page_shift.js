@@ -163,6 +163,18 @@ function shift_page(page_call_property) {
         year: "numeric", month: "2-digit", day: "2-digit",
         hour: "2-digit", minute: "2-digit", second: "2-digit",
     });
+
+    const submitButtonWrapper = document.querySelector("#chatButton-wrapper");
+    const messageElement = document.createElement("p");
+    messageElement.textContent = "送信中です。送信完了すると閉じます";
+    submitButtonWrapper.after(messageElement);
+    
+    setTimeout(() => {
+      // モーダルを閉じるコード
+      const modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    }, 3000);
+
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
     const response = await fetch( "https://script.google.com/macros/s/AKfycbwc5wu1HOL0RkT7WOWO5jrLbVBskvNEiqV8gwias6gMCs0yFCSW45t6-lp8VbelwRl3/exec", {
         method: 'POST',
