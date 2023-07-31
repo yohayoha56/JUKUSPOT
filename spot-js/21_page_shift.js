@@ -1,7 +1,5 @@
 function shift_page(page_call_property) {
 
-  // 教室・講師に応じてスケジュールテーブルの調整ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
   // テーブルの行の色をステータスに応じて変更
   // #region 
   const tableRows = document.querySelectorAll('#schedule-table tr:not(:first-child)');
@@ -49,22 +47,19 @@ function shift_page(page_call_property) {
   // #endregion 
 
 
-  // モーダル（フォームの外枠）の挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+// モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   // #region 
   const modalTemplate = `
   <div id="myModal" class="modal">
       <div class="modal-content form-container">
       </div>
   </div>`;
-
   document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
   const modal = document.getElementById("myModal");
 
   // フォーム外がクリックされた時にフォームを非表示にする
   window.onclick = function (event) {
-    if (event.target == modal) {
-      closeModal();
-    }
+    if (event.target == modal) { modal.style.display = "none";}
   }
   // #endregion 
 
@@ -85,8 +80,6 @@ function shift_page(page_call_property) {
   console.log(teacherName)
 
 
-
-
   // ngを含むボタンにイベントリスナーを追加
   const ngBtns = document.querySelectorAll("table button.ng");
   ngBtns.forEach((button) => {
@@ -101,7 +94,7 @@ function shift_page(page_call_property) {
     const date = row.cells[0].innerText;
     // フォームタイトルなどの定義
     let message =""
-    let status=""
+    let nganouncetext=""
     if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
       message=`勤務不可となっていますが、時間を変更して再度依頼希望です。依頼するため、【${date}の勤務依頼への回答】を【勤務不可】から、【調整中】に変更してください。`
       nganouncetext="勤務不可の回答のシフトを修正するには、講師にステータスを変更してもらう必要があります。"
@@ -578,7 +571,6 @@ function shift_page(page_call_property) {
       case 'changeForm': hosokuguide = data["取り消し"] == true?" [↓教室：依頼取消時] ":" [↓教室：依頼修正時] "; break;
       case 'answerForm': hosokuguide = " [↓講師：シフト回答時] "; break;
     }
-
     if (remarks == "-") { remarks = "" } else { remarks = remarks + "<br>" }
     if (data["補足・備考"] != "") {
       data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${data["補足・備考"]}`;
