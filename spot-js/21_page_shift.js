@@ -194,7 +194,7 @@ function shift_page(page_call_property) {
       form.appendChild(makeFormElement(element));
     });
     formContainer.appendChild(form)
-    form.addEventListener("submit", (event) => handleSubmit(event, remarks, row));
+
 
 
     // #endregion フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
@@ -319,9 +319,6 @@ function shift_page(page_call_property) {
         const isValid = validateForm(data, formId);
         if (isValid == false) { return; }
 
-
-
-
         this.value = "シフトを修正する";
         this.type = "submit";
         const alertArea = document.getElementById("changeForm");
@@ -338,7 +335,8 @@ function shift_page(page_call_property) {
     //   showWorkStatusAlert(alertArea, "is-confirmde-alert" , "確定済みのシフトです。修正すると、【確定前】の状態になり、再び講師の回答が必要になります。<br>トラブル防止のため、確定済みのシフト変更時は、事前に講師の了承を得るようにして下さい");
     // }
 
-
+    form.addEventListener("submit", (event) => handleSubmit(event, remarks, row));
+    
     // #endregion フォームのカスタマイズーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
   }
 
