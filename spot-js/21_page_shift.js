@@ -187,9 +187,6 @@ function shift_page(page_call_property) {
     // #region データとフォーム要素の定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー    
     const button = event.target;
     const row = button.closest("tr");
-
-
-    // ボタンが押された行のテーブルのデータを取得する①
     const date = row.cells[0].innerText;
 
 
@@ -260,8 +257,6 @@ function shift_page(page_call_property) {
     // #region フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     // 挿入箇所=formContainerの定義
     const formContainer = document.querySelector(".form-container");
-
-    // 閉じるボタン、フォームタイトル、参考情報、ガイドの作成
     formContainer.innerHTML = `
       <span class="close closeButton">&times;</span>
       <h3>${formTitle}</h3>
