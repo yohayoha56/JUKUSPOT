@@ -101,40 +101,39 @@ function insertGuide(page_call_property){
 
     if(page_call_property["callback"]=="chat_page"){
         let chatAreaHTML =`
-      <div class="chat-area">
-        <div class="chat-header">
-          <span class="chat-title"><i class="fa-solid fa-message" style="color:white;"></i>
-          ${newData["ページタイプ"]=="school"?`${page_call_property["講師名"]}先生`:`${page_call_property["教室名"]}`}とのチャット履歴</span>
-          <span class="reload-time">
-          ${new Date().toLocaleString("ja-JP", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"})}時点</span>
-          <span class="reload-button" ><i class="fa-solid fa-rotate-right" style="color: #1B7871;"></i> 更新する</span>
-        </div>
-        <div class="chat-log-area">
-        <!-- ここにチャットのログを表示する -->
-            <div id="loading" class="loader-container">
-                <div class="loader"></div>
-                <div class="loading-text">
-                    <p>最新情報を取得中です</p>
+        <div class="chat-area">
+            <div class="chat-header">
+            <span class="chat-title"><i class="fa-solid fa-message" style="color:white;"></i>
+            ${newData["ページタイプ"]=="school"?`${page_call_property["講師名"]}先生`:`${page_call_property["教室名"]}`}とのチャット履歴</span>
+            <span class="reload-time">
+            ${new Date().toLocaleString("ja-JP", { month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"})}時点</span>
+            <span class="reload-button" ><i class="fa-solid fa-rotate-right" style="color: #1B7871;"></i> 更新する</span>
+            </div>
+            <div class="chat-log-area">
+            <!-- ここにチャットのログを表示する -->
+                <div id="loading" class="loader-container">
+                    <div class="loader"></div>
+                    <div class="loading-text">
+                        <p>最新情報を取得中です</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="chat-submit-area">
-          <form id="chatForm">
-            <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
-            <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
-            <div class="form-box" id="メッセージ-wrapper"> 
-              <textarea id="メッセージ" name="メッセージ"></textarea> 
+            <div class="chat-submit-area">
+            <form id="chatForm">
+                <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
+                <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
+                <div class="form-box" id="メッセージ-wrapper"> 
+                <textarea id="メッセージ" name="メッセージ"></textarea> 
+                </div>
+                <div class="form-box" id="chatButton-wrapper" style=""> 
+                    <input type="submit" value="送信" class="submit-button"> 
+                </div>
+            </form>
             </div>
-            <div class="form-box" id="chatButton-wrapper" style=""> 
-                <input type="submit" value="送信" class="submit-button"> 
-            </div>
-          </form>
-          </div>
-          <p>チャットで送信した内容はメールでも${newData["ページタイプ"]=="school"?"講師":"教室"}に通知されます。</p>
-      </div>`
+            <p>チャットで送信した内容はメールでも${newData["ページタイプ"]=="school"?"講師":"教室"}に通知されます。</p>
+        </div>`
         target.insertAdjacentHTML("beforeend",chatAreaHTML);
     }
-
 
 }
 
