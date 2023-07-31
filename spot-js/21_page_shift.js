@@ -288,7 +288,7 @@ function shift_page(page_call_property) {
       const cancellationSelect = document.querySelector('[name="依頼取り消し"]');
       cancellationSelect.addEventListener("change", function () {
         const cancellationStatus = this.value;
-        if (cancellationStatus === "依頼を修正する") {
+        if (cancellationStatus === "") {
           const alertMessages = document.querySelectorAll(".work-status-alert");
           alertMessages.forEach(element => { element.style.display = "none"; });
           startTimeWrapper.style.display = "block";
