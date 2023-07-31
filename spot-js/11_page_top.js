@@ -385,6 +385,7 @@ const modal = document.getElementById("myModal");
 
     const button = event.target;
     const row = button.closest("tr");
+    const formFlag =event.target.classList
     // ボタンが押された行のテーブルのデータを取得する①
     const date = row.cells[0].innerText;
     // フォームタイトルなどの定義
