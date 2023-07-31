@@ -386,6 +386,7 @@ const modal = document.getElementById("myModal");
     const button = event.target;
     const row = button.closest("tr");
     const formFlag =event.target.classList
+    console.log(formFlag)
     // ボタンが押された行のテーブルのデータを取得する①
     const date = row.cells[0].innerText;
     // フォームタイトルなどの定義
@@ -399,14 +400,14 @@ const modal = document.getElementById("myModal");
       nganouncetext="勤務不可のスケジュールに依頼をするには、講師にスケジュールを変更してもらう必要があります。"
     }
 
-    let teacherId, teacherName ,schoolId, schoolName , formId, formTitle, formInfo, formGuide, formButton
+    let teacherId, teacherName ,schoolId, schoolName
 
-    if (formFlag.contains("change")) {
+    if (newData["ページタイプ"]=="school") {
         teacherId = "" 
         teacherName = row.cells[2].innerText
         schoolId = newData["教室ID"]
         schoolName = newData["教室名"] 
-    } else if (formFlag.contains("answer")) {
+    } else if (newData["ページタイプ"]=="teacher") {
         teacherId = newData["会員ID"];
         teacherName =newData["姓"]+ newData["名"];
         schoolId = "";
