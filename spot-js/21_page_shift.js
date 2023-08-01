@@ -593,7 +593,8 @@ function shift_page(page_call_property) {
 
     if (formId == "requestForm"){
       data["企業ID"] = newData["企業ID"]
-    } else if (formId == "submitForm") {
+    } 
+    if (formId == "submitForm") {
       row.cells[1].innerText = data["勤務可否"];
       row.cells[2].innerText = data["勤務開始時間"] + "〜" + data["勤務終了時間"];
       row.cells[3].innerHTML = data["補足・備考"];
