@@ -90,12 +90,15 @@
 
 
 /* サブミットエリアーーーーーーーーーーー */
-.chat-submit-area{
+.chat-area .chat-submit-area{
     background-color:#E9EAF2;
+}
+.chat-submit-area{
     padding:10px 15px;
     display:flex;
     border-radius: 0 0 10px 10px;
 }
+
 
 #chatForm{
     display:flex;
