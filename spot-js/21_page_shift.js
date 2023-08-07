@@ -237,7 +237,7 @@ function shift_page(page_call_property) {
       { name: "教室ID", type: "hidden", value: schoolId },
       { name: "教室名", type: "hidden", value: schoolName },
       {
-        name: "勤務可否", type: "select", value: "", inline: true, breakAfter: true, options: [
+        name: "勤務可否", type: "select", value: "", inline: true,width: "100%", breakAfter: true, options: [
           { value: "", text: "選択してください" },
           { value: "勤務可能", text: "勤務可能" },
           { value: "勤務不可", text: "勤務不可" },
@@ -245,7 +245,7 @@ function shift_page(page_call_property) {
         ]
       },
       {
-        name: "講師回答", type: "select", value: "", inline: true, breakAfter: true, options: [
+        name: "講師回答", type: "select", value: "", inline: true,width: "100%", breakAfter: true, options: [
           { value: "", text: "選択してください" },
           { value: "勤務確定", text: "勤務確定" },
           { value: "勤務不可", text: "勤務不可" },
@@ -253,7 +253,7 @@ function shift_page(page_call_property) {
         ]
       },
       {
-        name: "依頼取り消し", type: "select", value: "", inline: true, breakAfter: true, options: [
+        name: "依頼取り消し", type: "select", value: "", inline: true,width: "100%", breakAfter: true, options: [
           { value: "依頼を取り消す", text: "依頼を取り消す" },
           { value: "", text: "依頼を修正する" },
         ]

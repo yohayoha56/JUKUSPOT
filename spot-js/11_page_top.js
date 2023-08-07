@@ -546,7 +546,7 @@ function showModal(event) {
     // フォーム要素のカスタム定義
     if (formFlag.contains("change")) {
       let addElement1 = 
-        { name: "依頼取り消し", type: "select", value: "", inline: true, breakAfter: true, options: [
+        { name: "依頼取り消し", type: "select", value: "", inline: true, width: "100%", breakAfter: true, options: [
           { value: "依頼を取り消す", text: "依頼を取り消す" },{ value: "", text: "依頼を修正する" },]}
       let addElement2 = 
         { name: "勤務開始時間", type: "time", value: "", inline: true, width: "160px", minHour: 8, maxHour: 22, stepMinute: 10 }
