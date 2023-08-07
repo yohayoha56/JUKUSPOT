@@ -96,11 +96,11 @@ function shift_page(page_call_property) {
     let message =""
     let nganouncetext=""
     if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
-      message=`勤務不可となっていますが、時間を変更して再度依頼希望です。依頼するため、【${date}の勤務依頼への回答】を【勤務不可】から、【調整中】に変更してください。`
-      nganouncetext="勤務不可の回答のシフトを修正するには、講師にステータスを変更してもらう必要があります。"
+      message=`＜${date}＞の勤務依頼をお願いしたいです。【勤務不可】から【調整中】に変更してください。`
+      nganouncetext="講師の回答は「勤務不可」です。。"
     } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
-      message=`勤務不可となっていますが、勤務依頼を希望しています。【${date}のスケジュール】を【勤務不可】から、【勤務可能】に変更してください。`
-      nganouncetext="勤務不可のスケジュールに依頼をするには、講師にスケジュールを変更してもらう必要があります。"
+      message=`＜${date}＞の勤務依頼をお願いしたいです。【勤務不可】から【勤務可能】に変更してください。`
+      nganouncetext="スケジュール回答は「勤務不可」です。"
     }
 
     const chatSubmitAreaHTML =`

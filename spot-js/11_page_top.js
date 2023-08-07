@@ -394,7 +394,7 @@ const modal = document.getElementById("myModal");
     let nganouncetext=""
     if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
       message=`＜${date}＞の勤務依頼をお願いしたいです。【勤務不可】から【調整中】に変更してください。`
-      nganouncetext="講師の回答は「勤務不可」です。。"
+      nganouncetext="講師の回答は「勤務不可」です。"
     } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
       message=`＜${date}＞の勤務依頼をお願いしたいです。【勤務不可】から【勤務可能】に変更してください。`
       nganouncetext="スケジュール回答は「勤務不可」です。"
