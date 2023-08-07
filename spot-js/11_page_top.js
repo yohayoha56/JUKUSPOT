@@ -393,11 +393,11 @@ const modal = document.getElementById("myModal");
     let message =""
     let nganouncetext=""
     if (button.classList.contains("kinmuhuka")) {//ーーーーーーーーーー
-      message=`勤務不可となっていますが、時間を変更して再度依頼希望です。依頼するため、【${date}の勤務依頼への回答】を【勤務不可】から、【調整中】に変更してください。`
-      nganouncetext="勤務不可の回答のシフトを修正するには、講師にステータスを変更してもらう必要があります。"
+      message=`＜${date}＞の勤務依頼をお願いしたいです。【勤務不可】から【調整中】に変更してください。`
+      nganouncetext="講師の回答は「勤務不可」です。。"
     } else if (button.classList.contains("iraihuka")) {//ーーーーーーーーーー
-      message=`勤務不可となっていますが、勤務依頼を希望しています。【${date}のスケジュール】を【勤務不可】から、【勤務可能】に変更してください。`
-      nganouncetext="勤務不可のスケジュールに依頼をするには、講師にスケジュールを変更してもらう必要があります。"
+      message=`＜${date}＞の勤務依頼をお願いしたいです。【勤務不可】から【勤務可能】に変更してください。`
+      nganouncetext="スケジュール回答は「勤務不可」です。"
     }
 
     let teacherId, teacherName ,schoolId, schoolName
@@ -657,7 +657,7 @@ function showModal(event) {
           this.value = "シフトを修正する";
           this.type = "submit";
           const alertArea = document.getElementById("submitButton-wrapper");
-          showWorkStatusAlert(alertArea, "is-confirmde-alert" , "【まだ完了していません】シフト確定後の、講師の合意のないシフト修正・シフト取消は、法律違反になる場合があります。<br>修正後は講師の回答再度必要になるため、特に前日・当日については、電話で必ず合意を取ってください。");
+          showWorkStatusAlert(alertArea, "is-confirmde-alert" , "【まだ完了していません】シフト確定後、講師との合意のないシフト修正・シフト取消は、法律上休業補償が必要となる場合があります。<br>特に、前日・当日については、電話で必ず合意を取ってください。");
         }, 500);  // 1秒後に実行
       });
     }

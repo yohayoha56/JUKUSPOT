@@ -422,7 +422,7 @@ function shift_page(page_call_property) {
           this.value = "シフトを修正する";
           this.type = "submit";
           const alertArea = document.getElementById("submitButton-wrapper");
-          showWorkStatusAlert(alertArea, "is-confirmde-alert" , "【まだ完了していません】シフト確定後の、講師の合意のないシフト修正・シフト取消は、法律違反になる場合があります。<br>修正後は講師の回答再度必要になるため、特に前日・当日については、電話で必ず合意を取ってください。");
+          showWorkStatusAlert(alertArea, "is-confirmde-alert" , "【まだ完了していません】シフト確定後、講師との合意のないシフト修正・シフト取消は、法律上休業補償が必要となる場合があります。<br>特に、前日・当日については、電話で必ず合意を取ってください。");
         }, 500);  // 1秒後に実行
       });
     }
