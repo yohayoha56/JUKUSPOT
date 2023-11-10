@@ -96,10 +96,10 @@ waitForProperties().then((propertiesContainer) => {
 
   // ヘッダーの画像生成
   let pc_logo_src = newData["ページタイプ"] == "school" ? 
-    'https://yohayoha56.github.io/jukust/logo2.png' : 'https://yohayoha56.github.io/jukust/logo1.png';
+    'https://yohayoha56.github.io/JUKUSPOT/logo2.png' : 'https://yohayoha56.github.io/JUKUSPOT/logo1.png';
 
   let sp_logo_src = newData["ページタイプ"] == "school" ? 
-    'https://yohayoha56.github.io/jukust/logo02.png' : 'https://yohayoha56.github.io/jukust/logo01.png';
+    'https://yohayoha56.github.io/JUKUSPOT/logo02.png' : 'https://yohayoha56.github.io/JUKUSPOT/logo01.png';
 
   let headerColor = newData["ページタイプ"] == "school" ? 
     "background-color:#33A614;color:white;":"";
