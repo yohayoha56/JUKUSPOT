@@ -177,7 +177,7 @@ function call_fetchData(page_call_property) {
   let url;
   switch (page_call_property["callback"]) {
     case "profile_page":
-      url = 'https://script.google.com/macros/s/AKfycbwGiAxM_6KK8T7qfRzZOLAIApa-1uLq9xm5iBe4ZyRDirHwTPmgoe4EkMYbNIAziFg/exec'; break;
+      url = 'https://script.google.com/macros/s/AKfycbxcs2Vwu5jn_aBo5KzM6vdiO1ZNc2wb0ipcGW4-GhTr5YxAnVqmLT1596K665nqCwiNJQ/exec'; break;
     case "chat_page":
       url = 'https://script.google.com/macros/s/AKfycbwLXeaxdJQgOwxL9zIlRBejQHBx6GUhhBfWrZ228CbBWG6aNbUOgodaZdYYEzStvM7Lig/exec'; break;
     case "top_page":
