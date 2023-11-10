@@ -137,27 +137,27 @@ waitForProperties().then((propertiesContainer) => {
 
   // 外部スクリプトの読み込み設定①
   const stylesheets = [
-    'https://yohayoha56.github.io/SAUCEED/spot-css/progressbar.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/page_frame.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/page_content.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/schedule_form.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/spot_table.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/spot_form.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/spot_chat.css',
-    'https://yohayoha56.github.io/SAUCEED/spot-css/spot_profile.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/progressbar.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/page_frame.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/page_content.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/schedule_form.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_table.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_form.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_chat.css',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_profile.css',
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
     ] : []),
   ];
   
   // 外部スクリプトの読み込み設定②
   const scripts = [
-    'https://yohayoha56.github.io/SAUCEED/spot-js/91_func_form.js',
-    'https://yohayoha56.github.io/SAUCEED/spot-js/11_page_top.js',
-    'https://yohayoha56.github.io/SAUCEED/spot-js/21_page_shift.js',
-    'https://yohayoha56.github.io/SAUCEED/spot-js/31_page_chat.js',
-    'https://yohayoha56.github.io/SAUCEED/spot-js/41_page_prof.js',
-    'https://yohayoha56.github.io/SAUCEED/spot-js/03_common_guide.js',
-    'https://yohayoha56.github.io/SAUCEED/spot-js/02_common_call.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/91_func_form.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/11_page_top.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/21_page_shift.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/31_page_chat.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/41_page_prof.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/03_common_guide.js',
+    'https://yohayoha56.github.io/JUKUSPOT/spot-js/02_common_call.js',
     "https://kit.fontawesome.com/ae75e0f159.js", // Font Awesome
     ...(newData["ページタイプ"] === "school" ? [
     ] : []),
