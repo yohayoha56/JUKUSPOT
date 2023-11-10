@@ -63,7 +63,7 @@ waitForProperties().then((propertiesContainer) => {
     }
   
     if (redata["redirectKey"]) {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxRVM-fFhzJj5CLMH6LrF1FEaFkYUlMY7LxmV5MuqYp0hcFUryhFPS5DW0ciWx5djk/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzf92xEy7MxA4rYnF7ClvNv7Dy3oyQPvrnbD-w-us8yzys1qT5BZNP1EMdyVgXSwM6gmQ/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
