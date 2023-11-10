@@ -179,7 +179,7 @@ function call_fetchData(page_call_property) {
     case "profile_page":
       url = 'https://script.google.com/macros/s/AKfycbxcs2Vwu5jn_aBo5KzM6vdiO1ZNc2wb0ipcGW4-GhTr5YxAnVqmLT1596K665nqCwiNJQ/exec'; break;
     case "chat_page":
-      url = 'https://script.google.com/macros/s/AKfycbwLXeaxdJQgOwxL9zIlRBejQHBx6GUhhBfWrZ228CbBWG6aNbUOgodaZdYYEzStvM7Lig/exec'; break;
+      url = 'https://script.google.com/macros/s/AKfycbwUwHNCiAaN5-H1lPvG1lzELTAurshTyqTBRngWo6w1LkUqe0urh0-o855Tp2JcXr8MuQ/exec'; break;
     case "top_page":
       url = 'https://script.google.com/macros/s/AKfycby31xiAnBjizjcD-rZlR4enyaH4McIbYxBEvpzLqKENkg243BYdWUl4y4XPL96SyjI1/exec'; break;
     default:
