@@ -598,7 +598,7 @@ function shift_page(page_call_property) {
         row.cells[4].innerHTML = "提出済";
         row.style["background-color"] = "#FFF2CC";
         modal.style.display = "none";
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbzoSyzV6hPn6CrVnon7fIErmmbo8qWi6bLiv0m3NsKKLolup6F01QR8Yd-zvQ8L_xo-/exec", {
           method: 'POST',
           headers: {
             'Content-Type': 'text/plain',
@@ -618,7 +618,7 @@ function shift_page(page_call_property) {
           row.style["background-color"] = "#FFF2CC";
         }
         modal.style.display = "none";
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbzoSyzV6hPn6CrVnon7fIErmmbo8qWi6bLiv0m3NsKKLolup6F01QR8Yd-zvQ8L_xo-/exec", {
           method: 'POST',
           headers: {
             'Content-Type': 'text/plain',
@@ -632,7 +632,7 @@ function shift_page(page_call_property) {
         row.cells[5].innerText = "回答済み";
         row.style["background-color"] = "#FFF2CC";
         modal.style.display = "none";
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbzoSyzV6hPn6CrVnon7fIErmmbo8qWi6bLiv0m3NsKKLolup6F01QR8Yd-zvQ8L_xo-/exec", {
           method: 'POST',
           headers: {
             'Content-Type': 'text/plain',
@@ -649,7 +649,7 @@ function shift_page(page_call_property) {
   
         try {
           // データの送信
-          const response = await fetch("https://script.google.com/macros/s/AKfycbwWfeARqEk-kQyWqXYMmnVuVmgTzE4fhe8tK425-9a5NC6UQ52K_44h0W2d-e3Egx4T/exec", {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbzoSyzV6hPn6CrVnon7fIErmmbo8qWi6bLiv0m3NsKKLolup6F01QR8Yd-zvQ8L_xo-/exec", {
             method: 'POST',
             headers: {
               'Content-Type': 'text/plain',
