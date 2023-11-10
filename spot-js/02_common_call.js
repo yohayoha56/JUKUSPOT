@@ -181,7 +181,7 @@ function call_fetchData(page_call_property) {
     case "chat_page":
       url = 'https://script.google.com/macros/s/AKfycbwUwHNCiAaN5-H1lPvG1lzELTAurshTyqTBRngWo6w1LkUqe0urh0-o855Tp2JcXr8MuQ/exec'; break;
     case "top_page":
-      url = 'https://script.google.com/macros/s/AKfycby31xiAnBjizjcD-rZlR4enyaH4McIbYxBEvpzLqKENkg243BYdWUl4y4XPL96SyjI1/exec'; break;
+      url = 'https://script.google.com/macros/s/AKfycbyEl4T1B-VsdDq5ZTHAYIb7_8MVYyKVIWzjagF4w-W9FYClr02SwXsVbvc3zXc_ZNXoqw/exec'; break;
     default:
       url = 'https://script.google.com/macros/s/AKfycbzBT17jaCrN-NFAuUo4ZZyoEdUWlpWhR0s6BYOHDZEhMZMcdPxKE3jOJYhMzSiuUjM0/exec';
   }
