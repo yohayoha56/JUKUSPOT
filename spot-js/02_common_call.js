@@ -183,7 +183,7 @@ function call_fetchData(page_call_property) {
     case "top_page":
       url = 'https://script.google.com/macros/s/AKfycby31xiAnBjizjcD-rZlR4enyaH4McIbYxBEvpzLqKENkg243BYdWUl4y4XPL96SyjI1/exec'; break;
     default:
-      url = 'https://script.google.com/macros/s/AKfycbwmCc5XeYXWjCXLiztYc45LFdaX-bdzjbET8KXZcWbfF5TVwKk-dQeokyOfKivAwlB9/exec';
+      url = 'https://script.google.com/macros/s/AKfycbzBT17jaCrN-NFAuUo4ZZyoEdUWlpWhR0s6BYOHDZEhMZMcdPxKE3jOJYhMzSiuUjM0/exec';
   }
   
   // ガイドの挿入を実行する。
