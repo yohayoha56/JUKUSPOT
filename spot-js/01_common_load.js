@@ -1,6 +1,7 @@
 // const { redirect } = require("express/lib/response");
 
 Bugsnag.notify(new Error('Test error'));
+throw new Error("Throw Exception Test");
 
 function waitForProperties() {
   let timeoutId;
