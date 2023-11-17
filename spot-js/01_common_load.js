@@ -1,5 +1,6 @@
 // const { redirect } = require("express/lib/response");
 
+Sentry.captureMessage("Initialized Sentry", "info");
 myUndefinedFunction();
 throw new Error("Throw Exception Test");
 
