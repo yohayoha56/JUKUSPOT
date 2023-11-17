@@ -1,6 +1,6 @@
 // const { redirect } = require("express/lib/response");
 
-Bugsnag.notify(new Error('Test error'));
+myUndefinedFunction();
 throw new Error("Throw Exception Test");
 
 function waitForProperties() {
