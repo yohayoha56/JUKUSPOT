@@ -1,8 +1,5 @@
 // const { redirect } = require("express/lib/response");
 
-Sentry.captureMessage("Initialized Sentry", "info");
-throw new Error("Throw Exception Test");
-
 function waitForProperties() {
   let timeoutId;
   return new Promise((resolve, reject) => {
