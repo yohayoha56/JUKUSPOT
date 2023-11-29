@@ -1,5 +1,7 @@
 // const { redirect } = require("express/lib/response");
 
+myUndefinedFunction();
+
 function waitForProperties() {
   let timeoutId;
   return new Promise((resolve, reject) => {
