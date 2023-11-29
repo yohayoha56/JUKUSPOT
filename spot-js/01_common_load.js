@@ -1,7 +1,7 @@
 // const { redirect } = require("express/lib/response");
 
 Sentry.captureMessage("Test Sentry", "info");
-myUndefinedFunction();
+// myUndefinedFunction();
 
 function waitForProperties() {
   let timeoutId;
