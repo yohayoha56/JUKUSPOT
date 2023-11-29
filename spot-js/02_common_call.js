@@ -1,5 +1,3 @@
-myUndefinedFunction2();
-
 // 初期表示のコントロールスクリプトーーーーーーーーーーーーーーーーーー
 // カスタム要素の出力 ＋ 余白エリアの除去
 var A = document.getElementsByClassName("content-area")[0];
