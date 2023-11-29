@@ -229,6 +229,7 @@ function loadScript(url) {
     const script = document.createElement('script');
     script.defer = true;
     script.src = url;
+    script.crossorigin = 'anonymous';
     script.onload = () => resolve();
     document.body.appendChild(script);
   });
