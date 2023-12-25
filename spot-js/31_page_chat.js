@@ -118,7 +118,7 @@ async function handleSubmit(event) {
 
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
 
-    const response = await fetch( "https://script.google.com/macros/s/AKfycbzAKwz4FwGa2D1DzIDLqjeV3NFpSDSTIHOF6pD0C1XmGY7MiE9NVXlD96GElci5W2lv/exec", {
+    const response = await fetch( "https://script.google.com/macros/s/AKfycbx0ERuKrsfIl_ci92tlFNJEP41w1bUo1vunwYy7Na2Sto87tq84Th27Iea76c4cgRpR/exec", {
         method: 'POST',
         headers: {
         'Content-Type': 'text/plain',
@@ -147,7 +147,7 @@ async function readCheck(form) {
 
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
   
-    const response = await fetch( "https://script.google.com/macros/s/AKfycbzAKwz4FwGa2D1DzIDLqjeV3NFpSDSTIHOF6pD0C1XmGY7MiE9NVXlD96GElci5W2lv/exec", {
+    const response = await fetch( "https://script.google.com/macros/s/AKfycbx0ERuKrsfIl_ci92tlFNJEP41w1bUo1vunwYy7Na2Sto87tq84Th27Iea76c4cgRpR/exec", {
       method: 'POST',
       headers: {
         'Content-Type': 'text/plain',
