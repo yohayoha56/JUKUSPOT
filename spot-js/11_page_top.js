@@ -205,7 +205,7 @@ if (!document.querySelector("#forms-container .form-container")) {
 
 
 //お知らせを取得する 
-fetch("https://script.google.com/macros/s/AKfycbxSfCODgSpHzlWAjOkvzQ2HUwjchLbm-uMXTdM6jAERj1E_qq8u0vbc21fIX5V8UKd7ig/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzcDM03sNClzI_o52NZYtdhGwrYSzdJJQX8pIh4QTfIhFzOb_fDzWZ8LcteAluYzQPkwA/exec", {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain',},
     body: JSON.stringify(page_call_property),
