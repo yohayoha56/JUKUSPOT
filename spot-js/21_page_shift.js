@@ -601,7 +601,7 @@ function shift_page(page_call_property) {
       row.cells[4].innerHTML = "提出済";
       row.style["background-color"] = "#FFF2CC";
       modal.style.display = "none";
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxvTIXlzzCeSenJRNc7PQQL8fTgFOZ0O_Peh6r9h9ir1KeBFsTb-nlDwXYP3JZmqJ7R/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -621,7 +621,7 @@ function shift_page(page_call_property) {
         row.style["background-color"] = "#FFF2CC";
       }
       modal.style.display = "none";
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxvTIXlzzCeSenJRNc7PQQL8fTgFOZ0O_Peh6r9h9ir1KeBFsTb-nlDwXYP3JZmqJ7R/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -635,7 +635,7 @@ function shift_page(page_call_property) {
       row.cells[5].innerText = "回答済み";
       row.style["background-color"] = "#FFF2CC";
       modal.style.display = "none";
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxvTIXlzzCeSenJRNc7PQQL8fTgFOZ0O_Peh6r9h9ir1KeBFsTb-nlDwXYP3JZmqJ7R/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -652,7 +652,7 @@ function shift_page(page_call_property) {
 
       try {
         // データの送信
-        const response = await fetch("https://script.google.com/macros/s/AKfycbxvTIXlzzCeSenJRNc7PQQL8fTgFOZ0O_Peh6r9h9ir1KeBFsTb-nlDwXYP3JZmqJ7R/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
           method: 'POST',
           headers: {
             'Content-Type': 'text/plain',
