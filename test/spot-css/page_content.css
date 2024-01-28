@@ -1,0 +1,158 @@
+h2{
+    border-left:solid 6px #1B7871;
+    padding-left: 12px;
+    font-size: 22px;
+    margin-top: 40px;
+ }
+
+/* ページガイドのデザインーーーーーーーーーーーーーーーーーーーーーーー */
+
+.page-guide-wrapper{
+    margin:20px 0px;
+    background-color:#EDF6F5;
+    position:relative;
+  }
+  .page-guide-title{
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    padding-bottom: 0 !important;
+  }
+  
+  .page-guide-wrapper p{
+    padding:15px;
+  }
+  
+  .page-guide-wrapper span{
+    font-weight:bold;
+  }
+  
+  
+/* お知らせのデザインーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+.news-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #1B7871;
+    color: white;
+    padding: 10px 15px;
+    gap: 10px;
+}
+
+.news-title i{
+   padding-right:10px;
+}
+
+
+
+.news-log-area {
+    padding: 15px 15px 10px 15px;
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.news-log{
+   padding-bottom:10px;
+   border-bottom:solid white ;
+   margin-bottom:10px
+
+}
+
+
+.news-area .info-box{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    gap:15px;
+    align-items: start;
+    justify-content: flex-start;
+    color:black;
+    margin-bottom:5px;
+   
+}
+
+.news-area .category{
+   padding:0 10px;
+   background:#1B7871;
+   color:white;
+   border-radius:5px
+}
+
+.news-message{
+  display:inline-block;
+  color:blue;
+  cursor: pointer;
+  margin-right: 50px;
+  border-bottom: solid 1px;
+}
+.news-message span{
+  color:red;
+  text-decoration:none;
+}
+
+
+
+
+
+  /* ローディング　ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+  .loader-container {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding:100px
+  }
+
+  .news-log-area .loader-container{
+    padding:50px
+  }
+  
+  .loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #1B7871;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  .loading-text{
+    padding-top:20px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+  /* ショートカットボタン */
+  .sub-header{
+    display:flex;
+    gap:10px 20px;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+
+  .shortcut-buttons{
+    display: inline-flex;
+    gap:10px;
+    font-size:15px;
+    flex-wrap:wrap;
+  }
+
+  .shortcut-button{
+    display:inline-block;
+    background-color:#19837C;
+    color:white;
+    padding:3px 15px;
+    cursor: pointer;
+  }
+
+  #sb-kintai{display:none;}

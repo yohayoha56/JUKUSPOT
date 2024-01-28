@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<style>
+  .chat-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #1B7871;
+    color: white;
+    padding: 0.5em;
+    gap: 0.5em;
+  }
+  
+  .chat-title {
+    flex: 1 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .reload-time, .reload-button {
+    white-space: nowrap;
+  }
+  
+  .reload-button {
+    background-color: white;
+    color: #1B7871;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+
+  .chat-log-area {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-log {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    width: 60px;
+    color: #B9B9B9;
+  }
+
+  .chat-box {
+    display: inline-block;
+    max-width: 400px;
+    color: #1B7871;
+  }
+
+  .sent .chat-box {
+    background-color: #DFF4F0;
+  }
+
+  .received .chat-box {
+    background-color: white;
+  }
+  
+</style>
+<!--  -->
+
+<div class="chat-area">
+  <div class="chat-header">
+    <span class="chat-title">〜〜教室とのチャット履歴</span>
+    <span class="reload-time">5/23 9:00時点</span>
+    <span class="reload-button" >更新する</span>
+  </div>
+  <div class="chat-log-area">
+    <div class="chat-log sent">
+      <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
+      <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>      
+    </div>
+    <div class="chat-log received" style="padding:3px 8px;">
+      <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
+      <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>
+    </div>
+    <div class="chat-log sent">
+      <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
+      <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>      
+    </div>
+    <div class="chat-log received" style="padding:3px 8px;">
+      <div class="chat-box" style="display: inline-block;max-width: 400px;">メッセージが入ります</div>
+      <div class="info-box"><span class="read-flag">既読</span><span class="timestamp">10:00</span></div>
+    </div>
+  </div>
+  <div class="chat-submit-area">
+    <form id="chatForm">
+      <div class="form-box" id="会員ID-wrapper" style="display: none;"> 
+        <label for="会員ID" class="form-label">会員ID:</label>
+        <input type="hidden" id="会員ID" name="会員ID" value=""> 
+      </div>
+      <div class="form-box" id="講師名-wrapper" style="display: none;"> 
+        <label for="講師名" class="form-label">講師名:</label>
+        <input type="hidden" id="講師名" name="講師名" value=""> 
+      </div>
+      <div class="form-box" id="教室ID-wrapper" style="display: none;"> 
+        <label for="教室ID" class="form-label">教室ID:</label>
+        <input type="hidden" id="教室ID" name="教室ID" value=""> 
+      </div>
+      <div class="form-box" id="教室名-wrapper" style="display: none;">     
+        <label for="教室名" class="form-label">教室名:</label>
+        <input type="hidden" id="教室名" name="教室名" value=""> 
+      </div>
+      <div class="form-box" id="メッセージ-wrapper" style="width: 100%;"> 
+        <label for="メッセージ" class="form-label">
+          補足・備考:
+        </label>
+        <textarea id="メッセージ" name="メッセージ"></textarea> 
+      </div>
+      <div class="form-box" id="chatButton-wrapper" style=""> 
+          <input type="submit" value="送信" class="submit-button"> 
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

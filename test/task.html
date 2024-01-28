@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク管理アプリ</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="table.css">
+
+    <title>Document</title>
+</head>
+<body>
+  
+    <!-- 更新日時の表示 -->
+    <p id="last-updated"></p>
+    <script>
+      // ページの最終更新日時を取得
+      const lastUpdated = new Date(document.lastModified);
+  
+      // 現在の日時を取得
+      const now = new Date();
+  
+      // 日時のフォーマットを設定
+      const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false
+      };
+  
+      // 最終更新日時と現在日時を比較して表示
+      if (lastUpdated.getTime() === 0) {
+        document.getElementById("last-updated").innerHTML = "このページは更新されていません。";
+      } else if (lastUpdated.getTime() === now.getTime()) {
+        document.getElementById("last-updated").innerHTML = "このページは現在更新されています。";
+      } else if (lastUpdated < now) {
+        document.getElementById("last-updated").innerHTML = "このページは " + lastUpdated.toLocaleDateString("ja-JP", options) + " に更新されました。";
+      }
+    </script>
+
+    <!-- タスク情報の取得、テーブルの表示 -->
+    <script>
+    function script1() {
+      // POSTリクエストの送信
+      fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify({
+            salesId: '9' // 検索条件
+        }),
+        mode: 'cors', //CORS対応
+      })
+      .then(response => response.text()) 
+      .then(data => {
+
+        if(document.getElementById("client-buttons")!=null){
+        document.getElementById("client-buttons").remove();
+        document.getElementsByTagName("table")[0].remove();}
+
+        var body = document.getElementsByTagName("body")[0];
+        document.getElementById("last-updated").insertAdjacentHTML("afterend", data);
+        
+
+        // ここから日付の成形
+        let select = document.getElementById("title");
+        let option;
+        let table = document.getElementsByTagName("table")[0];
+        // let rows = table.rows;
+        // for (let i = 1; i < rows.length; i++) {
+        //   const dateCell = rows[i].querySelector('td:last-child');
+        //   const dateText = dateCell.innerText;
+        //   const dateText2 = dateText.match(/\d{1,2}\/\d{1,2} \d{1,2}:\d{1,2}/);
+        //   const dateText3 = dateText2[0];
+        //   dateCell.innerText = dateText3;
+        // }
+        // let rows = table.rows;
+        // for (let i = 1; i < rows.length; i++) {
+        //   const dateCell = rows[i].querySelector('td:last-child');
+        //   const dateText = dateCell.innerText;
+        //   const dateText2 = dateText.match(/\d{1,2}\/\d{1,2}/);
+        //   const dateObj = new Date(dateText2);
+        //   const year = dateObj.getFullYear();
+        //   const month = dateObj.getMonth() + 1;
+        //   const date = dateObj.getDate();
+        //   const weekday = ["日", "月", "火", "水", "木", "金", "土"][dateObj.getDay()];
+        //   dateCell.innerText = `${month}/${date}(${weekday})`;
+        // }
+        let rows = table.rows;
+        for (let i = 1; i < rows.length; i++) {
+          const dateCell = rows[i].querySelector('td:last-child');
+          const dateText = dateCell.innerText;
+          const dateMatch = dateText.match(/\d{1,2}\/\d{1,2}\s\d{1,2}:\d{1,2}/);
+          if (dateMatch !== null) {
+            const [dateStr] = dateMatch;
+            const date = new Date(`2023/${dateStr}:00`);
+            const formattedDate = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
+            dateCell.innerText = formattedDate;
+          }
+        }
+
+        // クライアント一覧取得
+        const clients = Array.from(new Set([...document.querySelectorAll('table tbody td:nth-child(6)')].map(td => td.textContent)));
+
+        // クライアントが選択された時選択肢作成処理
+        let select2 = document.getElementById("client");
+        let option2;
+        select2.innerHTML = '';
+        clients.forEach(aClient => {
+            // クライアントが選択中のタスク内容のoptionを作成
+            select.innerHTML = '';
+            option2 = document.createElement("option");
+            option2.text = aClient;
+            option2.value = aClient;
+            select2.add(option2);  
+        });
+
+
+
+        // クライアント選択ボタンを作成する
+        const client_buttons = document.createElement("div");
+        client_buttons.setAttribute("id","client-buttons");
+        table.insertAdjacentHTML("beforebegin", client_buttons.outerHTML);
+        const clientButtons = document.getElementById('client-buttons');
+        clients.forEach((client, index) => {
+          // ボタン要素を作成
+          const button = document.createElement('button');
+          button.textContent = client;
+          button.addEventListener('click', () => {
+            // クリックされたボタンにactiveクラスを追加
+            const currentButton = document.querySelector('#client-buttons button.active');
+            if (currentButton) {
+              currentButton.classList.remove('active');
+            }
+            button.classList.add('active');
+
+            // セレクトの中身をクリア
+            select.innerHTML = '';
+
+            // 選択してくださいのデフォルトのoptionを作成
+            let option = document.createElement("option");
+            option.text = "選択してください";
+            option.value = "選択してください";
+            select.add(option);
+
+            // 新規タスク作成のoptionを作成
+            option = document.createElement("option");
+            option.text = "新規タスク作成";
+            option.value = "新規タスク作成";
+            select.add(option);
+
+            // クライアントをフォームに設定
+            formClient = document.querySelector("#myForm #client");
+            formClient.value = client;
+
+            // クライアントが選択された時選択肢作成処理
+            const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
+            rows.forEach(row => {
+              const clientCell = row.cells[5];
+              if (clientCell.textContent === client) {
+                // クライアントが選択中のタスク内容のoptionを作成
+                option = document.createElement("option");
+                option.text = row.cells[0].innerText;
+                option.value = row.cells[0].innerText;
+                select.add(option);
+              } 
+            });
+
+            // クライアントが選択された時の表切り替え処理（画面サイズ変更にも行う）
+            rows.forEach(row => {
+              const clientCell = row.cells[5];
+              if (clientCell.textContent === client) {
+                row.style.display = (window.innerWidth <= 680) ? 'flex' : 'table-row';
+              } else {
+                row.style.display = 'none';
+              }
+            });
+          });
+          // ボタンを追加
+          clientButtons.appendChild(button);
+          // 最初のクライアントを選択状態にする
+          if (index === 0) {
+            button.click();
+            button.classList.add('active');
+          }
+        });
+      });
+    }
+    script1();
+    </script>
+
+    <!-- レスポンシブ変更時のスクリプト -->
+    <script>
+      function handleResize(){
+            const currentButton = document.querySelector('#client-buttons button.active');
+            const client =currentButton.textContent;
+            const rows = Array.from(document.querySelectorAll('tbody tr')).slice(1); // ヘッダーを除外
+            rows.forEach(row => {
+              const clientCell = row.cells[5];
+              if (clientCell.textContent === client) {
+                row.style.display = (window.innerWidth <= 680) ? 'flex' : 'table-row';
+              } else {
+                row.style.display = 'none';
+              }
+            });}
+      window.addEventListener('resize', handleResize);
+    </script>
+
+    
+    <form id="myForm">
+      <div class="form-title">
+        <p>タスク登録フォーム</p>
+      </div>
+      <div class="form-box">
+        <label for="title" class="form-label">タスク内容:</label>
+        <select id="title" name="タスク内容" onchange="showOtherTitle()">
+          <option value="" selected disabled>選択してください</option>
+          <option value="新規タスク作成">新規タスク作成</option>
+        </select>
+        <label for="othertitle" class="form-label2" style="display:none;">新規タスク名:</label>
+        <input type="text" id="otherTitle" name="other:タスク内容" style="display:none;">
+      </div>
+      <div class="form-box">
+        <label for="estimation" class="form-label">見積:</label>
+        <input type="number" id="estimation" name="見積">
+      </div>
+      <div class="form-box">
+        <label for="actual" class="form-label">実工数:</label>
+        <input type="number" id="actual" name="実工数">
+      </div>
+      <div class="form-box">
+        <label for="progress" class="form-label">進捗:</label>
+        <input type="number" id="progress" name="進捗">
+      </div>
+      <div class="form-box">
+        <label for="taskDetail" class="form-label">Task Detail:</label>
+        <textarea id="taskDetail" name="Task Detail"></textarea>
+      </div>
+      <div class="form-box">
+        <label for="client" class="form-label">クライアント:</label>
+        <select id="client" name="クライアント">
+          <option value="A社">A社</option>
+          <option value="B社">B社</option>
+          <option value="C社">C社</option>
+        </select>
+      </div>
+      <div class="form-box">
+        <input type="submit" value="タスクを保存">
+      </div>
+    </form>
+    
+      <script>
+        function showOtherTitle() {
+          let select = document.getElementById("title");
+          let otherTitle = document.getElementById("otherTitle");
+          let otherTitleLabel = document.getElementsByClassName("form-label2")[0];
+          if (select.value === "新規タスク作成") {
+            otherTitle.style.display = "inline-block";
+            otherTitleLabel.style.display = "inline-block";
+          } else {
+            otherTitle.style.display = "none";
+            otherTitleLabel.style.display = "none";
+          }
+        }
+      </script>
+
+
+      <script>
+        // フォームの送信をハンドルする関数
+        const handleSubmit = async (event) => {
+          event.preventDefault(); // デフォルトの送信をキャンセル
+          const form = document.querySelector('#myForm');
+          const formData = new FormData(form);
+          const data = {};
+          // FormDataオブジェクトから連想配列に変換
+          for (const [key, value] of formData.entries()) {
+            if (key === "実工数" || key === "見積" || key === "進捗") {
+              data[key] = Number(value);
+            } else {
+              data[key] = value;
+            }
+          }
+
+        // もし「その他」が選択された場合、テキストボックスの値を利用する
+        if (data["タスク内容"] === "新規タスク作成") {
+          data["タスク内容"] = data["other:タスク内容"];
+        }
+        delete data["other:タスク内容"]
+
+        // taskDetailを整形してdataに追加
+        const now = new Date();
+        const formattedDate = (now.getMonth() + 1) + "/" + now.getDate();
+        const formattedTime = now.getHours().toString().padStart(2, "0") + ":" + now.getMinutes().toString().padStart(2, "0");        const taskDetail = data["Task Detail"];
+        const actual = data["実工数"];
+        const formattedTaskDetail = `${formattedDate} ${formattedTime} 工数：${actual}\n${taskDetail}`;
+        data["Task Detail"] = formattedTaskDetail;
+
+
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxVrKyErZ0bAg8xj717X87UnprroI8ud7gna6__H4mm5SPOt61tSXvUYQWsAe38kMTj9g/exec", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain',
+          },
+          body: JSON.stringify(data),
+          mode: 'cors', //CORS対応
+        });
+
+        const text = await response.text();
+        if (text.includes("Success")) {
+          console.log('データが正常に送信されました');
+          form.reset(); // フォームの入力値をリセット
+        } else {
+          console.error(`エラーメッセージ: ${text}`);
+        }
+        script1();
+        };
+        const form = document.querySelector('#myForm');
+        form.addEventListener('submit', handleSubmit);
+      </script>
+
+<!-- 
+  // // POSTリクエストの送信
+  // fetch("https://script.google.com/macros/s/AKfycbwvbVZYgBgS5XOdT4Lm21TOVjzFqzOmWfblACSOWhDwIirX1UWcKukY4pvozxxsGNmw/exec", {
+  //   method: 'POST',
+  //   headers: {
+  //       'Content-Type': 'text/plain',
+  //   },
+  //   body: JSON.stringify({
+  //       salesId: '9' // 検索条件
+  //   }),
+  //   mode: 'cors', //CORS対応
+  // })
+  // .then(response => response.text()) 
+  // .then(data => {
+  //   var body = document.getElementsByTagName("body")[0];
+  //   document.getElementById("last-updated").insertAdjacentHTML("afterend", data);} -->
+
+
+
+
+
+</body>
+</html>

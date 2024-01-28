@@ -1,0 +1,187 @@
+.chat-area{
+    border-radius: 16px;
+    margin: 50px 0;
+    height: 600px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* チャットヘッダー部分ーーーーーーーーーーーーーーーー */
+.chat-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #1B7871;
+    color: white;
+    padding: 10px 15px;
+    gap: 0.5em;
+    border-radius: 10px 10px 0 0;
+}
+
+.chat-title {
+    flex: 1 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.reload-time, .reload-button {
+    white-space: nowrap;
+}
+
+.reload-button {
+    background-color: white;
+    margin-left: 15px;
+    color: #1B7871;
+    padding: 3px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* チャットログエリア部分ーーーーーーーーーーーーーーーー */
+.chat-log-area {
+    padding:15px 0 ; 
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.chat-log {
+    margin: 12px 15px;
+    display: flex;
+    gap:10px;
+}
+.chat-log.sent {
+    flex-direction: row-reverse;
+}
+
+.chat-box {
+    display: inline-block;
+    padding:8px 15px;
+    border-radius: 8px;
+    max-width: 400px;
+    color: #1B7871;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05); /* 水平オフセット 垂直オフセット ぼかし広がり 色 */
+}
+
+.sent .chat-box {
+    background-color: #DFF4F0;
+}
+
+.received .chat-box {
+    background-color: white;
+}
+
+.info-box {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    width:40px;
+    color: #B9B9B9;
+}
+.sent .info-box {
+    align-items: end;
+}
+
+
+/* サブミットエリアーーーーーーーーーーー */
+.chat-area .chat-submit-area{
+    background-color:#E9EAF2;
+}
+.chat-submit-area{
+    padding:10px 15px;
+    display:flex;
+    border-radius: 0 0 10px 10px;
+}
+
+
+#chatForm{
+    display:flex;
+}
+
+#メッセージ-wrapper{
+    flex: 1 0 auto;
+    white-space: nowrap;
+}
+
+#メッセージ-wrapper textarea{
+    width:100%;
+    font-size:16px;
+    padding: 4px 8px !important;
+    border-radius: 4px;
+    resize: none;
+}
+
+#メッセージ-wrapper textarea:focus {
+    outline: none;
+}
+  
+
+
+
+textarea.expanded{
+    height: 90px;
+}
+
+
+
+
+#chatButton-wrapper .submit-button {
+    background-color: #1B7871;
+    border-radius: 4px;
+    border: none;
+    padding: 4px 16px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* 日付変更線 */
+.day-line {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 15px 15px 5px 15px;
+  }
+  
+  .day-line hr {
+    flex-grow: 1;
+    border: none;
+    height: 2px;
+    background:#B9B9B9 ;
+  }
+  
+  .date-text {
+    padding: 0 30px;
+    color:#B9B9B9 ;
+  }
+
+
+  .icon-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; /* 白色の背景 */
+    border-radius: 50%; /* 丸形にする */
+    width: 30px;
+    height: 30px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05); /* 水平オフセット 垂直オフセット ぼかし広がり 色 */
+  }
+  .icon-container i {
+    color: #1B7871; /* アイコンの色を指定 */
+    font-size: 20px; /* アイコンのサイズを指定 */
+  }
+
+  .phoneArea span{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 10px;
+    display: inline-block;
+  }

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project.css">
+    <link rel="icon" href="favicon.ico">
+    <title>SAUCEED｜プロジェクトページ</title>
+</head>
+<body>
+        <script>
+            fetch("https://script.google.com/macros/s/AKfycbwbM7zqxTI2yLZMOX760Z4rLgZCVncGk41maAxD63fuYpdlDk2ywnuebgrJaLoHx7kO/exec", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: JSON.stringify({
+                }),
+                mode: 'cors', //CORS対応
+              })
+              .then(response => response.text()) 
+              .then(data => {
+    
+                var target = document.querySelector("body");
+                target.innerHTML = data;
+
+
+
+                // 新規プロジェクトフォーム初期値追加ーーーーーーーーーーーーーーーーーーー
+                // 新規プロジェクト追加ボタンがクリックされたときの処理
+                document.querySelector('.projectCreateWrapper button').addEventListener('click', function() {
+                    var selectedClientValue = document.querySelector('.projectTableHeader select.selectedClient').value;
+                    var selectedClientText = document.querySelector('.projectTableHeader select.selectedClient').selectedOptions[0].text;
+                    document.querySelector('.projectCreateForm .f_client').value = selectedClientValue;
+                    document.querySelector('.projectCreateForm .f_client_view').textContent = selectedClientText;
+                });
+
+                // クライアントのセレクト要素が変更されたときの処理ーーーーーーーーーーーー
+                document.querySelector('.projectTableHeader select.selectedClient').addEventListener('change', function() {
+                    var selectedClientValue = this.value;
+                    var selectedClientText = this.selectedOptions[0].text;
+                    document.querySelector('.projectCreateForm .f_client').value = selectedClientValue;
+                    document.querySelector('.projectCreateForm .f_client_view').textContent = selectedClientText;
+                });
+
+
+
+
+                // 今日の日付を取得し、新規追加用フォームにセット
+                var today = new Date().toISOString().split('T')[0];
+                var createDateInput = document.querySelectorAll('.f_date');
+                for (let DateInput of createDateInput) {
+                    DateInput.value = today;
+                }
+
+
+
+                // 更新用フォームの表示・非表示を制御
+                var updateButtons = document.querySelectorAll('.logHeader button');
+                for (let button of updateButtons) {
+                    button.addEventListener('click', function(e) {
+                        var parent = e.target.closest('.log');
+                        var form = parent.querySelector('.logUpdateForm');
+                        toggleFormDisplay(form);
+                    });
+                }
+
+                // 新規ログ追加用フォームの表示・非表示を制御
+                var createButtons = document.querySelectorAll('.logCreateWrapper button');
+                for (let button of createButtons) {
+                    button.addEventListener('click', function(e) {
+                    var parent = e.target.closest('.logCreateWrapper');
+                    var form = parent.nextElementSibling;
+                    toggleFormDisplay(form);
+                });
+                }
+
+                // 新規クライアント追加用フォームの表示・非表示を制御
+                var createButton = document.querySelector('.clientCreateWrapper button');
+                createButton.addEventListener('click', function(e) {
+                    var parent = e.target.closest('.projectTableHeader');
+                    var form = parent.querySelector(".clientCreateForm");
+                    toggleFormDisplay(form);
+                });
+
+                // 新規クライアント追加用フォームの表示・非表示を制御
+                var createButton = document.querySelector('.projectCreateWrapper button');
+                createButton.addEventListener('click', function(e) {
+                    var parent = e.target.closest('.projectTableHeader');
+                    var form = parent.querySelector(".projectCreateForm");
+                    toggleFormDisplay(form);
+                });
+                
+
+                function toggleFormDisplay(form) {
+                    if (form.style.display === 'none' || form.style.display === '') {
+                        form.style.display = 'block';
+                    } else {
+                        form.style.display = 'none';
+                    }
+                }
+
+
+                var forms = document.getElementsByTagName("form");
+                for(var i=0; i<forms.length; i++) {
+                    forms[i].addEventListener("submit", handleSubmit);
+                }
+
+                async function handleSubmit(event) {
+                    event.preventDefault();
+                    const form = event.target;
+                    const formData = new FormData(form);
+                    const data = {};
+                    
+                    for (const [key, value] of formData.entries()) {
+                        data[key] = value;
+                    }
+                    
+                    await fetch("https://script.google.com/macros/s/AKfycbxzcw4pMg85nH1wB4KNT_zdXkP-FCfVxcfzGl66v3izfkFP3GoyxXNJme4IGpfAZWTHOA/exec", {
+                        method: 'POST',
+                        headers: {
+                        'Content-Type': 'text/plain',
+                        },
+                        body: JSON.stringify(data),
+                        mode: 'cors',
+                    });
+                }
+
+
+
+
+
+
+
+              })
+        </script>            
+
+    
+</body>
+</html>

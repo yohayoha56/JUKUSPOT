@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+
+form{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px
+}
+
+form h2{
+  width:100%;
+}
+
+
+input,select,textarea{
+  font-size:16px;
+  padding:3px 6px;
+  border:solid 2px #555555;
+  width:100%;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+
+.checkmark {
+  display: block;
+  margin:1px;
+  width: 24.666px;
+  height: 24.66px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  position: relative;
+}
+
+.hidden-checkbox:checked + .checkmark {
+  background-color: #2196F3;
+  border: 2px solid #555555;
+}
+
+.hidden-checkbox:checked + .checkmark::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 6.5px;
+  top: 2.5px;
+  width: 8px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.multiselect-container,.button-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+}
+
+.button-group button,.tag-button{
+  padding:0px 10px;
+}
+
+.button-group button.selected,.tag-button.selected{
+  background-color:#555;
+  color:white;  
+}

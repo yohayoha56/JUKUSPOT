@@ -1,0 +1,209 @@
+/* ヘッダーの設定 */
+.super-navbar__logo-image{
+  align-items:center;
+}
+
+.super-navbar__content{
+  padding: 0;
+}
+
+
+.super-navbar__logo{
+  width: calc(100% - 40px);
+  overflow: hidden;
+}
+
+#pc_logo{
+  display: inline-block;
+}
+#sp_logo{
+  display: none;
+}
+.super-navbar__logo{
+  width: 100%;
+}
+.super-navbar__actions{
+  width:0px ;
+}
+
+@media (max-width: 680px) {
+  #pc_logo{
+    display: none;
+  }
+  #sp_logo{
+    display:inline-block;
+  }
+
+  .super-navbar__logo{
+    width: calc(100% - 45px);
+  }
+  .super-navbar__actions{
+    width:45px ;
+  }
+}
+
+.super-navbar h1{
+  margin:0; font-size:18px; font-weight:500; display:inline-block;
+}
+
+
+
+
+
+/* メインバーの設定 ーーーーーーーーーーーーーーーーーーーー*/
+.content-area {
+  display: flex;
+  overflow: visible;
+  position: relative;
+  justify-content:space-evenly
+}
+.side-bar{
+  position: sticky;
+  top: 50px;
+  height: 60vh; 
+}
+.modal {
+  z-index: 2000;
+}
+
+/* 横幅の設定 ーーーーーーーーーーーーーーーーーー*/
+.side-bar {
+  width: 240px;
+  display: inline-block;
+  padding: 25px 15px;
+}
+.main-bar {
+  width: calc(100% - 240px);
+  max-width:1100px;
+  display: inline-block;
+  padding: 25px 15px;
+}
+@media (max-width: 680px) {
+  .main-bar{
+    width: 100%;
+    padding:10px;
+    margin: 0;
+  }
+}
+
+/* サイドバーの設定 ーーーーーーーーーーーーーーーーーー*/
+.menu, .menu h1{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size:18px;
+}
+  
+/* 親メニュー */
+.group-menu ,.single-menu{
+margin-bottom: 5px;
+}
+
+.group-menu .menu-item::after{
+  content:"▼";
+  padding-left:15px;
+}
+  
+  /* 親メニューと子メニューのスタイル */
+  .menu-item, .child-menu li {
+  background-color: #17837C;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  }
+
+
+  .child-menu li {
+  background-color: white;
+  color: black;
+  padding:5px 5px;
+  font-size:16px;
+  }
+  
+  
+  /* 子メニューのスタイル */
+  .child-menu {
+  background-color: glay;
+  border: 1px solid black;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display:none;
+  }
+
+  .child-menu li::before{
+      content:"・";
+  }
+  
+  /* 子メニューの項目にマウスが乗った時のスタイル */
+  .child-menu li:hover {
+  background-color: lightgray;
+  }
+
+
+/*マージン解除*/
+.super-navbar{
+margin-bottom:0;
+}
+
+
+
+/* サイドバーの設定用＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾＾ */
+
+.super-navbar.minimal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.super-navbar__actions {
+  display: block;
+}
+
+
+
+/* Default styles */
+.content-area {
+  display: flex;
+}
+
+
+
+#hamburger-menu {
+  display: none;
+  cursor: pointer;
+}
+#overlay {
+  display: none;
+}
+
+/* Styles for screen size 680px or less */
+@media screen and (max-width: 680px) {
+  .content-area {
+    display: block;
+  }
+
+  .side-bar {
+    z-index: 1000;
+    width: 100%;
+    height: auto;
+    top: 50px;
+    display: none;
+    background-color: white;
+  }
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  #overlay {
+      position: fixed; /* Changed from absolute to fixed */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      display:none;
+  }
+}

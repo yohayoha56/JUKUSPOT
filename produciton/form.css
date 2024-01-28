@@ -1,0 +1,95 @@
+.form-title {
+  padding-top: 10px;
+}
+
+.form-title p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.form-box {
+  width: 100%;
+  display: inline-block;
+}
+
+.form-label,.form-label2{
+  font-weight: bold;
+  padding-bottom: 3px;
+}
+
+textarea,
+input,
+select,
+option {
+  width: 100%;
+  font-size: 16px;
+}
+
+select{
+  width: 100%;
+  font-size: 16px;
+  padding:3px 0;
+  margin-bottom: 8px;
+}
+
+#taskDetail {
+  height: 50px;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.form-box:nth-child(7)  {
+  display: none;
+}
+
+.form-box:nth-child(3),
+.form-box:nth-child(4),
+.form-box:nth-child(5)  {
+  padding: 10px 0;
+  font-size: 16px;
+  display: inline-flex;
+  width: calc((100% - 24px) / 3 - 7px);
+}
+.form-box:nth-child(4) {
+  width: calc((100% - 24px) / 3 + 14px);
+}
+.form-box:nth-child(3),
+.form-box:nth-child(4){
+  margin-right: 5px;
+}
+.form-box:nth-child(3) label,
+.form-box:nth-child(4) label,
+.form-box:nth-child(5) label {
+  display: inline-block;
+  width: 43px;
+}
+.form-box:nth-child(4) label{
+  width: 64px;
+}
+.form-box:nth-child(3) input,
+.form-box:nth-child(4) input,
+.form-box:nth-child(5) input {
+  display: inline-block;
+  width: calc(100% - 43px);
+}
+.form-box:nth-child(4) input{
+  width: calc(100% - 64px);
+}
+
+
+//   const data= {
+  //     "タスク内容": "テスト4/12",
+  //     "見積": 10,
+  //     "実工数": 5,
+  //     "進捗": 50,
+  //     "Task Detail": "このタスクは...",
+  //     "クライアント": "A社"
+  //   };
+
+  Task Detail: "4/13 21:20 工数：30\nテスト"
+クライアント: "A社"
+タスク内容: "4/13新タスク"
+実工数: "30"
+見積: "30"
+進捗: "30"
