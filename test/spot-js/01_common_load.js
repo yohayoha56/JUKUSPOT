@@ -96,10 +96,10 @@ waitForProperties().then((propertiesContainer) => {
 
   // ヘッダーの画像生成
   let pc_logo_src = newData["ページタイプ"] == "school" ? 
-    'https://yohayoha56.github.io/JUKUSPOT/logo2.png' : 'https://yohayoha56.github.io/JUKUSPOT/logo1.png';
+    'https://yohayoha56.github.io/JUKUSPOT/test/logo2.png' : 'https://yohayoha56.github.io/JUKUSPOT/test/logo1.png';
 
   let sp_logo_src = newData["ページタイプ"] == "school" ? 
-    'https://yohayoha56.github.io/JUKUSPOT/logo02.png' : 'https://yohayoha56.github.io/JUKUSPOT/logo01.png';
+    'https://yohayoha56.github.io/JUKUSPOT/test/logo02.png' : 'https://yohayoha56.github.io/JUKUSPOT/test/logo01.png';
 
   let headerColor = newData["ページタイプ"] == "school" ? 
     "background-color:#33A614;color:white;":"";
@@ -137,27 +137,27 @@ waitForProperties().then((propertiesContainer) => {
 
   // 外部スクリプトの読み込み設定①
   const stylesheets = [
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/progressbar.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/page_frame.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/page_content.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/schedule_form.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_table.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_form.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_chat.css',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-css/spot_profile.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/progressbar.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/page_frame.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/page_content.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/schedule_form.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/spot_table.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/spot_form.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/spot_chat.css',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-css/spot_profile.css',
     ...(newData["ページタイプ"] === "school" ? [//教室ページのみ
     ] : []),
   ];
   
   // 外部スクリプトの読み込み設定②
   const scripts = [
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/91_func_form.js',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/11_page_top.js',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/21_page_shift.js',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/31_page_chat.js',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/41_page_prof.js',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/03_common_guide.js',
-    'https://yohayoha56.github.io/JUKUSPOT/spot-js/02_common_call.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/91_func_form.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/11_page_top.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/21_page_shift.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/31_page_chat.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/41_page_prof.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/03_common_guide.js',
+    'https://yohayoha56.github.io/JUKUSPOT/test/spot-js/02_common_call.js',
     "https://kit.fontawesome.com/ae75e0f159.js", // Font Awesome
     ...(newData["ページタイプ"] === "school" ? [
     ] : []),
