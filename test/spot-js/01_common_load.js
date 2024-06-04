@@ -176,6 +176,7 @@ waitForProperties().then((propertiesContainer) => {
 
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
+  console.log("extractProperties.propertiesContainer:", propertiesContainer);
   const properties = Array.from(propertiesContainer.children);
   let newData = {};
   properties.forEach((property) => {
