@@ -173,6 +173,7 @@ function call_fetchData(page_call_property) {
     "callback": page_call_property["callback"],
     "ページタイプ": newData["ページタイプ"]
   };
+  console.log("data object:", data);
   
   let url;
   switch (page_call_property["callback"]) {
