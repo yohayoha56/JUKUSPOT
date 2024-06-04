@@ -3,9 +3,9 @@ function insertGuide(page_call_property){
     let headerTitle = newData["ページタイプ"] == "school" ? 
     `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}先生マイページ`;
 
-    //const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
-    const title = "";
-    const guide = "";
+    const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
+    //const title = "";
+    //const guide = "";
 
 
     // ページタイトル＋サービスロゴ＋ガイドの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
