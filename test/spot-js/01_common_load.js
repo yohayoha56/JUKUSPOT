@@ -41,6 +41,7 @@ function handleTimeout() {
 
 let paramsID, paramsP;
 waitForProperties().then((propertiesContainer) => {
+  console.log("propertiesContainer:", propertiesContainer);
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
 
