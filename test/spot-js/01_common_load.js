@@ -42,8 +42,8 @@ function handleTimeout() {
 let paramsID, paramsP;
 waitForProperties().then((propertiesContainer) => {
   console.log("propertiesContainer:", propertiesContainer);
-  // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
+  console.log("newData after extraction:", newData);
 
   // リダイレクト用スクリプトーーーーーーーーーーーーーーーーーーーーー
   async function checkRedirect(newData) {
@@ -185,6 +185,8 @@ function extractProperties(propertiesContainer) {
     const propertyContent = property.querySelector(".notion-property");
 
     if (!propertyContent) {
+      console.log("Property Name:", propertyName);
+      console.log("Property Data:", propertyData);
       newData[propertyName] = "";
     } else {
       let propertyData; 
@@ -215,6 +217,7 @@ function extractProperties(propertiesContainer) {
     }
   });
   newData["名前"] = document.getElementsByTagName("h1")[0];
+  console.log("newData:", newData);
   return newData;
 }
 // ここからはCSSとJSを読み込むためのスクリプトーーーーーーーーーーーーーーーーーーーーー
