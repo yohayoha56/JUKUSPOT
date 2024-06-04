@@ -214,6 +214,8 @@ function extractProperties(propertiesContainer) {
       }
 
       newData[propertyName] = propertyData;
+      console.log("Property Name:", propertyName);
+      console.log("Property Data:", propertyData);
     }
   });
   newData["名前"] = document.getElementsByTagName("h1")[0];
