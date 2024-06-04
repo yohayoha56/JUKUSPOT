@@ -7,9 +7,9 @@ function insertGuide(page_call_property){
     `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}先生マイページ`;
 
     // ページによって、トップ部分にガイドの挿入を行うための関数
-    //const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
-    const title = "";
-    const guide = "";
+    const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
+    //const title = "";
+    //const guide = "";
 
     // ページタイトル＋サービスロゴ＋ガイドの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
     var target = document.getElementById("page-content");
