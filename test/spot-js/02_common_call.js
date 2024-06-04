@@ -178,6 +178,7 @@ function call_fetchData(page_call_property) {
   console.log("data object:", data);
   
   let url;
+  console.log("url", url);
   switch (page_call_property["callback"]) {
     case "profile_page":
       url = 'https://script.google.com/macros/s/AKfycbxcs2Vwu5jn_aBo5KzM6vdiO1ZNc2wb0ipcGW4-GhTr5YxAnVqmLT1596K665nqCwiNJQ/exec'; break;
