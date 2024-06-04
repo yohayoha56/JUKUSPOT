@@ -10,6 +10,8 @@ function insertGuide(page_call_property){
     const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
     //const title = "";
     //const guide = "";
+    console.log("pageType:", pageType);
+　  console.log("callback:", callback);
 
     // ページタイトル＋サービスロゴ＋ガイドの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーー
     var target = document.getElementById("page-content");
