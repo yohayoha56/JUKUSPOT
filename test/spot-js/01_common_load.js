@@ -40,6 +40,8 @@ function handleTimeout() {
 
 
 let paramsID, paramsP;
+console.log("paramsID:",paramsID)
+console.log("paramsP:",paramsP)
 waitForProperties().then((propertiesContainer) => {
   console.log("propertiesContainer:", propertiesContainer);
   newData = extractProperties(propertiesContainer);
