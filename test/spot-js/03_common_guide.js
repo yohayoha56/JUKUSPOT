@@ -1,6 +1,6 @@
 function insertGuide(page_call_property){
-    
-    let headerTitle = newData["ページタイプ"] == "school" ? 
+
+    let headerTitle = newData["ページタイプ"] == "school" ?
     `｜${newData["教室名"]}管理ページ`: `｜${newData["姓"]}${newData["名"]}先生マイページ`;
 
     //const {title, guide} = getPageTitleAndGuide(newData["ページタイプ"], page_call_property["callback"]);
@@ -121,13 +121,13 @@ function insertGuide(page_call_property){
             </div>
             <div class="chat-submit-area">
             <form id="chatForm">
-                <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value=""> 
-                <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value=""> 
-                <div class="form-box" id="メッセージ-wrapper"> 
-                <textarea id="メッセージ" name="メッセージ"></textarea> 
+                <input type="hidden" id="会員ID" name="会員ID" value=""><input type="hidden" id="講師名" name="講師名" value="">
+                <input type="hidden" id="教室ID" name="教室ID" value=""><input type="hidden" id="教室名" name="教室名" value="">
+                <div class="form-box" id="メッセージ-wrapper">
+                <textarea id="メッセージ" name="メッセージ"></textarea>
                 </div>
-                <div class="form-box" id="chatButton-wrapper" style=""> 
-                    <input type="submit" value="送信" class="submit-button"> 
+                <div class="form-box" id="chatButton-wrapper" style="">
+                    <input type="submit" value="送信" class="submit-button">
                 </div>
             </form>
             </div>
