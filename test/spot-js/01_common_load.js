@@ -85,6 +85,8 @@ waitForProperties().then((propertiesContainer) => {
   // URLからクエリパラメータを取得
   let urlObj = new URL(url);
   let params = new URLSearchParams(urlObj.search);
+  console.log('urlObj',urlObj)
+  console.log('params',params)
   paramsP = params.get("p");
   paramsID = params.get("id");
   console.log('paramsP_1_common',paramsP)
