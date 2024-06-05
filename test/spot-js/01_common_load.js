@@ -182,12 +182,15 @@ waitForProperties().then((propertiesContainer) => {
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
   const properties = Array.from(propertiesContainer.children);
-console.log('properties :' + properties);
+
   let newData = {};
   properties.forEach((property) => {
     const propertyElement = property.querySelector(".notion-page__property-name > span");
     const propertyName = propertyElement ? propertyElement.innerText : "";
     const propertyContent = property.querySelector(".notion-property");
+
+    console.log('property :' + property);
+    console.log('propertyName :' + propertyName);
 
     if (!propertyContent) {
       newData[propertyName] = "";
@@ -196,6 +199,8 @@ console.log('properties :' + properties);
 
       if (propertyContent.classList.contains("notion-property__rollup")) {
         propertyData = Array.from(propertyContent.children).flatMap((child) => {
+          console.log('propertyContent.children :' + child);
+
           // ロールアップの子要素がタイトルの場合
           if (child.classList.contains("notion-property")) {
             return Array.from(child.querySelectorAll(".notion-semantic-string .notion-semantic-string > span")).map(
