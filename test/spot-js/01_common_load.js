@@ -82,6 +82,7 @@ waitForProperties().then((propertiesContainer) => {
 
   let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
   let url = window.location.href;
+  console.log('url:',url)
   // URLからクエリパラメータを取得
   let urlObj = new URL(url);
   let params = new URLSearchParams(urlObj.search);
