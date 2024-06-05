@@ -184,7 +184,6 @@ function extractProperties(propertiesContainer) {
   const properties = Array.from(propertiesContainer.children);
   let newData = {};
   properties.forEach((property) => {
-    console.log(`Processing property ${index + 1}:`, property);
     const propertyElement = property.querySelector(".notion-page__property-name > span");
     const propertyName = propertyElement ? propertyElement.innerText : "";
     const propertyContent = property.querySelector(".notion-property");
