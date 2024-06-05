@@ -62,6 +62,8 @@ if(menuData.map(menu => menu.id).includes(paramsP) && childElementsId.includes(p
 } else {
   page_call_property= { "callback" : "top_page" }
 }
+console.log('page_call_property');
+console.log(page_call_property);
 call_fetchData(page_call_property);
 
 
