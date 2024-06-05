@@ -89,8 +89,8 @@ waitForProperties().then((propertiesContainer) => {
   let params = new URLSearchParams(urlObj.search);
   paramsP = params.get("p");
   paramsID = params.get("id");
-  console.log('paramsP',paramsP)
-  console.log('paramsID',paramsID)
+  console.log('paramsP_1_common',paramsP)
+  console.log('paramsID_1_common',paramsID)
 
   // URLの変換処理（後ろに教室講師のフラグをつけてあげる）
 
