@@ -182,6 +182,7 @@ waitForProperties().then((propertiesContainer) => {
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
   const properties = Array.from(propertiesContainer.children);
+console.log('properties :' + properties);
   let newData = {};
   properties.forEach((property) => {
     const propertyElement = property.querySelector(".notion-page__property-name > span");
