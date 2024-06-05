@@ -41,7 +41,8 @@ if (isSchool) {
 const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID一覧"];
 
 console.log('isSchool :' + isSchool);
-console.log('newData :' + newData);
+console.log('newData :');
+console.log(JSON.stringify(newData));
 console.log('サイドメニュー用childElementsData :' + childElementsData);
 
 
