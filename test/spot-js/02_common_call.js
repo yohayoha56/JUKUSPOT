@@ -36,11 +36,12 @@ if (isSchool) {
   childElementsData = lastNameList.map((lastName, index) => `${lastName}${firstNameList[index]}`);
 } else {
   childElementsData = newData["教室名一覧"];
+  console.log('newData["教室名一覧"] :' + newData["教室名一覧"]);
 }
 const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID一覧"];
 
 console.log('isSchool :' + isSchool);
-console.log('newData :' + Object.fromEntries(newData));
+console.log('newData :' + newData);
 console.log('サイドメニュー用childElementsData :' + childElementsData);
 
 
