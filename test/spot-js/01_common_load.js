@@ -1,7 +1,6 @@
 // const { redirect } = require("express/lib/response");
 
 function waitForProperties() {
-  console.log("1. waitForProperties関数が呼び出されました");
   let timeoutId;
   return new Promise((resolve, reject) => {
     const checkProperties = () => {
@@ -42,15 +41,12 @@ function handleTimeout() {
 
 let paramsID, paramsP;
 // 3. waitForProperties関数の呼び出しと処理
-console.log("3. waitForProperties関数の呼び出しを開始します");
 waitForProperties().then((propertiesContainer) => {
-  console.log("3-1. waitForProperties関数が成功しました");
   console.log("propertiesContainer:", propertiesContainer);
   newData = extractProperties(propertiesContainer);
   console.log("newData after extraction:", newData);
 
   // リダイレクト用スクリプトーーーーーーーーーーーーーーーーーーーーー
-  console.log("3-2. リダイレクト用スクリプトを開始します");
   async function checkRedirect(newData) {
     let redata;
     var targets = ["講師トップページ", "講師スケジュール提出", "講師シフト確定リスト", "講師勤怠確認リスト", "講師教室確認リスト", "講師連絡確認リスト", "講師プロフィール", "講師よくある質問", "講師シフト確定", "講師勤怠確認", "講師教室確認", "講師連絡確認"];
@@ -84,9 +80,7 @@ waitForProperties().then((propertiesContainer) => {
   }
   if (newData["ページ表示名"]) { checkRedirect(newData);}
   // リダイレクト用スクリプト（終わり）ーーーーーーーーーーーーーーーー
-  console.log("3-3. リダイレクト用スクリプトが完了しました");
 
-  console.log("3-4. URLパラメータの取得を開始します");
   let last_url = newData["ページタイプ"] == "school" ? "?juku-cr":"?koushi";
   let url = window.location.href;
   console.log('url:',url)
