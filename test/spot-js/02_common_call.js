@@ -42,7 +42,7 @@ const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID
 
 console.log('isSchool :' + isSchool);
 console.log('newData :');
-console.log(JSON.stringify(newData));
+console.dir(newData);
 console.log('サイドメニュー用childElementsData :' + childElementsData);
 
 
