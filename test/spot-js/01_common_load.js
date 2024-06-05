@@ -198,8 +198,6 @@ function extractProperties(propertiesContainer) {
     const propertyContent = property.querySelector(".notion-property");
 
     if (!propertyContent) {
-      console.log("!propertyContent.Property Name:", propertyName);
-      console.log("!propertyContentProperty Data:", propertyData);
       newData[propertyName] = "";
     } else {
       let propertyData; 
