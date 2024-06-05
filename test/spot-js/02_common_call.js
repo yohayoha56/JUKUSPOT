@@ -32,17 +32,15 @@ let menuData = [
 let childElementsData  = [];
 if (isSchool) {
   const lastNameList = newData["講師[姓]一覧"];
-  console.log(lastNameList)
   const firstNameList = newData["講師[名]一覧"];
-  console.log(firstNameList)
   childElementsData = lastNameList.map((lastName, index) => `${lastName}${firstNameList[index]}`);
-  console.log(childElementsData)
 } else {
   childElementsData = newData["教室名一覧"];
 }
 const childElementsId = isSchool ? newData["講師ID一覧"] : newData["教室ID一覧"];
 
-console.log('newData :' + newData);
+console.log('isSchool :' + isSchool);
+console.log('newData :' + JSON.stringify(newData));
 console.log('サイドメニュー用childElementsData :' + childElementsData);
 
 
