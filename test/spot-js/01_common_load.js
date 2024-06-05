@@ -42,9 +42,7 @@ function handleTimeout() {
 let paramsID, paramsP;
 // 3. waitForProperties関数の呼び出しと処理
 waitForProperties().then((propertiesContainer) => {
-  console.log("propertiesContainer:", propertiesContainer);
   newData = extractProperties(propertiesContainer);
-  console.log("newData after extraction:", newData);
 
   // リダイレクト用スクリプトーーーーーーーーーーーーーーーーーーーーー
   async function checkRedirect(newData) {
