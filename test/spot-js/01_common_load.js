@@ -181,7 +181,6 @@ waitForProperties().then((propertiesContainer) => {
 
 // ここからはページプロパティを取得するスクリプトーーーーーーーーーーーーーーーーーーーー
 function extractProperties(propertiesContainer) {
-  console.log("extractProperties.propertiesContainer:", propertiesContainer);
   const properties = Array.from(propertiesContainer.children);
   let newData = {};
   properties.forEach((property) => {
@@ -191,8 +190,6 @@ function extractProperties(propertiesContainer) {
     const propertyContent = property.querySelector(".notion-property");
 
     if (!propertyContent) {
-      console.log("!propertyContent.Property Name:", propertyName);
-      console.log("!propertyContentProperty Data:", propertyData);
       newData[propertyName] = "";
     } else {
       let propertyData; 
