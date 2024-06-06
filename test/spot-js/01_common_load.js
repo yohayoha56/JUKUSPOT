@@ -228,11 +228,11 @@ function extractProperties(propertiesContainer) {
         console.log("base");
         console.log(base);
 
-        let demo1 = propertyContent.outerHTML.innerText.trim();
+        let demo1 = propertyContent.outerHTML.innerText;
         console.log('demo1');
         console.log(demo1);
 
-        let demo2 = base.innerText.trim();
+        let demo2 = base.innerText;
         console.log('demo2');
         console.log(demo2);
 
