@@ -230,7 +230,7 @@ function extractProperties(propertiesContainer) {
         propertyData = Array.from(propertyContent.children).flatMap((child) => {
           console.log("child.querySelector");
           console.log(child.querySelector(".notion-semantic-string"));
-        }
+        })
       }
 
       newData[propertyName] = propertyData;
