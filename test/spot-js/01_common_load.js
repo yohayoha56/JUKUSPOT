@@ -254,7 +254,7 @@ function extractProperties(propertiesContainer) {
           propertyContent.querySelectorAll(".notion-semantic-string")
         ).map((relation) => relation.innerText.trim());
       } else {
-        propertyData = base || "";
+        propertyData = propertyContent.innerHTML;
       }
 
       newData[propertyName] = propertyData;
