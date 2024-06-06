@@ -46,6 +46,8 @@ console.dir(newData);
 console.log('サイドメニュー用childElementsData :' + childElementsData);
 
 
+console.log('サイドメニュー用childElementsData :');
+console.dir(childElementsData);
 
 // 初回のトップページの呼び出し
 let page_call_property
