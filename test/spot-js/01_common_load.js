@@ -223,13 +223,13 @@ function extractProperties(propertiesContainer) {
         );
       } else {
         console.log("else");
-        // console.log(propertyContent.querySelector(".notion-semantic-string > p"));
-        // propertyData = propertyContent.querySelector(".notion-semantic-string > p")?.innerText || "";
+        // console.log("propertyContent.querySelector");
 
-        propertyData = Array.from(propertyContent.children).flatMap((child) => {
-          console.log("child.querySelector");
-          console.log(child.querySelector(".notion-semantic-string"));
-        }
+        let item = propertyContent.querySelector(".notion-semantic-string")?.innerText.trim();
+        console.log("item")
+        console.log(item)
+        
+        propertyData = propertyContent.querySelector(".notion-semantic-string")?.innerText || "";
       }
 
       newData[propertyName] = propertyData;
