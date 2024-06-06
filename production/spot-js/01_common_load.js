@@ -206,7 +206,8 @@ function extractProperties(propertiesContainer) {
           relation.innerText.trim()
         );
       } else {
-        propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
+        // propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
+        propertyData = propertyContent.innerHTML
       }
 
       newData[propertyName] = propertyData;
