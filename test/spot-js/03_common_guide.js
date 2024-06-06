@@ -145,6 +145,8 @@ function insertGuide(page_call_property){
 
 // ページタイプとコールバックに基づいてページタイトルとガイドを返す関数ーーーーーーーーーーーーーーー
 function getPageTitleAndGuide(pageType, callback) {
+    console.log('pageType, callback');
+    console.log(pageType, callback);
     let titlesAndGuides = {
         "school": { //教室ページの定義ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
             "top_page": {
