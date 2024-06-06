@@ -52,6 +52,10 @@ let page_call_property
 if(menuData.map(menu => menu.id).includes(paramsP) && childElementsId.includes(paramsID)){
   const matchingIndex = childElementsId.indexOf(paramsID); 
   const matchingData = childElementsData[matchingIndex]; 
+  console.log('in menuData');
+  console.log(paramsP);
+  console.log(paramsID);
+  console.log(matchingData);
 
   page_call_property = {
     "callback" : paramsP,
