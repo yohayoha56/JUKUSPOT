@@ -88,7 +88,8 @@ waitForProperties().then((propertiesContainer) => {
   console.log('urlObj',urlObj)
   console.log('params',params)
   paramsP = params.get("p");
-  paramsID = params.get("id");
+  //paramsID = params.get("id");
+  paramsID = "acab77c02a3045189a25b1d2fc789f7f"
   console.log('paramsP_1_common',paramsP)
   console.log('paramsID_1_common',paramsID)
   console.log("3-5. URLパラメータの取得が完了しました");
