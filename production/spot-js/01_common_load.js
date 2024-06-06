@@ -186,31 +186,34 @@ function extractProperties(propertiesContainer) {
       newData[propertyName] = "";
     } else {
       let propertyData; 
+      console.log('1224');
+      console.log('propertyContent');
+      console.log(propertyContent);
 
       if (propertyContent.classList.contains("notion-property__rollup")) {
         propertyData = Array.from(propertyContent.children).flatMap((child) => {
           // ロールアップの子要素がタイトルの場合
           if (child.classList.contains("notion-property")) {
+            console.log("notion-property");
             return Array.from(child.querySelectorAll(".notion-semantic-string .notion-semantic-string > span")).map(
               (content) => content.innerText
             );
           // ロールアップの子要素がタイトル以外の場合
           } else {
+            console.log("no notion-property");
             return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
               (content) => content.innerText
             );
           }
         });
       } else if (propertyContent.classList.contains("notion-property__relation")) {
+        console.log("notion-property__relation");
         propertyData = Array.from(propertyContent.querySelectorAll(".notion-semantic-string > span")).map((relation) =>
           relation.innerText.trim()
         );
       } else {
+        console.log("else");
         // propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
-        console.log('1220');
-        console.log('propertyContent');
-        console.log(propertyContent);
-
         console.log('propertyContent.innerHTML');
         console.log(propertyContent.innerHTML);
         propertyData = propertyContent.innerHTML
