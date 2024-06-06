@@ -225,7 +225,7 @@ function extractProperties(propertiesContainer) {
         console.log("else");
         // console.log("propertyContent.querySelector");
 
-        let item = propertyContent.querySelector(".notion-semantic-string")?.innerText.trim();
+        let item = propertyContent.textContent;
         console.log("item")
         console.log(item)
         
