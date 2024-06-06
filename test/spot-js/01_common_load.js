@@ -231,7 +231,7 @@ function extractProperties(propertiesContainer) {
         var parser = new DOMParser();
         var doc = parser.parseFromString(base, 'text/html');
 
-        let demo1 = doc.querySelector('notion-semantic-string').textContent;
+        let demo1 = doc.querySelector('notion-semantic-string');
         console.log('demo1');
         console.log(demo1);
 
