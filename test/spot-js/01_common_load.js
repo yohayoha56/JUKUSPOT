@@ -222,8 +222,9 @@ function extractProperties(propertiesContainer) {
           relation.innerText.trim()
         );
       } else {
-        console.log("else")
-        propertyData = propertyContent.querySelector(".notion-semantic-string")?.innerText || "";
+        console.log("else");
+        console.log(propertyContent.querySelector(".notion-semantic-string"));
+        propertyData = propertyContent.querySelector(".notion-semantic-string")?.innerText || propertyContent.querySelector(".notion-semantic-string")?.textContent || "";
       }
 
       newData[propertyName] = propertyData;
