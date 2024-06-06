@@ -226,7 +226,7 @@ function extractProperties(propertiesContainer) {
         console.log("else");
         // console.log("propertyContent.querySelector");
 
-        let item = propertyContent.textContent;
+        let item = propertyContent.outerHTML;
         console.log("item")
         console.log(item)
 
