@@ -207,6 +207,9 @@ function extractProperties(propertiesContainer) {
         );
       } else {
         // propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
+        console.log('1218');
+        console.log('propertyContent.innerHTML');
+        console.log(propertyContent.innerHTML);
         propertyData = propertyContent.innerHTML
       }
 
