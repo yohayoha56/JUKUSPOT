@@ -187,6 +187,7 @@ function extractProperties(propertiesContainer) {
     } else {
       let propertyData; 
       console.log('1224');
+      console.log('1228');
       console.log('propertyContent');
       console.log(propertyContent);
 
@@ -195,20 +196,20 @@ function extractProperties(propertiesContainer) {
           // ロールアップの子要素がタイトルの場合
           if (child.classList.contains("notion-property")) {
             console.log("notion-property");
-            return Array.from(child.querySelectorAll(".notion-semantic-string .notion-semantic-string > span")).map(
+            return Array.from(child.querySelectorAll(".notion-semantic-string .notion-semantic-string")).map(
               (content) => content.innerText
             );
           // ロールアップの子要素がタイトル以外の場合
           } else {
             console.log("no notion-property");
-            return Array.from(child.querySelectorAll(".notion-semantic-string > span")).map(
+            return Array.from(child.querySelectorAll(".notion-semantic-string")).map(
               (content) => content.innerText
             );
           }
         });
       } else if (propertyContent.classList.contains("notion-property__relation")) {
         console.log("notion-property__relation");
-        propertyData = Array.from(propertyContent.querySelectorAll(".notion-semantic-string > span")).map((relation) =>
+        propertyData = Array.from(propertyContent.querySelectorAll(".notion-semantic-string")).map((relation) =>
           relation.innerText.trim()
         );
       } else {
