@@ -224,8 +224,13 @@ function extractProperties(propertiesContainer) {
         );
       } else {
         console.log("else");
-        console.log(propertyContent.querySelector(".notion-semantic-string"));
-        propertyData = propertyContent.querySelector(".notion-semantic-string")?.innerText || propertyContent.querySelector(".notion-semantic-string")?.textContent || "";
+        // console.log(propertyContent.querySelector(".notion-semantic-string > p"));
+        // propertyData = propertyContent.querySelector(".notion-semantic-string > p")?.innerText || "";
+
+        propertyData = Array.from(propertyContent.children).flatMap((child) => {
+          console.log("child.querySelector");
+          console.log(child.querySelector(".notion-semantic-string"));
+        }
       }
 
       newData[propertyName] = propertyData;
