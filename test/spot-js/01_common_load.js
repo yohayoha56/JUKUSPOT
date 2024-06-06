@@ -224,13 +224,7 @@ function extractProperties(propertiesContainer) {
         );
       } else {
         console.log("else");
-        // console.log("propertyContent.querySelector");
-
-        let item = propertyContent.outerHTML;
-        console.log("item")
-        console.log(item)
-
-        propertyData = propertyContent.querySelector(".notion-semantic-string")?.innerText || "";
+        propertyData = propertyContent.outerHTML.innerText || '';
       }
 
       newData[propertyName] = propertyData;
