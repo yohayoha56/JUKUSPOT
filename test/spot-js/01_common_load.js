@@ -225,7 +225,8 @@ function extractProperties(propertiesContainer) {
       } else {
         console.log("else");
 
-        console.log("662");
+        console.log("663");
+
         const base = propertyContent.innerHTML;
         console.log("base");
         console.log(base);
@@ -234,7 +235,7 @@ function extractProperties(propertiesContainer) {
         // console.log('demo1');
         // console.log(demo1);
 
-        // propertyData = demo1 || '';
+        propertyData = base || '';
       }
 
       newData[propertyName] = propertyData;
