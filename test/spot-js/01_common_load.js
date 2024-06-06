@@ -224,16 +224,14 @@ function extractProperties(propertiesContainer) {
         );
       } else {
         console.log("else");
-        const base = propertyContent.outerHTML;
+        console.log("661");
+        const base = propertyContent.innerHTML;
         console.log("base");
         console.log(base);
 
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(base, 'text/html');
-
-        let demo1 = doc.querySelector('notion-semantic-string');
-        console.log('demo1');
-        console.log(demo1);
+        // doc.querySelector('notion-semantic-string');
+        // console.log('demo1');
+        // console.log(demo1);
 
         propertyData = demo1 || '';
       }
