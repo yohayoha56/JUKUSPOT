@@ -207,12 +207,17 @@ function extractProperties(propertiesContainer) {
         );
       } else {
         // propertyData = propertyContent.querySelector(".notion-semantic-string > span")?.innerText || "";
-        console.log('1218');
+        console.log('1220');
+        console.log('propertyContent');
+        console.log(propertyContent);
+
         console.log('propertyContent.innerHTML');
         console.log(propertyContent.innerHTML);
         propertyData = propertyContent.innerHTML
       }
 
+      console.log("Property Name:", propertyName);
+      console.log("Property Data:", propertyData);
       newData[propertyName] = propertyData;
     }
   });
