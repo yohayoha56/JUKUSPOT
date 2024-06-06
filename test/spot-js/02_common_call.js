@@ -49,6 +49,8 @@ console.log('サイドメニュー用childElementsData :' + childElementsData);
 
 // 初回のトップページの呼び出し
 let page_call_property
+console.log('menuData');
+console.log(menuData);
 if(menuData.map(menu => menu.id).includes(paramsP) && childElementsId.includes(paramsID)){
   const matchingIndex = childElementsId.indexOf(paramsID); 
   const matchingData = childElementsData[matchingIndex]; 
