@@ -228,11 +228,14 @@ function extractProperties(propertiesContainer) {
         console.log("base");
         console.log(base);
 
-        let demo1 = base.querySelector('notion-semantic-string').textContent;
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(base, 'text/html');
+
+        let demo1 = doc.querySelector('notion-semantic-string').textContent;
         console.log('demo1');
         console.log(demo1);
 
-        propertyData = propertyContent.outerHTML.textContent || '';
+        propertyData = demo1 || '';
       }
 
       newData[propertyName] = propertyData;
