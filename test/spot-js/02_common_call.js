@@ -215,6 +215,7 @@ function call_fetchData(page_call_property) {
     if(loadArea){loadArea.remove()}
 
     const data2 = JSON.parse(data);
+    console.log('data2.callback')
     console.log(data2.callback)
     
     // Callbackが一致する場合のみデータ出力を行う
