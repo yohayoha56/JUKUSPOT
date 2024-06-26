@@ -119,7 +119,7 @@ function chat_page(page_call_property) {
     // データの送信
     try {
       console.log("Sending data to server...");
-      const response = await fetch("https://script.google.com/macros/s/AKfycbx0ERuKrsfIl_ci92tlFNJEP41w1bUo1vunwYy7Na2Sto87tq84Th27Iea76c4cgRpR/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbx_CTJEdTTBdVyIpAvzN4zDz2zXcydnP4cXwSk-hZfm-0iWUImJ3VcXcce2JBfGa5wdBw/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -153,7 +153,7 @@ function chat_page(page_call_property) {
 
     try {
       console.log("Sending read check data to server...");
-      const response = await fetch("https://script.google.com/macros/s/AKfycbx0ERuKrsfIl_ci92tlFNJEP41w1bUo1vunwYy7Na2Sto87tq84Th27Iea76c4cgRpR/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbx_CTJEdTTBdVyIpAvzN4zDz2zXcydnP4cXwSk-hZfm-0iWUImJ3VcXcce2JBfGa5wdBw/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
