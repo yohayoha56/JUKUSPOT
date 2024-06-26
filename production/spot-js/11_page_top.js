@@ -366,7 +366,7 @@ function top_page(page_call_property) {
       modal.style.display = "none";
     }, 3000);
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
-    const response = await fetch( "https://script.google.com/macros/s/AKfycbx0ERuKrsfIl_ci92tlFNJEP41w1bUo1vunwYy7Na2Sto87tq84Th27Iea76c4cgRpR/exec", {
+    const response = await fetch( "https://script.google.com/macros/s/AKfycbwNRyKEWNiL9UD2mli_Fqq-Q9dI4zREtLr0D9kJUNpncOCcinC3cS_Y0GI-JNFlBsje/exec", {
         method: 'POST',
         headers: {
         'Content-Type': 'text/plain',
