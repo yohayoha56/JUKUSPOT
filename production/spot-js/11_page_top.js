@@ -1,6 +1,7 @@
+function kintai_page(page_call_property) {};
+
 // トップページのGASレスポンスを受け取った後に行う処理。
 function top_page(page_call_property) {
-  console.log("top_page function started", page_call_property);
 
   // テーブルの行の色をステータスに応じて変更
   // #region 
@@ -35,12 +36,12 @@ function top_page(page_call_property) {
       }
     }
   });
-  console.log("Table rows color updated");
   // #endregion 
 
-  // 出勤、退勤、承認フォームの作成
-  console.log("Creating attendance forms");
-  const table = document.getElementById("work-table");
+  
+
+  // 出勤、退勤、、承認フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  const table = document.getElementById("work-table")
   const rows = Array.from(table.querySelectorAll('tr:not(:first-child)'));
   const formsContainer = document.getElementById('forms-container');
 
@@ -49,6 +50,7 @@ function top_page(page_call_property) {
   const nowInTokyo = new Date(now.toLocaleString('en-US', {timeZone: 'Asia/Tokyo'}));
 
   rows.forEach(row => {
+    
     const date = row.querySelector('td:nth-child(1)').innerText;
     const nowStatus = row.querySelector('td:nth-child(2)').innerText;
     const teacherId = newData["ページタイプ"] == "school"? "" : newData["会員ID"];
@@ -56,52 +58,50 @@ function top_page(page_call_property) {
         row.querySelector('td:nth-child(3)').innerText : newData["姓"]+newData["名"];
     const schoolId = newData["ページタイプ"] == "school"? newData["教室ID"] : "";
     const schoolName = newData["ページタイプ"] == "school"? 
-        newData["教室名"] : row.querySelector('td:nth-child(3)').innerText;
+        newData["教室名"] : row.querySelector('td:nth-child(3)').innerText;;
     const workTime = row.querySelector('td:nth-child(4)').innerText;
     const breakTime = row.querySelector('td:nth-child(5)').innerText;
     const remarks = row.querySelector('td:nth-child(6)').innerHTML;
     const rowDate = new Date(date+"T00:00:00+09:00");
-    const newstart = row.dataset.newstart;
-    const newfin = row.dataset.newfin;
-    const newbreak = row.dataset.newbreak;
+    const newstart = row.dataset.newstart
+    const newfin = row.dataset.newfin
+    const newbreak = row.dataset.newbreak
 
-    let formId, formTitle, formInfo, formGuide, formButton, newStatus;
+
+
+
+    let formId, formTitle, formInfo, formGuide, formButton, newStatus
 
     if (newData["ページタイプ"] == "school" && nowStatus == '退勤報告済み') {
         //教室承認フォーム概要の定義
-        formId = "approvalForm";
-        formTitle = `${date}｜${teacherName}先生`;
-        formInfo = "勤務予定の内容";
-        formGuide = "↓勤務時間の変更がある場合は記入してください";
-        formButton = "勤務を承認する";
-        newStatus = "教室承認済み";
+        formId = "approvalForm"
+        formTitle = `${date}｜${teacherName}先生`
+        formInfo = "勤務予定の内容"
+        formGuide = "↓勤務時間の変更がある場合は記入してください"
+        formButton = "勤務を承認する"
+        newStatus = "教室承認済み"
     } else if (newData["ページタイプ"] == "teacher") {
-      if (nowStatus == '勤務予定' && rowDate <= nowInTokyo) {
+    if (nowStatus == '勤務予定' && rowDate <= nowInTokyo) {
         //出勤報告フォーム概要の定義
-        formId = "checkInForm";
-        formTitle = `${date}｜出勤報告`;
-        formInfo = "勤務予定の内容";
-        formGuide = "↓出勤報告をしてください";
-        formButton = "出勤を報告する";
-        newStatus = "出勤報告済み";
-      } else if (nowStatus === '出勤報告済み') {
-        //退勤報告フォーム概要の定義
-        formId = "checkOutForm";
-        formTitle = `${date}｜退勤報告`;
-        formInfo = "勤務予定の内容";
-        formGuide = "↓退勤報告をしてください";
-        formButton = "退勤を報告する";
-        newStatus = "退勤報告済み";   
-      } else {
-        console.log("No form created for this row", {date, nowStatus});
-        return;
-      }
-    } else {
-      console.log("No form created for this row", {date, nowStatus});
-      return;
-    }
+        formId = "checkInForm"
+        formTitle = `${date}｜出勤報告`
+        formInfo = "勤務予定の内容"
+        formGuide = "↓出勤報告をしてください"
+        formButton = "出勤を報告する"
+        newStatus = "出勤報告済み"
 
-    // 勤怠ステータスの値によって、作成するフォームを変更
+    } else if (nowStatus === '出勤報告済み') {
+        //出勤報告フォーム概要の定義
+        formId = "checkOutForm"
+        formTitle = `${date}｜退勤報告`
+        formInfo = "勤務予定の内容"
+        formGuide = "↓退勤報告をしてください"
+        formButton = "退勤を報告する"
+        newStatus = "退勤報告済み"   
+    } else {return;} } else {return;}
+    
+
+    // 勤怠ステータスの値によって、作成するフォームのを変更
     const formElements = [
         { name: "勤務日", type: "hidden", value: date },
         { name: "会員ID", type: "hidden", value: teacherId },
@@ -119,11 +119,12 @@ function top_page(page_call_property) {
         { name: "submitButton", type: "submit", value: formButton },
     ];
 
-    // #region フォームの作成
+
+    // #region フォームの作成ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
     // 挿入箇所=formContainerの定義
     const formContainer = document.createElement("div");
-    formContainer.classList.add("form-container");
-    formContainer.classList.add(formId+"-wrapper");
+    formContainer.classList.add("form-container")
+    formContainer.classList.add(formId+"-wrapper")
 
     // フォームタイトル、参考情報、ガイドの作成
     formContainer.innerHTML = `
@@ -143,28 +144,28 @@ function top_page(page_call_property) {
     formElements.forEach((element) => {
         form.appendChild(makeFormElement(element));
     });
-    formContainer.appendChild(form);
+    formContainer.appendChild(form)
     form.addEventListener("submit", (event) => handleSubmit3(event, remarks,row));
 
     // 挿入箇所=formContainerの定義
-    formsContainer.appendChild(formContainer);
+    formsContainer.appendChild(formContainer)
 
     // 表示設定
-    form.querySelector("#勤務開始時間-wrapper").style.display="none";
-    form.querySelector("#勤務終了時間-wrapper").style.display="none";
-    form.querySelector("#休憩時間-wrapper").style.display="none";
+    form.querySelector("#勤務開始時間-wrapper").style.display="none"
+    form.querySelector("#勤務終了時間-wrapper").style.display="none"
+    form.querySelector("#休憩時間-wrapper").style.display="none"
 
     if(formId == "checkInForm"){
-        form.querySelector("#勤務時間の変更-wrapper").style.display="none";
+        form.querySelector("#勤務時間の変更-wrapper").style.display="none"
     }
 
     if(formId == "approvalForm" && newbreak!=""){
-      form.querySelector("#勤務時間の変更-wrapper").innerHTML +='<span style="color:#800000;white-space:wrap">講師から勤務時間の変更申請があります。 修正の必要があれば、修正の上、「勤務を承認する」をクリックしてください。</span>';
-      form.querySelector("#勤務時間の変更").value='変更あり';
-      form.querySelector("#勤務時間の変更").style.display='none';
-      form.querySelector("#勤務開始時間-wrapper").style.display="inline-block";
-      form.querySelector("#勤務終了時間-wrapper").style.display="inline-block";
-      form.querySelector("#休憩時間-wrapper").style.display="inline-block";
+      form.querySelector("#勤務時間の変更-wrapper").innerHTML +='<span style="color:#800000;white-space:wrap">講師から勤務時間の変更申請があります。 修正の必要があれば、修正の上、「勤務を承認する」をクリックしてください。</span>'
+      form.querySelector("#勤務時間の変更").value='変更あり'
+      form.querySelector("#勤務時間の変更").style.display='none'
+      form.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
+      form.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
+      form.querySelector("#休憩時間-wrapper").style.display="inline-block"
       form.querySelector("#勤務開始時間-wrapper #勤務開始時間_hour").value = newstart.split(":")[0];
       form.querySelector("#勤務開始時間-wrapper #勤務開始時間_minute").value = newstart.split(":")[1]== "00" ? "0" : newstart.split(":")[1];
       form.querySelector("#勤務終了時間-wrapper #勤務終了時間_hour").value = newfin.split(":")[0];
@@ -175,83 +176,198 @@ function top_page(page_call_property) {
     if(form.querySelector("#勤務時間の変更")){
       form.querySelector("#勤務時間の変更").addEventListener("change", function () {
           const timeChange = this.value;
-          console.log("Time change selected:", timeChange);
+          console.log(timeChange)
           if(timeChange == "変更あり"){
-              this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="inline-block";
-              this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="inline-block";
-              this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="inline-block";
+              console.log(this.parentNode)
+              console.log(this.parentNode.parentNode)
+              console.log(this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper"))
+              this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="inline-block"
+              this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="inline-block"
+              this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="inline-block"
           } else {
-              this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="none";
-              this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="none";
-              this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="none";
+              this.parentNode.parentNode.querySelector("#勤務開始時間-wrapper").style.display="none"
+              this.parentNode.parentNode.querySelector("#勤務終了時間-wrapper").style.display="none"
+              this.parentNode.parentNode.querySelector("#休憩時間-wrapper").style.display="none"
           }
       });
     }
     
-  });
-  console.log("Attendance forms created");
+});
 
-  // フォームなしの時、見出し削除
-  const h2Element = document.querySelector("#forms-container h2");
-  if (!document.querySelector("#forms-container .form-container")) {
-      h2Element.style.display = "none";
-      console.log("Forms container heading hidden");
+
+
+// フォームなしの時、見出し削除ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+const h2Element = document.querySelector("#forms-container h2");
+
+if (!document.querySelector("#forms-container .form-container")) {
+    h2Element.style.display = "none";
+}
+
+
+//お知らせを取得する 
+fetch("https://script.google.com/macros/s/AKfycbzcDM03sNClzI_o52NZYtdhGwrYSzdJJQX8pIh4QTfIhFzOb_fDzWZ8LcteAluYzQPkwA/exec", {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain',},
+    body: JSON.stringify(page_call_property),
+    mode: 'cors',
+  })
+  .then(response => response.text())
+  .then(data => {
+    const loadArea2 = document.getElementById("loading2")
+    if(loadArea2){loadArea2.remove()}
+
+    const newsArea = document.getElementById("news-log-area")
+    newsArea.innerHTML = data;
+
+    let messageElements = document.querySelectorAll(".news-message");
+    messageElements.forEach((element) => {
+        element.addEventListener("click", function() {
+            let classroomName = this.innerText.replace(/\[.*?\]\s*/, "").trim(); // Remove the unread messages count and get the classroom name
+            let classroomId = this.getAttribute("data-id"); // Get the classroom id from the data-id attribute
+
+            page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
+            page_call_property[isSchool ? "会員ID" : "教室ID"] = classroomId;
+            page_call_property["callback"] = "chat_page";
+
+            call_fetchData(page_call_property);
+        });
+    });
+  });
+
+
+
+
+
+async function handleSubmit3(event,remarks,row) {
+  // フォーム送信時アクションの設定する関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  event.preventDefault(); // デフォルトの送信をキャンセル
+  const form = event.target;
+  const formId =form.id
+  const formData = new FormData(form);
+  const data = {};
+  // FormDataオブジェクトから連想配列に変換
+  for (const [key, value] of formData.entries()) {
+      data[key] = value;
   }
 
-  //お知らせを取得する 
-  console.log("Fetching news data");
-  fetch("https://script.google.com/macros/s/AKfycbzcDM03sNClzI_o52NZYtdhGwrYSzdJJQX8pIh4QTfIhFzOb_fDzWZ8LcteAluYzQPkwA/exec", {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain',},
-      body: JSON.stringify(page_call_property),
-      mode: 'cors',
-    })
-    .then(response => response.text())
-    .then(data => {
-      console.log("News data received");
-      const loadArea2 = document.getElementById("loading2");
-      if(loadArea2){loadArea2.remove();}
-
-      const newsArea = document.getElementById("news-log-area");
-      if (newsArea) {
-        newsArea.innerHTML = data;
-
-        let messageElements = document.querySelectorAll(".news-message");
-        messageElements.forEach((element) => {
-            element.addEventListener("click", function() {
-                let classroomName = this.innerText.replace(/\[.*?\]\s*/, "").trim();
-                let classroomId = this.getAttribute("data-id");
-
-                page_call_property[isSchool ? "講師名" : "教室名"] = classroomName;
-                page_call_property[isSchool ? "会員ID" : "教室ID"] = classroomId;
-                page_call_property["callback"] = "chat_page";
-
-                call_fetchData(page_call_property);
-            });
-        });
-      } else {
-        console.error("News area element not found");
+  clearValidationErrors(); // バリデーションをリフレッシュ
+  // バリデーションチェックーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+  let isValid = true;
+  switch (formId) {
+    case 'approvalForm': 
+      if (!data["勤務時間の変更"]){ isValid = false;
+        showValidationError(form.querySelector("#勤務時間の変更-wrapper"), "変更有無の回答をしてください");
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務開始時間_hour"] || !data["勤務開始時間_minute"])){isValid = false;
+        showValidationError(form.querySelector("#勤務開始時間-wrapper"), "有効な時間にしてください");
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務終了時間_hour"] || !data["勤務終了時間_minute"])){isValid = false;
+        showValidationError(form.querySelector("#勤務終了時間-wrapper"), "有効な時間にしてください");
+      } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {isValid = false;
+        showValidationError(form.querySelector("#休憩時間-wrapper"), "有効な時間にしてください");
       }
-    })
-    .catch(error => {
-      console.error("Error fetching news data:", error);
-    });
+      break;
+    case 'checkInForm':
+      break;
+    case 'checkOutForm': 
+      if (!data["勤務時間の変更"]){ isValid = false;
+        showValidationError(form.querySelector("#勤務時間の変更-wrapper"), "変更有無の回答をしてください");
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務開始時間_hour"] || !data["勤務開始時間_minute"])){isValid = false;
+        showValidationError(form.querySelector("#勤務開始時間-wrapper"), "有効な時間にしてください");
+      } if(data["勤務時間の変更"] === "変更あり" &&( !data["勤務終了時間_hour"] || !data["勤務終了時間_minute"])){isValid = false;
+        showValidationError(form.querySelector("#勤務終了時間-wrapper"), "有効な時間にしてください");
+      } if(data["勤務時間の変更"] === "変更あり" && !data["休憩時間"]) {isValid = false;
+        showValidationError(form.querySelector("#休憩時間-wrapper"), "有効な時間にしてください");
+      }
+      break;
+    case 'answerForm':
+      if (!data["講師回答"]){ isValid = false;
+        showValidationError(form.querySelector("#講師回答-wrapper"), "勤務可否を回答してください");
+      }
+    ; break;
+  }  
 
-  // モーダルの挿入
-  const modalTemplate = `
-  <div id="myModal" class="modal">
-      <div class="modal-content form-container">
-      </div>
-  </div>`;
-  document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
-  const modal = document.getElementById("myModal");
+  if (isValid ==false){ return; }
+// バリデーションの処理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+function showValidationError(element, message) {
+    const errorMessage = document.createElement("div");
+    errorMessage.classList.add("error-message");
+    errorMessage.textContent = message;
+    errorMessage.style.color = "red";
+    errorMessage.style.fontSize = "0.8rem";
+    errorMessage.style.marginTop = "4px";
+    element.appendChild(errorMessage);
+    }
+    
+    function clearValidationErrors() {
+    const errorMessages = document.getElementsByClassName("error-message");
+    while (errorMessages[0]) {
+        errorMessages[0].parentNode.removeChild(errorMessages[0]);
+    }
+}
+
+
+
+  // データの整理ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー  
+  data["フォームタイプ"] = formId
+  data["タイムスタンプ"] = new Date().toLocaleString("ja-JP", {
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
+  });
+
+
+  let hosokutime = "";
+  if(data["勤務開始時間_hour"]){
+    data["勤務開始時間"] = data["勤務開始時間_hour"] + ':' 
+      + (data["勤務開始時間_minute"] === '0' ? '00' : data["勤務開始時間_minute"]);
+    data["勤務終了時間"] = data["勤務終了時間_hour"] + ':' 
+      + (data["勤務終了時間_minute"] === '0' ? '00' : data["勤務終了時間_minute"]);
+
+    hosokutime= `<span style="color:#800000;">${formId=="approvalForm"?"勤務時間修正有：":"勤務時間変更申請有："}${row.cells[3].innerText}（休：${row.cells[4].innerText}）→${data["勤務開始時間"]}〜${data["勤務終了時間"]}（休：${data["休憩時間"]}分）</span><br>`
+  }
+
+  let hosokuguide
+  switch (formId) {
+    case 'approvalForm': hosokuguide = " [↓教室：勤務承認時] "; break;
+    case 'checkInForm': hosokuguide = " [↓講師：出勤報告時] "; break;
+    case 'checkOutForm': hosokuguide = " [↓講師：退勤報告時] "; break;
+  }  
+  if(remarks=="-"){remarks=""}else{remarks=remarks+"<br>"}
+  if(data["補足・備考"]!="" || hosokutime!=""){
+    data["補足・備考"] = `${remarks}<span style="color:#0D5D63;">${hosokuguide}</span><br>${hosokutime}${data["補足・備考"]}`;
+  } else {data["補足・備考"] = "-"}
+
+
+
+  row.cells[1].innerText = data["勤怠ステータス"];
+  row.cells[5].innerHTML = data["補足・備考"];
+  row.style["background-color"] = "#FFF2CC";
+  let h3Content = form.parentNode.querySelector('h3').textContent;
+  form.parentNode.innerHTML = `<h3>${h3Content}</h3><p>提出が完了しました。</p>`;
+
+  const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: JSON.stringify(data),
+    mode: 'cors', //CORS対応
+  });
+
+};
+
+
+// モーダルの挿入ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+const modalTemplate = `
+<div id="myModal" class="modal">
+    <div class="modal-content form-container">
+    </div>
+</div>`;
+document.getElementById("page-content").insertAdjacentHTML('beforeend', modalTemplate);
+const modal = document.getElementById("myModal");
+
 
   // フォーム外がクリックされた時にフォームを非表示にする
   window.onclick = function (event) {
-    if (event.target == modal) { 
-      modal.style.display = "none";
-      console.log("Modal closed by outside click");
-    }
+    if (event.target == modal) { modal.style.display = "none";}
   }
 
   // ngを含まない全てのrequestボタンにイベントリスナーを追加  
