@@ -42,6 +42,8 @@ function handleTimeout() {
 }
 
 let paramsID, paramsP;
+console.log("01_common_load");
+
 // 3. waitForProperties関数の呼び出しと処理
 waitForProperties().then((propertiesContainer) => {
   newData = extractProperties(propertiesContainer);
