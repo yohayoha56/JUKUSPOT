@@ -42,6 +42,8 @@ function handleTimeout() {
 }
 
 let paramsID, paramsP;
+console.log("01_common_load production");
+
 waitForProperties().then((propertiesContainer) => {
   // プロパティをnewDataに格納する
   newData = extractProperties(propertiesContainer);
