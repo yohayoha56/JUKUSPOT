@@ -73,7 +73,7 @@ function shift_page(page_call_property) {
   const teacherName = newData["ページタイプ"] == "school" ?
     page_call_property["講師名"] : newData["姓"] + newData["名"];
 
-
+  console.log("log-AKfycbwLhdRW8cZ3P2oMDUD777LM4LS2ajpp1iyzplEiY9tO7fvDdAZQuPbn5xMxH_31L5IPMQ")
   console.log(schoolId)
   console.log(schoolName)
   console.log(teacherId)
