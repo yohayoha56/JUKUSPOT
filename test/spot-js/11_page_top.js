@@ -343,7 +343,7 @@ function showValidationError(element, message) {
   let h3Content = form.parentNode.querySelector('h3').textContent;
   form.parentNode.innerHTML = `<h3>${h3Content}</h3><p>提出が完了しました。</p>`;
 
-  const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
+  const response = await fetch("https://script.google.com/macros/s/AKfycbzG6Sc_fIgVN5EKY0Pk58Z3WPIIerx_6_hh-YWTOarqPUA8aDC3UWdA6IzrY6etX2cT/exec", {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain',
@@ -789,7 +789,7 @@ const handleSubmit = async (event, remarks, row) => {
 
 function fetchdata(data){
     // データの送信処理
-    fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzG6Sc_fIgVN5EKY0Pk58Z3WPIIerx_6_hh-YWTOarqPUA8aDC3UWdA6IzrY6etX2cT/exec", {
     method: 'POST',
     headers: {
         'Content-Type': 'text/plain',
