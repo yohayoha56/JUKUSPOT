@@ -73,7 +73,7 @@ function shift_page(page_call_property) {
   const teacherName = newData["ページタイプ"] == "school" ?
     page_call_property["講師名"] : newData["姓"] + newData["名"];
 
-  console.log('ニューページ読み込み')
+
   console.log(schoolId)
   console.log(schoolName)
   console.log(teacherId)
@@ -176,7 +176,6 @@ function shift_page(page_call_property) {
     }, 3000);
 
     // データの送信ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー 
-    console.log("newScriptデータの送信")
     const response = await fetch( "https://script.google.com/macros/s/AKfycbx0ERuKrsfIl_ci92tlFNJEP41w1bUo1vunwYy7Na2Sto87tq84Th27Iea76c4cgRpR/exec", {
         method: 'POST',
         headers: {
@@ -602,7 +601,6 @@ function shift_page(page_call_property) {
       row.cells[4].innerHTML = "提出済";
       row.style["background-color"] = "#FFF2CC";
       modal.style.display = "none";
-      console.log("newScriptデータの整理")
       const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
@@ -623,7 +621,6 @@ function shift_page(page_call_property) {
         row.style["background-color"] = "#FFF2CC";
       }
       modal.style.display = "none";
-      console.log("newScript取り消し")
       const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
@@ -638,7 +635,6 @@ function shift_page(page_call_property) {
       row.cells[5].innerText = "回答済み";
       row.style["background-color"] = "#FFF2CC";
       modal.style.display = "none";
-      console.log("newScript回答")
       const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
@@ -656,7 +652,6 @@ function shift_page(page_call_property) {
 
       try {
         // データの送信
-        console.log("newScriptデータの送信2")
         const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
           method: 'POST',
           headers: {
