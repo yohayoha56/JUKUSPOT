@@ -603,7 +603,7 @@ function shift_page(page_call_property) {
       row.style["background-color"] = "#FFF2CC";
       modal.style.display = "none";
       console.log("newScriptデータの整理")
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzG6Sc_fIgVN5EKY0Pk58Z3WPIIerx_6_hh-YWTOarqPUA8aDC3UWdA6IzrY6etX2cT/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -624,7 +624,7 @@ function shift_page(page_call_property) {
       }
       modal.style.display = "none";
       console.log("newScript取り消し")
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzG6Sc_fIgVN5EKY0Pk58Z3WPIIerx_6_hh-YWTOarqPUA8aDC3UWdA6IzrY6etX2cT/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -639,7 +639,7 @@ function shift_page(page_call_property) {
       row.style["background-color"] = "#FFF2CC";
       modal.style.display = "none";
       console.log("newScript回答")
-      const response = await fetch("https://script.google.com/macros/s/AKfycbzG6Sc_fIgVN5EKY0Pk58Z3WPIIerx_6_hh-YWTOarqPUA8aDC3UWdA6IzrY6etX2cT/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain',
@@ -657,7 +657,7 @@ function shift_page(page_call_property) {
       try {
         // データの送信
         console.log("newScriptデータの送信2")
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzG6Sc_fIgVN5EKY0Pk58Z3WPIIerx_6_hh-YWTOarqPUA8aDC3UWdA6IzrY6etX2cT/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbz21ch2Oo2MCPru-fCChaG4wsSSpg6LREGMAKTyqiEeK8DY2bpm0b8Jif7zD1jMlx6X/exec", {
           method: 'POST',
           headers: {
             'Content-Type': 'text/plain',
