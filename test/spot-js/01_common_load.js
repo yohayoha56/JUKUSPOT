@@ -42,7 +42,7 @@ function handleTimeout() {
 }
 
 let paramsID, paramsP;
-console.log("01_common_load staging_202408141710");
+console.log("01_common_load staging_202408141714");
 
 // 3. waitForProperties関数の呼び出しと処理
 waitForProperties().then((propertiesContainer) => {
